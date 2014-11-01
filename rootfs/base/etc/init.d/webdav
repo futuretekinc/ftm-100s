@@ -1,0 +1,119 @@
+#!/bin/sh /etc/rc.common
+
+# This should start before lighttpd ( 50 ) because
+# it writes conf.d files for it
+#
+START=40
+
+CONF=/etc/lighttpd/conf.d/005-webdav.conf
+VHOSTS=/etc/lighttpd/webdav.vhosts
+PASSWD=/etc/lighttpd/.htpasswd
+
+partition() {
+    local section="$1"
+    config_get name "$section" "name"
+    config_get enabled "$section" "enabled"
+    config_get path "$section" "path"
+    config_get dirlisting "$section" "dirlisting"
+    config_get readonly "$section" "readonly"
+    config_get authenticated "$section" "authenticated"
+
+    local e="disable"
+    local d="disable"
+    local r="disable"
+
+    [ "$enabled" -eq 1 ] && e="enable"
+    [ "$dirlisting" -eq 1 ] && d="enable"
+    [ "$readonly" -eq 1 ] && r="enable"
+
+    cat <<EOF>>$CONF
+\$HTTP["host"] == "$name" {
+  server.document-root = "$path"
+  dir-listing.activate = "$d"
+  webdav.activate = "$e"
+  webdav.is-readonly = "$r"
+  webdav.sqlite-db-name = "/var/run/lighttpd-webdav-lock.db"
+EOF
+    if [ "$authenticated" -eq 1 ]; then
+	cat <<EOF>>$CONF
+  auth.backend = "htpasswd"
+  auth.backend.htpasswd.userfile = "$PASSWD"
+  auth.require = ( "" => ( "method" => "basic",
+                           "realm" => "webdav",
+                           "require" => "valid-user" ) )
+EOF
+    fi
+    echo "}" >> $CONF
+    echo >> $CONF
+}
+
+do_user() {
+    local section="$1"
+    local u
+    local p
+    local OPT
+    config_get u "$section" "name"
+    config_get p "$section" "password"
+    [ ! -e "$PASSWD" ] && OPT=-c
+    if [ -n "$u" -a -n "$p" ]; then
+	echo "$p" | htpasswd $OPT $PASSWD "$u"  >/dev/null 2>/dev/null
+    fi
+}
+
+vhost() {
+    local section="$1"
+    local ip="$2"
+    config_get name "$section" "name"
+    config_get enabled "$section" "enabled"
+    if [ "$enabled" -gt 0 ]; then
+	echo "$ip $name" >> $VHOSTS
+    fi
+}
+
+
+reset_setting() {
+
+	default_path=/mnt/usbs
+
+        for share_entry in $(uci show webdav | awk -F = '$2 ~ /partition/ { print $1}') ; do
+		uci delete $share_entry
+        done
+                                
+	uci add webdav partition
+	uci set webdav.@partition[-1].name='Cortina'
+	uci set webdav.@partition[-1].path=$default_path
+	uci set webdav.@partition[-1].read_only=1
+	uci set webdav.@partition[-1].dirlisting=1
+	uci set webdav.@partition[-1].readonly=1
+	uci set webdav.@partition[-1].authenticated=1
+	uci set webdav.@partition[-1].enabled=0
+	uci rename webdav.@partition[-1]=$(basename $default_path)
+	uci commit webdav
+}
+
+boot() {
+	reset_setting
+	start
+}
+
+start() {
+    local ipaddr=`uci get network.lan.ipaddr`
+    config_load webdav
+    /bin/rm -f $CONF
+    config_foreach partition partition
+    /bin/rm -f $VHOSTS
+    config_foreach vhost partition $ipaddr
+    /bin/rm -f $PASSWD
+    config_foreach do_user user
+}
+
+# Called by GUI, should re-create conf files, then restart lighttpd
+reload() {
+    start "$@"
+    [ -x "/etc/init.d/lighttpd" ] && /etc/init.d/lighttpd enabled && {
+        /etc/init.d/lighttpd reload
+    }
+    [ -x "/etc/init.d/dnsmasq" ] && /etc/init.d/dnsmasq enabled && {
+        /etc/init.d/dnsmasq reload
+    }
+}

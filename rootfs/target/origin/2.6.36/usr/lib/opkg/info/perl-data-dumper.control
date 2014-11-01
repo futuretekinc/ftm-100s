@@ -1,0 +1,15 @@
+Package: perl-data-dumper
+Version: 2.131-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perl-xml-sax
+Provides: 
+Source: feeds/cortina/perl-data-dumper
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 18902
+Title: stringified perl data structures, suitable for both printing and eval
+Description:  stringified perl data structures, suitable for both printing and eval

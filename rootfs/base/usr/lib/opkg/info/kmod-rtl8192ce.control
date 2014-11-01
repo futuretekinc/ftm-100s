@@ -1,0 +1,15 @@
+Package: kmod-rtl8192ce
+Version: 2.6.36+1.6-03132012-1
+Depends: kernel (=2.6.36-1), libopenssl
+Provides: 
+Source: feeds/cortina/rtl8192ce
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 469436
+Title: AP driver for Realtek RTL8192ce wireless chipsets 
+Description:  This package contains a driver for RTL8192ce chipsets.

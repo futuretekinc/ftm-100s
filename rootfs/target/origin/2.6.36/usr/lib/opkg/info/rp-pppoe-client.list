@@ -1,0 +1,6 @@
+/usr/sbin/pppoe-start
+/etc/ppp/pppoe.conf
+/usr/sbin/pppoe-stop
+/usr/sbin/pppoe-connect
+/usr/sbin/pppoe
+/etc/init.d/pppoe-client

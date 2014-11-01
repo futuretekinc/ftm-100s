@@ -1,0 +1,17 @@
+/etc/xl2tpdoptionscert.tmpl
+/usr/lib/lua/luci/view/vpn-connections.htm
+/etc/pptpdconf.tmpl
+/etc/init.d/vpn-gui
+/etc/xl2tpdoptions.tmpl
+/etc/ipsecsecretscert.tmpl
+/etc/pptpd.tmpl
+/etc/uci-defaults/luci-app-vpn
+/usr/lib/lua/luci/i18n/vpn.en.lmo
+/usr/lib/lua/luci/model/cbi/vpn.lua
+/etc/ipsecpsk.tmpl
+/etc/xl2tpdconf.tmpl
+/usr/lib/lua/luci/controller/vpn.lua
+/etc/config/vpn-gui
+/etc/xl2tpdconfcert.tmpl
+/etc/ipseccert.tmpl
+/etc/ipsecsecrets.tmpl

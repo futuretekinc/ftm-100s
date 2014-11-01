@@ -1,0 +1,17 @@
+Package: giflib
+Version: 4.1.6-1
+Depends: 
+Provides: 
+Source: feeds/packages/libs/giflib
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 13909
+Title: GIF libraries
+Description:  giflib is a library for reading and writing gif images.
+ It is API and ABI compatible with libungif which was in wide use while
+ the LZW compression algorithm was patented. 

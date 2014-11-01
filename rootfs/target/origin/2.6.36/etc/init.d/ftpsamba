@@ -1,0 +1,162 @@
+#!/bin/sh /etc/rc.common
+
+# proftp starts at 50, samba at 60.  We'll start before them
+# and simply enable/disable them, and set their config via uci calls.
+# Then they will come up naturely.
+#
+START=40
+
+FTP_PASSWD=/tmp/ftppasswd
+FTP_GROUP=/tmp/ftpgroup
+
+FTP_OLG_CONFIG=$(test -f /tmp/ftpsmb && cat /tmp/ftpsmb | grep "ftp_old=" | cut -d '=' -f 2 || echo "0")
+SAMBA_OLG_CONFIG=$(test -f /tmp/ftpsmb && cat /tmp/ftpsmb | grep "smb_old=" | cut -d '=' -f 2 || echo "0")
+
+mk_ftp_passwd() {
+    local u="$1"
+    local p="$2"
+
+    rm -f $FTP_PASSWD
+    rm -f $FTP_GROUP
+
+    echo "$p" | htpasswd -c $FTP_PASSWD "$u"  >/dev/null 2>/dev/null
+    prelude=`cat $FTP_PASSWD`
+    pp=`cat /etc/passwd | grep $u | sed "s/$u:x://g"`
+    gg=`cat /etc/group | grep $u | sed "s/$u:x://g"`
+    echo "$prelude:$pp" > $FTP_PASSWD
+    echo "$prelude:$gg" > $FTP_GROUP
+}
+
+is_samba_running() {
+    ps | grep -v grep | grep -q smbd
+    if [ "$?" = "0" ]; then
+	/bin/true
+    else
+	/bin/false
+    fi
+}
+
+is_ftp_running() {
+    ps | grep -v grep | grep -q proftpd
+    if [ "$?" = "0" ]; then
+	/bin/true
+    else
+	/bin/false
+    fi
+}
+
+add_ftp_share()
+{
+        config_get sharepath $1 path
+        config_get writeable $1 writeable
+
+        if [ "$writeable" == "1" ]; then
+                permission="AllowAll"
+        else
+                permission="DenyAll"
+        fi
+
+        cat << EOF
+<Directory $sharepath>
+        <Limit WRITE>
+                $permission
+        </Limit>
+</Directory>
+
+EOF
+
+}
+
+reset_ftpsamba_setting() {
+
+	for share_entry in $(uci show ftpsamba | awk -F = '$2 ~ /ftpshare/ { print $1}') ; do
+		uci delete $share_entry
+	done
+
+	uci add ftpsamba ftpshare
+	uci set ftpsamba.@ftpshare[-1].writeable=0
+	uci set ftpsamba.@ftpshare[-1].path="/mnt/usbs"
+	uci rename ftpsamba.@ftpshare[-1]=$(basename /mnt/usbs)
+	uci commit ftpsamba
+}
+
+boot() {
+	reset_ftpsamba_setting
+	start "$@"
+}
+
+start() {
+    local lanipaddr=`uci get network.lan.ipaddr`
+
+    config_load ftpsamba
+    config_get ftp_enabled ftpsamba ftp_enabled "0"
+    config_get samba_enabled ftpsamba samba_enabled "0"
+    config_get permission ftpsamba permission "ro"
+    config_get id ftpsamba id "cortina"
+    config_get password ftpsamba password "cortina"
+    config_get path ftpsamba path "/tmp"
+    config_get name ftpsamba name "OpenWrt"
+
+    # Add the home directory if not already present
+    #
+    [ -d "/home/$id" ] || ( mkdir -p /home/$id; chown $id:$id /home/$id )
+    
+    # Make sure the init.d scripts are always disabled, so
+    # that I am the only entity that stops and starts them.
+    #
+    #/etc/init.d/proftpd disable
+    #/etc/init.d/samba disable
+
+    if [ "$FTP_OLG_CONFIG" == "0" ] && [ "$ftp_enabled" = "1" ]; then
+	[ -L "/etc/proftpd.conf" ] || (rm -f /etc/proftpd.conf; ln -s /tmp/proftpd.conf /etc/proftpd.conf)
+	config_get uci_ServerName ftp ServerName
+	config_get uci_DefaultAddress ftp DefaultAddress $lanipaddr
+	config_get uci_Port ftp Port
+	config_get uci_UseIPv6 ftp UseIPv6
+	config_get uci_Umask ftp Umask
+	config_get uci_MaxInstances ftp MaxInstances
+	uci_ServerName=$name
+	uci_Path=$path
+	if [ "$permission" = "ro" ]; then
+	    uci_Write="DenyAll"
+	else
+	    uci_Write="AllowAll"
+	fi
+	export uci_ServerName uci_DefaultAddress uci_Port \
+	    uci_UseIPv6 uci_Umask uci_MaxInstances \
+	    uci_Path uci_Write
+	eval "sh /etc/proftpd.tmpl > /tmp/proftpd.conf"
+	config_foreach add_ftp_share ftpshare  >> /tmp/proftpd.conf
+	mk_ftp_passwd "$id" "$password"
+	# Need this sleep so that proftp will start up again
+	# after a stop.
+	sleep 3
+	/etc/init.d/proftpd start
+    fi
+
+    if [ "$SAMBA_OLG_CONFIG" == "0" ] && [ "$samba_enabled" = "1" ]; then
+	mkdir -p /var/log/samba
+	if [ ! -f /tmp/smb.conf ]; then
+	    ( . /etc/init.d/samba; config_load samba; config_foreach smb_header samba )
+	fi
+	echo "$password" > /tmp/ppp
+	echo "$password" >> /tmp/ppp
+	cat /tmp/ppp | smbpasswd -a -s "$id"
+	rm -f /tmp/ppp
+	/etc/init.d/samba start
+    fi
+}
+
+stop() {
+    config_load ftpsamba
+    config_get ftp_enabled ftpsamba ftp_enabled "0"
+    config_get samba_enabled ftpsamba samba_enabled "0"
+    
+    if [ is_ftp_running ] && [ "$ftp_enabled" == "0" ]; then
+        /etc/init.d/proftpd stop
+    fi
+    
+    if [ is_samba_running ] && [ "$samba_enabled" == "0" ]; then
+        /etc/init.d/samba stop
+    fi
+}

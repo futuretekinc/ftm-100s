@@ -1,0 +1,15 @@
+Package: luci-app-transmission
+Version: 0.1-1
+Depends: luci-mod-admin-core, transmission-daemon, transmission-web
+Provides: 
+Source: feeds/cortina/luci-app-transmission
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 5008
+Title: LuCI GUI for the transmission
+Description:  This Luci package does transmission management

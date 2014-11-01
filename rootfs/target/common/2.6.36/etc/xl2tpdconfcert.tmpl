@@ -1,0 +1,15 @@
+cat <<EEOFEE
+[global]
+auth file = /etc/xl2tpd/xl2tp-secrets
+
+[lns default]
+ip range = 192.168.254.202-192.168.254.210
+local ip = 192.168.254.200
+require chap = yes
+refuse pap = yes
+require authentication = yes
+name = MyVPN
+ppp debug = yes
+pppoptfile = /etc/ppp/options.xl2tpd
+length bit = yes
+EEOFEE

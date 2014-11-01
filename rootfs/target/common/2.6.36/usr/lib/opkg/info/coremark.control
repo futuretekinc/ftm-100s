@@ -1,0 +1,15 @@
+Package: coremark
+Version: 1.0.0-1
+Depends: 
+Provides: 
+Source: feeds/cortina/coremark
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 17563
+Title: CoreMark benchmarking tools
+Description:  CoreMark benchmarking tools

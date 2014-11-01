@@ -1,0 +1,115 @@
+#!/bin/sh /etc/rc.common
+#
+#
+START=15
+STOP=90
+
+config_load csmi
+
+# Have to set to your device's erase block size
+config_get ERASESZ flash erase_size
+
+# Partition name where files are located which
+# might be mounted
+config_get FPART flash mgmt_part_name
+
+# Will be set to the mountpoint of the $FPART
+# partition.  
+FROOT=
+
+# Will get set to the relative path of a file
+# to be mounted.
+FREL=
+
+create_config() {
+    #
+    # This function will find all of the superblock partitions
+    # in flash, and run cs.sb on each.  Only one will have its
+    # active bit set, and that one will write out a "superblock"
+    # config file containing the information for the active
+    # superblock.
+    #
+    # Superblocks are assumed to be named sb0, sb1, ... sbn
+    #
+    for dev in `grep \"sb[0-9]\" /proc/mtd|awk -F: '{print $1}'`; do
+	/usr/bin/cs.sb --quiet --device=/dev/$dev --erasesz=$ERASESZ --config=/etc/config/superblock
+    done
+}
+
+mount_mtdpart() {
+    local name
+    local type
+    local mountpoint
+    local mountopts
+
+    config_get name $1 name
+    config_get type $1 type
+    config_get mountpoint $1 mountpoint
+    config_get mountopts $1 mountopts
+
+    [ "$name" == "$FPART" ] && FROOT=$mountpoint
+
+    [ ! -z "$mountpoint" ] && {
+	mkdir -p $mountpoint
+	[ ! -z "$mountopts" ] && MOPTS="-o $mountopts"
+	MDEV=$(grep \"${name}\" /proc/mtd | awk -F: '{print $1}'|sed 's/mtd/mtdblock/g')
+	mount -t $type $MOPTS /dev/$MDEV $mountpoint
+    }
+}
+
+mount_file() {
+    local name
+    local type
+    local mountpoint
+    local mountopts
+
+    config_get name $1 name
+    config_get type $1 type
+    config_get mountpoint $1 mountpoint
+    config_get mountopts $1 mountopts
+
+    [ ! -z "$mountpoint" ] && {
+	mkdir -p $mountpoint
+	MOPTS="-o loop"
+	[ ! -z "$mountopts" ] && MOPTS="${MOPTS},${mountopts}"
+	mount -t $type $MOPTS ${FROOT}/${FREL}/${name} $mountpoint
+    }
+}
+
+umount_item() {
+    local mountpoint
+
+    config_get mountpoint $1 mountpoint
+
+    [ ! -z "$mountpoint" ] && {
+	umount $mountpoint
+    }
+}
+
+start() {
+    create_config
+    config_load superblock
+    config_foreach mount_mtdpart mtdpart
+
+    # Get the relative root of each file 
+    config_get FREL attributes root
+
+    config_foreach mount_file file
+
+    # Create the fw_env.config file if uboot-envtools is installed
+    #
+    if [ -x /usr/sbin/fw_printenv ] || [ -x /usr/sbin/fw_setenv ]; then
+	if [ ! -f /etc/fw_env.config ]; then
+	    config_get env0 flash "env0" "/dev/mtd0"
+	    config_get env0size flash "env0size" "$ERASESZ"
+	    echo "$env0 0x0 $env0size $ERASESZ" > /etc/fw_env.config
+	fi
+    fi
+}
+
+stop() {
+    config_load superblock
+    config_foreach umount_item file
+    config_foreach umount_item mtdpart
+}
+

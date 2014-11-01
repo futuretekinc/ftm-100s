@@ -1,0 +1,15 @@
+Package: radvd
+Version: 1.7-2
+Depends: kmod-ipv6
+Provides: 
+Source: feeds/cortina/radvd
+Section: ipv6
+Category: IPv6
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 103175
+Title: IPv6 Routing Advertisement Daemon
+Description:  IPv6 Routing Advertisement Daemon.

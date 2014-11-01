@@ -1,0 +1,15 @@
+Package: libcurl
+Version: 7.19.6-1
+Depends: libopenssl, zlib
+Provides: 
+Source: feeds/cortina/curl
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 106894
+Title: A client-side URL transfer utility
+Description:  A client-side URL transfer utility

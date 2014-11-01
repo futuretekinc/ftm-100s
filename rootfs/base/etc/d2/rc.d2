@@ -1,0 +1,31 @@
+#!/bin/sh -x
+# THIS IS AN UNPUBLISHED WORK CONTAINING D2 TECHNOLOGIES, INC. CONFIDENTIAL
+# AND PROPRIETARY INFORMATION.  IF PUBLICATION OCCURS, THE FOLLOWING NOTICE
+# APPLIES: "COPYRIGHT 2008 D2 TECHNOLOGIES, INC. ALL RIGHTS RESERVED"
+#
+# $D2Tech$ $Rev: 1.1.2.2 $ $Date: 2011/12/02 20:17:32 $
+#
+D2_DIR=/etc/d2
+
+IF_ADDR=`ifconfig eth0 | grep 'inet addr:' | cut -d":" -f2 | cut -d" " -f1`
+
+ps | grep dhcp | cut -d" " -f3 | xargs kill -9
+
+# Load the vport modules
+mkdir -p /var/tmp/osal
+insmod $D2_DIR/osal_kernel.ko
+insmod $D2_DIR/ve_vtsp_hw.ko
+insmod $D2_DIR/ve_vtsp_rt.ko
+#insmod $D2_DIR/ve_vtsp_hw_ut.ko
+sleep 6
+# Start the vport application
+
+($D2_DIR/vapp -i ${IF_ADDR})&
+
+#to fix realtime issue
+#sysctl -w kernel.sched_rt_runtime_us=-1
+
+
+# XXX Do not use printk on this system, or voice could become choppy
+#( sleep 10; echo "=== DISABLING PRINTK ==="; echo 0>/proc/sys/kernel/printk) & 
+

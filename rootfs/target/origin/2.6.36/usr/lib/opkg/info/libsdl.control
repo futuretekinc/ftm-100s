@@ -1,0 +1,16 @@
+Package: libsdl
+Version: 1.2.14-2
+Depends: directfb, zlib, libpthread, alsa-lib
+Provides: 
+Source: feeds/packages/libs/libsdl
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 109964
+Title: Simple DirectMedia Layer
+Description:  SDL is a library that allows programs portable low level access to a video
+ framebuffer, audio output, mouse, and keyboard.

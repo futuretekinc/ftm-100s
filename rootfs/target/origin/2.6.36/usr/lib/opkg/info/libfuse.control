@@ -1,0 +1,18 @@
+Package: libfuse
+Version: 2.8.5-1
+Depends: kmod-fuse
+Provides: 
+Source: package/fuse
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 45042
+Title: FUSE (library)
+Description:  FUSE (Filesystem in UserSpacE)
+ This package contains the FUSE shared libraries, needed by other programs.
+ - libfuse
+ - libulockmgr

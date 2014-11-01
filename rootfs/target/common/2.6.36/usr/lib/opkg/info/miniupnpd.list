@@ -1,0 +1,4 @@
+/etc/config/upnpd
+/usr/bin/miniupnpd
+/etc/hotplug.d/firewall/50-miniupnpd
+/etc/init.d/miniupnpd

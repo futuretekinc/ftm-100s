@@ -1,0 +1,2 @@
+#!/bin/sh
+[ -n "${IPKG_INSTROOT}" ] || ( . /etc/uci-defaults/webdav ) && rm -f /etc/uci-defaults/webdav

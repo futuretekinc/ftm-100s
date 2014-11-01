@@ -1,0 +1,5 @@
+
+return <<'END';
+A000	A48C	Yi
+A490	A4C6	Yi
+END

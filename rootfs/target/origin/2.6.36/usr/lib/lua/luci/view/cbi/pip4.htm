@@ -1,0 +1,16 @@
+<%+cbi/valueheader%>
+<%
+  local uci = require("luci.model.uci").cursor()
+  local ip  = uci:get("network", "lan", "ipaddr" )
+  ip, n = ip:gsub("\.%d+$","")
+%>
+	<%=ip%>.<input class="text" size="3" class="cbi-input-text' %>" onchange="cbi_d_update(this.id)"<%=
+		attr("name", cbid) .. attr("id", cbid) .. attr("value", self:cfgvalue(section) or self.default) ..
+		ifattr(self.size, "size") .. ifattr(self.placeholder, "placeholder")
+	%> />
+	<% if self.datatype then -%>
+	<script type="text/javascript">
+		cbi_validate_field('<%=cbid%>', <%=tostring((self.optional or self.rmempty) == true)%>, '<%=self.datatype%>');
+	</script>
+	<% end -%>
+<%+cbi/valuefooter%>

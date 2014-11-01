@@ -1,0 +1,10 @@
+
+return <<'END';
+10000	1000B	Linear_B
+1000D	10026	Linear_B
+10028	1003A	Linear_B
+1003C	1003D	Linear_B
+1003F	1004D	Linear_B
+10050	1005D	Linear_B
+10080	100FA	Linear_B
+END

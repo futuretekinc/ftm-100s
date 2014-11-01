@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Copyright (C) 2012 Cortina Systems, Inc.
+# All rights reserved.
+#
+
+uci -q batch <<-EOF >/dev/null 2>&1
+	delete ucitrack.@g2qos[-1]
+	add ucitrack g2qos
+	set ucitrack.@g2qos[-1].init=g2qos
+	commit ucitrack
+EOF
+
+rm -f /tmp/luci-indexcache
+exit 0

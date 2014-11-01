@@ -1,0 +1,16 @@
+Package: igmpproxy
+Version: 0.1-1
+Depends: 
+Provides: 
+Source: feeds/cortina/igmpproxy
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 13264
+Title: Multicast Routing Daemon
+Description:  IGMPproxy is a simple dynamic Multicast Routing Daemon using
+ only IGMP signalling (Internet Group Management Protocol).

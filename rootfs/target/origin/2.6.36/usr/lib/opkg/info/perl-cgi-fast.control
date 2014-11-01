@@ -1,0 +1,15 @@
+Package: perl-cgi-fast
+Version: 3.55-1
+Depends: perl, perl-fcgi
+Provides: 
+Source: feeds/cortina/perl-cgi-fast
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 12004
+Title: CGI Interface for Fast CGI
+Description:  CGI Interface for Fast CGI

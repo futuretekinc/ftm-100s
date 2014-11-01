@@ -1,0 +1,19 @@
+Package: cortina-customizations
+Version: 1.0.0-1
+Depends: luci-lib-core
+Provides: 
+Source: feeds/cortinagui/cortina-customizations
+Section: base
+Category: Base system
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 105
+Title: CORTINA Customizations
+Description:  This package installs files into TOPDIR/files during the build
+ where they will end up overriding correspnding files installed
+ by packages.  This allows one to override things like 
+ /etc/config/samba, etc.  This package also installs the "cortina"
+ user.

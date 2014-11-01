@@ -1,0 +1,16 @@
+config settings ftpsamba
+  option ftp_enabled	1
+  option samba_enabled	1
+  option permission	rw
+  option name		Cortina
+  option id		cortina
+  option password	cortina
+  option path		/mnt
+
+config settings ftp
+  option DefaultAddress 127.0.0.1
+  option Port 		21
+  option UseIPv6 	off
+  option Umask 		022
+  option MaxInstances 	30
+

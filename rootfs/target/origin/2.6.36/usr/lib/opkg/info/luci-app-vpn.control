@@ -1,0 +1,15 @@
+Package: luci-app-vpn
+Version: 0.1-1
+Depends: luci-mod-admin-core, openswan, pptpd, xl2tpd, kmod-mppe
+Provides: 
+Source: feeds/cortina/luci-app-vpn
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 5974
+Title: LuCI GUI for the vpn
+Description:  This Luci package does vpn management

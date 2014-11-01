@@ -1,0 +1,3 @@
+/sbin/hotplug2
+/etc/hotplug2.rules
+/etc/hotplug.d/dvb/10-dvb

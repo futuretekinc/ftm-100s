@@ -1,0 +1,15 @@
+Package: libext2fs
+Version: 1.41.12-1
+Depends: 
+Provides: 
+Source: package/e2fsprogs
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 72328
+Title: ext2/3/4 filesystem library
+Description:  libext2fs is a library which can access ext2, ext3 and ext4 filesystems.

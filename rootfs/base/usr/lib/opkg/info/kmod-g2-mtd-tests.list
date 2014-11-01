@@ -1,0 +1,11 @@
+/lib/modules/2.6.36/mtd_subpagetest.ko
+/lib/modules/2.6.36/mtd_pagetest.ko
+/lib/modules/2.6.36/mtd_readtest.ko
+/lib/modules/2.6.36/mtd_speedtest.ko
+/lib/modules/2.6.36/mtd_torturetest.ko
+/lib/modules/2.6.36/mtd_oobtest.ko
+/lib/modules/2.6.36/mtd_stresstest.ko
+/lib/modules/2.6.36/mtd_nandecctest.ko
+/etc/modules.d/50-g2-mtd-tests
+/lib/modules/2.6.36/mtd_ecctest.ko
+/lib/modules/2.6.36/mtd_bchtest.ko

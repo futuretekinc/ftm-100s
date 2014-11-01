@@ -1,0 +1,15 @@
+Package: luci-theme-openwrt
+Version: trunk+svn8216-1
+Depends: luci-theme-base
+Provides: 
+Source: feeds/luci/luci
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: LuCI Development Team <luci@lists.subsignal.org>
+Architecture: g2
+Installed-Size: 6802
+Title: OpenWrt.org (default)
+Description:  OpenWrt.org (default)

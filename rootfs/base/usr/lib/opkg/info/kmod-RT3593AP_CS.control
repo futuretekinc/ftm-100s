@@ -1,0 +1,15 @@
+Package: kmod-RT3593AP_CS
+Version: 2.6.36+2.6.0.0-1
+Depends: kernel (=2.6.36-1)
+Provides: 
+Source: feeds/cortina/RT3593AP_CS
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 663490
+Title: AP driver for Ralink RT3593 wireless chipsets
+Description:  This package contains a driver for Ralink RT3593 chipsets.

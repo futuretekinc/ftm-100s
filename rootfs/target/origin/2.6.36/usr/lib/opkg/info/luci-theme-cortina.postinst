@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# 1. Make sure new theme is inserted into list of themes
+#
+[ -n "${IPKG_INSTROOT}" ] || {
+  ( . /etc/uci-defaults/luci-theme-cortina ) && rm -f /etc/uci-defaults/luci-theme-cortina
+}

@@ -1,0 +1,15 @@
+Package: kmod-RT3593AP_WFO
+Version: 2.6.36+2.6.0.0_1-1
+Depends: kernel (=2.6.36-1), kmod-g2-wfo, kmod-g2-wfo-rt3593
+Provides: 
+Source: feeds/cortina/RT3593AP_WFO2
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 671801
+Title: AP driver for Ralink RT3593 wireless chipsets (Cortina WFO)
+Description:  This package contains a WFO driver for Ralink RT3593 chipsets.

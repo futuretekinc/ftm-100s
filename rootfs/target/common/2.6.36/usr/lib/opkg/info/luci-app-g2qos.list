@@ -1,0 +1,3 @@
+/usr/lib/lua/luci/controller/g2qos.lua
+/etc/uci-defaults/luci-app-g2qos
+/usr/lib/lua/luci/model/cbi/g2qos.lua

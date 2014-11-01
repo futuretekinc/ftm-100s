@@ -1,0 +1,6 @@
+/etc/init.d/minidlna-gui
+/usr/lib/lua/luci/controller/minidlna.lua
+/etc/config/minidlna-gui
+/usr/lib/lua/luci/i18n/minidlna.en.lmo
+/etc/uci-defaults/luci-app-minidlna
+/usr/lib/lua/luci/model/cbi/minidlna.lua

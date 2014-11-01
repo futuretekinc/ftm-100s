@@ -1,0 +1,4 @@
+/lib/modules/2.6.36/ath9k_common.ko
+/lib/modules/2.6.36/ath9k.ko
+/lib/modules/2.6.36/ath9k_hw.ko
+/etc/modules.d/27-ath9k

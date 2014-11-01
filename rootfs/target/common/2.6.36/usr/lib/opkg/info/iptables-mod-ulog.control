@@ -1,0 +1,17 @@
+Package: iptables-mod-ulog
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-ulog
+Provides: 
+Source: package/iptables
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 160
+Title: user-space packet logging
+Description:  iptables extensions for user-space packet logging.
+ Includes:
+ - libipt_ULOG

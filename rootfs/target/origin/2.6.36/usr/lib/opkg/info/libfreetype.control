@@ -1,0 +1,18 @@
+Package: libfreetype
+Version: 2.3.12-1
+Depends: zlib
+Provides: 
+Source: feeds/packages/libs/freetype
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 226397
+Title: A free, high-quality and portable font engine
+Description:  The FreeType project is a team of volunteers who develop free, 
+ portable and high-quality software solutions for digital typography.
+ They specifically target embedded systems and focus on bringing small, 
+ efficient and ubiquitous products.

@@ -1,0 +1,17 @@
+Package: 6to4
+Version: 3-1
+Depends: ip, kmod-ipv6, kmod-sit
+Provides: 
+Source: package/6to4
+Section: ipv6
+Category: IPv6
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Architecture: all
+Installed-Size: 2550
+Title: IPv6-to-IPv4 configuration support
+Description:  Provides support for 6to4 tunnels in /etc/config/network.
+ Refer to http://wiki.openwrt.org/doc/uci/network for
+ configuration details.

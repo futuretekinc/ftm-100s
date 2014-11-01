@@ -1,0 +1,6 @@
+/etc/xl2tpd/xl2tpd.conf
+/etc/xl2tpd/start_xl2tpd.sh
+/etc/xl2tpd/l2tp-secrets
+/usr/sbin/xl2tpd
+/usr/sbin/xl2tpd-control
+/etc/ppp/options.xl2tpd

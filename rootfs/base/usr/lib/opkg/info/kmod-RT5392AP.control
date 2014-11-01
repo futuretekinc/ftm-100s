@@ -1,0 +1,15 @@
+Package: kmod-RT5392AP
+Version: 2.6.36+2.7.0.1-0
+Depends: kernel (=2.6.36-1)
+Provides: 
+Source: feeds/cortina/RT5392AP
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 477605
+Title: AP driver for Ralink RT5390/RT5392 wireless chipsets
+Description:  This package contains a driver for Ralink RT5390/RT5392 chipsets.

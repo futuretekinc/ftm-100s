@@ -1,0 +1,15 @@
+Package: perl-www
+Version: 5.812-1
+Depends: perl, perl-html-parser, perl-uri
+Provides: 
+Source: feeds/packages/lang/perl-www
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 76364
+Title: WWW client/server library for Perl (aka LWP)
+Description:  WWW client/server library for Perl (aka LWP)

@@ -1,0 +1,9 @@
+
+return <<'END';
+005F		
+203F	2040	
+2054		
+FE33	FE34	
+FE4D	FE4F	
+FF3F		
+END

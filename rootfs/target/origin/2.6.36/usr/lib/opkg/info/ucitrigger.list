@@ -1,0 +1,4 @@
+/usr/lib/uci_trigger.so
+/usr/sbin/apply_config
+/lib/config/trigger/base.lua
+/usr/lib/lua/uci/trigger.lua

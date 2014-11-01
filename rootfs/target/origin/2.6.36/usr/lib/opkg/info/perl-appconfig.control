@@ -1,0 +1,15 @@
+Package: perl-appconfig
+Version: 1.66-1
+Depends: perl, perlbase-essential
+Provides: 
+Source: feeds/cortina/perl-appconfig
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 11804
+Title: Perl5 module for reading configuration files and parsing command line arguments
+Description:  Perl5 module for reading configuration files and parsing command line arguments

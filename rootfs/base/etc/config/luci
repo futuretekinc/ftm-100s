@@ -1,0 +1,92 @@
+config core main
+	option lang auto
+	option mediaurlbase /luci-static/cortina
+	option resourcebase /luci-static/resources
+	option autoapply    true
+	option i18nbase	    custom
+	
+config extern flash_keep
+	option uci 		"/etc/config/"
+	option dropbear "/etc/dropbear/"
+	option openvpn	"/etc/openvpn/"
+	option passwd	"/etc/passwd"
+	option opkg		"/etc/opkg.conf"
+	option firewall	"/etc/firewall.user"
+	option uploads	"/lib/uci/upload/"
+	
+config internal languages
+	
+config internal sauth
+	option sessionpath "/tmp/luci-sessions"
+	option sessiontime 3600
+	
+config internal ccache
+	option enable 1
+		
+config internal themes
+
+config internal menu_order
+        option admin_services_dhcp            110
+        option admin_services_ftpsamba        120
+        option admin_services_minidlna        130
+        option admin_services_scst            140
+	option admin_services_webdav	      150
+	option admin_services_davfs2	      151
+	option admin_services_miniupnpd	      155
+        option admin_services_transmission    160
+        option admin_services_vpn             170
+        option admin_services_p910nd          180
+        option admin_services_music           190
+        option admin_services_rtl8192x_wps    200
+        option admin_services_rtl8192x_wds    210
+        option admin_services_ddns            220
+
+# 0=both, 1=tcp, 2=udp, 3=other
+config virtual_host TELNET
+  option port  23
+  option proto 1
+
+config virtual_host HTTP
+  option port  80
+  option proto 1
+
+config virtual_host HTTPS
+  option port  443
+  option proto 1
+
+config virtual_host FTP
+  option port  21
+  option proto 1
+
+config virtual_host DNS
+  option port  53
+  option proto 0
+
+config virtual_host SMTP
+  option port  25
+  option proto 1
+
+config virtual_host PPTP
+  option port  1723
+  option proto 1
+
+config virtual_host L2TP
+  option port  1701
+  option proto 2
+
+config virtual_host WAKEONLAN
+  option port  9
+  option proto 2
+
+config virtual_host SSH
+  option port  22
+  option proto 1
+
+config virtual_host RDP
+  option port  3389
+  option proto 1
+
+config virtual_host VNC
+  option port  5900
+  option proto 1
+

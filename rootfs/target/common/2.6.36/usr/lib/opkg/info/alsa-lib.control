@@ -1,0 +1,16 @@
+Package: alsa-lib
+Version: 1.0.23-1
+Depends: kmod-sound-core
+Provides: 
+Source: feeds/packages/libs/alsa-lib
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 311870
+Title: ALSA (Advanced Linux Sound Architecture) library
+Description:  This is the library package for alsa, needed by some userspace programs.
+ You must have enabled the ALSA support in the kernel.

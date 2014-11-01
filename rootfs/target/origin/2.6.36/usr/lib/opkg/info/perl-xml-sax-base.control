@@ -1,0 +1,15 @@
+Package: perl-xml-sax-base
+Version: 1.08-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perlbase-symbol, perl-xml-namespacesupport
+Provides: 
+Source: feeds/cortina/perl-xml-sax-base
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 9157
+Title: Base class SAX Drivers and Filters
+Description:  Base class SAX Drivers and Filters

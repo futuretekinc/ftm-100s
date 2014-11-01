@@ -1,0 +1,15 @@
+Package: luci-app-ar988x
+Version: 0.1-1
+Depends: luci-mod-admin-core
+Provides: 
+Source: feeds/cortina/luci-app-ar988x
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 13551
+Title: WiFi for Atheros AR988x
+Description:  Web gui for the Atheros AR988x wifi chip.

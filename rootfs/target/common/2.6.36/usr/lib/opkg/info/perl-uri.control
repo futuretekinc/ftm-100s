@@ -1,0 +1,15 @@
+Package: perl-uri
+Version: 1.36-1
+Depends: perl
+Provides: 
+Source: feeds/packages/lang/perl-uri
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 19611
+Title: Manipulates and accesses URI strings
+Description:  Manipulates and accesses URI strings

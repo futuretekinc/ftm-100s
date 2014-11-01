@@ -1,0 +1,15 @@
+Package: lighttpd
+Version: 1.4.28-1
+Depends: libopenssl, libpcre, libpthread, lighttpd-mod-status
+Provides: 
+Source: feeds/packages/net/lighttpd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 83047
+Title: A flexible and lightweight web server
+Description:  A flexible and lightweight web server

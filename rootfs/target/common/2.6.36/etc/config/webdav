@@ -1,0 +1,14 @@
+# a partition creates a virtual host called '$name'
+config partition
+  option name		cortina
+  option enabled	0
+  option path		/mnt/usbs
+  option dirlisting	1
+  option readonly	0
+  option authenticated	1
+
+# there is only one password file containing
+# all users
+config user
+  option name		cortina
+  option password	cortina

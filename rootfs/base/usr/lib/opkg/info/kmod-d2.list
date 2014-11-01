@@ -1,0 +1,14 @@
+/etc/d2/ve_vtsp_rt.ko
+/etc/d2/ve_vtsp_hw.ko
+/lib/modules/2.6.36/ve_vtsp_rt.ko
+/lib/modules/2.6.36/ve_vtsp_hw.ko
+/lib/modules/2.6.36/osal_kernel.ko
+/etc/d2/d2start.sh
+/etc/d2/vapp
+/etc/d2/osal_kernel.ko
+/etc/d2/rc.d2
+/etc/modules.d/60-d2
+/etc/d2/rc.network
+/etc/d2/d2.remove
+/etc/d2/vport_cfg.xml
+/etc/init.d/d2

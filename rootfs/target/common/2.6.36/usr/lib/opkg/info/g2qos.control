@@ -1,0 +1,15 @@
+Package: g2qos
+Version: 1-1
+Depends: netengine_config, tc
+Provides: 
+Source: feeds/cortina/g2qos
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 6765
+Title: G2 QoS
+Description:  G2 QoS configuration and init scripts.

@@ -1,0 +1,15 @@
+Package: ntpclient
+Version: 2007_365-4
+Depends: librt
+Provides: 
+Source: feeds/packages/net/ntpclient
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 10628
+Title: NTP (Network Time Protocol) client
+Description:  NTP client for setting system time from NTP servers.

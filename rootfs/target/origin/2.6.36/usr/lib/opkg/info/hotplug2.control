@@ -1,0 +1,17 @@
+Package: hotplug2
+Version: 1.0-beta-4
+Depends: udevtrigger
+Provides: 
+Source: package/hotplug2
+Section: base
+Category: Base system
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 12516
+Title: Version 1.0 Dynamic device management subsystem for embedded systems
+Description:  Hotplug2 is a trivial replacement of some of the UDev functionality
+ in a tiny pack, intended for Linux early userspace: Init RAM FS and InitRD.
+ This is an implementation of Hotplug2-1.0-beta

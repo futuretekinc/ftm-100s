@@ -1,0 +1,22 @@
+cat <<EEOFEE
+#debug
+#logfile /tmp/pptp-server.log
+192.168.100.1:
+auth
+name "pptp-server"
+lcp-echo-failure 3
+lcp-echo-interval 60
+default-asyncmap
+mtu 1482
+mru 1482
+nobsdcomp
+nodeflate
+require-mschap-v2
+refuse-chap
+refuse-mschap
+refuse-eap
+refuse-pap
+ms-dns 8.8.8.8
+ms-dns 8.8.4.4
+$uci_encryption
+EEOFEE

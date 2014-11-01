@@ -1,0 +1,15 @@
+Package: miniupnpd
+Version: 1.5-5
+Depends: iptables
+Provides: 
+Source: feeds/packages/net/miniupnpd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Daniel Dickinson <openwrt@cshore.neomailbox.net>
+Architecture: g2
+Installed-Size: 27590
+Title: Lightweight UPnP daemon
+Description:  Lightweight UPnP daemon

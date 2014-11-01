@@ -1,0 +1,16 @@
+
+return <<'END';
+002C		
+002E	002F	
+003A		
+00A0		
+060C		
+202F		
+2044		
+FE50		
+FE52		
+FE55		
+FF0C		
+FF0E	FF0F	
+FF1A		
+END

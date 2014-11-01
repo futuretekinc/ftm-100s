@@ -1,0 +1,15 @@
+Package: pe_ipsec_ath_wifi
+Version: 3.0-0
+Depends: 
+Provides: 
+Source: feeds/cortina/pe-ipsec-ath-wifi
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 101100
+Title: IPSec offload firmware of single PE and WiFi Offload firmware for Atheros 
+Description:  IPSec offload firmware of single PE and WiFi Offload firmware for Atheros 

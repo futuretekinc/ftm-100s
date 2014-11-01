@@ -1,0 +1,15 @@
+Package: dvdrwtool
+Version: 7.1-1
+Depends: libpthread
+Provides: 
+Source: feeds/cortina/dvdrwtool
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 65070
+Title: DVD writing tool
+Description:  DVD writing tool

@@ -1,0 +1,15 @@
+Package: ethtool
+Version: 2.6.35-1
+Depends: 
+Provides: 
+Source: feeds/packages/net/ethtool
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 60987
+Title: Display or change ethernet card settings
+Description:  ethtool is used for querying settings of an ethernet device and changing them.

@@ -1,0 +1,4 @@
+/etc/uci-defaults/luci-app-davfs2
+/usr/lib/lua/luci/model/cbi/davfs2.lua
+/usr/lib/lua/luci/controller/davfs2.lua
+/usr/lib/lua/luci/i18n/davfs2.en.lmo

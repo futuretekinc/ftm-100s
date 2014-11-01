@@ -1,0 +1,4 @@
+/etc/uci-defaults/luci-app-miniupnpd
+/usr/lib/lua/luci/model/cbi/miniupnpd.lua
+/usr/lib/lua/luci/i18n/miniupnpd.en.lmo
+/usr/lib/lua/luci/controller/miniupnpd.lua

@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -n "${IPKG_INSTROOT}" ] || {
+	( . /etc/uci-defaults/igmpproxy ) && rm -f /etc/uci-defaults/igmpproxy
+exit 0
+}

@@ -1,0 +1,8 @@
+
+return <<'END';
+309F		
+30FF		
+FE10	FE19	
+FE30	FE44	
+FE47	FE48	
+END

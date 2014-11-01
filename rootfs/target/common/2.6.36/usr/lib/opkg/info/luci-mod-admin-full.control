@@ -1,0 +1,15 @@
+Package: luci-mod-admin-full
+Version: trunk+svn8216-1
+Depends: luci-mod-admin-core, luci-lib-ipkg
+Provides: 
+Source: feeds/luci/luci
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: LuCI Development Team <luci@lists.subsignal.org>
+Architecture: g2
+Installed-Size: 67026
+Title: LuCI Administration - full-featured for full control
+Description:  LuCI Administration - full-featured for full control

@@ -1,0 +1,20 @@
+Package: iptables-mod-extra
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-extra
+Provides: 
+Source: package/iptables
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 160
+Title: Other extra iptables extensions
+Description:  Other extra iptables extensions.
+ Includes:
+ - libipt_owner
+ - libipt_physdev
+ - libipt_pkttype
+ - libipt_recent

@@ -1,0 +1,57 @@
+#!/bin/sh
+. /etc/functions.sh
+
+# The list of interested parties, or change broadcasters, is
+# contained in /etc/config/uciprecommit.  These broadcasters
+# can be activated by either executing a command, or by executing
+# a method in their /etc/init.d scripts.  Either way, the config
+# getting committed is passed as an argument.
+#
+# Example
+#
+# Suppose you have the following /etc/config/uciprecommit
+#
+# config aaa
+#        option init tr069
+#        option method broadcast
+#
+# config bbb
+#        option exec /sbin/snmp-notify
+#
+# Then, when something has been changed in /etc/config/dhcp and
+# a "commit" is executed (by either the command line, or by LuCI
+# for example), then the following command lines will be executed:
+#
+#  /etc/init.d/tr069 broadcast dhcp
+#  /sbin/snmp-notify dhcp
+#
+#
+apply_config() {
+	config_get pkg    "$1" TYPE
+	config_get init   "$1" "init"
+	config_get method "$1" "method" "reload"
+	config_get exec   "$1" "exec"
+	config_get test   "$1" "test"
+
+	[ -n "$init" ] && reload_init $pkg "$init" "$test" "$method" "$commit_src"
+	[ -n "$exec" ] && reload_exec $pkg "$exec" "$test" "$commit_src"
+}
+
+reload_exec() {
+	[ -x $2 ] && {
+		[ -n "$3" ] && echo "Precommit: executing: $2 $4 ..."
+		cmd="$2 $4"
+		$cmd >/dev/null 2>&1
+	}
+}
+
+reload_init() {
+	[ -x /etc/init.d/$2 ] && /etc/init.d/$2 enabled && {
+		[ -n "$3" ] && echo "Precommit: /etc/init.d/$2 $4 $5 ..."
+		/etc/init.d/$2 $4 $5 >/dev/null 2>&1
+	}
+}
+
+commit_src=$1
+config_load uciprecommit
+config_foreach apply_config

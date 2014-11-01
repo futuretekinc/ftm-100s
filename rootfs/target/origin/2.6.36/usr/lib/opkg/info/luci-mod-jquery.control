@@ -1,0 +1,16 @@
+Package: luci-mod-jquery
+Version: 1-1
+Depends: 
+Provides: 
+Source: feeds/cortina/luci-mod-jquery
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: all
+Installed-Size: 389382
+Title: Add jQuery and jQuery UI template
+Description:  Add <%+jQuery%> to a page template or header.htm to include
+ jQuery and jQuery UI functionality.

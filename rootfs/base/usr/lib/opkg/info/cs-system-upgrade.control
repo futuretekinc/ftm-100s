@@ -1,0 +1,16 @@
+Package: cs-system-upgrade
+Version: 1.1-1
+Depends: cs-multi-image, libcurl
+Provides: 
+Source: feeds/cortina/cs-system-upgrade
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 25953
+Title: Cortina system upgrade utilities
+Description:  Builds and installs utilities for performing
+ system image upgrades.

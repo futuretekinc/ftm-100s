@@ -1,0 +1,14 @@
+#!/bin/sh /etc/rc.common
+
+. /etc/functions.sh
+
+START=42
+STOP=92
+
+start(){
+        /etc/d2/rc.d2
+}
+stop(){
+	echo "stop vapp"
+	killall vapp
+}

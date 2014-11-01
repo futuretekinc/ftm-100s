@@ -1,0 +1,17 @@
+Package: uhttpd
+Version: 22
+Depends: 
+Provides: 
+Source: package/uhttpd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Architecture: g2
+Installed-Size: 20303
+Title: uHTTPd - tiny, single threaded HTTP server
+Description:  uHTTPd is a tiny single threaded HTTP server with TLS, CGI and Lua
+ support. It is intended as a drop-in replacement for the Busybox
+ HTTP daemon.

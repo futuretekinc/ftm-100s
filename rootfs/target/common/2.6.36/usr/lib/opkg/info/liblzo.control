@@ -1,0 +1,16 @@
+Package: liblzo
+Version: 2.04-1
+Depends: 
+Provides: 
+Source: feeds/packages/libs/lzo
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 41855
+Title: A real-time data compression library
+Description:  LZO is a data compression library which is suitable for data de-/compression in
+ real-time. This means it favours speed over compression ratio.

@@ -1,0 +1,8 @@
+/usr/bin/cs-sb
+/usr/bin/cs-swupgrade.sh
+/usr/bin/cs.sb
+/etc/init.d/sbmount
+/lib/cs_swdl_handlers/cs_swdl_tmpfiles.so
+/usr/bin/cs.extract
+/usr/bin/cs-swdl
+/usr/bin/cs.swdl

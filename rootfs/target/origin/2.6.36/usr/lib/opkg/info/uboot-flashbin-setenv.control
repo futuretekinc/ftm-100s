@@ -1,0 +1,16 @@
+Package: uboot-flashbin-setenv
+Version: 0.1-0
+Depends: uboot-flashbin-setenv/host
+Provides: 
+Source: feeds/cortina/uboot-flashbin-setenv
+Section: hosttools
+Category: Host Tools
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 105
+Title: Uboot FlashEnv tool
+Description:  This is a host tool.  It is used to format and write u-boot env strings
+ into the image file for flashing the device.

@@ -1,0 +1,15 @@
+Package: g2_diags
+Version: 1.0.0-1
+Depends: 
+Provides: 
+Source: package/g2_diags
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 22033
+Title: G2 Diagnostic Utilities
+Description:  G2 Diagnostic Utilities

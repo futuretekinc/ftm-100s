@@ -1,0 +1,15 @@
+Package: perl-digest-md5
+Version: 2.52-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perl-xml-sax
+Provides: 
+Source: feeds/cortina/perl-digest-md5
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 7353
+Title: Perl interface to the MD5 Algorithm
+Description:  Perl interface to the MD5 Algorithm

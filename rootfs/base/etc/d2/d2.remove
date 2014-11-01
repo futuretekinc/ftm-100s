@@ -1,0 +1,15 @@
+#!/bin/sh -x
+# THIS IS AN UNPUBLISHED WORK CONTAINING D2 TECHNOLOGIES, INC. CONFIDENTIAL
+# AND PROPRIETARY INFORMATION.  IF PUBLICATION OCCURS, THE FOLLOWING NOTICE
+# APPLIES: "COPYRIGHT 2006-2008 D2 TECHNOLOGIES, INC. ALL RIGHTS RESERVED"
+#
+# $D2Tech$ $Rev$ $Date: 2012/02/23 14:22:09 $
+#
+
+# Remove all D2 modules
+D2_DIR=/etc/d2
+rmmod $D2_DIR/ve_vtsp_rt.ko
+rmmod $D2_DIR/ve_vtsp_hw.ko
+rmmod $D2_DIR/osal_kernel.ko
+rm -rf /var/tmp/osal
+killall vapp

@@ -1,0 +1,15 @@
+Package: xl2tpd
+Version: 1.3.1-1
+Depends: ppp
+Provides: 
+Source: package/xl2tpd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 47247
+Title: L2TP daemon
+Description:  This package contains a L2TP (Layer Two Tunneling Protocol) daemon

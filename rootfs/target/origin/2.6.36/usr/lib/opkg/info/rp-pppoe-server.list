@@ -1,0 +1,5 @@
+/etc/ppp/pppoe-server-options
+/etc/init.d/pppoe-server
+/etc/ppp/plugins/rp-pppoe.so
+/etc/default/pppoe-server
+/usr/sbin/pppoe-server

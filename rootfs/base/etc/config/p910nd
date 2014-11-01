@@ -1,0 +1,8 @@
+config p910nd
+	option device        /dev/lp0
+	option port          0
+	option bidirectional 1
+	option enabled       0
+	list blocked 	 03f0:05ea	
+	list blocked 	 04a9:1750	
+	list blocked 	 04a9:

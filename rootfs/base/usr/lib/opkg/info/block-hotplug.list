@@ -1,0 +1,6 @@
+/etc/hotplug.d/block/40-mount
+/etc/hotplug.d/block/20-fsck
+/sbin/odd_polling
+/etc/hotplug.d/block/50-sr
+/etc/hotplug.d/block/10-swap
+/etc/init.d/coldplug

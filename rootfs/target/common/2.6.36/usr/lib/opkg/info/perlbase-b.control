@@ -1,0 +1,15 @@
+Package: perlbase-b
+Version: 5.10.0-5
+Depends: perl
+Provides: 
+Source: feeds/packages/lang/perl
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Peter Colberg <peter@petercolberg.org>
+Architecture: g2
+Installed-Size: 88898
+Title: B perl module
+Description:  B perl module

@@ -1,0 +1,15 @@
+Package: dnsmasq
+Version: 2.55-6
+Depends: 
+Provides: 
+Source: package/dnsmasq
+Section: net
+Category: Base system
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 76761
+Title: A lightweight DNS and DHCP server
+Description:  It is intended to provide coupled DNS and DHCP service to a LAN.

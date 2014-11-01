@@ -1,0 +1,16 @@
+Package: libiwinfo
+Version: 18
+Depends: 
+Provides: 
+Source: package/iwinfo
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Architecture: g2
+Installed-Size: 8837
+Title: Generalized Wireless Information Library (iwinfo)
+Description:  Wireless information library with consistent interface for proprietary Broadcom,
+ madwifi, nl80211 and wext driver interfaces.

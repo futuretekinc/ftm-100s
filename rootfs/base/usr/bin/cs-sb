@@ -1,0 +1,42 @@
+#!/bin/sh
+. /etc/functions.sh
+#
+# Script wrapper around cs.sb, uses /etc/config/csmi to
+# get options.
+#
+config_load csmi
+config_get sb0_device flash sb0_device
+config_get sb1_device flash sb1_device
+config_get esz flash erase_size
+
+usage="cs-sb [-v 1/0] [-c 1/0] [-a 1/0] sb0 | sb1"
+
+opts=
+flags=
+while getopts hv:c:a: opt
+do
+    case $opt in
+	h)  echo $usage; exit;;
+	v)  flags="$flags --valid=$OPTARG ";;
+	c)  flags="$flags --commit=$OPTARG ";;
+	a)  flags="$flags --active=$OPTARG ";;
+	\?) echo $usage; exit;;
+    esac
+done
+
+shift `expr $OPTIND - 1`
+[ -z ${1} ] && { 
+    echo $usage
+    exit 
+}
+
+case ${1} in
+    sb0) opts="$opts --device=$sb0_device ";;
+    sb1) opts="$opts --device=$sb1_device ";;
+    \?)  echo $usage; exit;;
+esac
+
+[ -z "$flags" ] && opts="$opts --print "
+opts="$opts --erasesz=$esz "
+
+/usr/bin/cs.sb $opts $flags

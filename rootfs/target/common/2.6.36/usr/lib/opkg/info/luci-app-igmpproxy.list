@@ -1,0 +1,3 @@
+/etc/uci-defaults/igmpproxy
+/usr/lib/lua/luci/model/cbi/igmpproxy.lua
+/usr/lib/lua/luci/controller/igmpproxy.lua

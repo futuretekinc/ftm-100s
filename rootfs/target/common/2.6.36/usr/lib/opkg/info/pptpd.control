@@ -1,0 +1,15 @@
+Package: pptpd
+Version: 1.3.4-2
+Depends: kmod-ppp, kmod-gre, ppp
+Provides: 
+Source: feeds/packages/net/pptpd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 25645
+Title: PopTop pptp server
+Description:  PopTop pptp server

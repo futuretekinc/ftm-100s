@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@igmpproxy[-1]
+	set ucitrack.igmpproxy=igmpproxy
+	set ucitrack.igmpproxy.init=igmpproxy
+	commit ucitrack
+EOF
+
+rm -f /tmp/luci-indexcache
+exit 0

@@ -1,0 +1,6 @@
+
+return <<'END';
+0030	0039	ASCII_Hex_Digit
+0041	0046	ASCII_Hex_Digit
+0061	0066	ASCII_Hex_Digit
+END

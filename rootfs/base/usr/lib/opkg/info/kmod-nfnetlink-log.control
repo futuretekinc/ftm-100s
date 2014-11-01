@@ -1,0 +1,15 @@
+Package: kmod-nfnetlink-log
+Version: 2.6.36-1
+Depends: kernel (=2.6.36-1), kmod-nfnetlink
+Provides: 
+Source: package/kernel
+Section: kernel
+Category: Kernel modules
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 6113
+Title: Netfilter LOG over NFNETLINK interface
+Description:  Kernel modules support for logging packets via NFNETLINK

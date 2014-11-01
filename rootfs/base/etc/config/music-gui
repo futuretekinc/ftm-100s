@@ -1,0 +1,12 @@
+config music daapd
+       option enable 1
+       option web_root /usr/share/mt-daapd/admin-root
+       option port 3689
+       option admin_pw cortina
+       option db_dir /var/cache/mt-daapd
+       option mp3_dir /mnt/usbs
+       option servername cortina
+       option runas nobody
+       option rescan_interval 300
+       option extensions .wav,.mp3,.m4a,.m4p
+

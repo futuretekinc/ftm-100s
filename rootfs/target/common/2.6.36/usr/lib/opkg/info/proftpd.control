@@ -1,0 +1,15 @@
+Package: proftpd
+Version: 1.3.3-1
+Depends: libiconv-full, libopenssl
+Provides: 
+Source: feeds/cortina/proftpd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Cezary Jackiewicz <cezary@eko.one.pl> 
+Architecture: g2
+Installed-Size: 243309
+Title: ProFTPD FTP server
+Description:  ProFTPD FTP server

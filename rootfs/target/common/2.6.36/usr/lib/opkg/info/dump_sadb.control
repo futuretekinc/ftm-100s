@@ -1,0 +1,15 @@
+Package: dump_sadb
+Version: 0.1-1
+Depends: 
+Provides: 
+Source: package/dump_sadb
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 3980
+Title: Cortina G2 dump IPSec v4 tunnels
+Description:  Cortina G2 dump IPSec v4 tunnels

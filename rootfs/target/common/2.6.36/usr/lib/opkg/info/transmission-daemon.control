@@ -1,0 +1,18 @@
+Package: transmission-daemon
+Version: 2.20-1
+Depends: libcurl, libopenssl, libpthread, libevent2
+Provides: 
+Source: feeds/packages/net/transmission
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Cezary Jackiewicz <cezary@eko.one.pl>
+Architecture: g2
+Installed-Size: 159093
+Title: A free, lightweight BitTorrent client
+Description:  Transmission is a simple BitTorrent client.
+ It features a very simple, intuitive interface
+ on top on an efficient, cross-platform back-end.
+ This package contains the daemon itself.

@@ -1,0 +1,15 @@
+Package: libiconv-full
+Version: 1.11.1-1
+Depends: 
+Provides: 
+Source: feeds/cortina/libiconv-full
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 668746
+Title: Character set conversion  library
+Description:  Character set conversion  library

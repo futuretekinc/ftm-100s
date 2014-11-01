@@ -1,0 +1,15 @@
+Package: perl-data-uuid
+Version: 1.217-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perl-xml-sax
+Provides: 
+Source: feeds/cortina/perl-data-uuid
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 7776
+Title: Perl extension for generating Globally/Universally Unique Identifiers
+Description:  Perl extension for generating Globally/Universally Unique Identifiers

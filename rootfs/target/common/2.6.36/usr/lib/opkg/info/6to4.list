@@ -1,0 +1,2 @@
+/etc/hotplug.d/iface/91-6to4
+/lib/network/6to4.sh

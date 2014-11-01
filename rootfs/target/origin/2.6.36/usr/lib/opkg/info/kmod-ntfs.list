@@ -1,0 +1,4 @@
+/lib/modules/2.6.36/ufsd.ko
+/etc/modules.d/30-ntfs
+/usr/bin/mkntfs
+/usr/bin/chkntfs

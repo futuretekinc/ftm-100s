@@ -1,0 +1,15 @@
+Package: lighttpd-mod-webdav
+Version: 1.4.28-1
+Depends: lighttpd, libsqlite3, libuuid, libxml2
+Provides: 
+Source: feeds/packages/net/lighttpd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 13897
+Title: WebDAV module
+Description:  WebDAV module

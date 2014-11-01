@@ -1,0 +1,16 @@
+Package: minidlna
+Version: 1.0.18-1
+Depends: libintl, libiconv, libpthread, libexif, libjpeg, libsqlite3, libffmpeg, libid3tag, libflac, libvorbis, libuuid, libintl-full
+Provides: 
+Source: feeds/cortina/minidlna
+Section: multimedia
+Category: Multimedia
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 139513
+Title: UPnP A/V & DLNA Media Server
+Description:  MiniDLNA (aka ReadyDLNA) is server software with the aim of
+ being fully compliant with DLNA/UPnP-AV clients.

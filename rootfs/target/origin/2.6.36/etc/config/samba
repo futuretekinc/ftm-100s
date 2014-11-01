@@ -1,0 +1,12 @@
+config 'samba'
+        option 'name' 'Cortina'
+        option 'workgroup' 'Cortina'
+        option 'description' 'Cortina'
+        option 'homes' '0'
+
+config 'sambashare' 'share'
+        option 'name' 'share'
+        option 'path' '/mnt'
+        option 'read_only' 'no'
+        option 'guest_ok' 'no'
+        option 'create_mask' '0755'

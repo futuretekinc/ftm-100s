@@ -1,0 +1,19 @@
+Package: libtheora
+Version: 1.2.0alpha1-1
+Depends: libogg
+Provides: 
+Source: feeds/qi/libtheora
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: David Kuehling <dvdkhlng TA gmx TOD de>
+Architecture: g2
+Installed-Size: 334757
+Title: libtheora
+Description:  Theora is Xiph.Org\'s first publicly released video codec, intended
+ for use within the Foundation\'s Ogg multimedia streaming system.
+ Theora is derived directly from On2\'s VP3 codec. Theora adds more
+ degrees of freedom to the compression parameters and recent encoders
+ contain optimizations that make it much better than VP3\'s original code.

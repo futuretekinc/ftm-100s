@@ -1,0 +1,15 @@
+Package: fontconfig
+Version: 2.6.0-2
+Depends: libexpat, libfreetype
+Provides: 
+Source: feeds/packages/Xorg/xorg/app/fontconfig
+Section: xorg-util
+Category: Xorg
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 105019
+Title: fontconfig
+Description:  fontconfig

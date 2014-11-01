@@ -1,0 +1,15 @@
+Package: luci-app-ddns-simple
+Version: 0.1-1
+Depends: luci-mod-admin-core, ddns-scripts
+Provides: 
+Source: feeds/cortinagui/luci-app-ddns-simple
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 8673
+Title: Simplified DDNS GUI
+Description:  A simplified screen for managing dynamic DNS.

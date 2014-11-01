@@ -1,0 +1,16 @@
+Package: libblkid
+Version: 2.21-4
+Depends: 
+Provides: 
+Source: package/util-linux-ng
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 140084
+Title: Block device id library
+Description:  The blkid library which allows system programs like fsck and mount to
+ quickly and easily find block devices by filesystem UUID and LABEL.

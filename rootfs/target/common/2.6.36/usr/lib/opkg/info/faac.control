@@ -1,0 +1,16 @@
+Package: faac
+Version: 1.28-0
+Depends: 
+Provides: 
+Source: feeds/cortina/faac
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 240080
+Title: Freeware Advanced Audio Coder
+Description:  FAAC is an MPEG-4 and MPEG-2 AAC encoder.
+ Includes libmp4v2.

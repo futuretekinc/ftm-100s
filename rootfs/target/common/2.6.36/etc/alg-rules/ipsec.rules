@@ -1,0 +1,12 @@
+# This file is sourced as a shell script
+#
+# Rules for opening the firewall for IPSec
+#
+iptables -t nat -A POSTROUTING -p udp --dport 500 --sport 500 -j ACCEPT 2>/dev/null
+iptables -A FORWARD -p udp --dport 500 --sport 500 -j ACCEPT 2>/dev/null
+iptables -t nat -A POSTROUTING -p udp --dport 4500 --sport 4500 -j ACCEPT 2>/dev/nullT
+iptables -A FORWARD -p udp --dport 4500 --sport 4500 -j ACCEPT 2>/dev/null
+iptables -t nat -A POSTROUTING -p 50 -j ACCEPT 2>/dev/null
+iptables -A FORWARD -p 50 -j ACCEPT 2>/dev/null
+iptables -A FORWARD -p 51 -j ACCEPT 2>/dev/null
+iptables -A FORWARD -p 51 -j ACCEPT 2>/dev/null

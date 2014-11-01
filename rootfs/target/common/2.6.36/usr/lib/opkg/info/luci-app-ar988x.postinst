@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# 1. Make an entry into ucitrack for this application
+#
+[ -n "${IPKG_INSTROOT}" ] || {
+  ( . /etc/uci-defaults/luci-app-ar988x ) && rm -f /etc/uci-defaults/luci-app-ar988x
+}

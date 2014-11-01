@@ -1,0 +1,16 @@
+config minidlna dlna
+       option enable 1
+       option port 8200
+       option network_interface br-lan
+       option media_dir /mnt
+       option friendly_name DLNA_Server
+       option album_art_names Cover.jpg/AlbumArtSmall.jpg
+       option inotify yes
+       option enable_tivo no
+       option strict_dlna no
+       option notify_interval 900
+       option serial 12345678
+       option model_number 1
+       option enable_livetv yes
+       option enable_internet_video no
+

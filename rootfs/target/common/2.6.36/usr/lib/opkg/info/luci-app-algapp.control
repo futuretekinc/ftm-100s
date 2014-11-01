@@ -1,0 +1,15 @@
+Package: luci-app-algapp
+Version: 0.1-1
+Depends: luci-mod-admin-core, algapp
+Provides: 
+Source: feeds/cortina/luci-app-algapp
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 1390
+Title: LuCI GUI for the algapp
+Description:  This Luci package does algapp management

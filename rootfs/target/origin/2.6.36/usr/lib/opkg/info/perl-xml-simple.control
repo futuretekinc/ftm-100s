@@ -1,0 +1,15 @@
+Package: perl-xml-simple
+Version: 2.18-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perl-xml-sax
+Provides: 
+Source: feeds/cortina/perl-xml-simple
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 9341
+Title: Easy API to maintain XML (esp config files)
+Description:  Easy API to maintain XML (esp config files)

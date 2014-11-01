@@ -1,0 +1,5 @@
+#!/bin/sh /etc/rc.common
+START=10
+boot() {
+  perl  -MXML::SAX -e "XML::SAX->add_parser(q(XML::SAX::PurePerl))->save_parsers()"
+}

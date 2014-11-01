@@ -1,0 +1,18 @@
+Package: luci-server-lighttpd
+Version: 0.1-1
+Depends: lighttpd, mini-httpd-htpasswd, lighttpd-mod-alias, lighttpd-mod-auth, lighttpd-mod-cgi, lighttpd-mod-fastcgi, lighttpd-mod-flv-streaming, lighttpd-mod-redirect, lighttpd-mod-setenv, lighttpd-mod-simple-vhost, lighttpd-mod-userdir, lighttpd-mod-webdav
+Provides: 
+Source: feeds/cortina/luci-server-lighttpd
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 649
+Title: LuCI on Lighttpd
+Description:  Select this package to use lighttpd as the web server for LuCI
+ instead of uhttpd.  Select this package if you want to do things
+ like virtual hosting, htpasswd protected directories, webdav, etc.
+ If you select this package, uhttpd will be disabled on the target.

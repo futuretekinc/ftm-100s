@@ -1,0 +1,17 @@
+Package: nginx
+Version: 0.7.67-3
+Depends: libpcre, zlib
+Provides: 
+Source: feeds/packages/net/nginx
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 187847
+Title: Nginx web server
+Description:  Nginx is a free, open-source, high-performance HTTP server
+ and reverse proxy, as well as an IMAP/POP3 proxy server,
+ written by Igor Sysoev.

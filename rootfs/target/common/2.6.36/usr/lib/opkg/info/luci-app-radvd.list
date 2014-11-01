@@ -1,0 +1,17 @@
+/usr/lib/lua/luci/i18n/radvd.fr.lmo
+/usr/lib/lua/luci/model/cbi/radvd/interface.lua
+/usr/lib/lua/luci/i18n/radvd.de.lmo
+/usr/lib/lua/luci/controller/radvd.lua
+/usr/lib/lua/luci/model/cbi/radvd/dnssl.lua
+/usr/lib/lua/luci/model/cbi/radvd/prefix.lua
+/usr/lib/lua/luci/i18n/radvd.pt-br.lmo
+/usr/lib/lua/luci/i18n/radvd.ru.lmo
+/usr/lib/lua/luci/model/cbi/radvd/rdnss.lua
+/usr/lib/lua/luci/i18n/radvd.ja.lmo
+/usr/lib/lua/luci/i18n/radvd.ro.lmo
+/usr/lib/lua/luci/model/cbi/radvd/route.lua
+/usr/lib/lua/luci/model/cbi/radvd.lua
+/usr/lib/lua/luci/i18n/radvd.it.lmo
+/etc/uci-defaults/luci-radvd
+/usr/lib/lua/luci/i18n/radvd.zh-cn.lmo
+/usr/lib/lua/luci/i18n/radvd.no.lmo

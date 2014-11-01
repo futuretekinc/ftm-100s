@@ -1,0 +1,16 @@
+Package: libiwinfo-lua
+Version: 18
+Depends: libiwinfo, liblua, lua
+Provides: 
+Source: package/iwinfo
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Architecture: g2
+Installed-Size: 4667
+Title: libiwinfo Lua binding
+Description:  This is the Lua binding for the iwinfo library. It provides access to all enabled
+ backends.

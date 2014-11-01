@@ -1,0 +1,15 @@
+Package: directfb
+Version: 1.4.2-1
+Depends: libpng, libjpeg, libpthread, libfreetype
+Provides: 
+Source: feeds/packages/libs/libdirectfb
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 387697
+Title: DirectFB
+Description:  DirectFB is a thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system with support for translucent windows and multiple display layers, not only on top of the Linux Framebuffer Device. It is a complete hardware abstraction layer with software fallbacks for every graphics operation that is not supported by the underlying hardware.

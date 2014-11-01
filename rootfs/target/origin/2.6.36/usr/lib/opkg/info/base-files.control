@@ -1,0 +1,15 @@
+Package: base-files
+Version: 65-unknown
+Depends: 
+Provides: 
+Source: package/base-files
+Section: base
+Category: Base system
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 38849
+Title: Base filesystem for OpenWrt
+Description:  This package contains a base filesystem and system scripts for OpenWrt.

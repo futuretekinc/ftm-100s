@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# 1. Make an entry into ucitrack for this application
+# 2. Make sure the application for this gui is enabled
+#
+[ -n "${IPKG_INSTROOT}" ] || {
+  ( . /etc/uci-defaults/luci-app-vpn ) && rm -f /etc/uci-defaults/luci-app-vpn
+  /etc/init.d/vpn-gui enabled || /etc/init.d/vpn-gui enable
+  /etc/init.d/pptpd enabled || /etc/init.d/pptpd enable
+  /etc/init.d/xl2tpd enabled || /etc/init.d/xl2tpd enable
+  /etc/init.d/ipsec enabled || /etc/init.d/ipsec enable
+}

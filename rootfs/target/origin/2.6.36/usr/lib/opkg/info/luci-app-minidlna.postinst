@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# 1. Make an entry into ucitrack for this application
+# 2. Make sure the application for this gui is enabled
+#
+[ -n "${IPKG_INSTROOT}" ] || {
+  ( . /etc/uci-defaults/luci-app-minidlna ) && rm -f /etc/uci-defaults/luci-app-minidlna
+  /etc/init.d/minidlna-gui enabled || /etc/init.d/minidlna-gui enable
+  /etc/init.d/minidlna enabled || /etc/init.d/minidlna enable
+}

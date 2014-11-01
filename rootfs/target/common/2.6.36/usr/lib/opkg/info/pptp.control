@@ -1,0 +1,15 @@
+Package: pptp
+Version: 1.7.1-3
+Depends: ppp, kmod-gre
+Provides: 
+Source: package/pptp
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Architecture: g2
+Installed-Size: 27618
+Title: PPTP client
+Description:  This package contains a PPTP (Point-to-Point Tunneling Protocol) client.

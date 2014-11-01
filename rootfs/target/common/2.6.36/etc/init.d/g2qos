@@ -1,0 +1,549 @@
+#!/bin/sh /etc/rc.common
+
+# General networking starts at 40; we want to run after that.
+#
+START=50
+wan=eth0
+lan=eth1
+bridge=br-lan
+
+# Keep a debug log file.  Right now, it is used to print the
+# configuration when it is called.  Set DEBUG= to disable logging.
+#
+DEBUG="/tmp/g2qos.log"
+rm -f $DEBUG
+debug() {
+    [ ! -z "$DEBUG" ] && {
+	echo "$1" >> $DEBUG
+    }
+}
+
+# find_section() is used to look up an anonymous section name based
+# on the value of a particular option.  For example, if you have something
+# like:
+#
+# config profile
+#   option name  foo
+#   option value 10
+#
+# config profile
+#   option name  bar
+#   option value 20
+#
+# Then to look up 'value' in the profile who's "name" matches "bar":
+#
+#   config_foreach find_section profile 'name' 'bar' 'section'
+#   config_get v $section value
+#
+# and $v should be '20'.
+#
+# This is used to find bandwidth profile params by profile name, and
+# classification parms by class name.  Poor man's database lookup!
+#
+find_section() {
+    local section="$1"
+    local opt="$2"
+    local match="$3"
+    local var="$4"
+
+    local foo
+    config_get foo "$section" "$opt"
+    if [ "$foo" == "$match" ]; then
+	eval "$var=$section"
+    fi
+}
+
+# classification() is called foreach 'traffic' section.  Traffic sections
+# are used to classify traffic flows and assign queue and bandwidth
+# parameters.
+#
+classification() {
+    local section="$1"
+
+    #
+    # Lookup the bandwidth params based on class's bandwidth profile
+    #
+    local profile
+    config_get profile $section profile
+    config_foreach find_section profile 'name' $profile 'bw'
+    local q maxbw minbw
+    # q is one-of: q[0-7]
+    # maxbw and minbw are integers in units of Kbps
+    config_get q $bw queue
+    config_get maxbw $bw maxbw
+    config_get minbw $bw minbw
+    config_get ratelimit $bw ratelimit
+    val=`expr $q - 7`
+    prio=`expr 0 - $val`
+
+    debug "classifier: profile: $profile ($q, max=$maxbw, min=$minbw, rate=$ratelimit)"
+    tc qdisc change dev $wan handle 1${q}: multisubq prio $prio limit 1024 rate "$ratelimit"kbit
+    debug "tc qdisc change dev $wan handle 1${q}: multisubq prio $prio limit 1024 rate "$ratelimit"kbit"
+
+    # Get the classification data for the service field
+    #
+    local service
+    config_get service $section service
+    config_foreach find_section classification 'classname' $service 'cls'
+    # $cls is the matching classification structure.  You can pull out the
+    # values needed for ne_cfg programming.
+    local demo_value
+    config_get demo_value $cls value
+
+    debug "            service: $service (demo value=$demo_value)"
+
+    # Get the match field.  
+    #
+    local match
+    config_get match $section match 'ip'
+    # match is one-of: ip, macaddr, port, vlan, dscp, cos
+    # 
+    local src_ipaddr dst_ipaddr src_macaddr dst_macaddr src_port dst_port vlan dscp cos
+    case "$match" in
+	ip) 
+	    config_get src_ipaddr $section src_ipaddr '127.0.0.1' 
+	    config_get dst_ipaddr $section dst_ipaddr '127.0.0.1' 
+	    # a value of 0.0.0.0 means a match with any ip address (any)
+	    debug "            match: $match, and src ipaddr is $src_ipaddr and dst ipaddr is $dst_ipaddr"
+	    
+	    # iptables mangle chain set-mark rule
+            if [ "$src_ipaddr" == "0.0.0.0" ] || [ "$src_ipaddr" == "127.0.0.1" ]; then
+		echo "src_ipaddr -> No mark action!"
+	    else
+	    iptables -t mangle -D PREROUTING -s $src_ipaddr -j MARK --set-mark 8${q}
+	    debug "iptables -t mangle -D PREROUTING -s $src_ipaddr -j MARK --set-mark 8${q}"
+	    echo "iptables -t mangle -D PREROUTING -s $src_ipaddr -j MARK --set-mark 8${q}" >> /tmp/iptables_del.sh
+	    # Add new mangle chain set-mark rule
+	    iptables -t mangle -A PREROUTING -s $src_ipaddr -j MARK --set-mark 8${q}
+            fi
+	    
+            if [ "$dst_ipaddr" == "0.0.0.0" ] || [ "$dst_ipaddr" == "127.0.0.1" ]; then
+                echo "dst_ipaddr -> No mark action!"
+            else
+	    iptables -t mangle -D POSTROUTING -d $dst_ipaddr -j MARK --set-mark 8${q}
+	    debug "iptables -t mangle -D POSTROUTING -d $dst_ipaddr -j MARK --set-mark 8${q}"
+	    echo "iptables -t mangle -D POSTROUTING -d $dst_ipaddr -j MARK --set-mark 8${q}" >> /tmp/iptables_del.sh
+	    # Add new mangle chain set-mark rule
+	    iptables -t mangle -A POSTROUTING -d $dst_ipaddr -j MARK --set-mark 8${q}
+	    fi
+
+	    HEX_NUM=$(echo 8${q} | awk '{printf("0x%x", $0);}' )
+	    debug " HEX_NUM = $HEX_NUM"
+	    
+	    # tc filter
+	    tc filter add dev $wan parent 1: protocol ip prio 10 u32 match mark $HEX_NUM 0xffff action skbedit queue_mapping ${q}
+	    debug " tc filter add dev $wan parent 1: protocol ip prio 10 u32 match mark $HEX_NUM 0xffff action skbedit queue_mapping ${q} "
+	    ;;
+	macaddr) 
+	    config_get src_macaddr $section src_macaddr '11:22:33:44:55:66' 
+	    config_get dst_macaddr $section dst_macaddr '11:22:33:44:55:66' 
+	    # a value of 00:00:00:00:00:00 means a match with any mac address (any)
+	    debug "            match: $match, and src macaddr is $src_macaddr and dst macaddr is $dst_macaddr"
+
+            # iptables mangle chain set-mark rule
+            if [ "$src_macaddr" == "00:00:00:00:00:00" ]; then
+                echo "src:00:00:00:00:00:00 -> No mark action!"
+            else
+            iptables -t mangle -D PREROUTING -m mac --mac-source $src_macaddr -j MARK --set-mark 8${q}
+            debug "iptables -t mangle -D PREROUTING -m mac --mac-source $src_macaddr -j MARK --set-mark 8${q}"
+            echo "iptables -t mangle -D PREROUTING -m mac --mac-source $src_macaddr -j MARK --set-mark 8${q}" >> /tmp/iptables_del.sh
+            # Add new mangle chain set-mark rule
+            iptables -t mangle -A PREROUTING -m mac --mac-source $src_macaddr -j MARK --set-mark 8${q}
+            fi
+
+            if [ "$dst_macaddr" == "00:00:00:00:00:00" ]; then
+                echo "dst:00:00:00:00:00:00 -> No mark action!"
+            else
+	    ebtables -D FORWARD -d $dst_macaddr -j mark --set-mark 8${q}
+            debug "ebtables -D FORWARD -d $dst_macaddr -j mark --set-mark 8${q}"
+            echo "ebtables -D FORWARD -d $dst_macaddr -j mark --set-mark 8${q}" >> /tmp/iptables_del.sh
+            # Add new ebtables set-mark rule
+            ebtables -A FORWARD -d $dst_macaddr -j mark --set-mark 8${q}
+            fi
+
+            HEX_NUM=$(echo 8${q} | awk '{printf("0x%x", $0);}' )
+            debug " MAC_HEX_NUM = $HEX_NUM"
+
+            # tc filter
+            tc filter add dev $wan parent 1: protocol ip prio 10 u32 match mark $HEX_NUM 0xffff action skbedit queue_mapping ${q}
+            debug " tc filter add dev $wan parent 1: protocol ip prio 10 u32 match mark $HEX_NUM 0xffff action skbedit queue_mapping ${q} "
+	    ;;
+	port) 
+	    config_get src_port $section src_port 'any' 
+	    config_get dst_port $section dst_port 'any' 
+	    # one-of: any, 1~65535
+	    debug "            match: $match, and src port is $src_port and dst port is $dst_port"
+
+            # iptables mangle chain set-mark rule
+            if [ "$src_port" == "any" ]; then
+                echo "src_port: any -> No mark action!"
+            else
+            # Add new mangle chain set-mark rule
+            SRC_HEX_NUM=$(echo ${src_port} | awk '{printf("0x%x", $0);}' )
+            debug " SRC_HEX_NUM = $SRC_HEX_NUM"
+	    tc filter add dev eth0 parent 1: protocol ip prio 41 u32 match ip sport $SRC_HEX_NUM 0xffff action skbedit queue_mapping ${q}
+	    debug "tc filter add dev eth0 parent 1: protocol ip prio 41 u32 match ip sport $SRC_HEX_NUM 0xffff action skbedit queue_mapping ${q}"
+            fi
+
+            if [ "$dst_port" == "any" ]; then
+                echo "dst_port: any -> No mark action!"
+            else
+            DST_HEX_NUM=$(echo ${dst_port} | awk '{printf("0x%x", $0);}' )
+            debug " SRC_HEX_NUM = $DST_HEX_NUM"
+
+	    tc filter add dev $wan parent 1: protocol ip prio 39 u32 match ip dport $DST_HEX_NUM 0xffff action skbedit queue_mapping ${q}
+	    debug "tc filter add dev $wan parent 1: protocol ip prio 39 u32 match ip dport $DST_HEX_NUM 0xffff action skbedit queue_mapping ${q}"
+            fi
+
+	    ;;
+	vlan) 
+	    config_get vlan $section vlan 'any'
+	    # one-of: any, default, vlan1, vlan2
+	    debug "            match: $match, and vlan is $vlan"
+	    ;;
+	protocol) 
+	    config_get protocol $section protocol 'any'
+	    # one-of: any, TCP, UDP
+	    debug "            match: $match, and IP Protocol is $protocol"
+
+            # tc filter rule
+            if [ "$protocol" = "tcp" ]; then
+            # TCP
+            tc filter add dev $wan parent 1: protocol ip prio 64 u32 match ip protocol 6 0xff action skbedit queue_mapping ${q}
+	    debug "tc filter add dev $wan parent 1: protocol ip prio 64 u32 match ip protocol 6 0xff action skbedit queue_mapping ${q}"
+            else
+            # UDP
+	    tc filter add dev $wan parent 1: protocol ip prio 60 u32 match ip protocol 17 0xff action skbedit queue_mapping ${q}
+	    debug "tc filter add dev $wan parent 1: protocol ip prio 60 u32 match ip protocol 17 0xff action skbedit queue_mapping ${q}"
+            fi
+
+	    ;;
+	dscp) 
+	    config_get dscp $section dscp 'low' 
+	    # one-of: low, medium, high
+	    # low means a match with AF11, 21, 31 or 41
+	    # medium means a match with AF12, 22, 32, or 42
+	    # high means a match with AF13, 23, 33, or 43
+	    tc filter add dev $wan parent 1: protocol ip prio 50 u32 match ip tos $dscp 0xff action skbedit queue_mapping ${q}
+	    debug "tc filter add dev $wan parent 1: protocol ip prio 50 u32 match ip tos $dscp 0xff action skbedit queue_mapping ${q}"
+	    debug "            match: $match, and dscp is $dscp"
+	    ;;
+	cos) 
+	    config_get cos $section cos 'any' 
+	    config_get vlan $section vlan '100' 
+	    # one-of: any, 0, 1, 2, 3, 4, 5, 6, 7
+	    # Follow GA release test plan 2.5.2.2 script
+	    /etc/init.d/firewall stop
+	    echo 0 > /proc/driver/cs752x/ne/ni/ni_fastbridge
+	    brctl delif br-lan eth1
+	    # Create VLAN for lan/wan interface
+	    vconfig add $wan $vlan
+	    vconfig add $lan $vlan
+	    ifconfig eth0.$vlan up
+	    ifconfig eth1.$vlan up
+	    brctl addif br-lan eth0.$vlan
+	    brctl addif br-lan eth1.$vlan
+	    ifconfig br-lan up
+	    # ebtables rule
+	    ebtables -t broute -A BROUTING -i $wan -p 802_1Q --vlan-id $vlan -j DROP
+	    ebtables -t broute -A BROUTING -i $lan -p 802_1Q --vlan-id $vlan -j DROP
+	    # vconfig
+	    vconfig set_ingress_map eth1.$vlan 9 $cos
+	    vconfig set_egress_map eth0.$vlan 9 $cos
+	    vconfig set_ingress_map eth0.$vlan 10 $cos
+	    vconfig set_egress_map eth1.$vlan 10 $cos
+	    # TC filter
+	    tc filter add dev $wan parent 1: protocol 802.1q prio 90 u32 match u8 $cos 0xE0 at -4 action skbedit queue_mapping ${q}
+	    debug "tc filter add dev $wan parent 1: protocol 802.1q prio 90 u32 match u8 $cos 0xE0 at -4 action skbedit queue_mapping ${q}"   
+	    debug "            match: $match, and cos is $cos, vlan id is $vlan"
+	    ;;
+    esac
+    
+}
+
+# The code below demonstrates how to parse the configuration.
+# Someone can then use ne_cfg and tc with the values from the
+# configuration to program the chip.
+#
+start() {
+    # There are three named sections in g2qos; wan, lan and mapping.
+    # The wan section is for WAN qos and has an enable flag.  The
+    # lan section is for LAN qos and also has an enable flag.  The 
+    # mapping section is for mapping CoS and DSCP values into queues 
+    # and for remarking.
+    #
+    # There are two anonymous sections used to (1) create a list of
+    # bandwidth profiles and (2) create a list of traffic classifications.
+    #
+    debug "Starting G2 QoS"
+    config_load g2qos
+
+    # WAN QoS
+    #
+    local wan_enabled upstream downstream
+    config_get wan_enabled "wan" enabled 0
+    [ "$wan_enabled" -gt 0 ] && {
+	# The upstream and downstream values are numbers in
+	# units of Kbps
+	config_get upstream "wan" upstream '1000000'
+	config_get downstream "wan" downstream '1000000'
+	debug "WAN QoS Enabled: up = $upstream, down = $downstream"
+	# Downstream, eth0 ingress policy
+	tc qdisc del dev $wan ingress
+	tc qdisc add dev $wan handle ffff: ingress rate_enbl 1 rate "$downstream"kbit cbs 1020kb pbs 1023kb
+	debug "Downstream: tc qdisc add dev $wan handle ffff: ingress rate_enbl 1 rate "$downstream"kbit cbs 1020kb pbs 1023kb"
+	# Upstream, eth1 ingress policy
+	tc qdisc del dev $lan ingress
+	tc qdisc add dev $lan handle ffff: ingress rate_enbl 1 rate "$upstream"kbit cbs 1020kb pbs 1023kb
+	debug "Upstream: tc qdisc add dev $lan handle ffff: ingress rate_enbl 1 rate "$upstream"kbit cbs 1020kb pbs 1023kb"
+	
+
+        # Delete old mangle rule
+        sh /tmp/iptables_del.sh
+	rm -rf /tmp/iptables_del.sh
+
+	# Get the scheduler and Q definitions
+	#
+	local sched q 
+	config_get sched "wan" scheduler "sp"
+	if [ "$sched" == "sp" ]; then
+		tc qdisc del dev $wan root handle 1: multiq
+		tc qdisc add dev $wan root handle 1: multiq
+		debug "[sp_cmd] tc qdisc add dev $wan root handle 1: multiq"
+	    for i in `seq 0 7`; do
+		config_get q "wan" "q${i}_sp"
+		# q is one-of: PQ[0-7]
+		debug "  Q${i} is sp $q"
+         	val=`expr $i - 7`
+		prio=`expr 0 - $val`
+                # Create multisubq for each one of prio value
+                tc qdisc change dev $wan handle 1${i}: multisubq prio $prio limit 1024
+		debug "tc qdisc change dev $wan handle 1${i}: multisubq prio $prio limit 1024"
+		
+	    done
+
+	elif [ "$sched" == "drr" ]; then
+                tc qdisc del dev $wan root handle 1: multiq
+                tc qdisc add dev $wan root handle 1: multiq
+                debug "[drr_cmd] tc qdisc add dev $wan root handle 1: multiq"
+	    for i in `seq 0 7`; do
+		config_get q "wan" "q${i}_drr"	
+		config_get drr_rate "wan" "drr_rate"	
+		weight=0
+		# q is a numerical percent value
+		if [ "$q" != "0" ]; then
+		    debug "  Q${i} is drr $q"
+		    weight=`expr $q \* 3044`
+		    # Create multisubq for each one of weighted Queue
+		    tc qdisc change dev $wan handle 1${i}: multisubq weight $weight limit 1024 rate "$drr_rate"kbit
+		    debug "[drr_cmd] tc qdisc change dev $wan handle 1${i}: multisubq weight $weight limit 1024 rate "$drr_rate"kbit"
+		fi
+	    done
+	fi
+    }
+        if [ "$wan_enabled" == 0 ]; then
+	        tc qdisc del dev $wan ingress
+	        tc qdisc del dev $lan ingress
+                tc qdisc del dev $wan root handle 1: multiq
+                # WAN QoS is disabled
+                debug "tc qdisc del dev $wan ingress; tc qdisc del dev $lan ingress"
+        fi
+    # LAN QoS
+    #
+    local lan_enabled p1 p2 p3 p4 vlan_id
+    config_get lan_enabled "lan" enabled 0
+    [ "$lan_enabled" -gt 0 ] && {
+	# A port can be either "cos" or "dscp"
+	config_get cpu "lan" cpu_port 'cos'
+	config_get vlan_id "lan" vlan '100'
+	#config_get p2 "lan" port2 'cos'
+	#config_get p3 "lan" port3 'cos'
+	#config_get p4 "lan" port4 'cos'
+	debug "LAN QoS Enabled: cpu_port=$cpu, VLAN=$vlan_id"
+
+        # Disabled HW Accel.
+        echo 0 > /proc/driver/cs752x/ne/accel_manager/hw_accel_enable
+        echo 0 > /proc/driver/cs752x/ne/ni/ni_fastbridge
+
+	# I think the CoS, DSCP and remarking stuff only matters
+	# if LAN QoS is enabled, but I could be wrong.  If it needs
+	# to be programmed independently of whether LAN QoS is enabled,
+	# then move this code out of this conditional block.
+	#
+	
+	# CoS Queue Mapping
+	#
+        if [ "$cpu" == "cos" ]; then
+	local i cosq lan_ip wan_ip vlan_id
+	config_get vlan_id "lan" "vlan" "100"
+	config_get lan_ip "lan" "lan_ipaddr" "192.168.1.1"
+	config_get wan_ip "lan" "wan_ipaddr" "10.1.1.1"
+	debug ""
+	debug "CoS Queue Mapping"
+	debug "---------------------------------------------"
+	# HA Accel Off
+	echo 0 > /proc/driver/cs752x/ne/accel_manager/hw_accel_enable
+	echo 0 > /proc/driver/cs752x/ne/ni/ni_fastbridge
+	# Delete bridge
+	brctl delif $bridge $lan
+	ifconfig $bridge down
+	brctl delbr $bridge
+	# Create VLAN interface 
+	vconfig add $lan $vlan_id 
+	ifconfig $wan $wan_ip
+	ifconfig $lan 0.0.0.0
+	ifconfig $lan.$vlan_id $lan_ip
+	# iptables rules apply
+	iptables -F
+	iptables -X
+	iptables -Z
+	iptables -F -t mangle
+	iptables -X -t mangle
+	iptables -Z -t mangle
+	iptables -F -t nat
+	iptables -X -t nat
+	iptables -Z -t nat
+	iptables -P INPUT ACCEPT
+	iptables -P OUTPUT ACCEPT
+	iptables -P FORWARD ACCEPT
+	iptables -A FORWARD -i $wan -o $lan.$vlan_id -j ACCEPT
+	iptables -A FORWARD -i $lan.$vlan_id -o $wan -j ACCEPT
+	iptables -A POSTROUTING -t nat -o $wan -j MASQUERADE
+
+	# set_mode: 0:DSCP, 1:802.1p
+        ne_cfg -m inqos -t qos_api -s -c set
+        ne_cfg -m inqos -t qos_api -f api -v set_mode
+        ne_cfg -m inqos -t qos_api -f mode -v 1
+        ne_cfg -m inqos -t qos_api -e
+	# create value <-> queue mapping, 8021p = 0 goes to queue#0, 8021p = 1 goes to queue#1, [. . .], and 8021p = 7 goes to queue#7
+	for i in `seq 0 7`; do
+	    # value will be one-of: q[1-8]
+	    config_get cosq "mapping" "cos$i" "q7"
+	    debug "CoS $i mapped to $cosq"
+	    # ne_cfg command 
+	    ne_cfg -m inqos -t qos_api -s -c set
+	    ne_cfg -m inqos -t qos_api -f api -v set_value_queue_mapping
+	    ne_cfg -m inqos -t qos_api -f queue_mapping.value -v $i
+	    ne_cfg -m inqos -t qos_api -f queue_mapping.queue_id -v $cosq
+	    ne_cfg -m inqos -t qos_api -e
+	    debug "ne_cfg -m inqos -t qos_api -s -c set"
+	    debug "ne_cfg -m inqos -t qos_api -f api -v set_value_queue_mapping"
+	    debug "ne_cfg -m inqos -t qos_api -f queue_mapping.value -v $i"
+	    debug "ne_cfg -m inqos -t qos_api -f queue_mapping.queue_id -v $cosq"
+	    debug "ne_cfg -m inqos -t qos_api -e"
+	done
+	elif [ "$cpu" == "dscp" ]; then
+        # set_mode: 0:DSCP, 1:802.1p
+        ne_cfg -m inqos -t qos_api -s -c set
+        ne_cfg -m inqos -t qos_api -f api -v set_mode
+        ne_cfg -m inqos -t qos_api -f mode -v 0
+        ne_cfg -m inqos -t qos_api -e
+	# DSCP Queue Mapping
+	local dscpq
+	debug ""
+	debug "DSCP Queue Mapping"
+	debug "---------------------------------------------"
+	for i in `seq 0 63`; do
+	    # value will be one-of: q[1-8]
+	    config_get dscpq "mapping" "dscp$i" "q8"
+	    debug "DSCP $i mapped to $dscpq"
+	    #ne_cfg command
+	    ne_cfg -m inqos -t qos_api -s -c set
+	    ne_cfg -m inqos -t qos_api -f api -v set_value_queue_mapping
+	    ne_cfg -m inqos -t qos_api -f queue_mapping.value -v $i
+	    ne_cfg -m inqos -t qos_api -f queue_mapping.queue_id -v $dscpq
+	    ne_cfg -m inqos -t qos_api -e
+	    debug "ne_cfg -m inqos -t qos_api -f queue_mapping.value -v $i"
+	    debug "ne_cfg -m inqos -t qos_api -f queue_mapping.queue_id -v $dscpq"
+	done
+	fi
+	# CoS to DSCP Remarking
+	local remark remark_enabled
+	config_get remark_enabled "mapping" "dscp_enabled" "0"
+        if [ "$remark_enabled" == "1" ]; then
+	# Enabled HW Accel
+	echo 1 > /proc/sys/net/ipv4/ip_forward
+	echo 0xf0ff > /proc/driver/cs752x/ne/accel_manager/hw_accel_enable
+	# Del old iptables rule
+	sh /tmp/iptables_remark_del.sh
+	rm -rf /tmp/iptables_remark_del.sh
+	debug ""
+	debug "CoS to DSCP Remarking"
+	debug "---------------------------------------------"
+	for i in `seq 0 7`; do
+	    # vale will be a DSCP number (0..63)
+	    config_get remark "mapping" "cos${i}2dscp" "0"
+	    debug "DSCP $i remark to DSCP $remark"
+            DSCP_HEX_NUM=$(echo ${remark} | awk '{printf("0x%x", $0);}' )
+            debug " DSCP_HEX_NUM = $DSCP_HEX_NUM"
+	    # DSCP remark iptables rule
+	    iptables -t mangle -A FORWARD -i $bridge -m dscp --dscp 0x$i -j DSCP --set-dscp $DSCP_HEX_NUM
+	    debug "iptables -t mangle -A FORWARD -i $bridge -m dscp --dscp 0x$i -j DSCP --set-dscp $DSCP_HEX_NUM"
+	    echo "iptables -t mangle -D FORWARD -i $bridge -m dscp --dscp 0x$i -j DSCP --set-dscp $DSCP_HEX_NUM" >> /tmp/iptables_remark_del.sh
+	done
+	else 
+        debug ""
+        debug "CoS to DSCP Remarking Off"
+        debug "---------------------------------------------"
+	sh /tmp/iptables_remark_del.sh
+	fi
+    }
+
+        # Get the scheduler and Q definitions
+        #
+        local sched q wrr_rate sp_val sp_prio
+	weight_wrr=0
+        config_get sched "lan" scheduler "sp"
+        if [ "$sched" == "sp" ] && [ "$lan_enabled" == 1 ]; then
+            for i in `seq 0 7`; do
+                config_get q "lan" "q${i}_sp"
+                sp_val=`expr $i - 7`
+                sp_prio=`expr 0 - $sp_val`
+                # q is one-of: PQ[0-7]
+                debug "  Q${i} is sp $q"
+	  	# set up queues' attribute, Q#0~7 will be SP mode with different rates
+		ne_cfg -m inqos -t qos_api -s -c set
+		ne_cfg -m inqos -t qos_api -f api -v set_queue_scheduler
+		ne_cfg -m inqos -t qos_api -f queue_sch.port_id -v 1
+		ne_cfg -m inqos -t qos_api -f queue_sch.queue_id -v ${i}
+		ne_cfg -m inqos -t qos_api -f queue_sch.priority -v $sp_prio
+		ne_cfg -m inqos -t qos_api -f queue_sch.rate -v 10000000
+		debug "ne_cfg -m inqos -t qos_api -f queue_sch.queue_id -v ${i}"
+		debug "ne_cfg -m inqos -t qos_api -f queue_sch.priority -v $sp_prio"
+            done
+        elif [ "$sched" == "wrr" ] && [ "$lan_enabled" == 1 ]; then
+                config_get wrr_rate "lan" "wrr_rate"
+            for i in `seq 0 7`; do
+                config_get q "lan" "q${i}_wrr"
+                # q is a numerical percent value
+                if [ "$q" != "0" ]; then
+                    debug "  Q${i} is wrr $q"
+		    weight_wrr=`expr $q \* 26214`
+        	    WRR_HEX_NUM=$(echo ${weight_wrr} | awk '{printf("0x%x", $0);}' )
+	            debug " WRR_HEX_NUM = $WRR_HEX_NUM"
+		#set up queues' attribute, Q#0~7 will be DRR mode with different rates
+		ne_cfg -m inqos -t qos_api -s -c set
+		ne_cfg -m inqos -t qos_api -f api -v set_queue_scheduler
+		ne_cfg -m inqos -t qos_api -f queue_sch.port_id -v 1
+		ne_cfg -m inqos -t qos_api -f queue_sch.queue_id -v ${i}
+		ne_cfg -m inqos -t qos_api -f queue_sch.priority -v 0
+		ne_cfg -m inqos -t qos_api -f queue_sch.weight -v $WRR_HEX_NUM
+		ne_cfg -m inqos -t qos_api -f queue_sch.rate -v $wrr_rate
+		ne_cfg -m inqos -t qos_api -e
+		debug "ne_cfg -m inqos -t qos_api -f queue_sch.weight -v $WRR_HEX_NUM"
+		debug "ne_cfg -m inqos -t qos_api -f queue_sch.rate -v $wrr_rate"
+                fi
+            done
+        fi
+
+    # Classifiers
+    #
+    debug ""
+    debug "Classifiers"
+    debug "---------------------------------------------"
+    config_foreach classification traffic
+}
+
+stop() {
+    /bin/true
+}

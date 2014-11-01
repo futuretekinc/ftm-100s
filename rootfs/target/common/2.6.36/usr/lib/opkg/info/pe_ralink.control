@@ -1,0 +1,15 @@
+Package: pe_ralink
+Version: 3.0-0
+Depends: 
+Provides: 
+Source: feeds/cortina/pe-ralink
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 37331
+Title: WiFi Offload firmware for Ralink
+Description:  WiFi Offload firmware for Ralink

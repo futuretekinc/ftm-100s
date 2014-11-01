@@ -1,0 +1,15 @@
+Package: kmod-d2
+Version: 2.6.36+1.0-0
+Depends: kernel (=2.6.36-1), kmod-g2-sport, kmod-g2-spi, kmod-leds-gpio, kmod-ledtrig-timer
+Provides: 
+Source: feeds/voip/d2
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 740415
+Title: D2
+Description:  This package contains D2 stuff

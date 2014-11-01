@@ -1,0 +1,79 @@
+<script>
+jQuery(document).ready(function() {
+  fill_connected_table();
+});
+
+function fill_connected_table() {
+  var ac = document.getElementById('users');
+  while( ac.rows.length > 1 )
+    ac.rows[0].parentNode.deleteRow(1);
+  var tr = ac.rows[0].parentNode.insertRow(-1);
+  tr.className = 'cbi-section-table-row';
+  var td = tr.insertCell(-1);
+  td.colSpan = 4;
+  td.innerHTML = "<%:Collecting data...%>";
+  $.ajax({
+    type: "GET",
+    data: {},
+    url: '<%=luci.dispatcher.build_url("admin", "services", "vpn", "vpn_info")%>',
+    dataType: "json",
+    success: function(data) {
+      var ac = document.getElementById('users');
+      while( ac.rows.length > 1 )
+        ac.rows[0].parentNode.deleteRow(1);
+      if ( data.length >= 1 ) {
+        for ( var i = 0; i < data.length; i++ ) {
+          var tr = ac.rows[0].parentNode.insertRow(-1);
+          tr.className = 'cbi-section-table-row cbi-rowstyle-' + (1 + (i % 2));
+          tr.insertCell(-1).innerHTML = data[i].username;
+          tr.insertCell(-1).innerHTML = data[i].dstaddr;
+          if ( data[i].flags.up ) 
+            tr.insertCell(-1).innerHTML = "up";
+          else
+            tr.insertCell(-1).innerHTML = "down";
+	  if ( 0 ) 
+            tr.insertCell(-1).innerHTML = "<button onclick=\"disconnect('" + data[i].name + "');\"><%:Disconnect%></button>"; 
+          else 
+            tr.insertCell(-1).innerHTML = "&nbsp;";
+        }
+      }
+      else {
+        var tr = ac.rows[0].parentNode.insertRow(-1);
+        tr.className = 'cbi-section-table-row';
+        var td = tr.insertCell(-1);
+        td.colSpan = 4;
+        td.innerHTML = "<%:No connected users%>";
+      }
+    }
+  });
+}
+
+function disconnect(iface) {
+  $.ajax({
+    type: "GET",
+    data: {iface: iface},
+    url: '<%=luci.dispatcher.build_url("admin", "services", "vpn", "vpn_disconnect")%>',
+    dataType: "json",
+    success: function(data) {
+      fill_connected_table();
+    }
+  });
+}
+
+</script>
+
+<fieldset class="cbi-section">
+  <legend><%:Connected Users%></legend>
+
+  <table class="cbi-section-table" id="users">
+    <tr class="cbi-section-table-titles">
+      <th class="cbi-section-table-cell"><%:Username%></th>
+      <th class="cbi-section-table-cell"><%:IP Address Allocation%></th>
+      <th class="cbi-section-table-cell"><%:Status%></th>
+      <th class="cbi-section-table-cell">&#160;</th>
+    </tr>
+    <tr class="cbi-section-table-row">
+      <td id="ucstatus" colspan="4"><em><br /><%:Collecting data...%></em></td>
+    </tr>
+  </table>
+</fieldset>

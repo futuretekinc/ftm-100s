@@ -1,0 +1,15 @@
+Package: libneon
+Version: 0.29.3-1
+Depends: libopenssl, libexpat
+Provides: 
+Source: feeds/packages/libs/neon
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 55818
+Title: HTTP and WebDAV client library
+Description:  HTTP and WebDAV client library

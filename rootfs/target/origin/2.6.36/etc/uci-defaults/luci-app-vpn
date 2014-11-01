@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# Add vpn-gui to ucitrack so LuCI will call it.  
+# /etc/init.d/vpn-gui will make the config file
+# modifications, which will then call vpn's init.d
+# script, telling it to reload.
+#
+# So there is no need to add an 'affects' option
+# to vpn-gui.
+#
+uci -q batch <<-EOF >/dev/null
+        delete ucitrack.@vpn-gui[-1]
+        add ucitrack vpn-gui
+        set ucitrack.@vpn-gui[-1].init=vpn-gui
+	add_list ucitrack.@firewall[-1].affects="vpn-gui"
+        commit ucitrack
+EOF
+ 
+rm -f /tmp/luci-indexcache
+exit 0

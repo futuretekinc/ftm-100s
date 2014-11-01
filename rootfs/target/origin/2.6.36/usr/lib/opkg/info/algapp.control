@@ -1,0 +1,19 @@
+Package: algapp
+Version: 0.1-1
+Depends: 
+Provides: 
+Source: feeds/cortina/algapp
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 1152
+Title: AlgApp
+Description:  This package installs iptable rules located in
+ /etc/alg-rules into the firewall using the include
+ directive.  These rules can open the firewall to
+ implement various ALGs, or application level gateway
+ protocols and ports.

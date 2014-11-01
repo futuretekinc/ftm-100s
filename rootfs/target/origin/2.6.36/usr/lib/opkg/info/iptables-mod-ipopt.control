@@ -1,0 +1,27 @@
+Package: iptables-mod-ipopt
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-ipopt
+Provides: 
+Source: package/iptables
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 160
+Title: IP/Packet option extensions
+Description:  iptables extensions for matching/changing IP packet options.
+ Includes:
+ - libipt_CLASSIFY
+ - libipt_dscp/DSCP
+ - libipt_ecn/ECN
+ - libipt_length
+ - libipt_mac
+ - libipt_mark/MARK
+ - libipt_statistic
+ - libipt_tcpmms
+ - libipt_tos/TOS
+ - libipt_ttl/TTL
+ - libipt_unclean

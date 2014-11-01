@@ -1,0 +1,15 @@
+Package: perl-tt
+Version: 2.22-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perlbase-scalar, perlbase-base, perlbase-bytes, perlbase-list, perlbase-cwd, perlbase-encode, perl-appconfig
+Provides: 
+Source: feeds/cortina/perl-tt
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 70998
+Title: Template Toolkit
+Description:  Template Toolkit

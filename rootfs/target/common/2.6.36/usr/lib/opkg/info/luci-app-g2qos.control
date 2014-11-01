@@ -1,0 +1,15 @@
+Package: luci-app-g2qos
+Version: 1-1
+Depends: g2qos
+Provides: 
+Source: feeds/cortina/luci-app-g2qos
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 3667
+Title: G2 QoS
+Description:  G2 QoS

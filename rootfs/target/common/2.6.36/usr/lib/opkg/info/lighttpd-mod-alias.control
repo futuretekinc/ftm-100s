@@ -1,0 +1,15 @@
+Package: lighttpd-mod-alias
+Version: 1.4.28-1
+Depends: lighttpd
+Provides: 
+Source: feeds/packages/net/lighttpd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 2424
+Title: Directory alias module
+Description:  Directory alias module

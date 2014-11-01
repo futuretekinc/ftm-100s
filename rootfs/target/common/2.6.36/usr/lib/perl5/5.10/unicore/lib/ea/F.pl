@@ -1,0 +1,6 @@
+
+return <<'END';
+3000		
+FF01	FF60	
+FFE0	FFE6	
+END

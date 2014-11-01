@@ -1,0 +1,15 @@
+Package: wfo-ipc-test
+Version: 1.0-1
+Depends: 
+Provides: 
+Source: feeds/cortina/wfo-ipc-test
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 4161
+Title: Tool for test Wi-Fi Offload IPC
+Description:  Tool for test Wi-Fi Offload IPC

@@ -1,0 +1,15 @@
+Package: perl-www-tmdb
+Version: 0.03-1
+Depends: perl
+Provides: 
+Source: feeds/cortina/perl-www-tmdb
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 1555
+Title: Perl client to the TMDb API 
+Description:  Perl client to the TMDb API 

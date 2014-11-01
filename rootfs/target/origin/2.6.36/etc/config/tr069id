@@ -1,0 +1,39 @@
+
+config 'objid' '2'
+	option 'lastinum' '0'
+
+config 'objid' '7'
+	option 'lastinum' '0'
+
+config 'objid' '10'
+	option 'lastinum' '0'
+
+config 'objid' '11'
+	option 'lastinum' '0'
+	
+config 'objid' '13'
+	option 'lastinum' '0'
+	
+config 'objid' '18'
+	option 'lastinum' '0'
+
+config 'objid' '19'
+	option 'lastinum' '0'
+
+config 'objid' '20'
+	option 'lastinum' '0'
+
+config 'objid' '23'
+	option 'lastinum' '0'
+
+config 'objid' '25'
+	option 'lastinum' '0'
+
+config 'objid' '26'
+	option 'lastinum' '0'
+
+config 'objid' '28'
+	option 'lastinum' '0'
+
+config 'objid' '29'
+	option 'lastinum' '0'

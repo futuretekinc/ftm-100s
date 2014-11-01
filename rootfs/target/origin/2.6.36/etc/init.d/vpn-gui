@@ -1,0 +1,152 @@
+#!/bin/sh /etc/rc.common
+ 
+# Since we are re-writing the vpn config file, we need to
+# run *before* the real vpn init.d script.  That script starts
+# at 50, so we pick a number less than that to run before it
+# runs.
+#
+START=55
+
+# The vpn config file location
+#
+PPTPD_OPTIONS=/etc/ppp/options.pptpd
+PPTPD_CONF=/etc/pptpd.conf
+IPSEC_CONF=/etc/ipsec.conf
+IPSEC_SECRETS=/etc/ipsec.secrets
+CHAP_SECRETS=/etc/ppp/chap-secrets
+XL2TPD_CONF=/etc/xl2tpd/xl2tpd.conf
+XL2TPD_OPTIONS=/etc/ppp/options.xl2tpd
+
+chap_secrets_populate() {
+
+    echo >> $CHAP_SECRETS
+    local uci_username
+    local uci_password
+    local uci_ipaddress
+
+    config_get uci_username $1 username
+    config_get uci_password $1 password
+    config_get uci_ipaddress $1 ipaddress
+
+    echo "$uci_username  *  $uci_password  $uci_ipaddress" >> $CHAP_SECRETS
+}
+
+start() {
+    # delete the old one
+    /bin/rm -f $PPTPD_CONF
+    /bin/rm -f $PPTPD_OPTIONS
+    /bin/rm -f $IPSEC_CONF
+    /bin/rm -f $IPSEC_SECRETS
+    /bin/rm -f $CHAP_SECRETS
+    /bin/rm -f $XL2TPD_CONF
+    /bin/rm -f $XL2TPD_OPTIONS
+ 
+    # make the directory in case it does not exist
+    mkdir -p `dirname $PPTPD_CONF`
+    mkdir -p `dirname $PPTPD_OPTIONS`
+    mkdir -p `dirname $IPSEC_CONF`
+    mkdir -p `dirname $IPSEC_SECRETS`
+    mkdir -p `dirname $CHAP_SECRETS`
+    mkdir -p `dirname $XL2TPD_CONF`
+    mkdir -p `dirname $XL2TPD_OPTIONS`
+ 
+    # kick off the callbacks above
+    local uci_Encryption uci_encryption uci_psk uci_pptpd_enabled uci_ipsec_enabled uci_policy
+    config_load 'vpn-gui'
+    config_get uci_Encryption pptpd encryption
+    config_get uci_psk ipsec psk
+    config_get uci_pptpd_enabled pptpd enable
+    config_get uci_ipsec_enabled ipsec enable
+    config_get uci_policy ipsec policy "psk"
+    config_foreach chap_secrets_populate vpnuser
+
+    if [ "$uci_Encryption" -eq 1 ]; then
+        uci_encryption="mppe required,no40,no56,stateless"
+    else
+        uci_encryption=""
+    fi
+
+    if [ "$uci_pptpd_enabled" -eq 1 ]; then
+        iptables -t nat -A prerouting_rule -p tcp --dport 1723 -j ACCEPT
+        iptables -A input_rule -p tcp --dport 1723 -j ACCEPT
+        iptables -A output_rule -p 47 -j ACCEPT
+        iptables -A input_rule -p 47 -j ACCEPT
+    fi
+
+    if [ "$uci_ipsec_enabled" -eq 1 ]; then
+        iptables -A input_rule -p esp -j ACCEPT
+        iptables -A input_rule -p udp --dport 500 -j ACCEPT
+        iptables -A input_rule -p udp --dport 4500 -j ACCEPT
+        iptables -A input_wan -p udp -m policy --strict --dir in --pol ipsec --proto esp -m udp --dport 1701 -j ACCEPT
+        iptables -A input_wan -m policy --strict --dir in --pol ipsec --proto esp -j REJECT
+        iptables -A forwarding_rule -i ppp+ -j ACCEPT
+        iptables -A forwarding_rule -o ppp+ -j ACCEPT
+    fi
+
+    export uci_encryption uci_psk
+ 
+    eval "sh /etc/pptpdconf.tmpl > $PPTPD_CONF"
+    eval "sh /etc/pptpd.tmpl > $PPTPD_OPTIONS"
+    if [ "$uci_policy" = "psk" ]; then
+        eval "sh /etc/ipsecpsk.tmpl > $IPSEC_CONF"
+        eval "sh /etc/ipsecsecrets.tmpl > $IPSEC_SECRETS"
+        eval "sh /etc/xl2tpdconf.tmpl > $XL2TPD_CONF"
+        eval "sh /etc/xl2tpdoptions.tmpl > $XL2TPD_OPTIONS"
+    else
+        eval "sh /etc/ipseccert.tmpl > $IPSEC_CONF"
+        eval "sh /etc/ipsecsecretscert.tmpl > $IPSEC_SECRETS"
+        eval "sh /etc/xl2tpdconfcert.tmpl > $XL2TPD_CONF"
+        eval "sh /etc/xl2tpdoptionscert.tmpl > $XL2TPD_OPTIONS"
+    fi
+}
+
+stop() {
+
+    iptables -t nat -D prerouting_rule -p tcp --dport 1723 -j ACCEPT
+    iptables -D input_rule -p tcp --dport 1723 -j ACCEPT
+    iptables -D output_rule -p 47 -j ACCEPT
+    iptables -D input_rule -p 47 -j ACCEPT
+
+    iptables -D input_rule -p esp -j ACCEPT
+    iptables -D input_rule -p udp --dport 500 -j ACCEPT
+    iptables -D input_rule -p udp --dport 4500 -j ACCEPT
+    iptables -D input_wan -p udp -m policy --strict --dir in --pol ipsec --proto esp -m udp --dport 1701 -j ACCEPT
+    iptables -D input_wan -m policy --strict --dir in --pol ipsec --proto esp -j REJECT
+    iptables -D forwarding_rule -i ppp+ -j ACCEPT
+    iptables -D forwarding_rule -o ppp+ -j ACCEPT
+
+    /etc/init.d/pptpd stop
+    /etc/init.d/pptpd disable
+    /etc/init.d/ipsec stop
+    /etc/init.d/ipsec disable
+    /etc/init.d/xl2tpd stop
+    /etc/init.d/xl2tpd disable
+}
+
+# reload() is called on LuCI "apply"
+reload() {
+    local enabled
+    restart "$@"
+ 
+    # Now that vpn's config file is written to
+    # new values, we'll call vpn's init.d script
+    # so it re-reads its config file properly.
+    #
+    enabled=`uci get 'vpn-gui.pptpd.enable'`
+    if [ "$enabled" -eq 1 ]; then
+        if [ -x "/etc/init.d/pptpd" ]; then
+          /etc/init.d/pptpd enable
+          /etc/init.d/pptpd start
+        fi
+    fi
+
+    enabled=`uci get 'vpn-gui.ipsec.enable'`
+    if [ "$enabled" -eq 1 ]; then
+        if [ -x "/etc/init.d/ipsec" ]; then
+          /etc/init.d/ipsec enable
+	  /etc/init.d/xl2tpd enable
+          /etc/init.d/ipsec start
+	  /etc/init.d/xl2tpd start
+        fi
+    fi
+}

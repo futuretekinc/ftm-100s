@@ -1,0 +1,15 @@
+Package: pe_ipsec_d
+Version: 3.0-0
+Depends: 
+Provides: 
+Source: feeds/cortina/pe-ipsec-d
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 23755
+Title: IPSec Offload firmware for dual PEs
+Description:  IPSec Offload firmware for dual PEs

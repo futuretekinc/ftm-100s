@@ -1,0 +1,16 @@
+#!/bin/sh
+# Copyright (C) 2006-2010 OpenWrt.org
+# Copyright (C) 2010 Vertical Communications
+
+rootfs_pivot() {
+    check_skip || jffs2_not_mounted || {
+   echo `df`
+	echo "switching to jffs2"
+	mount -o move /tmp/overlay /overlay 2>&-
+	fopivot /overlay /rom && pi_mount_skip_next=true
+	echo `df`
+    }
+}
+
+boot_hook_add preinit_mount_root rootfs_pivot
+

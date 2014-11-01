@@ -1,0 +1,4 @@
+uci batch <<-EOF
+        set luci.themes.Cortina=/luci-static/cortina
+        commit luci
+EOF

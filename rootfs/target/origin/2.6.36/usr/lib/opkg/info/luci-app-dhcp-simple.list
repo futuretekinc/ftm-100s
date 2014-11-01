@@ -1,0 +1,5 @@
+/usr/lib/lua/luci/i18n/dhcp.en.lmo
+/etc/uci-defaults/luci-app-dhcp-simple
+/usr/lib/lua/luci/view/cbi/pip4.htm
+/usr/lib/lua/luci/controller/dhcp-simple.lua
+/usr/lib/lua/luci/model/cbi/dhcp-simple.lua

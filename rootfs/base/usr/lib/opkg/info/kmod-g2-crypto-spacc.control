@@ -1,0 +1,15 @@
+Package: kmod-g2-crypto-spacc
+Version: 2.6.36+2.0.0-2
+Depends: kernel (=2.6.36-1)
+Provides: 
+Source: feeds/cortina/cs75xx-spacc
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 31782
+Title: CryptoAPI module SOURCE CODE
+Description:  This package contains the source for a crypto driver for CS75XX.

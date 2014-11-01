@@ -1,0 +1,15 @@
+Package: luci-app-davfs2
+Version: 0.1-1
+Depends: luci-mod-admin-core, davfs2
+Provides: 
+Source: feeds/cortina/luci-app-davfs2
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 1266
+Title: LuCI GUI for the davfs2
+Description:  This Luci package does davfs2 management

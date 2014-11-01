@@ -1,0 +1,5 @@
+/usr/bin/mrd6sh
+/etc/mrd6.conf
+/usr/sbin/mrd6
+/usr/lib/mrd6/bgp.so
+/etc/init.d/mrd6

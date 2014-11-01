@@ -1,0 +1,18 @@
+#!/bin/sh
+# THIS IS AN UNPUBLISHED WORK CONTAINING D2 TECHNOLOGIES, INC. CONFIDENTIAL
+# AND PROPRIETARY INFORMATION.  IF PUBLICATION OCCURS, THE FOLLOWING NOTICE
+# APPLIES: "COPYRIGHT 2006 D2 TECHNOLOGIES, INC. ALL RIGHTS RESERVED"
+#
+# $D2Tech$ $Rev: 8593 $ $Date: 2011/11/15 20:12:05 $
+#
+D2_DIR=/etc/d2
+# Check revisions - error if outdated
+
+echo "
+----
+Starting D2Tech vPort.
+----
+"
+${D2_DIR}/rc.network
+${D2_DIR}/rc.d2
+

@@ -1,0 +1,189 @@
+#!/bin/sh
+PRODUCT=ftm-100s
+KERNEL_VERSION=2.6.36
+COMMON_PATH=$PWD/target/common/$KERNEL_VERSION
+ROOT=$PWD/_rootfs
+BUSYBOX_PATH=$PWD/apps/busybox-1.22.1
+IPTABLES_PATH=$PWD/apps/iptables-1.4.21
+#BASE_PATH=/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/arm-openwrt-linux-gnueabi
+#LIBS="ld-linux.so.3 libcrypt.so.1 libm.so.6 libc.so.6 libdl.so.2"
+BASE_PATH=/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi
+LIB_VERSION=-0.9.32-rc2-git
+LIBS="ld-uClibc.so.0 libcrypt.so libm.so libc.so.0 libdl.so"
+LIB_PATH="/lib /usr/lib"
+CROSS_COMPILE=arm-openwrt-linux-uclibcgnueabi-
+BASE=base
+
+if [ -d "tmp" ]
+then
+	sudo rm -rf "tmp"
+fi
+
+function chdir()
+{
+	cd	$ROOT/$1
+
+	echo "The current location is $PWD"
+}
+
+function cplib()
+{
+	for TARGET in $@
+	do
+		while [ 0 ]
+		do
+			ORIGIN=`readlink $BASE_PATH/lib/$TARGET`
+			if [ -z "$ORIGIN" ]	
+			then
+				cp -af "$BASE_PATH/lib/$TARGET" "$ROOT/lib/$TARGET"
+				break
+			else
+				cp -af "$BASE_PATH/lib/$TARGET" "$ROOT/lib/$TARGET"
+
+				TARGET=$ORIGIN
+			fi
+		done
+	done
+}
+
+function mklink()
+{
+	for TARGET in $@
+	do
+		ln -s /bin/bosybox $TARGET
+	done
+}
+
+function mkdev()
+{
+	if [ ! -d "$ROOT/dev" ]
+	then
+		mkdir	$ROOT/dev
+	fi
+
+	sudo mknod $ROOT/dev/$1 $2 $3 $4
+}
+
+
+if [ -d "$ROOT" ]
+then
+	rm -rf $ROOT
+fi
+
+mkdir $ROOT
+
+cp -raf $COMMON_PATH/* $ROOT/
+cp -raf $PWD/target/$PRODUCT/* $ROOT/
+(
+
+	chdir	
+
+	mkdir -p bin boot sbin lib mnt opt proc root sys tmp
+	mkdir -p dev dev/pts dev/net
+	mkdir -p etc etc/init.d 
+	mkdir -p usr usr/bin usr/sbin usr/lib usr/share
+	mkdir -p var
+#	cplib	$LIBS
+)
+
+
+# /bin configuration
+(
+	chdir	bin
+)
+
+# /dev configuration
+(
+	chdir	dev
+
+
+#	mkdev	ram0		b	1	0
+#	mkdev	ram1		b	1	1
+#
+#	# loop devs
+#	for i in `seq 0 7`; do
+#		mkdev	loop$i 	b 	7 	$i
+#	done
+#
+#	mkdev	mem			c	1	1
+#	mkdev	kmem		c	1	2
+#	mkdev	null		c	1	3
+#	mkdev	port		c	1	4
+#	mkdev	zero		c	1	5
+#	mkdev	core		c	1	6
+#	mkdev	full		c	1	7
+#	mkdev	random		c	1	8
+#	mkdev	urandom		c	1	9
+#	mkdev	vsys		c	1	10
+#
+#	# tty
+#	for i in `seq 0 9`; do
+#		mkdev	tty$i 	c 	4 	$i
+#	done
+#	mkdev	ttyS0 		c 	4 	64
+#	mkdev	ttyS1 		c 	4 	65
+#
+#	mkdev	tty			c 	5 	0
+#	mkdev	console		c	5	1
+#	mkdev	ptmx		c	5	2
+#
+#	mkdev	watchdog	c	10	130
+#
+#	ln -s	ram0	ramdisk
+#	ln -s	/proc/self/fd/0	stdin
+#	ln -s	/proc/self/fd/1	stdout
+#	ln -s	/proc/self/fd/2	stderr
+#	ln -s	/proc/kcore		kcore
+#
+#	mkdev	net/tun		c	10	20
+)
+
+# /lib configuration
+(
+	chdir	lib
+)
+
+# /sbin configuration
+(
+	chdir	sbin
+)
+
+# install busybox
+(
+	cd $BUSYBOX_PATH
+
+#	make ARCH=arm CROSS_COMPILE=$CROSS_COMPILE
+#	make ARCH=arm CROSS_COMPILE=$CORSS_COMPILE install CONFIG_PREFIX=$ROOT
+)
+
+# install iptables
+(
+	cd $IPTABLES_PATH
+#	make
+#	make install DESTDIR=$ROOT
+)
+
+(
+	case "$PRODUCT" in
+		ftm-100s)
+		;;
+	esac
+)
+
+#~/Work/cortina/openwrt-2.6.36/staging_dir/host/bin/mksquashfs4 $ROOT root.squashfs \
+#	-nopad -noappend -root-owned -comp lzma -Xpreset 9 -Xe -Xlc 0 -Xlp 2 -Xpb 2 -b 256k -processors 8
+mksquashfs $ROOT root.squashfs \
+	-nopad -noappend -root-owned -b 256k -processors 8
+
+dd if=root.squashfs of=tmpfile.0 bs=4k conv=sync
+echo -ne '\xde\xad\xc0\xde' >> tmpfile.0
+dd if=tmpfile.0 of=tmpfile.1 bs=4k conv=sync
+echo -ne '\xde\xad\xc0\xde' >> tmpfile.1
+dd if=tmpfile.1 of=tmpfile.2 bs=64k conv=sync
+echo -ne '\xde\xad\xc0\xde' >> tmpfile.2
+dd if=tmpfile.2 of=root.squashfs bs=64k conv=sync
+echo -ne '\xde\xad\xc0\xde' >> root.squashfs
+
+rm tmpfile.*
+
+mv root.squashfs "/tftpboot/$PRODUCT/rootfs.img"

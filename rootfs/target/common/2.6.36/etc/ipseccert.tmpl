@@ -1,0 +1,72 @@
+cat <<EEOFEE
+version 2.0
+config setup
+    interfaces=%defaultroute
+#    nat_traversal=yes
+    virtual_private=%v4:10.0.0.0/8,%v4:192.168.0.0/16,%v4:172.16.0.0/12
+
+conn %default
+    keyingtries=1
+    compress=yes
+    disablearrivalcheck=no
+    authby=rsasig
+    leftrsasigkey=%cert
+    rightrsasigkey=%cert
+
+conn roadwarrior-net
+#    leftsubnet=10.100.0.0/16
+    also=roadwarrior
+
+conn roadwarrior-all
+    leftsubnet=0.0.0.0/0
+    also=roadwarrior
+
+conn roadwarrior
+
+    left=%defaultroute
+    leftcert=vpnservercert.pem
+    right=%any
+    rightsubnet=vhost:%no,%priv
+    auto=add
+    pfs=yes
+
+conn roadwarrior-l2tp
+    type=transport
+    left=%defaultroute
+    leftcert=vpnservercert.pem
+    leftprotoport=17/1701
+    right=%any
+
+    rightprotoport=17/1701
+    pfs=no
+    auto=add
+
+conn roadwarrior-l2tp-oldwin
+    left=%defaultroute
+    leftcert=vpnservercert.pem
+
+    leftprotoport=17/0
+    right=%any
+    rightprotoport=17/1701
+    rightsubnet=vhost:%no,%priv
+    pfs=no
+    auto=add
+
+conn block
+    auto=ignore
+
+conn private
+    auto=ignore
+
+conn private-or-clear
+    auto=ignore
+
+conn clear-or-private
+    auto=ignore
+
+conn clear
+    auto=ignore
+
+conn packetdefault
+    auto=ignore
+EEOFEE

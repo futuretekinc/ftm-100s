@@ -1,0 +1,12 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+        delete ucitrack.@algapp[-1]
+        add ucitrack algapp
+        set ucitrack.@algapp[-1].init=algapp
+	add_list ucitrack.@algapp[-1].affects="firewall"
+        commit ucitrack
+EOF
+ 
+rm -f /tmp/luci-indexcache
+exit 0

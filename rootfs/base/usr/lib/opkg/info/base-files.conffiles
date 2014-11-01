@@ -1,0 +1,16 @@
+/etc/hosts
+/etc/inittab
+/etc/group
+/etc/passwd
+/etc/profile
+/etc/shells
+/etc/sysctl.conf
+/etc/rc.local
+/etc/sysupgrade.conf
+/etc/config/timeserver
+/etc/config/uart-server
+/etc/config/csmi
+/etc/config/system
+/etc/config/ipsec
+/etc/config/version
+/etc/config/network

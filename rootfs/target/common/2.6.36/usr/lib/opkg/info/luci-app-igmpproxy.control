@@ -1,0 +1,15 @@
+Package: luci-app-igmpproxy
+Version: trunk+svn8216-1
+Depends: igmpproxy
+Provides: 
+Source: feeds/luci/luci
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: LuCI Development Team <luci@lists.subsignal.org>
+Architecture: g2
+Installed-Size: 1318
+Title: LuCI Support for igmpproxy
+Description:  LuCI Support for igmpproxy

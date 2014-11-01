@@ -1,0 +1,24 @@
+cat <<EEOFEE
+ServerName                      $uci_ServerName
+ServerType                      standalone
+DefaultServer                   on
+CharsetLocal 			UTF-8
+CharsetRemote 			UTF-8
+DefaultAddress                  $uci_DefaultAddress
+Port                            $uci_Port
+UseIPv6                         $uci_UseIPv6
+Umask                           $uci_Umask
+MaxInstances                    $uci_MaxInstances
+User                            nobody
+Group                           nogroup
+DefaultRoot                     $uci_Path
+RequireValidShell               off
+AllowOverwrite                  on
+AuthUserFile                    /tmp/ftppasswd
+AuthGroupFile                   /tmp/ftpgroup
+AuthOrder                       mod_auth_file.c
+<Limit SITE_CHMOD>
+ DenyAll
+</Limit>
+
+EEOFEE

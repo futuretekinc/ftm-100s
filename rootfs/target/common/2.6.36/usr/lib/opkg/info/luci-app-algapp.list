@@ -1,0 +1,4 @@
+/etc/uci-defaults/luci-app-algapp
+/usr/lib/lua/luci/model/cbi/algapp.lua
+/usr/lib/lua/luci/controller/algapp.lua
+/usr/lib/lua/luci/i18n/algapp.en.lmo

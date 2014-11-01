@@ -1,0 +1,15 @@
+Package: ppp-mod-pppoe
+Version: 2.4.4-16
+Depends: ppp, kmod-pppoe
+Provides: 
+Source: package/ppp
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Architecture: g2
+Installed-Size: 9406
+Title: PPPoE plugin
+Description:  This package contains a PPPoE (PPP over Ethernet) plugin for ppp.

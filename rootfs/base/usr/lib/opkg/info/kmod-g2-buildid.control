@@ -1,0 +1,16 @@
+Package: kmod-g2-buildid
+Version: 2.6.36+1.0-0
+Depends: kernel (=2.6.36-1)
+Provides: 
+Source: package/g2-buildid
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 1373
+Title: Cortina build id information in /proc/csinfo
+Description:  This kernel module will supply build id and version information
+ in /proc/csinfo.

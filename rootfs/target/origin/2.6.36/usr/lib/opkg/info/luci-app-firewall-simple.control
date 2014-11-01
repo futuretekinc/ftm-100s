@@ -1,0 +1,15 @@
+Package: luci-app-firewall-simple
+Version: 0.1-1
+Depends: luci-mod-admin-core, firewall, algapp
+Provides: 
+Source: feeds/cortinagui/luci-app-firewall-simple
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 15629
+Title: Simple Firewall
+Description:  Simple firewall pages.

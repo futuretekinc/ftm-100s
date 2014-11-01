@@ -1,0 +1,18 @@
+Package: iptables-mod-filter
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-filter
+Provides: 
+Source: package/iptables
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 8591
+Title: Content inspection extensions
+Description:  iptables extensions for packet content inspection.
+ Includes:
+ - libipt_string
+ - libipt_layer7

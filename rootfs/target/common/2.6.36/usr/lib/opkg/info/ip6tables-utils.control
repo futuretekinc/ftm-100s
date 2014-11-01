@@ -1,0 +1,15 @@
+Package: ip6tables-utils
+Version: 1.4.10-1
+Depends: ip6tables
+Provides: 
+Source: package/iptables
+Section: net
+Category: IPv6
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 34733
+Title: ip6tables save and restore utilities
+Description:  ip6tables save and restore utilities

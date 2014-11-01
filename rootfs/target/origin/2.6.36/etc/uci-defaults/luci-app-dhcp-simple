@@ -1,0 +1,3 @@
+#!/bin/sh
+# Nothing to do (dhcp is already in ucitrack)
+exit 0

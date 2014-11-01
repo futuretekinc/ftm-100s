@@ -1,0 +1,15 @@
+Package: block-hotplug
+Version: 0.1.0-2
+Depends: block-mount, hotplug2
+Provides: 
+Source: package/block-mount
+Section: base
+Category: Base system
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 2732
+Title: Automount and autocheck block devices
+Description:  Scripts used to automatically check and mount filesystem and/or swap

@@ -1,0 +1,13 @@
+config vpn pptpd
+       option enable 1
+       option encryption 1
+
+config vpn ipsec
+       option enable 1
+       option policy psk
+       option psk cortina12345
+
+config vpnuser
+       option username cortina
+       option password cortina
+       option ipaddress	10.100.14.100

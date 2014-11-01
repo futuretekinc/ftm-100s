@@ -1,0 +1,15 @@
+Package: racoon2
+Version: 20100526a
+Depends: libpthread, libopenssl
+Provides: 
+Source: feeds/cortina/racoon2
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 407904
+Title: Provides an implementation of key management system for IPsec
+Description:  Provides an implementation of key management system for IPsec

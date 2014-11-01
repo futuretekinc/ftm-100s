@@ -1,0 +1,15 @@
+Package: mount-utils
+Version: 2.21-4
+Depends: libblkid, libuuid
+Provides: 
+Source: package/util-linux-ng
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 55138
+Title: Devices mount/unmounting utilities
+Description:  This package contains utilities to mount/unmount devices.

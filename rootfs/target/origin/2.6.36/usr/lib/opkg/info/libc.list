@@ -1,0 +1,16 @@
+/lib/libnsl.so.0
+/lib/libuClibc-0.9.32-rc2-git.so
+/lib/libdl-0.9.32-rc2-git.so
+/lib/libcrypt-0.9.32-rc2-git.so
+/lib/libresolv.so.0
+/lib/libm.so.0
+/lib/libresolv-0.9.32-rc2-git.so
+/lib/ld-uClibc-0.9.32-rc2-git.so
+/lib/libutil.so.0
+/lib/libnsl-0.9.32-rc2-git.so
+/lib/ld-uClibc.so.0
+/lib/libdl.so.0
+/lib/libutil-0.9.32-rc2-git.so
+/lib/libm-0.9.32-rc2-git.so
+/lib/libc.so.0
+/lib/libcrypt.so.0

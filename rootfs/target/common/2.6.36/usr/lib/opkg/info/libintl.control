@@ -1,0 +1,15 @@
+Package: libintl
+Version: 2
+Depends: 
+Provides: 
+Source: feeds/packages/libs/gettext
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 167
+Title: Stub header for the GNU Internationalization library
+Description:  Stub header for the GNU Internationalization library

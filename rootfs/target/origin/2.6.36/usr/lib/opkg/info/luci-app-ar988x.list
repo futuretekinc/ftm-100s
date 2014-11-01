@@ -1,0 +1,8 @@
+/usr/lib/lua/luci/model/cbi/ar988x.lua
+/usr/lib/lua/luci/model/cbi/ar9380-details.lua
+/etc/uci-defaults/luci-app-ar988x
+/usr/lib/lua/luci/view/admin_network/wifi_ar988x.htm
+/usr/lib/lua/luci/controller/ar988x.lua
+/etc/config/wireless
+/etc/config/wireless_ar988x
+/lib/wifi/ar9880.sh

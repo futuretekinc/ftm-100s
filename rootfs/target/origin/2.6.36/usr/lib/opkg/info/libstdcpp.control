@@ -1,0 +1,15 @@
+Package: libstdcpp
+Version: 4.5.1+l-65
+Depends: 
+Provides: 
+Source: package/base-files
+Section: libs
+Category: Base system
+Status: unknown hold not-installed
+Essential: yes
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 233369
+Title: GNU Standard C++ Library v3
+Description:  GNU Standard C++ Library v3

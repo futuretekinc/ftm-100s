@@ -1,0 +1,17 @@
+Package: rp-pppoe-server
+Version: 3.10-1
+Depends: ppp
+Provides: 
+Source: feeds/packages/net/rp-pppoe
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 30336
+Title: PPPoE (PPP over Ethernet) server
+Description:  Dubbed RP-PPPoE, this open-source product is ideal for Linux users with
+ a DSL "modem" whose Internet service provider uses PPPoE.
+ This package contains pppoe-server.

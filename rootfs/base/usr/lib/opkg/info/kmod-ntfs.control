@@ -1,0 +1,23 @@
+Package: kmod-ntfs
+Version: 2.6.36+8.0-1
+Depends: kernel (=2.6.36-1)
+Provides: 
+Source: feeds/cortina/paragon
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 615049
+Title: Paragon NTFS driver 
+Description:  This package contains Paragon NTFS&HFS for Linux 8.0
+ All of the products share the following features:
+ - Transparent read-write access to NTFS and/or HFS+ volumes;
+ - High performance (in some cases even better than Ext3 FS);
+ - Easy installation and unistallation (assistant scripts);
+ - Support for the latest Linux Kernels and distributions;
+ - Support for SMP kernels;
+ - File sharing over network via SAMBA;
+ - No system degradation during data transfers;

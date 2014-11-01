@@ -1,0 +1,4 @@
+/usr/lib/lua/luci/i18n/transmission.en.lmo
+/usr/lib/lua/luci/model/cbi/transmission.lua
+/etc/uci-defaults/luci-app-transmission
+/usr/lib/lua/luci/controller/transmission.lua

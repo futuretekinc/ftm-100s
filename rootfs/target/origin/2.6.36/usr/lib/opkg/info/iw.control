@@ -1,0 +1,15 @@
+Package: iw
+Version: 0.9.21-1
+Depends: libnl-tiny
+Provides: 
+Source: package/iw
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 31348
+Title: cfg80211 interface configuration utility
+Description:  cfg80211 interface configuration utility

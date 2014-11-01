@@ -1,0 +1,15 @@
+Package: firewall
+Version: 2-34.9
+Depends: iptables, iptables-mod-conntrack, iptables-mod-nat
+Provides: 
+Source: package/firewall
+Section: net
+Category: Base system
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Architecture: all
+Installed-Size: 12240
+Title: OpenWrt firewall
+Description:  UCI based firewall for OpenWrt

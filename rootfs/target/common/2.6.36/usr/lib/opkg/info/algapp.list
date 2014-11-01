@@ -1,0 +1,4 @@
+/etc/alg-rules/ipsec.rules
+/etc/init.d/algapp
+/etc/config/algapp
+/etc/alg-rules/ftp.rules

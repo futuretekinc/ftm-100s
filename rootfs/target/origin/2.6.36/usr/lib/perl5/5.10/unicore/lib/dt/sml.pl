@@ -1,0 +1,6 @@
+
+return <<'END';
+FE50	FE52	
+FE54	FE66	
+FE68	FE6B	
+END

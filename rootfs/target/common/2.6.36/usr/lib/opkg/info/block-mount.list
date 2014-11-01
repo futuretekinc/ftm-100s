@@ -1,0 +1,5 @@
+/lib/functions/block.sh
+/lib/functions/mount.sh
+/etc/config/fstab
+/etc/init.d/fstab
+/lib/functions/fsck.sh

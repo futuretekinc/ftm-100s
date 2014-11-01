@@ -1,0 +1,55 @@
+#!/bin/sh /etc/rc.common
+ 
+# Since we are re-writing the minidlna config file, we need to
+# run *before* the real minidlna init.d script.  That script starts
+# at 50, so we pick a number less than that to run before it
+# runs.
+#
+START=45
+
+# The minidlna config file location
+#
+MINIDLNA_CONF=/etc/minidlna.conf
+
+option_cb() {
+    local opt="$1"
+    local val="$2"
+    if [ "$opt" != "enable" ]; then
+        echo "$opt=$val" >> $MINIDLNA_CONF
+    fi
+}
+
+start() {
+    # delete the old one
+    /bin/rm -f $MINIDLNA_CONF
+ 
+    # make the directory in case it does not exist
+    mkdir -p `dirname $MINIDLNA_CONF`
+ 
+    # kick off the callbacks above
+    config_load 'minidlna-gui'
+ 
+    # the real minidlna config file is done being
+    # re-written, nothing left to do!
+}
+
+# reload() is called on LuCI "apply"
+reload() {
+    local enabled
+    restart "$@"
+ 
+    # Now that minidlna's config file is written to
+    # new values, we'll call minidlna's init.d script
+    # so it re-reads its config file properly.
+    #
+    enabled=`uci get 'minidlna-gui.dlna.enable'`
+    if [ "$enabled" -eq 1 ]; then
+        if [ -x "/etc/init.d/minidlna" ]; then
+          /etc/init.d/minidlna enable
+          /etc/init.d/minidlna reload
+        fi
+    else
+        /etc/init.d/minidlna stop
+        /etc/init.d/minidlna disable
+    fi
+}

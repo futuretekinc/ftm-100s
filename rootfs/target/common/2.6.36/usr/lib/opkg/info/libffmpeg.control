@@ -1,0 +1,15 @@
+Package: libffmpeg
+Version: 0.6.3-5
+Depends: libpthread, zlib, libvpx, faac
+Provides: 
+Source: feeds/cortina/ffmpeg
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 2277853
+Title: FFmpeg libraries
+Description:  FFmpeg libraries

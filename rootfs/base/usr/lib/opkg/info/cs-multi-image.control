@@ -1,0 +1,22 @@
+Package: cs-multi-image
+Version: 1.0-1
+Depends: 
+Provides: 
+Source: feeds/cortina/cs-multi-image
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 19643
+Title: Cortina Multi-image Utilities
+Description:  This package installs the host cs.mksb for building
+ u-boot superblocks, and the cs.mkimage for assembling
+ system upgrade image files, and libcsmi.a for linking
+ with target applications for doing linux user-space
+ system upgrades.  It also installs some source files
+ that custom u-boot commands would need to access 
+ superblocks.  THIS PACKAGE SHOULD BE A DEPENDENCY
+ FOR U-BOOT PACKAGE.

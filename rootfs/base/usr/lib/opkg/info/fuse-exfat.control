@@ -1,0 +1,16 @@
+Package: fuse-exfat
+Version: 0.9.7-1
+Depends: libfuse
+Provides: 
+Source: feeds/cortina/fuse-exfat
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 20922
+Title: exfat filesystem 
+Description:  This package aims to provide a full-featured exFAT file system implementation
+ for GNU/Linux other Unix-like systems as a FUSE module. 

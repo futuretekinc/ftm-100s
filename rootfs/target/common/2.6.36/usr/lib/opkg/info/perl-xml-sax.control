@@ -1,0 +1,15 @@
+Package: perl-xml-sax
+Version: 0.99-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perlbase-symbol, perlbase-fcntl, perlbase-io, perlbase-selectsaver, perlbase-errno, perlbase-perlio, perl-xml-sax-base, perl-xml-namespacesupport
+Provides: 
+Source: feeds/cortina/perl-xml-sax
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 16972
+Title: Simple API for XML
+Description:  Simple API for XML

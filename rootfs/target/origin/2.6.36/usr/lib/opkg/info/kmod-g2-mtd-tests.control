@@ -1,0 +1,15 @@
+Package: kmod-g2-mtd-tests
+Version: 2.6.36-1
+Depends: kernel (=2.6.36-1)
+Provides: 
+Source: package/kernel
+Section: kernel
+Category: Kernel modules
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 36877
+Title: drivers/mtd/tests
+Description:  drivers/mtd/tests

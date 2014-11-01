@@ -1,0 +1,19 @@
+Package: davfs2
+Version: cvs-head-1
+Depends: libneon, kmod-fuse
+Provides: 
+Source: feeds/cortina/davfs2
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 104445
+Title: Mount WebDAV as a file system
+Description:  Web Distributed Authoring and Versioning (WebDAV), an extension 
+ to the HTTP-protocol, allows authoring of resources on a remote 
+ web server. davfs2 provides the ability to access such resources 
+ like a typical filesystem, allowing for use by standard applications 
+ with no built-in support for WebDAV. 

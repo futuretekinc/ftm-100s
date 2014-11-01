@@ -1,0 +1,16 @@
+Package: gen_post_uboot_bin
+Version: 1.0.0-1
+Depends: gen_post_uboot_bin/host
+Provides: 
+Source: feeds/cortina/gen_post_uboot_bin
+Section: hosttools
+Category: Host Tools
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 105
+Title: Utility for combining POST with u-boot
+Description:  This is a host tool.  It is built on the host, and used during
+ image generation to combine POST code with u-boot.

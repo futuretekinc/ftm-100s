@@ -1,0 +1,21 @@
+Package: libggi
+Version: 2.2.2-1
+Depends: libgii
+Provides: 
+Source: feeds/qi/libggi
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 356653
+Title:  (library)
+Description:  LibGGI is the central library in the GGI project, hence the name.
+ 
+ It provides an opaque interface to the display\'s acceleration functions. It
+ was originally intended to allow user programs to interface with KGI, the GGI
+ Kernel Graphics Interface, but other display types can be easily used by
+ loading the appropriate \"display target\" (e.g. X, memory).
+ This package contains the library files.

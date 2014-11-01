@@ -1,0 +1,4 @@
+/etc/modules.d/55-rtl83xx
+/lib/modules/2.6.36/rtl83xx.ko
+/sbin/phy_reg_rw
+/sbin/sw_reg_rw

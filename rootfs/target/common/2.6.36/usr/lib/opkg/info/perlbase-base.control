@@ -1,0 +1,15 @@
+Package: perlbase-base
+Version: 5.10.0-5
+Depends: perl
+Provides: 
+Source: feeds/packages/lang/perl
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Peter Colberg <peter@petercolberg.org>
+Architecture: g2
+Installed-Size: 2059
+Title: base perl module
+Description:  base perl module

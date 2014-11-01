@@ -1,0 +1,16 @@
+Package: kmod-openswan
+Version: 2.6.36+2.6.38-1
+Depends: kernel (=2.6.36-1)
+Provides: 
+Source: feeds/cortina/openswan
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 201345
+Title: Openswan (kernel module)
+Description:  Openswan is an IPsec implementation for Linux.
+ This package contains the Openswan kernel module.

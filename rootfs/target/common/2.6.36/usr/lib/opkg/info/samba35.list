@@ -1,0 +1,9 @@
+/etc/config/samba
+/usr/lib/libwbclient.so
+/etc/samba/smbpasswd
+/etc/samba/smb.conf.template
+/etc/init.d/samba
+/usr/bin/nmbd
+/usr/lib/libwbclient.so.0
+/usr/bin/smbpasswd
+/usr/bin/smbd

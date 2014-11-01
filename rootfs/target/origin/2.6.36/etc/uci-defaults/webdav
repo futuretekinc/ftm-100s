@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# Webdav works with virtual hosts.  To create virtual hostnames
+# on the LAN, you could add entries in /etc/hosts like this:
+#
+# 192.168.1.1 vhostname1
+# 192.168.1.1 vhostname2
+#
+# But, who knows how OpenWrt handles the /etc/hosts file
+# currently and in the future?  Our webdav package needs to
+# be changing this file on the fly; adding and deleting entries,
+# and would have to be careful not to mess up anyting the user
+# had done, or that other OpenWrt packages have done.
+#
+# Too dangerous!
+#
+# Turns out that dnsmasq, which is the DNS server, takes a
+# -H <additional-host-file> argument (as many of those as
+# you like).  /etc/config/dhcp supports an option:
+#
+#   list addnhosts <hostfile>
+#
+# which will get added to dnsmasq command line with -H.  So,
+# our idea is to let webdav package manage its own private
+# hosts file, and just arrange to have it added to dnsmasq's
+# command line.  Then, webdav package can do what ever it wants.
+#
+# This code will add the option to dnsmasq's /etc/config file
+#
+uci add_list dhcp.@dnsmasq[0].addnhosts=/etc/lighttpd/webdav.vhosts 
+uci commit
+exit 0

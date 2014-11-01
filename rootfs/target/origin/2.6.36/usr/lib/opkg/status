@@ -1,0 +1,2384 @@
+Package: luci-lib-sys
+Version: trunk+svn8216-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: kernel_test
+Version: 0.99-1
+Depends: libevent
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698133
+
+Package: luci-app-webdav
+Version: 0.1-1
+Depends: luci-mod-admin-core, webdav
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698098
+
+Package: kmod-g2-mtd-tests
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1408698130
+
+Package: ldconfig
+Version: 0.9.32-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: libuci-lua
+Version: 2011-01-19.1-1
+Depends: libuci, liblua
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: iwinfo
+Version: 18
+Depends: libiwinfo
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698129
+
+Package: libaa
+Version: 1.2-1
+Depends: libncurses
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: libc
+Version: 0.9.32-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: libtheora
+Version: 1.2.0alpha1-1
+Depends: libogg
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698127
+
+Package: sysstat
+Version: 9.0.6-1
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/sysstat/sysstat.ioconf fa92b01baa2130e26822c30fb27ac56e
+ /etc/sysstat/config 2980a0edc3fc1adcd1444aa5b77e5167
+Installed-Time: 1408698126
+
+Package: directfb
+Version: 1.4.2-1
+Depends: libpng, libjpeg, libpthread, libfreetype
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698106
+
+Package: perlbase-perlio
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: perlbase-encode
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: luci-app-davfs2
+Version: 0.1-1
+Depends: luci-mod-admin-core, davfs2
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: ntpclient
+Version: 2007_365-4
+Depends: librt
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/ntpclient 1cf9d075c4e42397f8cd9dbc58864334
+Installed-Time: 1408698107
+
+Package: opkg
+Version: 576-1
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/opkg.conf 0e4714a49b7db101b7fa3d4fb9684533
+Installed-Time: 1408698134
+
+Package: ipsec-tools
+Version: 0.7.3-3
+Depends: libopenssl, kmod-ipsec
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/racoon.conf 422dde1eae328a6038aebad336f0b05d
+ /etc/racoon/psk.txt f42a2efd32941ff33e88b0dea1731ddd
+Installed-Time: 1408698097
+
+Package: iptables-mod-extra
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-extra
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: perlbase-io
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: iperf
+Version: 2.0.5-1
+Depends: uclibcxx
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: ip
+Version: 2.6.35-3
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/iproute2/rt_tables a1313318d6778fe6b8c680248ef5a463
+Installed-Time: 1408698128
+
+Package: libjpeg
+Version: 6b-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: luci-server-lighttpd
+Version: 0.1-1
+Depends: lighttpd, mini-httpd-htpasswd, lighttpd-mod-alias, lighttpd-mod-auth, lighttpd-mod-cgi, lighttpd-mod-fastcgi, lighttpd-mod-flv-streaming, lighttpd-mod-redirect, lighttpd-mod-setenv, lighttpd-mod-simple-vhost, lighttpd-mod-userdir, lighttpd-mod-webdav
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698098
+
+Package: perl-data-uuid
+Version: 1.217-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perl-xml-sax
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: libpthread
+Version: 0.9.32-65
+Depends: librt
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: iw
+Version: 0.9.21-1
+Depends: libnl-tiny
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: iperf-mt
+Version: 2.0.5-1
+Depends: uclibcxx, libpthread
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: alsa-lib
+Version: 1.0.23-1
+Depends: kmod-sound-core
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: luci-mod-admin-core
+Version: trunk+svn8216-1
+Depends: luci-lib-web, luci-proto-core, luci-i18n-english
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: libneon
+Version: 0.29.3-1
+Depends: libopenssl, libexpat
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: wide-dhcpv6-relay
+Version: 20080615-5
+Depends: kmod-ipv6
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698103
+
+Package: busybox
+Version: 1.22.1-2
+Provides:
+Status: install user installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: lighttpd-mod-cgi
+Version: 1.4.28-1
+Depends: lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: coremark
+Version: 1.0.0-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698094
+
+Package: perl-data-dumper
+Version: 2.131-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perl-xml-sax
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: luci-app-radvd
+Version: trunk+svn8216-1
+Depends: radvd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: proftpd
+Version: 1.3.3-1
+Depends: libiconv-full, libopenssl
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/proftpd.conf 7c325bf671b06e46ff1036a86ae260e3
+Installed-Time: 1408698101
+
+Package: kmod-nfnetlink
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-ipt-core
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1408698132
+
+Package: perlbase-bytes
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: wide-dhcpv6-server
+Version: 20080615-5
+Depends: kmod-ipv6
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/dhcp6s a40705a1635d596728e5316a7c096731
+Installed-Time: 1408698103
+
+Package: wide-dhcpv6-control
+Version: 20080615-5
+Depends: kmod-ipv6
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698103
+
+Package: perlbase-symbol
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: libiwinfo-lua
+Version: 18
+Depends: libiwinfo, liblua, lua
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698129
+
+Package: perl-json
+Version: 2.53-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-filter, perlbase-b, perlbase-xsloader, perlbase-re, perlbase-utf8, perlbase-unicore
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698100
+
+Package: ebtables
+Version: 2.0.9-2-1
+Depends: kmod-ebtables
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698093
+
+Package: libiwinfo
+Version: 18
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698129
+
+Package: samba35
+Version: 3.5.6-6
+Depends: libpthread, libiconv
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/samba/smb.conf.template 687791a2f3e3eb0dcf9c21c210d4611a
+ /etc/samba/smbpasswd d41d8cd98f00b204e9800998ecf8427e
+Installed-Time: 1408698102
+
+Package: libcurl
+Version: 7.19.6-1
+Depends: libopenssl, zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698094
+
+Package: lighttpd-mod-setenv
+Version: 1.4.28-1
+Depends: lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: openssl-util
+Version: 1.0.0c-1
+Depends: libopenssl
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/ssl/openssl.cnf 3f0ee810b7a5e7cc8c862efea1dd77ee
+Installed-Time: 1408698134
+
+Package: perl-uri
+Version: 1.36-1
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: libogg
+Version: 1.1.4-2
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: fuse-exfat
+Version: 0.9.7-1
+Depends: libfuse
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698096
+
+Package: rp-pppoe-client
+Version: 3.10-1
+Depends: ppp
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: perlbase-socket
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: dvdrwtool
+Version: 7.1-1
+Depends: libpthread
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698094
+
+Package: luci-lib-lmo
+Version: trunk+svn8216-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: luci-theme-openwrt
+Version: trunk+svn8216-1
+Depends: luci-theme-base
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: luci-app-ar988x
+Version: 0.1-1
+Depends: luci-mod-admin-core
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: luci-app-algapp
+Version: 0.1-1
+Depends: luci-mod-admin-core, algapp
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: x264
+Version: master-0
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698103
+
+Package: base-files
+Version: 65-unknown
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/hosts 0eea71665fb6890c06421fd13aa3f849
+ /etc/inittab 2e5d0a794292943737cd6c3379f5cb59
+ /etc/group 31c4c2ea7b79761476954e66f9d4ed19
+ /etc/passwd a8ee4685f2cc7764a73dc70c84bc236b
+ /etc/profile f6394146d2f7dd077ea65916f2854948
+ /etc/shells 725ba6f40dff0612f61ecd3f171bb3e1
+ /etc/sysctl.conf 7b3463f0cd8bb764212cbfe93a155972
+ /etc/rc.local 7cce50b3f03c1d515beb93bf33658dce
+ /etc/sysupgrade.conf 3ef80f71809617b83dd00a63ad5c422c
+ /etc/config/ipsec 2a0f27a82429856f0117e5357b7ce96c
+ /etc/config/network 5f8177ef746f2bb4f34c1d452df042e0
+ /etc/config/timeserver 7c9118e571e55a6bbc1b419e77883d76
+ /etc/config/version dd47210a7272b1aa28ac78782e625c60
+ /etc/config/csmi 4d8bb52f456be7a511eca53b6f65c432
+ /etc/config/system aba5c5492df4d6bc8826c16130099cc2
+ /etc/config/uart-server c3c607d097cb5845d7e2e120e7570533
+Installed-Time: 1408698092
+
+Package: libpcre
+Version: 8.11-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698123
+
+Package: libexif
+Version: 0.6.19-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: luci-app-ftpsamba
+Version: 0.1-1
+Depends: luci-mod-admin-core, proftpd, samba35
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698103
+
+Package: fcgi
+Version: 2.4.0-1
+Depends: uclibcxx
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: cs-system-upgrade
+Version: 1.1-1
+Depends: cs-multi-image, libcurl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698094
+
+Package: ddns-scripts
+Version: 1.0.0-12
+Provides:
+Status: install user installed
+Architecture: all
+Conffiles:
+ /etc/config/ddns 346b0f0366c005dd0f960064d05d8e85
+Installed-Time: 1408698104
+
+Package: 6in4
+Version: 8-1
+Depends: ip, kmod-ipv6, kmod-sit
+Provides:
+Status: install user installed
+Architecture: all
+Installed-Time: 1408698092
+
+Package: cortina-customizations
+Version: 1.0.0-1
+Depends: luci-lib-core
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698103
+
+Package: pciutils
+Version: 3.1.7-2
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698108
+
+Package: perlbase-cgi
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: uboot-envtools
+Version: 20081215-2
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: u-boot
+Version: 2009.11-1
+Depends: gen_post_uboot_bin, uboot-flashbin-setenv, ecdsa-tools
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698096
+
+Package: dnsmasq
+Version: 2.55-6
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/dhcp 326e2116bd9bc3ecc5be4f75cd1e7647
+ /etc/dnsmasq.conf 7cf378e58d3fe5db31f4116a16c15c61
+Installed-Time: 1408698092
+
+Package: perlbase-list
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: luci-sgi-cgi
+Version: trunk+svn8216-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: libblkid
+Version: 2.21-4
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698135
+
+Package: cs-multi-image
+Version: 1.0-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698094
+
+Package: luci-proto-pptp
+Version: trunk+svn8216-1
+Depends: pptp
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: iptables-mod-nat-extra
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-nat-extra
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: libflac
+Version: 1.1.2-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698096
+
+Package: hostapd-utils
+Version: 20110117-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: libiconv-full
+Version: 1.11.1-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: libsdl
+Version: 1.2.14-2
+Depends: directfb, zlib, libpthread, alsa-lib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698106
+
+Package: p910nd
+Version: 0.94-1
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/p910nd 8bda9fa31d837a7ecc2bea67d38470ea
+Installed-Time: 1408698107
+
+Package: NeoRaider-mrd6
+Version: 66cda76-1
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/mrd6.conf 94bbc05d3f6f6b400385841e73abdc43
+Installed-Time: 1408698093
+
+Package: iptables-mod-ipsec
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-ipsec
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: kmod-openswan
+Version: 2.6.36+2.6.38-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: libintl
+Version: 2
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: perlbase-unicore
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: iptables-mod-conntrack
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-conntrack
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: perlbase-re
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: perl-yaml
+Version: 0.77-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-filter, perlbase-b, perlbase-xsloader, perlbase-re, perlbase-utf8, perlbase-unicore
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698101
+
+Package: kmod-g2-crypto-spacc
+Version: 2.6.36+2.0.0-2
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698094
+
+Package: perlbase-utf8
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: kmod-rtl83xx
+Version: 2.6.36+1.3.0-0
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698101
+
+Package: block-mount
+Version: 0.1.0-2
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/fstab 1c765e9f54e16d8b3ec7aa1d4516435d
+Installed-Time: 1408698092
+
+Package: libvorbis
+Version: 1.2.3-1
+Depends: libogg
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: miniupnpd
+Version: 1.5-5
+Depends: iptables
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/upnpd fde3c072e8739f973abed6835de4b5ec
+Installed-Time: 1408698107
+
+Package: iptables-mod-iprange
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-iprange
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: firewall
+Version: 2-34.9
+Depends: iptables, iptables-mod-conntrack, iptables-mod-nat
+Provides:
+Status: install user installed
+Architecture: all
+Conffiles:
+ /etc/config/firewall b1fc653486d4ef5740678c7f0604d4ff
+ /etc/firewall.user 43e25ef73306f7ea73813d648990b181
+Installed-Time: 1408698127
+
+Package: libxml2
+Version: 2.7.8-1
+Depends: libpthread, zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698106
+
+Package: luci-app-ntpc
+Version: trunk+svn8216-1
+Depends: ntpclient
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: luci-app-firewall
+Version: trunk+svn8216-1
+Depends: firewall
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: lighttpd
+Version: 1.4.28-1
+Depends: libopenssl, libpcre, libpthread, lighttpd-mod-status
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/lighttpd/lighttpd.conf 4f367c4046cf68778a53ee5555c04a2d
+ /etc/default/lighttpd 6b5f450066d6ef977bc81041280c98ad
+Installed-Time: 1408698106
+
+Package: wfo-ipc-test
+Version: 1.0-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698103
+
+Package: luci-mod-jquery
+Version: 1-1
+Provides:
+Status: install user installed
+Architecture: all
+Installed-Time: 1408698098
+
+Package: perlbase-filehandle
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: luci-lib-ipkg
+Version: trunk+svn8216-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: libevent2
+Version: 2.0.10-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698106
+
+Package: perl-html-parser
+Version: 3.56-1
+Depends: perl, perl-html-tagset, perl-uri
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: perlbase-scalar
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: netengine_config
+Version: 0.99-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: tc
+Version: 2.6.35-3
+Depends: kmod-sched
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: libuci
+Version: 2011-01-19.1-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: libevent
+Version: 1.4.14b-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698106
+
+Package: liblua
+Version: 5.1.4-7
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698133
+
+Package: lighttpd-mod-status
+Version: 1.4.28-1
+Depends: lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: mtd-utils
+Version: 20090227-1
+Depends: zlib, liblzo, libuuid
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: rboot
+Version: 0.99-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: openswan
+Version: 2.6.38-1
+Depends: kmod-openswan, libgmp, ip
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: fontconfig
+Version: 2.6.0-2
+Depends: libexpat, libfreetype
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: perl-digest-md5
+Version: 2.52-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perl-xml-sax
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: ucitrigger
+Version: 2011-01-19.1-1
+Depends: libuci-lua, lua
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: rp-pppoe-server
+Version: 3.10-1
+Depends: ppp
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/ppp/pppoe-server-options a0774cdf37ef72d8921c9aa06e624894
+ /etc/default/pppoe-server 66bac5b2d1704f20cc3e352ef9f12f86
+Installed-Time: 1408698126
+
+Package: iptables-mod-ipopt
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-ipopt
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: libpng
+Version: 1.2.44-1
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698106
+
+Package: ethtool
+Version: 2.6.35-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: uci
+Version: 2011-01-19.1-1
+Depends: libuci
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: lua
+Version: 5.1.4-7
+Depends: liblua
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698133
+
+Package: pptp
+Version: 1.7.1-3
+Depends: ppp, kmod-gre
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/ppp/options.pptp 13b2446c3ef00067e12888d918a794cc
+Installed-Time: 1408698134
+
+Package: perl-www
+Version: 5.812-1
+Depends: perl, perl-html-parser, perl-uri
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: libiptc
+Version: 1.4.10-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: libfuse
+Version: 2.8.5-1
+Depends: kmod-fuse
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698127
+
+Package: losetup
+Version: 2.21-4
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698135
+
+Package: dropbear
+Version: 0.52-5
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/dropbear/dropbear_rsa_host_key d41d8cd98f00b204e9800998ecf8427e
+ /etc/dropbear/dropbear_dss_host_key d41d8cd98f00b204e9800998ecf8427e
+ /etc/config/dropbear 4ff9c827d4f95ca5082a5520c03e1419
+Installed-Time: 1408698093
+
+Package: perl-fcgi
+Version: 0.74-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-dynaloader, perlbase-autoloader
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698100
+
+Package: perlbase-file
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: perlbase-xsloader
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: perlbase-dynaloader
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: xl2tpd
+Version: 1.3.1-1
+Depends: ppp
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698135
+
+Package: cdrominfo
+Version: 0.1-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698093
+
+Package: perlbase-essential
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: libstdcpp
+Version: 4.5.1+l-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: mtd
+Version: 15
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698133
+
+Package: perlbase-config
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: luci-theme-base
+Version: trunk+svn8216-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: webdav
+Version: 0.1-1
+Depends: luci-server-lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698102
+
+Package: faad2
+Version: 2.7-0
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698094
+
+Package: uci-precommit
+Version: 1.0.0-1
+Depends: libuci, libuci-lua, lua
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698102
+
+Package: libgcc
+Version: 4.5.1+l-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: kmod-crypto-test
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-crypto-core
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1408698130
+
+Package: davfs2
+Version: cvs-head-1
+Depends: libneon, kmod-fuse
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/davfs2/davfs2.conf c0d2b5b46c2890ab8ae512f476eeefa9
+ /etc/davfs2/secrets 5c95e0dd2bc89ba9c1a7e5a8761a1655
+Installed-Time: 1408698094
+
+Package: pe_ipsec_d
+Version: 3.0-0
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: luci-proto-ppp
+Version: trunk+svn8216-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: libuuid
+Version: 1.41.12-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698093
+
+Package: ppp
+Version: 2.4.4-16
+Depends: kmod-ppp
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/ppp/chap-secrets e29cbe6021f13bd9b14d780a80f188ab
+ /etc/ppp/filter 16b01d9201be60c9d1f16dd98f449484
+ /etc/ppp/ip-down 5bcfb12115ac6f51803acd1098707602
+ /etc/ppp/ip-up 85611b525f7eb43e19db0f1985164a05
+ /etc/ppp/ipv6-down 9d6a2b922be456be92153c1f37e2e71c
+ /etc/ppp/ipv6-up 2f7b4095b60b966af5129caaf26f5f92
+ /etc/ppp/options 835d171e1474b714c2807dd4a7764481
+Installed-Time: 1408698134
+
+Package: luci-mod-admin-full
+Version: trunk+svn8216-1
+Depends: luci-mod-admin-core, luci-lib-ipkg
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: pe_ralink
+Version: 3.0-0
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: gen_post_uboot_bin
+Version: 1.0.0-1
+Depends: gen_post_uboot_bin/host
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698096
+
+Package: perlbase-autoloader
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: liblzo
+Version: 2.04-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: lighttpd-mod-webdav
+Version: 1.4.28-1
+Depends: lighttpd, libsqlite3, libuuid, libxml2
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: luci-lib-web
+Version: trunk+svn8216-1
+Depends: luci-lib-core, luci-lib-sys, luci-lib-nixio, luci-lib-core, luci-sgi-cgi, luci-lib-lmo
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/luci f5cecb0ba00886173676c81239b1bdc2
+Installed-Time: 1408698104
+
+Package: cs-tr069-be
+Version: 1.0.0-1
+Depends: libuci, libuci-lua, lua, uci-precommit
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698094
+
+Package: librt
+Version: 0.9.32-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: perlbase-extutils
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: kmod-mac80211
+Version: 2.6.36+2011-01-24-1
+Depends: kernel (= 2.6.36-1), kmod-crypto-core, kmod-crypto-arc4, kmod-crypto-aes, kmod-cfg80211
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698133
+
+Package: perl-exiftool
+Version: 8.65-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-xsloader
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698100
+
+Package: g2qos
+Version: 1-1
+Depends: netengine_config, tc
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698096
+
+Package: giflib
+Version: 4.1.6-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: iptables-mod-hashlimit
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-hashlimit
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: perlbase-fcntl
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: luci-app-miniupnpd
+Version: 0.1-1
+Depends: luci-mod-admin-core, miniupnpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698098
+
+Package: g2_diags
+Version: 1.0.0-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698127
+
+Package: uclibcxx
+Version: 0.2.2-3
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698127
+
+Package: perl-tt
+Version: 2.22-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perlbase-scalar, perlbase-base, perlbase-bytes, perlbase-list, perlbase-cwd, perlbase-encode, perl-appconfig
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698100
+
+Package: ip6tables-utils
+Version: 1.4.10-1
+Depends: ip6tables
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: libintl-full
+Version: 0.18.1.1-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: libggi
+Version: 2.2.2-1
+Depends: libgii
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698127
+
+Package: kmod-nfnetlink-log
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-nfnetlink
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1408698132
+
+Package: iptables
+Version: 1.4.10-1
+Depends: kmod-ipt-core, libiptc, libxtables
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: iptables-mod-filter
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-filter
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: hotplug2
+Version: 1.0-beta-4
+Depends: udevtrigger
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/hotplug2.rules d8f7291bf00e825ae0f5347480c601d1
+Installed-Time: 1408698128
+
+Package: perlbase-b
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: lighttpd-mod-alias
+Version: 1.4.28-1
+Depends: lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: kmod-fuse
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698127
+
+Package: bridge
+Version: 1.4-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: perl
+Version: 5.10.0-5
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: udev
+Version: 142-1
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/udev/udev.conf 8b024b79a468658332fbf2586737907e
+Installed-Time: 1408698135
+
+Package: algapp
+Version: 0.1-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698093
+
+Package: procps
+Version: 3.2.8-1
+Depends: libncurses
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: libncurses
+Version: 5.7-3
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698133
+
+Package: e2fsprogs
+Version: 1.41.12-1
+Depends: libblkid, libuuid, libext2fs, libpthread
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698093
+
+Package: luci-app-vpn
+Version: 0.1-1
+Depends: luci-mod-admin-core, openswan, pptpd, xl2tpd, kmod-mppe
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698098
+
+Package: luci-app-dhcp-simple
+Version: 0.1-1
+Depends: luci-mod-admin-core, dnsmasq
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698103
+
+Package: packet_generator
+Version: 0.99-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: perl-cgi-fast
+Version: 3.55-1
+Depends: perl, perl-fcgi
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: libgii
+Version: 1.0.2-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698127
+
+Package: racoon2
+Version: 20100526a
+Depends: libpthread, libopenssl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698101
+
+Package: mdadm
+Version: 2.6.7.2-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: switch_config
+Version: 1.00-1
+Depends: kmod-rtl83xx
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698102
+
+Package: perlbase-integer
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: perl-xml-sax
+Version: 0.99-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perlbase-symbol, perlbase-fcntl, perlbase-io, perlbase-selectsaver, perlbase-errno, perlbase-perlio, perl-xml-sax-base, perl-xml-namespacesupport
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698100
+
+Package: minidlna
+Version: 1.0.18-1
+Depends: libintl, libiconv, libpthread, libexif, libjpeg, libsqlite3, libffmpeg, libid3tag, libflac, libvorbis, libuuid, libintl-full
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698098
+
+Package: igmpproxy
+Version: 0.1-1
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/igmpproxy f2398194df109ae7364d2551a08490f7
+Installed-Time: 1408698096
+
+Package: fcgiwrap
+Version: 1.0.3-1
+Depends: fcgi
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698095
+
+Package: hostapd
+Version: 20110117-1
+Depends: libnl-tiny
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: luci-app-minidlna
+Version: 0.1-1
+Depends: luci-mod-admin-core, minidlna
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698098
+
+Package: libiconv
+Version: 4
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698106
+
+Package: lighttpd-mod-userdir
+Version: 1.4.28-1
+Depends: lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: uhttpd
+Version: 22
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/uhttpd edd44084e637d8bb24f51c444700f943
+Installed-Time: 1408698135
+
+Package: bootstrap
+Version: 0.99-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698093
+
+Package: iptables-mod-conntrack-extra
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-conntrack-extra
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: perl-xml-namespacesupport
+Version: 1.11-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698100
+
+Package: ip6tables
+Version: 1.4.10-1
+Depends: kmod-ip6tables, libiptc, libxtables
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: libxtables
+Version: 1.4.10-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: transmission-daemon
+Version: 2.20-1
+Depends: libcurl, libopenssl, libpthread, libevent2
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/transmission fe9ba4502a576505e18b17042d57b9ae
+Installed-Time: 1408698127
+
+Package: lighttpd-mod-redirect
+Version: 1.4.28-1
+Depends: lighttpd, libpcre
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: zlib
+Version: 1.2.5-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698135
+
+Package: kmod-arptables
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1408698131
+
+Package: perlbase-cwd
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: perlbase-filter
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: luci-lib-nixio
+Version: trunk+svn8216-1
+Depends: luci-lib-core
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: perl-xml-simple
+Version: 2.18-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perl-xml-sax
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698100
+
+Package: lighttpd-mod-auth
+Version: 1.4.28-1
+Depends: lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: hostapd-mini
+Version: 20110117-1
+Depends: libnl-tiny
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: perlbase-timelocal
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: perlbase-base
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: crda
+Version: 1.1.1-1
+Depends: libnl-tiny
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: kmod-atheros-11AC-10.1.467
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), sharutils/host
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698093
+
+Package: kmod-ipt-nathelper-extra
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-ipt-core, kmod-ipt-nat, kmod-textsearch
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1408698131
+
+Package: udevtrigger
+Version: 106-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698135
+
+Package: pptpd
+Version: 1.3.4-2
+Depends: kmod-ppp, kmod-gre, ppp
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/pptpd.conf cdb8b23d8921a60dffd941b5686a1dc5
+ /etc/ppp/options.pptpd e6fc26d6178a66c3ed74c810e3325433
+Installed-Time: 1408698126
+
+Package: libmad
+Version: 0.15.1b-3
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698106
+
+Package: perlbase-time
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: wide-dhcpv6-client
+Version: 20080615-5
+Depends: kmod-ipv6
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/dhcp6c c05fb8915d29d379b5716bf583f07bdc
+Installed-Time: 1408698103
+
+Package: radvd
+Version: 1.7-2
+Depends: kmod-ipv6
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/radvd 60c3ad8ad87d5dd14799fe7a5db73f72
+Installed-Time: 1408698101
+
+Package: fdisk
+Version: 2.21-4
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698135
+
+Package: libid3tag
+Version: 0.15.1b-3
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: luci-app-firewall-simple
+Version: 0.1-1
+Depends: luci-mod-admin-core, firewall, algapp
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698103
+
+Package: libgmp
+Version: 4.3.1-2
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: block-hotplug
+Version: 0.1.0-2
+Depends: block-mount, hotplug2
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: libsqlite3
+Version: 3070400-1
+Depends: libpthread
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: perlbase-selectsaver
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: iptables-mod-ulog
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-ulog
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: iptables-mod-nat
+Version: 1.4.10-1
+Depends: iptables, kmod-ipt-nat
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698128
+
+Package: libext2fs
+Version: 1.41.12-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698093
+
+Package: luci-app-g2qos
+Version: 1-1
+Depends: g2qos
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: kmod-ath
+Version: 2.6.36+2011-01-24-1
+Depends: kernel (= 2.6.36-1), kmod-mac80211
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698133
+
+Package: perl-appconfig
+Version: 1.66-1
+Depends: perl, perlbase-essential
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: libexpat
+Version: 2.0.1-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: perlbase-sys
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698125
+
+Package: kmod-g2-buildid
+Version: 2.6.36+1.0-0
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698127
+
+Package: uboot-flashbin-setenv
+Version: 0.1-0
+Depends: uboot-flashbin-setenv/host
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698102
+
+Package: kernel
+Version: 2.6.36-1
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1408698130
+
+Package: libnl-tiny
+Version: 0.1-2
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698133
+
+Package: blkid
+Version: 2.21-4
+Depends: libblkid, libuuid
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698135
+
+Package: luci-app-transmission
+Version: 0.1-1
+Depends: luci-mod-admin-core, transmission-daemon, transmission-web
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698098
+
+Package: pe_ipsec_ath_wifi
+Version: 3.0-0
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: kmod-nfnetlink-queue
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-nfnetlink
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1408698132
+
+Package: ldd
+Version: 0.9.32-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1408698092
+
+Package: libvpx
+Version: 20307c7-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698097
+
+Package: lighttpd-mod-flv-streaming
+Version: 1.4.28-1
+Depends: lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: perl-www-tmdb
+Version: 0.03-1
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698100
+
+Package: lighttpd-mod-fastcgi
+Version: 1.4.28-1
+Depends: lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: luci-proto-core
+Version: trunk+svn8216-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: luci-theme-cortina
+Version: 1.0.0-1
+Depends: luci-mod-admin-core, luci-theme-base, luci-mod-jquery
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698098
+
+Package: faac
+Version: 1.28-0
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698094
+
+Package: 6rd
+Version: 1.0-0
+Depends: kmod-ipv6
+Provides:
+Status: install user installed
+Architecture: all
+Conffiles:
+ /etc/config/6rd 0dbeb1a0910e88d55be20c796448e828
+Installed-Time: 1408698092
+
+Package: luci-i18n-english
+Version: trunk+svn8216-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: mount-utils
+Version: 2.21-4
+Depends: libblkid, libuuid
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698135
+
+Package: transmission-web
+Version: 2.20-1
+Depends: transmission-daemon
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698127
+
+Package: mini-httpd-htpasswd
+Version: 1.19-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: libfreetype
+Version: 2.3.12-1
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+
+Package: lighttpd-mod-simple-vhost
+Version: 1.4.28-1
+Depends: lighttpd
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698107
+
+Package: wireless-tools
+Version: 29-4
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698135
+
+Package: dump_sadb
+Version: 0.1-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698093
+
+Package: kmod-ntfs
+Version: 2.6.36+8.0-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698099
+
+Package: libopenssl
+Version: 1.0.0c-1
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: perlbase-errno
+Version: 5.10.0-5
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698124
+
+Package: kmod-cfg80211
+Version: 2.6.36+2011-01-24-1
+Depends: kernel (= 2.6.36-1), wireless-tools, iw, crda
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698133
+
+Package: nginx
+Version: 0.7.67-3
+Depends: libpcre, zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/nginx/nginx.conf 64008b70252ea1a820392669b917a0ea
+ /etc/nginx/mime.types 6f392f914fafd91bd3dd55dfcc90f95e
+ /etc/nginx/fastcgi_params 822165a5f2bed79b8e0fdac84b97066e
+ /etc/nginx/koi-utf 3e338aca6a53a5420fc791b5ef86f64c
+ /etc/nginx/koi-win bfa0b80381fed2b1dfcf617b0ba204ec
+ /etc/nginx/win-utf 3749ffe19bedd842eb87e83d544e5ce6
+Installed-Time: 1408698107
+
+Package: luci-lib-core
+Version: trunk+svn8216-1
+Depends: lua, libuci-lua
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: luci-app-ddns-simple
+Version: 0.1-1
+Depends: luci-mod-admin-core, ddns-scripts
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698103
+
+Package: perl-html-tagset
+Version: 3.20-1
+Depends: perl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698126
+
+Package: libffmpeg
+Version: 0.6.3-5
+Depends: libpthread, zlib, libvpx, faac
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698095
+
+Package: 6to4
+Version: 3-1
+Depends: ip, kmod-ipv6, kmod-sit
+Provides:
+Status: install user installed
+Architecture: all
+Installed-Time: 1408698092
+
+Package: luci-full
+Version: trunk+svn8216-1
+Depends: uhttpd, luci-mod-admin-full, luci-theme-openwrt, luci-app-firewall, luci-proto-core, luci-proto-ppp, libiwinfo-lua
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: ppp-mod-pppoe
+Version: 2.4.4-16
+Depends: ppp, kmod-pppoe
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698134
+
+Package: perl-xml-sax-base
+Version: 1.08-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file, perlbase-symbol, perl-xml-namespacesupport
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698100
+
+Package: luci-app-igmpproxy
+Version: trunk+svn8216-1
+Depends: igmpproxy
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698104
+
+Package: fribidi
+Version: 0.10.9-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1408698105
+

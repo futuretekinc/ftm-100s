@@ -1,0 +1,15 @@
+Package: fcgiwrap
+Version: 1.0.3-1
+Depends: fcgi
+Provides: 
+Source: feeds/cortina/fcgiwrap
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 5975
+Title: FastCGI wrapper utility for nginx
+Description:  FastCGI wrapper utility for nginx

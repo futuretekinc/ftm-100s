@@ -1,0 +1,15 @@
+Package: kmod-rtl83xx
+Version: 2.6.36+1.2.7-1
+Depends: kernel (=2.6.36-1)
+Provides: 
+Source: feeds/cortina/rtl83xx
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 66907
+Title: Realtek RTL83XX switch driver
+Description:  This package contains switch drivers for Realtek RTL8305/8307/8363/8365/8367/8368 switches

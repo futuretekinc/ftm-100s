@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+        delete ucitrack.@davfs2[-1]
+        add ucitrack davfs2
+        set ucitrack.@davfs2[-1].init=davfs2
+        commit ucitrack
+EOF
+ 
+rm -f /tmp/luci-indexcache
+exit 0

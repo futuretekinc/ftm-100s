@@ -1,0 +1,15 @@
+Package: luci-app-radvd
+Version: trunk+svn8216-1
+Depends: radvd
+Provides: 
+Source: feeds/luci/luci
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: LuCI Development Team <luci@lists.subsignal.org>
+Architecture: g2
+Installed-Size: 22645
+Title: LuCI Support for Radvd
+Description:  LuCI Support for Radvd

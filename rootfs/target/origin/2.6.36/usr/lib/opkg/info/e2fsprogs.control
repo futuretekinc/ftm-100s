@@ -1,0 +1,17 @@
+Package: e2fsprogs
+Version: 1.41.12-1
+Depends: libblkid, libuuid, libext2fs, libpthread
+Provides: 
+Source: package/e2fsprogs
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 115607
+Title: Ext2/3/4 filesystem utilities
+Description:  This package contains essential ext2 filesystem utilities which consists of 
+ e2fsck, mke2fs, debugfs, dumpe2fs, tune2fs, and most of the other core ext2 
+ filesystem utilities.

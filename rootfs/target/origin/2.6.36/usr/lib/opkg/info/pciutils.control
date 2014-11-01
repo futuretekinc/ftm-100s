@@ -1,0 +1,16 @@
+Package: pciutils
+Version: 3.1.7-2
+Depends: zlib
+Provides: 
+Source: feeds/packages/utils/pciutils
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 227377
+Title: Linux PCI Utilities
+Description:  This package contains various utilities for inspecting and setting of
+ devices connected to the PCI bus.

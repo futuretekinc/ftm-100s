@@ -1,0 +1,3 @@
+/usr/lib/lua/luci/model/cbi/admin_network/proto_static.lua
+/usr/lib/lua/luci/model/cbi/admin_network/proto_none.lua
+/usr/lib/lua/luci/model/cbi/admin_network/proto_dhcp.lua

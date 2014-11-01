@@ -1,0 +1,15 @@
+Package: perl-xml-namespacesupport
+Version: 1.11-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-file
+Provides: 
+Source: feeds/cortina/perl-xml-namespacesupport
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 2262
+Title: a simple generic namespace support class
+Description:  a simple generic namespace support class

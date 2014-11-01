@@ -1,0 +1,633 @@
+Package: kernel_test
+Version: 0.99-1
+Depends: libevent
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213313
+
+Package: kmod-g2-mtd-tests
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1398213310
+
+Package: ldconfig
+Version: 2.6.1-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1398213290
+
+Package: libc
+Version: 2.6.1-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1398213290
+
+Package: sysstat
+Version: 9.0.6-1
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/sysstat/sysstat.ioconf fa92b01baa2130e26822c30fb27ac56e
+ /etc/sysstat/config 2980a0edc3fc1adcd1444aa5b77e5167
+Installed-Time: 1398213306
+
+Package: directfb
+Version: 1.4.2-1
+Depends: libpng, libjpeg, libpthread, libfreetype
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213303
+
+Package: libjpeg
+Version: 6b-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213302
+
+Package: libpthread
+Version: 2.6.1-65
+Depends: librt
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1398213290
+
+Package: busybox
+Version: 1.17.3-2
+Provides:
+Status: install user installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1398389120
+
+Package: kmod-nfnetlink
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-ipt-core
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1398213311
+
+Package: kmod-atheros-11AC-10.1.357-wfo-11n
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), sharutils/host, kmod-g2-wfo-core, pe_ipsec_ath_wifi
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213295
+
+Package: libcurl
+Version: 7.19.6-1
+Depends: libopenssl, zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213297
+
+Package: fuse-exfat
+Version: 0.9.7-1
+Depends: libfuse
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213297
+
+Package: base-files
+Version: 65-unknown
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/hosts 0eea71665fb6890c06421fd13aa3f849
+ /etc/inittab 2e5d0a794292943737cd6c3379f5cb59
+ /etc/group 31c4c2ea7b79761476954e66f9d4ed19
+ /etc/passwd a8ee4685f2cc7764a73dc70c84bc236b
+ /etc/profile f6394146d2f7dd077ea65916f2854948
+ /etc/shells 725ba6f40dff0612f61ecd3f171bb3e1
+ /etc/sysctl.conf 7b3463f0cd8bb764212cbfe93a155972
+ /etc/rc.local 43a437727a1677053c034ab8363c808d
+ /etc/sysupgrade.conf 3ef80f71809617b83dd00a63ad5c422c
+ /etc/config/timeserver 7c9118e571e55a6bbc1b419e77883d76
+ /etc/config/uart-server c3c607d097cb5845d7e2e120e7570533
+ /etc/config/csmi 4d8bb52f456be7a511eca53b6f65c432
+ /etc/config/system aba5c5492df4d6bc8826c16130099cc2
+ /etc/config/ipsec 2a0f27a82429856f0117e5357b7ce96c
+ /etc/config/version bacfbf9de64cf9c312a36f5b16f5a685
+ /etc/config/network 5f8177ef746f2bb4f34c1d452df042e0
+Installed-Time: 1398213289
+
+Package: kmod-d2
+Version: 2.6.36+1.0-0
+Depends: kernel (= 2.6.36-1), kmod-g2-sport, kmod-g2-spi, kmod-leds-gpio, kmod-ledtrig-timer
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213307
+
+Package: cs-system-upgrade
+Version: 1.1-1
+Depends: cs-multi-image, libcurl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213296
+
+Package: pciutils
+Version: 3.1.7-2
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213304
+
+Package: uboot-envtools
+Version: 20081215-2
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213315
+
+Package: u-boot
+Version: 2009.11-1
+Depends: gen_post_uboot_bin, uboot-flashbin-setenv, ecdsa-tools
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213298
+
+Package: libblkid
+Version: 2.21-4
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213316
+
+Package: cs-multi-image
+Version: 1.0-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213296
+
+Package: kmod-openswan
+Version: 2.6.36+2.6.38-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213299
+
+Package: kmod-g2-crypto-spacc
+Version: 2.6.36+2.0.0-2
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213296
+
+Package: kmod-rtl83xx
+Version: 2.6.36+1.2.7-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213300
+
+Package: block-mount
+Version: 0.1.0-2
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/config/fstab 1c765e9f54e16d8b3ec7aa1d4516435d
+Installed-Time: 1398213290
+
+Package: netengine_config
+Version: 0.99-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213314
+
+Package: libevent
+Version: 1.4.14b-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213303
+
+Package: mtd-utils
+Version: 20090227-1
+Depends: zlib, liblzo, libuuid
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213304
+
+Package: rboot
+Version: 0.99-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213315
+
+Package: fontconfig
+Version: 2.6.0-2
+Depends: libexpat, libfreetype
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213302
+
+Package: libpng
+Version: 1.2.44-1
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213303
+
+Package: libfuse
+Version: 2.8.5-1
+Depends: kmod-fuse
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213307
+
+Package: losetup
+Version: 2.21-4
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213316
+
+Package: libstdcpp
+Version: 4.5.2-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1398213290
+
+Package: mtd
+Version: 15
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213313
+
+Package: kmod-atheros-11AC-10.1.357-wfo-11ac
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), sharutils/host, kmod-g2-wfo-core, pe_ipsec_ath_wifi
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213295
+
+Package: libgcc
+Version: 4.5.2-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1398213290
+
+Package: kmod-crypto-test
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-crypto-core
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1398213309
+
+Package: libuuid
+Version: 1.41.12-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213291
+
+Package: gen_post_uboot_bin
+Version: 1.0.0-1
+Depends: gen_post_uboot_bin/host
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213298
+
+Package: liblzo
+Version: 2.04-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213303
+
+Package: librt
+Version: 2.6.1-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1398213290
+
+Package: kmod-rtl8192ce
+Version: 2.6.36+1.6-03132012-1
+Depends: kernel (= 2.6.36-1), libopenssl
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213300
+
+Package: kmod-RT3593AP_WFO
+Version: 2.6.36+2.6.0.0_1-1
+Depends: kernel (= 2.6.36-1), kmod-g2-wfo, kmod-g2-wfo-rt3593
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213293
+
+Package: g2_diags
+Version: 1.0.0-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213307
+
+Package: uclibcxx
+Version: 0.2.2-3
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213306
+
+Package: kmod-nfnetlink-log
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-nfnetlink
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1398213312
+
+Package: hotplug2
+Version: 1.0-beta-4
+Depends: udevtrigger
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/hotplug2.rules d8f7291bf00e825ae0f5347480c601d1
+Installed-Time: 1398213307
+
+Package: kmod-fuse
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213307
+
+Package: udev
+Version: 142-1
+Provides:
+Status: install user installed
+Architecture: g2
+Conffiles:
+ /etc/udev/udev.conf 8b024b79a468658332fbf2586737907e
+Installed-Time: 1398213315
+
+Package: procps
+Version: 3.2.8-1
+Depends: libncurses
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213306
+
+Package: libncurses
+Version: 5.7-3
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213313
+
+Package: e2fsprogs
+Version: 1.41.12-1
+Depends: libblkid, libuuid, libext2fs, libpthread
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213291
+
+Package: packet_generator
+Version: 0.99-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213314
+
+Package: kmod-atheros-11AC-10.1.357
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), sharutils/host
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213294
+
+Package: switch_config
+Version: 1.00-1
+Depends: kmod-rtl83xx
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213300
+
+Package: bootstrap
+Version: 0.99-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213296
+
+Package: kmod-RT5392AP
+Version: 2.6.36+2.7.0.1-0
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213293
+
+Package: kmod-RT3593AP
+Version: 2.6.36+2.6.0.0-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213292
+
+Package: zlib
+Version: 1.2.5-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213316
+
+Package: kmod-arptables
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1398213311
+
+Package: kmod-RT3593AP_CS
+Version: 2.6.36+2.6.0.0-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213292
+
+Package: kmod-ipt-nathelper-extra
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-ipt-core, kmod-ipt-nat, kmod-textsearch
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1398213310
+
+Package: udevtrigger
+Version: 106-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213315
+
+Package: fdisk
+Version: 2.21-4
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213316
+
+Package: block-hotplug
+Version: 0.1.0-2
+Depends: block-mount, hotplug2
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213290
+
+Package: libext2fs
+Version: 1.41.12-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213291
+
+Package: libexpat
+Version: 2.0.1-1
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213301
+
+Package: kmod-g2-buildid
+Version: 2.6.36+1.0-0
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213307
+
+Package: uboot-flashbin-setenv
+Version: 0.1-0
+Depends: uboot-flashbin-setenv/host
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213301
+
+Package: kernel
+Version: 2.6.36-1
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1398213309
+
+Package: pe_ipsec_ath_wifi
+Version: 3.0-0
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213299
+
+Package: kmod-nfnetlink-queue
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), kmod-nfnetlink
+Provides:
+Status: install hold installed
+Architecture: g2
+Installed-Time: 1398213312
+
+Package: ldd
+Version: 2.6.1-65
+Provides:
+Status: install hold installed
+Essential: yes
+Architecture: g2
+Installed-Time: 1398213290
+
+Package: mount-utils
+Version: 2.21-4
+Depends: libblkid, libuuid
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213316
+
+Package: kmod-atheros-11AC-10.1.357-wfo
+Version: 2.6.36-1
+Depends: kernel (= 2.6.36-1), sharutils/host, kmod-g2-wfo-core, pe_ipsec_ath_wifi
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213294
+
+Package: libfreetype
+Version: 2.3.12-1
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213302
+
+Package: kmod-ntfs
+Version: 2.6.36+8.0-1
+Depends: kernel (= 2.6.36-1)
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213299
+
+Package: libopenssl
+Version: 1.0.0c-1
+Depends: zlib
+Provides:
+Status: install user installed
+Architecture: g2
+Installed-Time: 1398213314
+

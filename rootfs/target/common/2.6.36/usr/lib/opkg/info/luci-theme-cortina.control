@@ -1,0 +1,15 @@
+Package: luci-theme-cortina
+Version: 1.0.0-1
+Depends: luci-mod-admin-core, luci-theme-base, luci-mod-jquery
+Provides: 
+Source: feeds/cortina/luci-theme-cortina
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 87575
+Title: Cortina Systems Demo Theme
+Description:  Cortina Systems Demo Theme

@@ -1,0 +1,15 @@
+Package: lighttpd-mod-fastcgi
+Version: 1.4.28-1
+Depends: lighttpd
+Provides: 
+Source: feeds/packages/net/lighttpd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 21096
+Title: FastCGI module
+Description:  FastCGI module

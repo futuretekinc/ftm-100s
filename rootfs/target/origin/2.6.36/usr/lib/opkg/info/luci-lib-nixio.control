@@ -1,0 +1,15 @@
+Package: luci-lib-nixio
+Version: trunk+svn8216-1
+Depends: luci-lib-core
+Provides: 
+Source: feeds/luci/luci
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: LuCI Development Team <luci@lists.subsignal.org>
+Architecture: g2
+Installed-Size: 30622
+Title: NIXIO POSIX library
+Description:  NIXIO POSIX library

@@ -1,0 +1,15 @@
+Package: switch_config
+Version: 1.00-1
+Depends: kmod-rtl83xx
+Provides: 
+Source: feeds/cortina/switch-config
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 61302
+Title: Cortina switch configure utilities
+Description:  switch_config - Cortina Systems switch configure utilities

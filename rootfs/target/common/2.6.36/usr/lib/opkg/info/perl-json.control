@@ -1,0 +1,15 @@
+Package: perl-json
+Version: 2.53-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-filter, perlbase-b, perlbase-xsloader, perlbase-re, perlbase-utf8, perlbase-unicore
+Provides: 
+Source: feeds/cortina/perl-json
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 15331
+Title: JSON - JavaScript Object Notation - encoder/decoder
+Description:  JSON - JavaScript Object Notation - encoder/decoder

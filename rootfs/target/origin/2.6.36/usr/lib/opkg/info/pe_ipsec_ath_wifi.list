@@ -1,0 +1,11 @@
+/rboot/ipsec/ipsec_pe0.bin
+/rboot/ipsec/ipsec_pe1.bin
+/rboot/wfo_atheros_11AC/ath_11n_ap.sh
+/rboot/wfo_atheros_11AC/ath_11ac_ap.sh
+/rboot/wfo_atheros_11AC/ath_11ac_sta.sh
+/rboot/wfo_atheros_11AC/ar988x_pe0.bin
+/rboot/wfo_atheros_11AC/get_pci_dev.sh
+/rboot/wfo_atheros_11AC/ar9580_pe1.bin
+/rboot/wfo_atheros_11AC/ath_dbdc_ap.sh
+/rboot/wfo_atheros_11AC/ath_fix_rate.sh
+/rboot/iplip/iplip.bin

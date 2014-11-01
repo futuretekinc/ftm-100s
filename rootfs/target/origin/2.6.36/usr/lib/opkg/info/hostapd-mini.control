@@ -1,0 +1,15 @@
+Package: hostapd-mini
+Version: 20110117-1
+Depends: libnl-tiny
+Provides: 
+Source: package/hostapd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Felix Fietkau <nbd@openwrt.org>
+Architecture: g2
+Installed-Size: 117949
+Title: IEEE 802.1x Authenticator (WPA-PSK only)
+Description:  This package contains a minimal IEEE 802.1x/WPA Authenticator (WPA-PSK only).

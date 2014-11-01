@@ -1,0 +1,24 @@
+#!/bin/sh
+# Copyright (C) 2006 OpenWrt.org
+# Copyright (C) 2010 Vertical Communications
+
+debug_shell() {
+    echo "-- 90) restore_config: debug_shell"
+    ash --login
+}
+
+restore_config() {
+    echo "--- 90) restore_config"
+    [ -f /sysupgrade.tgz ] && {
+	echo "- config restore -"
+	cd /
+	mv sysupgrade.tgz /tmp
+	tar xzf /tmp/sysupgrade.tgz
+	rm -f /tmp/sysupgrade.tgz
+	sync
+    }
+}
+
+# boot_hook_add preinit_main debug_shell
+# boot_hook_add preinit_main restore_config
+

@@ -1,0 +1,7 @@
+/usr/lib/lua/luci/controller/ftpsamba.lua
+/etc/init.d/ftpsamba
+/etc/uci-defaults/luci-app-ftpsamba
+/etc/config/ftpsamba
+/usr/lib/lua/luci/model/cbi/ftpsamba.lua
+/usr/lib/lua/luci/i18n/ftpsamba.en.lmo
+/etc/proftpd.tmpl

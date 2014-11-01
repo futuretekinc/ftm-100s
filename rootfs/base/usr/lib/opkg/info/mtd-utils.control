@@ -1,0 +1,15 @@
+Package: mtd-utils
+Version: 20090227-1
+Depends: zlib, liblzo, libuuid
+Provides: 
+Source: feeds/packages/utils/mtd-utils
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 315764
+Title: Utilities for flash info/debug
+Description:  Utilities for manipulating memory technology devices.

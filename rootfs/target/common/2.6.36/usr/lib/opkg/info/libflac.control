@@ -1,0 +1,15 @@
+Package: libflac
+Version: 1.1.2-1
+Depends: 
+Provides: 
+Source: feeds/cortina/flac
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 66260
+Title: Free Lossless Audio Codec library
+Description:  Free Lossless Audio Codec library

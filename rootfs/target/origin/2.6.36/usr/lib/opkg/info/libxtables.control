@@ -1,0 +1,15 @@
+Package: libxtables
+Version: 1.4.10-1
+Depends: 
+Provides: 
+Source: package/iptables
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 10364
+Title: IPv4/IPv6 firewall - shared xtables library
+Description:  IPv4/IPv6 firewall - shared xtables library

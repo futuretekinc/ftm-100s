@@ -1,0 +1,15 @@
+Package: fdisk
+Version: 2.21-4
+Depends: 
+Provides: 
+Source: package/util-linux-ng
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 44156
+Title: Partition table manipulation utility
+Description:  This package contains a utility for managing disk partition tables.

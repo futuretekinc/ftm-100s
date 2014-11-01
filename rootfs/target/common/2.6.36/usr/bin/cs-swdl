@@ -1,0 +1,45 @@
+#!/bin/sh
+. /etc/functions.sh
+#
+# Script wrapper around cs.swdl, uses /etc/config/csmi to
+# get options.
+#
+config_load csmi
+config_get sb0_device flash sb0_device
+config_get sb1_device flash sb1_device
+config_get esz flash erase_size
+config_get mgmt flash mgmt_part_name
+config_get handlers swdl handlers
+config_get handler swdl handler
+config_get handler_opts swdl handler_opts
+
+usage="cs-swdl [-q(uiet)] [-v(alidate-only)] [-c(ommit)] url"
+
+opts=
+flags=
+quiet="--verbose"
+
+while getopts hqvc opt
+do
+    case $opt in
+	h)  echo $usage; exit;;
+	v)  flags="$flags --validate ";;
+	c)  flags="$flags --commit ";;
+	q)  quiet="";;
+	\?) echo $usage; exit;;
+    esac
+done
+
+shift `expr $OPTIND - 1`
+[ -z ${1} ] && { 
+    echo $usage
+    exit 
+}
+url=${1}
+
+cmdline="$quiet $flags --handlers=$handlers --handler=$handler \
+--sb0-device=$sb0_device --sb1-device=$sb1_device \
+--erase-blksz=$esz --mgmt-mtd-name=$mgmt \
+$handler_opts"
+
+/usr/bin/cs.swdl $cmdline $url

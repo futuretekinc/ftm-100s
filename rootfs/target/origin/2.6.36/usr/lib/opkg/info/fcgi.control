@@ -1,0 +1,17 @@
+Package: fcgi
+Version: 2.4.0-1
+Depends: uclibcxx
+Provides: 
+Source: feeds/packages/libs/fcgi
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 20575
+Title: Shared library of FastCGI
+Description:  FastCGI is a language independent, scalable, open extension to 
+ CGI that provides high performance without the limitations of 
+ server specific APIs.

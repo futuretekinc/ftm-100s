@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Add minidlna-gui to ucitrack so LuCI will call it.  
+# /etc/init.d/minidlna-gui will make the config file
+# modifications, which will then call minidlna's init.d
+# script, telling it to reload.
+#
+# So there is no need to add an 'affects' option
+# to minidlna-gui.
+#
+uci -q batch <<-EOF >/dev/null
+        delete ucitrack.@minidlna-gui[-1]
+        add ucitrack minidlna-gui
+        set ucitrack.@minidlna-gui[-1].init=minidlna-gui
+        commit ucitrack
+EOF
+ 
+rm -f /tmp/luci-indexcache
+exit 0

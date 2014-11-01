@@ -1,0 +1,15 @@
+Package: kmod-arptables
+Version: 2.6.36-1
+Depends: kernel (=2.6.36-1)
+Provides: 
+Source: package/kernel
+Section: kernel
+Category: Kernel modules
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 8949
+Title: ARP firewalling modules
+Description:  Kernel modules for ARP firewalling

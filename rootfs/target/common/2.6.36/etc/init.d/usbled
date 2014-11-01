@@ -1,0 +1,23 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2008-2010 OpenWrt.org
+
+. /etc/functions.sh
+
+START=40
+USB_LED_PATH='/sys/class/leds/usb1'
+
+start() {
+	test -d $USB_LED_PATH && {
+		echo usbdev > $USB_LED_PATH/trigger ;
+		echo 1-2.2 > $USB_LED_PATH/device_name ;
+		echo 500 > $USB_LED_PATH/activity_interval
+	}
+}
+
+stop() {
+	test -d $USB_LED_PATH && {
+		echo none > $USB_LED_PATH/trigger ;
+		echo 0 > $USB_LED_PATH/brightness ;
+	}
+}
+

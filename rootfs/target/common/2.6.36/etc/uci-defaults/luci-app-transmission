@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Add transmission to ucitrack so LuCI will call it.  
+# /etc/init.d/transmission will make the config file
+# modifications, which will then call transmission's init.d
+# script, telling it to reload.
+#
+# So there is no need to add an 'affects' option
+# to transmission.
+#
+uci -q batch <<-EOF >/dev/null
+        delete ucitrack.@transmission[-1]
+        add ucitrack transmission
+        set ucitrack.@transmission[-1].init=transmission
+        commit ucitrack
+EOF
+ 
+rm -f /tmp/luci-indexcache
+exit 0

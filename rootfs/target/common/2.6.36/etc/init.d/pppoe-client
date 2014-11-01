@@ -1,0 +1,27 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2006 OpenWrt.org
+START=50
+
+fixup_links() {
+    rm -f /etc/resolv.conf
+    ln -s /etc/ppp/resolv.conf /etc/resolv.conf
+}
+
+restore_links() {
+    rm -f /etc/resolv.conf
+    ln -s /tmp/resolv.conf /etc/resolv.conf
+}
+
+start() {
+    proto=`uci get network.wan.proto`
+    if [ "$proto" = "pppoe" ]; then
+        fixup_links
+        pppoe-start
+    fi
+}
+
+stop() {
+    pppoe-stop
+    restore_links
+}
+

@@ -1,0 +1,4 @@
+/usr/lib/lua/uci/precommit.lua
+/etc/config/uciprecommit
+/usr/sbin/apply_precommit
+/usr/lib/uci_precommit.so

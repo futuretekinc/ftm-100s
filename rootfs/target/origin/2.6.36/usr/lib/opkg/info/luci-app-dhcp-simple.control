@@ -1,0 +1,15 @@
+Package: luci-app-dhcp-simple
+Version: 0.1-1
+Depends: luci-mod-admin-core, dnsmasq
+Provides: 
+Source: feeds/cortinagui/luci-app-dhcp-simple
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 1537
+Title: A simple DHCP GUI
+Description:  A simplified screen for managing DHCP.

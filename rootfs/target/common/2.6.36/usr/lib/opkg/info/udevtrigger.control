@@ -1,0 +1,15 @@
+Package: udevtrigger
+Version: 106-1
+Depends: 
+Provides: 
+Source: package/udevtrigger
+Section: base
+Category: Base system
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Geoff Levand <geoffrey.levand@am.sony.com>
+Architecture: g2
+Installed-Size: 7961
+Title: Small utility to request kernel devices events for coldplug
+Description:  Small utility to request kernel devices events for coldplug

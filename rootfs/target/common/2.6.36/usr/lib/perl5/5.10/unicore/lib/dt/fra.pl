@@ -1,0 +1,5 @@
+
+return <<'END';
+00BC	00BE	
+2153	215F	
+END

@@ -1,0 +1,15 @@
+/usr/bin/free
+/usr/bin/tload
+/usr/bin/ps
+/usr/bin/pwdx
+/usr/bin/pgrep
+/usr/bin/w
+/usr/bin/pkill
+/usr/bin/slabtop
+/usr/bin/pmap
+/usr/bin/top
+/usr/bin/watch
+/usr/bin/snice
+/usr/bin/skill
+/usr/bin/vmstat
+/usr/lib/libproc-3.2.8.so

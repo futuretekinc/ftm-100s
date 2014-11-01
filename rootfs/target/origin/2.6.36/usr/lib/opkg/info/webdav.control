@@ -1,0 +1,20 @@
+Package: webdav
+Version: 0.1-1
+Depends: luci-server-lighttpd
+Provides: 
+Source: feeds/cortina/webdav
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 1777
+Title: WebDav
+Description:  Adds WebDav access capabilities to the web server.  You
+ can configure mulitple webdav accessible partitions that
+ are authenticated or not.  See /etc/config/webdav.
+ If you select this package, then Lighttpd will be used
+ instead of uhttpd as the main web server, and LuCI will
+ run under Lighttpd.

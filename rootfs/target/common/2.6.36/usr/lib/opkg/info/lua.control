@@ -1,0 +1,18 @@
+Package: lua
+Version: 5.1.4-7
+Depends: liblua
+Provides: 
+Source: package/lua
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 4733
+Title: Lua programming language (interpreter)
+Description:  Lua is a powerful light-weight programming language designed for extending 
+ applications. Lua is also frequently used as a general-purpose, stand-alone 
+ language. Lua is free software.
+ This package contains the Lua language interpreter.

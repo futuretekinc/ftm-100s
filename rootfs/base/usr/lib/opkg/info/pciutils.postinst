@@ -1,0 +1,3 @@
+#!/bin/sh
+(cd ${PKG_ROOT}/usr/share; ${PKG_ROOT}/usr/sbin/update-pciids)
+exit 0

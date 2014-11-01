@@ -1,0 +1,15 @@
+Package: fribidi
+Version: 0.10.9-1
+Depends: 
+Provides: 
+Source: feeds/packages/libs/fribidi
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 16109
+Title: GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi)
+Description:  GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi)

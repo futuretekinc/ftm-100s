@@ -1,0 +1,15 @@
+Package: luci-app-minidlna
+Version: 0.1-1
+Depends: luci-mod-admin-core, minidlna
+Provides: 
+Source: feeds/cortina/luci-app-minidlna
+Section: luci
+Category: LuCI
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 2853
+Title: LuCI GUI for the minidlna
+Description:  This Luci package does minidlna management

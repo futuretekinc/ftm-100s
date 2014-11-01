@@ -1,0 +1,15 @@
+Package: perl-exiftool
+Version: 8.65-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-xsloader
+Provides: 
+Source: feeds/cortina/perl-exiftool
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 1687973
+Title: Read and write meta information in files
+Description:  Read and write meta information in files

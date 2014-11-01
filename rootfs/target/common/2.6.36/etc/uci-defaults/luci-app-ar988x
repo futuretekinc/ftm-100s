@@ -1,0 +1,2 @@
+#!/bin/sh
+sed -i 's/has_wifi = true/has_wifi = true/g' /usr/lib/lua/luci/controller/admin/network.lua

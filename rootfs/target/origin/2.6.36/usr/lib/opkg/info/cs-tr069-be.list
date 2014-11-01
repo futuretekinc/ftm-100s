@@ -1,0 +1,7 @@
+/etc/config/ethport
+/etc/config/tr098acclst
+/etc/config/tr098notif
+/etc/config/tr069id
+/etc/config/tr098
+/etc/init.d/ethport
+/etc/config/tr069event

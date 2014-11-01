@@ -1,0 +1,15 @@
+Package: perl-fcgi
+Version: 0.74-1
+Depends: perl, perlbase-essential, perlbase-extutils, perlbase-dynaloader, perlbase-autoloader
+Provides: 
+Source: feeds/cortina/perl-fcgi
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 20481
+Title: Fast CGI module
+Description:  Fast CGI module

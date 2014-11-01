@@ -1,0 +1,17 @@
+Package: perl
+Version: 5.10.0-5
+Depends: 
+Provides: 
+Source: feeds/packages/lang/perl
+Section: lang
+Category: Languages
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Peter Colberg <peter@petercolberg.org>
+Architecture: g2
+Installed-Size: 519569
+Title: The Perl intepreter
+Description:  Perl is a stable, cross platform programming language.
+ It is used for mission critical projects in the public and private sectors
+ and is widely used to program web applications of all needs.

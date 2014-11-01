@@ -1,0 +1,43 @@
+#!/bin/sh /etc/rc.common
+#
+START=40
+#
+# This script reads from /etc/config/algapp and uses that information
+# to create 'include' sections in /etc/config/firewall.  Thus, during
+# boot time, this script must run before the firewall script does.
+# If you run this script manually on the command line, you must
+# then execute "firewall reload (or restart)" for the effects to
+# happen.  The luci-app-algapp will automatically run the firewall
+# reload when changes are made.
+#
+insert_include() {
+    local name="$1"
+    local path
+    local enabled
+
+    config_get enabled $name enabled '0'
+    config_get path $name path
+
+    if [ "$enabled" == '1' ] && [ -f "$path" ]; then
+	local section=`uci add firewall include`
+	uci rename firewall.$section=$name
+	uci set firewall.$name.path=$path
+    fi
+}
+
+remove_include() {
+    local name="$1"
+    uci delete firewall.$name
+}
+
+start() {
+    config_load algapp
+    config_foreach insert_include rule
+    uci commit firewall
+}
+
+stop() {
+    config_load algapp
+    config_foreach remove_include rule
+    uci commit firewall
+}

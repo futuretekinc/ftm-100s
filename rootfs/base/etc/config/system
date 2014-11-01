@@ -1,0 +1,11 @@
+config system
+   option hostname GoldenGate
+   option timezone UTC
+
+config rdate
+   option interface        wan
+
+config settings live_upgrade
+   option url             http://10.100.9.77:5555
+   option build_filename  /etc/live-upgrade/build_filename.sh
+   option validater       /etc/live-upgrade/validater.sh

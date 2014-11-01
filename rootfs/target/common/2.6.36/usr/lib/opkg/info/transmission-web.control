@@ -1,0 +1,15 @@
+Package: transmission-web
+Version: 2.20-1
+Depends: transmission-daemon
+Provides: 
+Source: feeds/packages/net/transmission
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Cezary Jackiewicz <cezary@eko.one.pl>
+Architecture: g2
+Installed-Size: 159803
+Title: A free, lightweight BitTorrent client
+Description:  Webinterface resources for transmission.

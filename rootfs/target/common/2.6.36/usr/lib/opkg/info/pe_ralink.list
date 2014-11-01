@@ -1,0 +1,7 @@
+/rboot/wfo_ralink/run_all_offload.sh
+/rboot/wfo_ralink/wfo_start.sh
+/rboot/wfo_ralink/RT2860AP-2.4G.dat
+/rboot/wfo_ralink/RT2860AP-5G.dat
+/rboot/wfo_ralink/moca.sh
+/rboot/wfo_ralink/wfo_pe0.bin
+/rboot/wfo_ralink/wfo_pe1.bin

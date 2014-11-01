@@ -1,0 +1,4 @@
+/usr/sbin/radvdump
+/usr/sbin/radvd
+/etc/init.d/radvd
+/etc/config/radvd

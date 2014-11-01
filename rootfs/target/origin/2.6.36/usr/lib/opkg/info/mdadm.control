@@ -1,0 +1,15 @@
+Package: mdadm
+Version: 2.6.7.2-1
+Depends: 
+Provides: 
+Source: feeds/packages/utils/mdadm
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 104764
+Title: A tool for managing Soft RAID under Linux
+Description:  A tool for managing Soft RAID under Linux

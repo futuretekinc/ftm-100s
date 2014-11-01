@@ -1,0 +1,89 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2008-2010 OpenWrt.org
+
+. /etc/functions.sh
+
+START=99
+
+common_port_speed_duplex_config() {
+	local section="$1"
+	
+	config_get ifname $section ifname
+	config_get speed $section speed
+	config_get duplex $section duplex
+		
+	if [ "$speed" == "auto" ] || [ "$speed" == "1000" ] || [ "$duplex" == "auto" ]; then
+		ethtool -s $ifname autoneg on
+	else
+		ethtool -s $ifname autoneg off speed $speed duplex $duplex
+	fi
+}
+
+wan_port_config() {
+	local section="$1"
+	
+	config_get_bool enable $section enable
+	
+	if [ "$enable" == "1" ]; then
+		reg_rw mii write -a 1 -r 0 -d 0x1100
+		common_port_speed_duplex_config $1
+	else
+		reg_rw mii write -a 1 -r 0 -d 0x1900
+	fi
+}
+
+lan_port_config() {
+	local section="$1"
+	
+	config_get portno $section portno
+	config_get ifname $section ifname
+	config_get_bool enable $section enable
+	config_get speed $section speed
+	config_get duplex $section duplex
+
+	if [ "$ifname" == "switch" ]; then
+ 		[ ! -e "/dev/switch" ] && \
+ 				insmod /lib/modules/`uname -r`/rtl83xx.ko
+		ps | grep -v grep | grep -q swSendCmd || /sbin/swSendCmd
+
+		swportno=`expr $portno - 1`
+		
+		if [ "$speed" == "auto" ] || [ "$speed" == "1000" ] || [ "$duplex" == "auto" ]; then
+			sw_cfg -c RTK_PORT_PHY_AN_ABILITY_SET -s
+			sw_cfg -c RTK_PORT_PHY_AN_ABILITY_SET -f port -v $swportno
+			sw_cfg -c RTK_PORT_PHY_AN_ABILITY_SET -f ability.AutoNegotiation -v 1
+			sw_cfg -c RTK_PORT_PHY_AN_ABILITY_SET -f ability.Half_10 -v 1
+			sw_cfg -c RTK_PORT_PHY_AN_ABILITY_SET -f ability.Full_10 -v 1
+			sw_cfg -c RTK_PORT_PHY_AN_ABILITY_SET -f ability.Half_100 -v 1
+			sw_cfg -c RTK_PORT_PHY_AN_ABILITY_SET -f ability.Full_100 -v 1
+			sw_cfg -c RTK_PORT_PHY_AN_ABILITY_SET -f ability.Full_1000 -v 1
+			sw_cfg -c RTK_PORT_PHY_AN_ABILITY_SET -e
+		else
+			sw_cfg -c RTK_PORT_PHY_FORCE_ABILITY_SET -s
+			sw_cfg -c RTK_PORT_PHY_FORCE_ABILITY_SET -f port -v $swportno
+			if [ "$duplex" == "half" ]; then
+				sw_cfg -c RTK_PORT_PHY_FORCE_ABILITY_SET -f ability.Half_$speed -v 1
+			else
+				sw_cfg -c RTK_PORT_PHY_FORCE_ABILITY_SET -f ability.Full_$speed -v 1			
+			fi
+			sw_cfg -c RTK_PORT_PHY_FORCE_ABILITY_SET -e
+		fi
+		
+		sw_cfg -c RTK_PORT_ADMIN_STATE_SET -s
+		sw_cfg -c RTK_PORT_ADMIN_STATE_SET  -f port -v $swportno
+		sw_cfg -c RTK_PORT_ADMIN_STATE_SET  -f enable -v $enable
+		sw_cfg -c RTK_PORT_ADMIN_STATE_SET -e
+	else
+		common_port_speed_duplex_config $1
+	fi
+}
+
+start() {
+	config_load ethport
+	config_foreach wan_port_config wanport
+	config_foreach lan_port_config lanport
+}
+
+stop() {
+	killall -q swSendCmd
+}

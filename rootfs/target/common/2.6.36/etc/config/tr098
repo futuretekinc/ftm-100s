@@ -1,0 +1,72 @@
+package 'tr098'
+
+config 'DeviceInfo' 'DeviceInfo'
+    option 'Manufacturer' 'Cortina'
+    option 'ManufacturerOUI' '001325'
+    option 'ModelName' 'WAN'
+    option 'Description' 'GoldenGate G2'
+    option 'ProductClass' 'GoldenGate G2'
+    option 'SerialNumber' '022882525299'
+    option 'HardwareVersion' 'WAN'
+    option 'SpecVersion' '1.0'
+    option 'ProvisioningCode' 'F7E896'
+
+config 'ManagementServer' 'ManagementServer'
+    option 'EnableCWMP' '0'
+    option 'URL' 'http://192.168.65.181:8180/openacs/acs'
+    option 'Username' 'testuser'
+    option 'Password' 'testpassword'
+    option 'PeriodicInformEnable' '1'
+    option 'PeriodicInformInterval' '60'
+    option 'PeriodicInformTime' '0001-01-01T00:00:00'
+    option 'ParameterKey' 'ocstest3'
+    option 'ConnectionRequestURL' 'http://172.30.10.10:7547/cwmp/creq'
+    option 'ConnectionRequestUsername' 'testuser'
+    option 'ConnectionRequestPassword' 'testpassword'
+    option 'UpgradesManaged' '0'
+
+config 'Layer3Forwarding' 'Layer3Forwarding'
+    option 'DefaultConnectionService' 'InternetGatewayDevice.WANDevice.1.WANConnectionDevice.1.WANIPConnection.1'
+    
+config 'InternetGatewayDevice' 'InternetGatewayDevice'
+    option 'DeviceSummary' 'InternetGatewayDevice:1.1[] (Baseline:1)'
+    option 'WANDeviceNumberOfEntries' '1'
+        
+config 'LANDevice'
+    option 'LANUSBInterfaceNumberOfEntries' '0'
+    option 'interface' 'lan'
+    option 'ifname' 'eth1'
+    
+config 'LANInterfaces' 'LANInterfaces'
+    option 'LANEthernetInterfaceNumberOfEntries' '0'
+    option 'LANUSBInterfaceNumberOfEntries' '0'
+    option 'LANWLANConfigurationNumberOfEntries' '0'
+
+config 'WANDevice'
+    option 'WANConnectionNumberOfEntries' '1'
+    
+config 'WANCommonInterfaceConfig' 'WANCommonInterfaceConfig'
+    option 'EnabledForInternet' '1'
+    option 'WANAccessType' 'Ethernet'
+
+config 'WANConnectionDevice'
+    option 'interface' 'wan'
+    option 'ifname' 'eth0'
+    
+config 'WANIPConnection' 'WANIPConnection'
+    option 'ConnectionTrigger' 'AlwaysOn'
+    option 'RouteProtocolRx' 'Off'
+
+config 'PortMapping'
+    option 'PortMappingEnabled' '1'
+    
+config 'LANEthernetInterfaceConfig'
+    option 'Enable' '1'
+    option 'MACAddressControlEnabled' '0'
+    option 'MaxBitRate' 'Auto'
+    option 'DuplexMode' 'Auto'
+
+config 'WANEthernetInterfaceConfig' 'WANEthernetInterfaceConfig'
+    option 'Enable' '1'
+    option 'MaxBitRate' 'Auto'
+    option 'DuplexMode' 'Auto'

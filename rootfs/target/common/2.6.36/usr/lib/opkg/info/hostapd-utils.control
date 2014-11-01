@@ -1,0 +1,16 @@
+Package: hostapd-utils
+Version: 20110117-1
+Depends: 
+Provides: 
+Source: package/hostapd
+Section: net
+Category: Network
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Felix Fietkau <nbd@openwrt.org>
+Architecture: g2
+Installed-Size: 8550
+Title: IEEE 802.1x Authenticator (utils)
+Description:  This package contains a command line utility to control the
+ IEEE 802.1x/WPA/EAP/RADIUS Authenticator.

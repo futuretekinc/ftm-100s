@@ -1,0 +1,2 @@
+/etc/modules.d/48-nfnetlink
+/lib/modules/2.6.36/nfnetlink.ko

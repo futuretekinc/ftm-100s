@@ -1,0 +1,25 @@
+#!/bin/sh
+
+behaviour=$1
+dev_node=$2
+mount_path=$3
+
+
+case $behaviour in
+        mount)
+                uci add ftpsamba ftpshare
+                uci set ftpsamba.@ftpshare[-1].writeable=1
+                uci set ftpsamba.@ftpshare[-1].path="$mount_path"
+                uci rename ftpsamba.@ftpshare[-1]=$(basename $dev_node)
+                uci commit ftpsamba
+                /etc/init.d/proftpd stop
+                /etc/init.d/ftpsamba start
+                ;;
+        umount)
+                uci delete ftpsamba.$(basename $dev_node)
+                uci commit ftpsamba
+                /etc/init.d/proftpd stop
+                /etc/init.d/ftpsamba start
+                ;;
+esac
+

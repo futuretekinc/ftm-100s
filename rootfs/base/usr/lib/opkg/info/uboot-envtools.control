@@ -1,0 +1,15 @@
+Package: uboot-envtools
+Version: 20081215-2
+Depends: zlib
+Provides: 
+Source: package/uboot-envtools
+Section: utils
+Category: Utilities
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 7687
+Title: read/modify U-Boot bootloader environment
+Description:  This package includes tools to read and modify U-Boot bootloader environment.

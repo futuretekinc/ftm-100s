@@ -1,0 +1,26 @@
+#!/bin/sh /etc/rc.common
+
+# Start before uhttpd or lighttpd starts (they both start at 50)
+# and disable uhttpd if its enabled AND lighttpd is enabled.
+#
+# Add the admin alias so that http://admin works as a virtual
+# host.
+#
+START=45
+
+start() {
+    [ -f /etc/init.d/uhttpd ] && /etc/init.d/uhttpd enabled && \
+    [ -f /etc/init.d/lighttpd ] && /etc/init.d/lighttpd enabled && {
+	/etc/init.d/uhttpd disable
+    }
+    # We need to add the 'admin' virtual host by mapping 'admin'
+    # to the lan interface in /etc/hosts, if it's not already present
+    #
+    ipaddr=`uci get network.lan.ipaddr`
+    if [ $ipaddr != "" ]; then
+        grep -v "$ipaddr admin" /etc/hosts > /tmp/hosts
+        echo "$ipaddr admin" >> /tmp/hosts
+        cp /tmp/hosts /etc/hosts
+        /bin/rm -f /tmp/hosts
+    fi
+}

@@ -1,0 +1,15 @@
+Package: block-mount
+Version: 0.1.0-2
+Depends: 
+Provides: 
+Source: package/block-mount
+Section: base
+Category: Base system
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 3098
+Title: Block device mounting and checking
+Description:  Scripts used to mount and check block devices (filesystems and swap)
