@@ -1,0 +1,91 @@
+<div>
+  <h4>Step 1. Agent Type</h4>
+  <button ng-repeat="sensor in sensorInfo" ng-disabled="targetSensor && (targetSensor.driverName != sensor.driverName)" class="btn btn-block btn-success" ng-click="showNext(sensor.driverName)">{{sensor.displayName}}</button>
+</div>
+
+<div id="setting-view" style="margin-top: 20px; display: none;">
+  <form>
+    <h4>Step 2. Agent Attributes</h4>
+
+    <label for="input-driver">Driver Name:</label>
+    <input id="input-driver" type="text" class="form-control" ng-model="driverName" disabled>
+
+    <label for="select-model">Model:</label>
+    <select id="select-model" class="form-control"
+            ng-model="model" ng-options="m for m in models"
+            ng-change="selectModel(model)" required>
+      <option value="">-- choose model --</option>
+    </select>
+
+    <label for="select-network" ng-show="addressable">Network:</label>
+    <select id="select-network" class="form-control" ng-show="addressable" ng-model="network" ng-options="c for c in supportedNetworks">
+      <option value="">-- choose network --</option>
+    </select>
+
+    <label for="select-address" ng-show="addressable">Address:</label>
+    <input id="select-address" type="text" class="form-control" ng-show="addressable" ng-model="address"
+      ng-change="selectAddress(address)">
+
+    <label for="select-type">Type:</label>
+    <select id="select-type" ng-disabled="targetSensor" class="form-control" ng-model="dataType" ng-options="t for t in dataTypes" required>
+      <option value="">-- choose type --</option>
+    </select>
+
+    <label for="select-sensor">Sensor ID:</label>
+    <input id="select-sensor" class="form-control" ng-show="!discoverable" ng-model="sensorId"
+    ng-disabled="targetSensor||!sensorInfo[selectedAgentType].discoverable">
+    <select id="select-sensor" ng-show="discoverable" ng-disabled="targetSensor||!sensorInfo[selectedAgentType].discoverable"
+      class="form-control" ng-change="selectDiscoveredSensor(sensorId)" ng-model="sensorId" ng-options="s for s in sensors">
+      <option value="">-- choose sensor --</option>
+    </select>
+
+    <label for="input-name">Name:</label>
+    <input id="input-name" type="text" class="form-control" ng-model="name" placeholder="Set sensor name" required>
+
+    <div id="form-validation" class="text-center" style="display: none; font-size: 20px; color: red;">
+    </div>
+  </form>
+
+  <div id="test-view" style="margin-top: 20px;">
+    <h4>Step 3. Test</h4>
+    <div ng-hide="category == 'actuator'">
+      <button class="btn btn-info" ng-disabled="!sensorId||!dataType||!model || (addressable && !address)" indi-click="testAgent()">Test</button>
+      <div>
+        Target : <span>{{sensorId || 'not selected'}}</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <td>Status</td>
+            <td>{{ testResult.status | uppercase }}</td>
+          </tr>
+          <tr>
+            <td>Agent ID</td>
+            <td>{{ testResult.id }}</td>
+          </tr>
+          <tr ng-repeat="(k, v) in testResult.result">
+            <td>{{ k | uppercase }}</td>
+            <td>{{ v }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div ng-show="category == 'actuator'">
+      <lable for="select-command">Select Command:</lable>
+      <select id="select-command" class="form-control" ng-model="selectedCommand" ng-options="c for c in commands">
+        <option value="">-- choose command--</option>
+      </select>
+
+      <button class="btn btn-info" ng-disabled="!sensorId || (addressable && !address)" ng-click="testActuator()">Test</button>
+
+      <div id="test-result">{{ testResult }}</div>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div style="width: 200px; margin-left: auto; margin-right: auto;">
+      <button class="btn btn-primary col-6" ng-disabled="!sensorId||!dataType||!model|| (addressable && !address) ||!name" indi-click="registerAgent()">Save</button>
+      <button class="btn btn-default col-6" ng-click="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>

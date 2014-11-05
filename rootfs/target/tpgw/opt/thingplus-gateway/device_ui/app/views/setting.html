@@ -1,0 +1,158 @@
+<h2> Gateway Setting</h2>
+
+<div class="row">
+  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Change admin password</div>
+      <div class="panel-body">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="inputPW1" class="col-sm-3 control-label">Current Password</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="inputPW1" ng-model="currentPassword" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPW2" class="col-sm-3 control-label">New Password</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="inputPW2" ng-model="newPassword" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPW3" class="col-sm-3 control-label">Confirm Password</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="inputPW3" ng-model="confirmPassword" required>
+            </div>
+          </div>
+        </form>
+      </div>
+      <button type="submit" class="btn btn-primary" ng-disabled="!currentPassword||!newPassword||(newPassword!=confirmPassword)"
+        indi-click="changePassword(currentPassword, newPassword, confirmPassword)">Change Password</button>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Gateway Control</div>
+      <div class="panel-body">
+        <div class="text-center">
+          <button type="button" class="btn btn-danger" ng-disabled="underGatewayControl" indi-click="controlGateway('reboot', gatewayControlAlert)">Reboot</button>
+          <button type="button" class="btn btn-danger" ng-disabled="underGatewayControl" indi-click="controlGateway('poweroff', gatewayControlAlert)">Turn Off</button>
+          <button type="button" class="btn btn-danger " ng-disabled="underGatewayControl" indi-click="controlGateway('restart', gatewayControlAlert)">Restart</button>
+          <button type="button" class="btn btn-danger " ng-disabled="underGatewayControl" indi-click="controlGateway('resetConfig', gatewayControlAlert)">Reset Config</button>
+        </div>
+        <br>
+        <div ng-show="gatewayControlAlert && gatewayControlAlert.msg" class="alert alert-{{gatewayControlAlert.type}}">
+          {{gatewayControlAlert.msg}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Register Gateway Cert</div>
+      <div class="panel-body">
+        <form ng-upload="upload(content)" method="POST" action="/api/certUpload">
+          <div class="form-group">
+            <label for="chooseFile" class="control-label">Certificate File:</label>
+            <input id="chooseFile" type="file" name="cert" required>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary" ng-disabled="$isUploading">Upload Certificate</button>
+          </div>
+        </form>
+        </br>
+        <div ng-show="certUploadAlert && certUploadAlert.msg" class="alert alert-{{certUploadAlert.type}}">
+          {{certUploadAlert.msg}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Software Control</div>
+      <div class="panel-body">
+        <div class="text-center">
+          <div class="text-left">
+            <div><b>Local</b></div>
+            <ul>
+              <li><b>Version:</b> {{ software.local.version }}</li>
+              <li><b>Date:</b> {{software.local.date }}</li>
+              <li><b>Comment:</b> {{ software.local.comment }}</li>
+            </ul>
+            <div><b>Remote</b></div>
+            <ul>
+              <li><b>Version:</b>: {{ software.remote.version }}</li>
+              <li ng-show="software.remote.date"><b>Data:</b>: {{ software.remote.date }}</li>
+              <li ng-show="software.remote.comment"><b>Comment:</b>: {{ software.remote.comment }}</li>
+            </ul>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary " indi-click="checkSoftware()">Check versions</button>
+        <button type="button" class="btn btn-primary " indi-click="controlGateway('swUpdate', softwareUpdateAlert)" ng-disabled="software.remote.version==software.local.version">Update</button>
+        <div ng-show="softwareUpdateAlert && softwareUpdateAlert.msg" class="alert alert-{{softwareUpdateAlert.type}}">
+          {{softwareUpdateAlert.msg}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 table-responsive table-striped">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Gateway Information</div>
+      <div class="panel-body">
+        <table class="table ">
+          <tr>
+            <td>ID</td>
+            <td>{{ gateway.id }}</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>{{ gateway.name }}</td>
+          </tr>
+          <tr>
+            <td>Report Interval(in ms)</td>
+            <td>{{ gateway.reportInterval }}</td>
+          </tr>
+          <tr>
+            <td>Sensors</td>
+            <td>
+              <div ng-repeat="sensor in gateway.sensors">
+                <table class="table-condensed">
+                  <tr class="warning">
+                    <td>ID</td>
+                    <td>{{ sensor.id }}</td>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>{{ sensor.name }}</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>{{ sensor.type }}</td>
+                  </tr>
+                  <tr>
+                    <td>Created</td>
+                    <td>{{ sensor.ctime | date:'medium' }}</td>
+                  </tr>
+                  <tr>
+                    <td>Modified</td>
+                    <td>{{ sensor.mtime | date:'medium' }}</td>
+                  </tr>
+                  <tr>
+                    <td>Model</td>
+                    <td>{{ sensor.model }}</td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="text-center">
+          <button type="button" class="btn btn-primary" indi-click="refreshGateway()">
+            <i class="icon-refresh"></i> Refresh
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

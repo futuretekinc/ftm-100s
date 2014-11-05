@@ -1,0 +1,11 @@
+/var/log/sensorjs/*.log {
+  maxsize 300k
+  rotate 20
+  missingok 
+  notifempty
+  sharedscripts
+  copytruncate
+  dateext
+  dateyesterday
+  dateformat %Y%m%d_%s
+}

@@ -1,0 +1,20 @@
+#! /bin/sh
+
+CMDLINE=`cat /proc/cmdline`
+for x in $CMDLINE; do
+	case $x in
+		model=*)
+			export MODEL="${x#model=}"
+		;;
+
+		devid=*)
+			export SN="${x#devid=}"
+		;;
+	esac
+done
+
+export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
+export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin
+export SHELL=/bin/ash
+export TMOUT=300
+export TERM=vt100

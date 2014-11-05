@@ -2,56 +2,56 @@ config defaults
 	option syn_flood	1
 	option input		ACCEPT
 	option output		ACCEPT 
-	option forward		REJECT
+	option forward		ACCEPT 
 
 config zone
-	option name		lan
-	option network		'lan'
+	option name			eth2
+	option network		'eth2'
 	option input		ACCEPT 
 	option output		ACCEPT 
-	option forward		REJECT
+	option forward		ACCEPT
 
 config zone
-	option name		wan
-	option network		'wan'
+	option name			eth0
+	option network		'eth0'
 	option input		ACCEPT	
 	option output		ACCEPT 
-	option forward		REJECT
+	option forward		ACCEPT
 	option masq		1 
 	option mtu_fix		1
 
 config forwarding 
-	option src      	lan
-	option dest     	wan
+	option src      	eth2
+	option dest     	eth0
 
 # We need to accept udp packets on port 68,
 # see https://dev.openwrt.org/ticket/4108
-config rule
-	option name		Allow-DHCP-Renew
-	option src		wan
-	option proto		udp
-	option dest_port	68
-	option target		ACCEPT
-	option family		ipv4
+#config rule
+#	option name		Allow-DHCP-Renew
+#	option src		wan
+#	option proto		udp
+#	option dest_port	68
+#	option target		ACCEPT
+#	option family		ipv4
 
 # Allow IPv4 ping
-config rule
-	option name		Allow-Ping
-	option src		wan
-	option proto		icmp
-	option icmp_type	echo-request
-	option family		ipv4
-	option target		ACCEPT
+#config rule
+#	option name		Allow-Ping
+#	option src		wan
+#	option proto		icmp
+#	option icmp_type	echo-request
+#	option family		ipv4
+#	option target		ACCEPT
 
-config 'redirect'
-        option name		DMZ
-        option src 		wan
-        option proto 		all
-        option enabled 		0
+#config 'redirect'
+#        option name		DMZ
+#        option src 		wan
+#        option proto 		all
+#        option enabled 		0
 
 # include a file with users custom iptables rules
-config include
-	option path /etc/firewall.user
+#config include
+#	option path /etc/firewall.user
 
 
 ### EXAMPLE CONFIG SECTIONS

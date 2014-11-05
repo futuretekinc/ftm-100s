@@ -1,5 +1,5 @@
 #!/bin/sh
-PRODUCT=ftm-100s
+PRODUCT=ftm-100s-tp
 KERNEL_VERSION=2.6.36
 COMMON_PATH=$PWD/target/common/$KERNEL_VERSION
 ROOT=$PWD/_rootfs
@@ -167,6 +167,11 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 	case "$PRODUCT" in
 		ftm-100s)
 		;;
+		ftm-100s-tp)
+			cp -rf target/ftm-100s/* $ROOT
+			cp -rf apps/target/* $ROOT
+			cp -rf target/tpgw/* $ROOT
+		;;
 	esac
 )
 
@@ -186,4 +191,4 @@ echo -ne '\xde\xad\xc0\xde' >> root.squashfs
 
 rm tmpfile.*
 
-mv root.squashfs "/tftpboot/$PRODUCT/rootfs.img"
+mv root.squashfs "/tftpboot/ftm-100s-xtra/rootfs.img"

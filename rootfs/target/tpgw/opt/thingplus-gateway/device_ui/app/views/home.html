@@ -1,0 +1,213 @@
+<div style="margin-top: 10px;">
+  <h3>
+    <span>GATEWAY</span> <span class="label label-primary">{{ gateway.name || gateway.id }}</span>
+  </h3>
+  <!--<a href="#/setting"><button class="btn btn-default pull-right" style="margin-top: -40px;">Setting</button></a>-->
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row">
+  <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 table-responsive table-striped"
+    ng-show="modems && modems.length > 0">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Modem</div>
+      <div class="panel-body">
+        <div class="text-right">
+          <span class="well-small" ng-show="updatedTime.modem">last updated <span dw-time="updatedTime.modem"></span></span>
+          <button type="button" class="btn btn-primary" indi-click="refreshModem()">
+            <i class="icon-refresh"></i> Refresh
+          </button>
+          <button type="button" class="btn btn-danger" 
+            indi-click="changeModemConfiguration(selectedModem)">
+            <span class="glyphicon glyphicon-cog"></span> Apply Modem Config
+          </button>
+        </div>
+        <br/>
+        <select ng-hide="modems.length == 1" 
+          ng-change="changeSelectedModem(selectedModem)" ng-model="selectedModem"
+          ng-options="modem.model for modem in modems" required>
+        </select>
+        <table class="table" ng-show="selectedModem">
+          <tr ng-show="selectedModem.model">
+            <td>Celluar modem</td>
+            <td>{{selectedModem.model}}</td>
+          </tr>
+          <tr>
+            <td>Connection Status</td>
+            <td>
+              <span>{{modemIf.name}} - </span>
+              <span ng-switch="modemIf.status">
+                <span class="label label-success" ng-switch-when="on"> ON </span>
+                <span class="label" ng-switch-when="off"> OFF </span>
+                <span class="label" ng-switch-default>Not Found </span>
+              </span>
+            </td>
+          </tr>
+          <tr ng-show="modemIf.status == 'on'">
+            <td> RX </td>
+            <td> {{modemIf['RxBytes'] | number}} bytes </td>
+          </tr>
+          <tr ng-show="modemIf.status == 'on'">
+            <td> TX </td>
+            <td> {{modemIf['TxBytes'] | number}} bytes</td>
+          </tr>
+          <tr>
+            <td> Modem </td>
+            <td> {{selectedModem.modem}} </td>
+          </tr>
+          <tr>
+            <td> Modem Type </td>
+            <td> {{selectedModem.modemType}} </td>
+          </tr>
+          <tr>
+            <td>
+                Modem Configuration
+            </td>
+            <td>
+              <input type="text" class="form-control" ng-model="selectedModem.config.APN" placeholder="APN" required>
+              <input type="text" class="form-control" ng-model="selectedModem.config.APN_USER" placeholder="Username" required>
+              <input type="password" class="form-control" ng-model="selectedModem.config.APN_PASS" placeholder="Password" required>
+              <input type="password" class="form-control" ng-model="selectedModem.config.SIM_PIN" placeholder="SIM card pin" required>
+              <input type="checkbox" ng-checked="selectedModem.config.ENABLED" ng-model="selectedModem.config.ENABLED" required> ENABLED
+              <br/><br/>       
+              <!--<div class="label label-danger">Configuration will be applied after reboot
+              </div>-->
+
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 table-responsive table-striped">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Cloud Connection</div>
+      <div class="panel-body">
+        <div class="text-right">
+          <span class="well-small" ng-show="updatedTime.server">last updated <span dw-time="updatedTime.server"></span></span></span>
+          <button type="button" class="btn btn-primary" indi-click="refresh({server: true})">
+            <i class="icon-refresh"></i> Refresh
+          </button>
+        </div>
+        <br/>
+        <table class="table">
+          <tr ng-show="!connectionServerStatus.registered">
+            <td>
+              <span class="label status-off">NOT Registered</span>
+            </td>
+            <td>
+              <a href='#/setting'><button type="button" class="btn"><i class="icon-cog"></i>upload cert after registration</button></a>
+            </td>
+          </tr>
+          <tr>
+            <td>Model</td>
+            <td>{{ gateway.board.model }} [{{ gateway.board.rev }}]</td>
+          </tr>
+          <tr>
+            <td>Serial</td>
+            <td>{{ gateway.board.serial }}</td>
+          </tr>
+          <tr>
+            <td>Mac Address</td>
+            <td>{{ gateway.board.macaddress }}</td>
+          </tr>
+          <tr>
+            <td>REST Channel</td>
+            <td>{{ server.config.service.protocol }}://{{ server.config.service.host }}:{{ server.config.service.port }} <span class="label label-{{connectionServerStatus.service.style}}">{{ connectionServerStatus.service.text }}</span></td>
+          </tr>
+          <tr>
+            <td>MQTT Channel</td>
+            <td>{{ server.config.mqtt.protocol }}://{{ server.config.mqtt.host }}:{{ server.config.mqtt.port }} <span class="label label-{{connectionServerStatus.mqtt.style}}">{{ connectionServerStatus.mqtt.text }}</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 table-responsive table-striped">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Sensor Status</div>
+      <div class="panel-body">
+        <div>
+          <span class="text-left">
+            <span class="label status-on">Normal</span>
+            <span class="label status-off">Abnormal</span>
+          </span>
+          <span class="pull-right">
+            <span class="well-small" ng-show="updatedTime.sensor">last updated <span dw-time="updatedTime.sensor"></span></span>
+            <button type="button" class="btn btn-primary" 
+              indi-click="refresh({sensor: true})"> 
+              <i class="icon-refresh"></i> Refresh
+            </button>
+            <a href="#/register"> <button class="btn btn-primary" ng-disabled="!connectionServerStatus.service.on"> <i class="icon-plus"></i>Add</button></a>
+          </span>
+        </div>
+
+        <div class="clearfix"> </div>
+        <br/>
+
+        <div class="table-responsive table-condensed">
+          <h4 ng-show="size(gateway.nodes.sensors)">Sensors</h4>
+          <table class="table">
+            <tr ng-repeat="(key, val) in gateway.nodes.sensors" class="status-{{ sensorsData[key].status }}">
+              <td style="vertical-align:middle;">{{ val.name }} <span class="text-muted"> {{ key }} </span></td>
+              <td style="vertical-align:middle;" width="40px"><img ng-src="../images/icon-{{ val.type }}-small.png"></td>
+              <td style="vertical-align:middle;"> {{ ((sensorsData[key].latest.v != null) && (sensorsData[key].latest.v != undefined) &&
+                  (sensorsData[key].latest.v|number:2)) || 'N/A' }}</td>
+              <td style="vertical-align:middle;">
+                <span ng-show="(sensorsData[key].latest.v != null) && (sensorsData[key].latest.v != undefined)">
+                  {{ sensorsData[key].latest.t|date:'yy-MM-dd HH:mm:ss' }} ( 
+                  <span dw-time="sensorsData[key].latest.t">
+                  </span> ) 
+                </span>
+              </td>
+              <td>
+                <div class="pull-right">
+                  <!--<span ng-hide="sensorsData[key].atServer" class="icon-stack" style="vertical-align: -5px">
+                    <i class="icon-2x icon-cloud"></i> 
+                    <i class="icon-2x icon-ban-circle icon-stack-base text-error"></i>
+                  </span> -->
+                  <a href='#/register?sensor={{key}}'> <button type="button" class="btn" ng-disabled="!connectionServerStatus.service.on"> <span> <i class="icon-edit"></i>Edit</span></button></a>
+                  <button type="button" class="btn" ng-disabled="!connectionServerStatus.service.on" indi-click="deleteSensor(key)">
+                    <i class="icon-trash"></i> Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <h4 ng-show="size(gateway.nodes.actuators) > 0">Actuators</h4>
+          <table class="table">
+            <tr ng-repeat="(key, val) in gateway.nodes.actuators" class="status-on">
+              <td style="vertical-align:middle;">{{ val.name }} <span class="text-muted"> {{ key }} </span></td>
+              <td style="vertical-align:middle;" width="40px"><img ng-src="../images/icon-{{ val.type }}-small.png"></td>
+              <td style="vertical-align:middle;">
+                <select class="form-control" style="height: 30px;" ng-model="selectedCommand"
+                        ng-options="cmd for cmd in val.commands">
+                  <option value="">-- select command --</option>
+                </select>
+              </td>
+              <td>
+                <button class="btn btn-info" style="height: 30px; margin-top: 5px; line-height: 10px;" ng-click="controlActuator(val, selectedCommand)">Send</button>
+              </td>
+              <td>
+                <div class="pull-right">
+                  <!--<span ng-hide="sensorsData[key].atServer" class="icon-stack" style="vertical-align: -5px">
+                    <i class="icon-2x icon-cloud"></i>
+                    <i class="icon-2x icon-ban-circle icon-stack-base text-error"></i>
+                  </span> -->
+                  <a href='#/register?sensor={{key}}'><button type="button" class="btn" ng-disabled="!connectionServerStatus.service.on"><span><i class="icon-edit"></i>Edit</span></button></a>
+                  <button type="button" class="btn" ng-disabled="!connectionServerStatus.service.on" indi-click="deleteSensor(key)">
+                    <i class="icon-trash"></i> Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

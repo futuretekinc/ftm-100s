@@ -1,0 +1,2 @@
+P /device/ssl/cert.p12
+P /device/config/runtime.json

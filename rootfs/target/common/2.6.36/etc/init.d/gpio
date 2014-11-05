@@ -1,0 +1,53 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2006 OpenWrt.org
+START=10
+
+#   ---------------------------------------------
+#   Create GPIO Control Device
+#   arg1 : GPIO Port Number
+#   arg2 : Device Name
+#   arg3 : Direction
+#   ---------------------------------------------
+create_gpio()
+{
+	case $3 in
+		in )    echo $1 > /sys/class/gpio/export
+			echo in > /sys/class/gpio/gpio$1/direction
+			if [ $4 = low ]
+			then
+				echo 1 > /sys/class/gpio/gpio$1/active_low
+			else
+				echo 0 > /sys/class/gpio/gpio$1/active_low
+			fi  
+			ln -s /sys/class/gpio/gpio$1/value /dev/$2
+			;;
+
+		out )   echo $1 > /sys/class/gpio/export
+			echo out > /sys/class/gpio/gpio$1/direction
+			if [ $4 = low ]
+			then
+				echo 1 > /sys/class/gpio/gpio$1/active_low
+			else
+				echo 0 > /sys/class/gpio/gpio$1/active_low
+			fi  
+			if [ $5 = on ]
+			then
+				echo 1 > /sys/class/gpio/gpio$1/value
+			else
+				echo 0 > /sys/class/gpio/gpio$1/value
+			fi  
+			ln -s /sys/class/gpio/gpio$1/value /dev/$2
+			;;
+		esac
+}
+
+start () {
+	create_gpio 79 lte_on0 out high off
+	create_gpio 80 lte_pwr0 out high on
+	create_gpio 81 lte_on1 out high off
+	create_gpio 82 lte_pwr1 out high on
+	create_gpio 91 lte_reset out high on
+
+	echo 1 >  /dev/lte_on0
+}
+

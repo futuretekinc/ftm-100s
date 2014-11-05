@@ -1,0 +1,62 @@
+{
+  "name": "thingplus-gateway",
+  "description": "thingplus gateway app",
+  "scripts": {
+    "test": "mocha --reporter spec --bail"
+  },
+  "version": "0.1.0-1",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "arm"
+  ],
+  "dependencies": {
+    "log4js": "0.6.8",
+    "mqtt": "git+https://github.com/daliworks/MQTT.js.git",
+    "request": "git+https://github.com/daliworks/request.git",
+    "dirty": "git+https://github.com/daliworks/node-dirty.git",
+    "express": "4.2.0",
+    "errorhandler": "1.1.1",
+    "body-parser": "1.2.0",
+    "method-override": "1.0.0",
+    "serve-favicon": "2.0.0",
+    "morgan": "1.1.0",
+    "optimist": "0.6.0",
+    "async": "0.2.9",
+    "memwatch": "0.2.2",
+    "getmac": "1.0.4",
+    "config": "0.4.29",
+    "lodash": "2.4.1",
+    "mkdirp": "0.3.5",
+    "diskspace": "0.1.7",
+    "compress-buffer": "1.2.2",
+    "sensorjs": "git+https://github.com/daliworks/sensorjs.git",
+    "sensorjs-futuretek": "git+https://github.com/daliworks/sensorjs-futuretek.git",
+    "sensorjs-foscam": "git+https://github.com/daliworks/sensorjs-foscam.git",
+    "sensorjs-ble": "git+https://github.com/daliworks/sensorjs-ble.git",
+    "http-auth": "git+https://github.com/daliworks/http-auth.git",
+    "retry": "0.6.0",
+    "crontab": "0.3.4",
+    "multer": "0.0.7",
+    "ini": "1.2.1",
+    "aws-sdk": "2.0.19"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "mocha": "*",
+    "chai": "*",
+    "grunt-simple-mocha": "0.2.x",
+    "grunt-shell": "~0.5.0",
+    "grunt-contrib-uglify": "~0.4.0"
+  },
+  "licenses": [
+    {
+      "type": "Daliworks License",
+      "url": "https://github.com/daliworks/vingworks/blob/master/LICENSE"
+    }
+  ]
+}

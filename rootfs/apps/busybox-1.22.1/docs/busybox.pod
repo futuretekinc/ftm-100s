@@ -96,12 +96,12 @@ Currently available applets include:
 	pgrep, pidof, ping, ping6, pivot_root, pkill, pmap, poweroff,
 	powertop, printf, ps, pstree, pwd, pwdx, rdate, reboot, renice,
 	reset, resize, rm, rmdir, rmmod, route, sed, seq, setserial, sh,
-	sha3sum, sleep, sort, start-stop-daemon, strings, swapoff, swapon,
-	switch_root, sync, sysctl, syslogd, tail, tar, taskset, tee, telnet,
-	telnetd, test, tftp, time, top, touch, tr, traceroute, true, tty,
-	ubimkvol, ubirmvol, ubirsvol, ubiupdatevol, udhcpc, udhcpd, umount,
-	uname, uniq, uptime, usleep, vconfig, vi, watchdog, wc, wget, which,
-	whois, xargs, yes, zcat
+	sha3sum, sleep, sort, start-stop-daemon, strings, stty, svlogd,
+	swapoff, swapon, switch_root, sync, sysctl, syslogd, tail, tar,
+	taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time, top, touch,
+	tr, traceroute, true, tty, ubimkvol, ubirmvol, ubirsvol,
+	ubiupdatevol, udhcpc, udhcpd, umount, uname, uniq, uptime, usleep,
+	vconfig, vi, watchdog, wc, wget, which, whois, xargs, yes, zcat
 
 =head1 COMMAND DESCRIPTIONS
 
@@ -1693,6 +1693,31 @@ Display printable strings in a binary file
 	-n LEN	At least LEN characters form a string (default 4)
 	-o	Precede strings with decimal offsets
 
+=item B<stty>
+
+stty [-a|g] [-F DEVICE] [SETTING]...
+
+Without arguments, prints baud rate, line discipline,
+and deviations from stty sane
+
+	-F DEVICE	Open device instead of stdin
+	-a		Print all current settings in human-readable form
+	-g		Print in stty-readable form
+	[SETTING]	See manpage
+
+=item B<svlogd>
+
+svlogd [-ttv] [-r C] [-R CHARS] [-l MATCHLEN] [-b BUFLEN] DIR...
+
+Continuously read log data from stdin and write to rotated log files in DIRs
+
+DIR/config file modifies behavior:
+sSIZE - when to rotate logs
+nNUM - number of files to retain
+!PROG - process rotated log with PROG
++,-PATTERN - (de)select line for logging
+E,ePATTERN - (de)select line for stderr
+
 =item B<swapoff>
 
 swapoff [-a] [DEVICE]
@@ -1802,6 +1827,27 @@ taskset [-p] [MASK] [PID | PROG ARGS]
 Set or get CPU affinity
 
 	-p	Operate on an existing PID
+
+=item B<tcpsvd>
+
+tcpsvd [-hEv] [-c N] [-C N[:MSG]] [-b N] [-u USER] [-l NAME] IP PORT PROG
+
+Create TCP socket, bind to IP:PORT and listen
+for incoming connection. Run PROG for each connection.
+
+	IP		IP to listen on, 0 = all
+	PORT		Port to listen on
+	PROG ARGS	Program to run
+	-l NAME		Local hostname (else looks up local hostname in DNS)
+	-u USER[:GRP]	Change to user/group after bind
+	-c N		Handle up to N connections simultaneously
+	-b N		Allow a backlog of approximately N TCP SYNs
+	-C N[:MSG]	Allow only up to N connections from the same IP
+			New connections from this IP address are closed
+			immediately. MSG is written to the peer before close
+	-h		Look up peer's hostname
+	-E		Don't set up environment variables
+	-v		Verbose
 
 =item B<tee>
 

@@ -1,0 +1,31 @@
+#!/bin/sh
+
+
+case "$1" in
+    start)
+	mkdir -p /var/empty/ssh/etc
+        /usr/sbin/sshd
+        ;;
+
+    stop)
+        killall sshd 2>/dev/null
+        ;;
+
+    restart)
+		$0 stop
+		$0 start
+		;;
+
+    status)
+        if pidof sshd | sed "s/$$\$//" | grep -q [0-9] 
+        then
+			echo "running"
+		else
+			echo "stopped"
+		fi
+		;;
+
+	*)
+		echo $"Usage: $0 {start|stop|restart|status}"
+		exit 1
+esac

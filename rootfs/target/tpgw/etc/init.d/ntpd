@@ -1,0 +1,12 @@
+#!/bin/sh
+
+##sync first
+rdate -s time-c.nist.gov
+
+TASK="ntpd"
+#quit after first sync
+CMD="$TASK -q -p 0.kr.pool.ntp.org 1.asia.pool.ntp.org 0.asia.pool.ntp.org"
+
+if ! pidof $TASK | sed "s/$$\$//" | grep -q [0-9] ; then
+	$CMD 2> /dev/null
+fi	

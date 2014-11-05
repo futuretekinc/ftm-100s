@@ -1,0 +1,30 @@
+#!/bin/sh
+
+
+case "$1" in
+    start)
+        tcpsvd -E 0.0.0.0 21 ftpd -w /mnt/mtd &
+        ;;
+
+    stop)
+        killall ftpd 2>/dev/null
+        ;;
+
+    restart)
+		$0 stop
+		$0 start
+		;;
+
+    status)
+        if pidof ftpd | sed "s/$$\$//" | grep -q [0-9] 
+        then
+			echo "running"
+		else
+			echo "stopped"
+		fi
+		;;
+
+	*)
+		echo $"Usage: $0 {start|stop|restart|status}"
+		exit 1
+esac

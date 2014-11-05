@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Valid time check
+#POSIXTIME=946684800	# the seconds from 2000.01.01 00:00
+POSIXTIME=1388534400	# the seconds from 2014.01.01 00:00
+CURTIME=`date +%s`
+NTPSCRIPT="/etc/init.d/ntp"
+
+if [ $POSIXTIME -gt $CURTIME ]; then
+  ${NTPSCRIPT} stop
+
+  ntpdate 0.debian.pool.ntp.org
+  if [ $? != 0 ]; then
+    ntpdate 1.debian.pool.ntp.org
+  fi
+  if [ $? != 0 ]; then
+    ntpdate 2.debian.pool.ntp.org
+  fi
+  if [ $? != 0 ]; then
+    ntpdate 3.debian.pool.ntp.org
+  fi
+
+  ${NTPSCRIPT} start
+fi
+
+# wvdial check
+/etc/init.d/wvdial.sh start

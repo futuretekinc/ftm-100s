@@ -1,0 +1,22 @@
+{
+  "levels": {
+    "Main":         "INFO",
+    "HttpBinder":   "WARN",
+    "Primitive":    "WARN",
+    "RscTree":      "WARN",
+    "Routes":       "WARN",
+    "Applib":       "WARN",
+    "Sensor":       "INFO",
+    "MQTT":         "INFO",
+    "User":         "WARN",
+    "Store":        "INFO",
+    "Gateway":        "INFO",
+    "Server":        "INFO",
+    "Sensors":        "INFO",
+    "Network":        "INFO"
+  },
+  "replaceConsole": true,
+  "appenders": [
+    { "type": "console" }
+  ]
+}

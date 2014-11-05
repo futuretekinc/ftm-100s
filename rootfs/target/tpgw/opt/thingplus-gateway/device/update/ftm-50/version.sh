@@ -1,0 +1,1 @@
+../rsync_version.sh

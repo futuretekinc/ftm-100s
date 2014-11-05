@@ -84,6 +84,13 @@ jffs2_ready () {
     [ "$magic" != "deadc0de" ]
 }
 
+yaffs2_ready () {
+    mtdpart="$(find_mtd_part rootfs_data)"
+    [ -z "$mtdpart" ] && return 1
+    magic=$(hexdump $mtdpart -n 4 -e '4/1 "%02x"')
+    [ "$magic" != "deadc0de" ]
+}
+
 dupe() { # <new_root> <old_root>
 	cd $1
 	echo -n "creating directories... "
@@ -112,12 +119,9 @@ dupe() { # <new_root> <old_root>
 }
 
 pivot() { # <new_root> <old_root>
-		echo `df`
 	mount -o move /proc $1/proc && \
-		echo `df`
 		echo "pivot $1 $1$2"
 	pivot_root $1 $1$2 && {
-		echo `df`
 		echo "mount -o move $2/dev /dev"
 		mount -o move $2/dev /dev
 		echo "mount -o move $2/tmp /tmp"

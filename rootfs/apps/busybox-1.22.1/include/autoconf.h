@@ -2,7 +2,7 @@
  * Automatically generated C config: don't edit
  * Busybox version: 1.22.1
  */
-#define AUTOCONF_TIMESTAMP "2014-07-30 21:36:59 PDT"
+#define AUTOCONF_TIMESTAMP "2014-11-03 00:16:44 PST"
 
 #define CONFIG_HAVE_DOT_CONFIG 1
 #define ENABLE_HAVE_DOT_CONFIG 1
@@ -280,7 +280,7 @@
 # define IF_LFS(...) __VA_ARGS__
 #endif
 #define IF_NOT_LFS(...)
-#define CONFIG_CROSS_COMPILER_PREFIX ""
+#define CONFIG_CROSS_COMPILER_PREFIX "arm-openwrt-linux-uclibcgnueabi-"
 #define ENABLE_CROSS_COMPILER_PREFIX 1
 #ifdef MAKE_SUID
 # define IF_CROSS_COMPILER_PREFIX(...) __VA_ARGS__ "CONFIG_CROSS_COMPILER_PREFIX"
@@ -388,7 +388,7 @@
 #define ENABLE_INSTALL_SH_APPLET_SCRIPT_WRAPPER 0
 #define IF_INSTALL_SH_APPLET_SCRIPT_WRAPPER(...)
 #define IF_NOT_INSTALL_SH_APPLET_SCRIPT_WRAPPER(...) __VA_ARGS__
-#define CONFIG_PREFIX "./_install"
+#define CONFIG_PREFIX "../target"
 #define ENABLE_PREFIX 1
 #ifdef MAKE_SUID
 # define IF_PREFIX(...) __VA_ARGS__ "CONFIG_PREFIX"
@@ -1456,10 +1456,14 @@
 #define ENABLE_FEATURE_STAT_FORMAT 0
 #define IF_FEATURE_STAT_FORMAT(...)
 #define IF_NOT_FEATURE_STAT_FORMAT(...) __VA_ARGS__
-#undef CONFIG_STTY
-#define ENABLE_STTY 0
-#define IF_STTY(...)
-#define IF_NOT_STTY(...) __VA_ARGS__
+#define CONFIG_STTY 1
+#define ENABLE_STTY 1
+#ifdef MAKE_SUID
+# define IF_STTY(...) __VA_ARGS__ "CONFIG_STTY"
+#else
+# define IF_STTY(...) __VA_ARGS__
+#endif
+#define IF_NOT_STTY(...)
 #undef CONFIG_SUM
 #define ENABLE_SUM 0
 #define IF_SUM(...)
@@ -4312,10 +4316,14 @@
 #define ENABLE_SLATTACH 0
 #define IF_SLATTACH(...)
 #define IF_NOT_SLATTACH(...) __VA_ARGS__
-#undef CONFIG_TCPSVD
-#define ENABLE_TCPSVD 0
-#define IF_TCPSVD(...)
-#define IF_NOT_TCPSVD(...) __VA_ARGS__
+#define CONFIG_TCPSVD 1
+#define ENABLE_TCPSVD 1
+#ifdef MAKE_SUID
+# define IF_TCPSVD(...) __VA_ARGS__ "CONFIG_TCPSVD"
+#else
+# define IF_TCPSVD(...) __VA_ARGS__
+#endif
+#define IF_NOT_TCPSVD(...)
 #define CONFIG_TELNET 1
 #define ENABLE_TELNET 1
 #ifdef MAKE_SUID
@@ -4476,10 +4484,14 @@
 # define IF_FEATURE_UDHCPD_WRITE_LEASES_EARLY(...) __VA_ARGS__
 #endif
 #define IF_NOT_FEATURE_UDHCPD_WRITE_LEASES_EARLY(...)
-#undef CONFIG_FEATURE_UDHCPD_BASE_IP_ON_MAC
-#define ENABLE_FEATURE_UDHCPD_BASE_IP_ON_MAC 0
-#define IF_FEATURE_UDHCPD_BASE_IP_ON_MAC(...)
-#define IF_NOT_FEATURE_UDHCPD_BASE_IP_ON_MAC(...) __VA_ARGS__
+#define CONFIG_FEATURE_UDHCPD_BASE_IP_ON_MAC 1
+#define ENABLE_FEATURE_UDHCPD_BASE_IP_ON_MAC 1
+#ifdef MAKE_SUID
+# define IF_FEATURE_UDHCPD_BASE_IP_ON_MAC(...) __VA_ARGS__ "CONFIG_FEATURE_UDHCPD_BASE_IP_ON_MAC"
+#else
+# define IF_FEATURE_UDHCPD_BASE_IP_ON_MAC(...) __VA_ARGS__
+#endif
+#define IF_NOT_FEATURE_UDHCPD_BASE_IP_ON_MAC(...)
 #define CONFIG_DHCPD_LEASES_FILE "/var/run/udhcpd.leases"
 #define ENABLE_DHCPD_LEASES_FILE 1
 #ifdef MAKE_SUID
@@ -4956,10 +4968,14 @@
 # define IF_SV_DEFAULT_SERVICE_DIR(...) __VA_ARGS__
 #endif
 #define IF_NOT_SV_DEFAULT_SERVICE_DIR(...)
-#undef CONFIG_SVLOGD
-#define ENABLE_SVLOGD 0
-#define IF_SVLOGD(...)
-#define IF_NOT_SVLOGD(...) __VA_ARGS__
+#define CONFIG_SVLOGD 1
+#define ENABLE_SVLOGD 1
+#ifdef MAKE_SUID
+# define IF_SVLOGD(...) __VA_ARGS__ "CONFIG_SVLOGD"
+#else
+# define IF_SVLOGD(...) __VA_ARGS__
+#endif
+#define IF_NOT_SVLOGD(...)
 #undef CONFIG_CHPST
 #define ENABLE_CHPST 0
 #define IF_CHPST(...)
