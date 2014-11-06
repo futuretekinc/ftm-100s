@@ -4,9 +4,9 @@
 
 find_mount_yaffs2() {
 	mkdir -p /tmp/overlay
-    echo 'mount "$(find_mtd_part rootfs_data)" /tmp/overlay -t yaffs2'
-    mount "$(find_mtd_part rootfs_data)" /tmp/overlay -t yaffs2
-    mtd -qq unlock rootfs_data
+    echo 'mount "$(find_mtd_part overlay)" /tmp/overlay -t yaffs2'
+    mount "$(find_mtd_part overlay)" /tmp/overlay -t yaffs2
+    mtd -qq unlock overlay
 }
 
 yaffs2_not_mounted() {

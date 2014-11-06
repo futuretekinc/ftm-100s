@@ -1,5 +1,5 @@
 #!/bin/sh
-PRODUCT=ftm-100s-tp
+PRODUCT=ftm-100s
 KERNEL_VERSION=2.6.36
 COMMON_PATH=$PWD/target/common/$KERNEL_VERSION
 ROOT=$PWD/_rootfs
@@ -166,6 +166,8 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 (
 	case "$PRODUCT" in
 		ftm-100s)
+			cp -rf target/ftm-100s/* $ROOT
+			cp -rf apps/target/* $ROOT
 		;;
 		ftm-100s-tp)
 			cp -rf target/ftm-100s/* $ROOT
