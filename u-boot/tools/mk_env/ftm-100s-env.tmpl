@@ -56,5 +56,5 @@ setenv rf_data nand erase ${data_loc0} ${data_len};nand erase ${data_loc1} ${dat
 setenv setbootargs setenv bootargs ${basicargs} ${ramargs} ni_napi_budget=${NI_NAPI_BUDGET} qm_acp_enable=${QM_ACP_ENABLE} ni_rx_noncache=${NI_RX_NONCACHE} qm_int_buff=${QM_INT_BUFF} ethaddr0=${ethaddr} ethaddr1=${ethaddr1} ethaddr2=${ethaddr2} wifiaddr0=${wifiaddr0} wifiaddr1=${wifiaddr1} mtdparts=cs752x_nand_flash:${mtdparts}
 setenv setmtdparts setenv mtdparts 512K@${env_loc0}(env),8M@${kernel_loc0}(kernel),54M@${rootfs_loc0}(rootfs),64M@${overlay_loc0}(overlay),128M@${data_loc0}(data),512K@${env_loc1}(env1),8M@${kernel_loc1}(kernel1),54M@${rootfs_loc1}(rootfs1),64M@${overlay_loc1}(overlay1),128M@${data_loc1}(data1)
 setenv load_kernel nand read ${kernel_base} ${kernel_loc0} ${kernel_len}
-setenv b bootm ${kernel_address}
-setenv rootfs_address -
+
+

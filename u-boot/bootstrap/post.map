@@ -572,21 +572,21 @@ OUTPUT(post.elf elf32-littlearm)
  .debug_pubnames
                 0x00000000     0x1690 bsp.a
 
-.debug_info     0x00000000     0x9b63
- .debug_info    0x00000000     0x9b63 bsp.a
+.debug_info     0x00000000     0x9b66
+ .debug_info    0x00000000     0x9b66 bsp.a
 
 .debug_abbrev   0x00000000      0xdf5
  .debug_abbrev  0x00000000      0xdf5 bsp.a
 
-.debug_line     0x00000000     0x120d
- .debug_line    0x00000000     0x120d bsp.a
+.debug_line     0x00000000     0x120e
+ .debug_line    0x00000000     0x120e bsp.a
 
 .debug_frame    0x00000000      0xc48
  .debug_frame   0x00000000      0xc48 bsp.a
 
-.debug_str      0x00000000     0x33e1
- .debug_str     0x00000000     0x33e1 bsp.a
-                               0x3e41 (size before relaxing)
+.debug_str      0x00000000     0x33e2
+ .debug_str     0x00000000     0x33e2 bsp.a
+                               0x3e4d (size before relaxing)
 
 .debug_loc      0x00000000     0x3aae
  .debug_loc     0x00000000     0x3aae bsp.a

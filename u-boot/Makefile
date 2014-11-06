@@ -3212,6 +3212,9 @@ mop500_config:		unconfig
 goldengate_config:		unconfig
 	$(MKCONFIG) -t $(CS_PLATFORM_TYPE) $(@:_config=) arm arm_cortexa9 goldengate NULL goldengate
 
+ftm_100s_config:		unconfig
+	$(MKCONFIG) -t FTM_100S $(@:_config=) arm arm_cortexa9 ftm-100s futuretek goldengate 
+
 ftg_1000_config:		unconfig
 	$(MKCONFIG) -t FTG_1000 $(@:_config=) arm arm_cortexa9 ftg-1000 futuretek goldengate 
 
