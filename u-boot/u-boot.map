@@ -1,0 +1,2383 @@
+Archive member included because of file (symbol)
+
+lib_arm/libarm.a(board.o)     cpu/arm_cortexa9/start.o (start_armboot)
+lib_arm/libarm.a(interrupts.o)
+                              lib_arm/libarm.a(board.o) (enable_interrupts)
+net/libnet.a(eth.o)           lib_arm/libarm.a(board.o) (eth_initialize)
+net/libnet.a(net.o)           lib_arm/libarm.a(board.o) (copy_filename)
+net/libnet.a(rarp.o)          net/libnet.a(net.o) (RarpRequest)
+net/libnet.a(http.o)          (__u_boot_cmd_http)
+net/libnet.a(tcp.o)           net/libnet.a(http.o) (init_tcp)
+net/libnet.a(tftp.o)          net/libnet.a(net.o) (TftpStart)
+net/libnet.a(bootp.o)         net/libnet.a(net.o) (BootpRequest)
+drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+                              lib_arm/libarm.a(board.o) (cs75xx_nand_init)
+drivers/mtd/nand/libnand.a(nand.o)
+                              drivers/mtd/nand/libnand.a(cs75xx_nand.o) (nand_curr_device)
+drivers/mtd/nand/libnand.a(nand_bbt.o)
+                              drivers/mtd/nand/libnand.a(cs75xx_nand.o) (nand_update_bbt)
+drivers/mtd/nand/libnand.a(nand_ids.o)
+                              drivers/mtd/nand/libnand.a(cs75xx_nand.o) (nand_flash_ids)
+drivers/net/libnet.a(g2_ni_mfe.o)
+                              (__u_boot_cmd_phy_reg)
+drivers/serial/libserial.a(serial_cs752x.o)
+                              lib_arm/libarm.a(board.o) (serial_init)
+common/libcommon.a(cmd_bdinfo.o)
+                              (__u_boot_cmd_bdinfo)
+common/libcommon.a(cmd_boot.o)
+                              (__u_boot_cmd_go)
+common/libcommon.a(cmd_bootm.o)
+                              lib_arm/libarm.a(board.o) (load_addr)
+common/libcommon.a(cmd_load.o)
+                              (__u_boot_cmd_loadb)
+common/libcommon.a(cmd_mem.o)
+                              (__u_boot_cmd_md)
+common/libcommon.a(cmd_nand.o)
+                              (__u_boot_cmd_nand)
+common/libcommon.a(cmd_net.o)
+                              (__u_boot_cmd_bootp)
+common/libcommon.a(cmd_nvedit.o)
+                              net/libnet.a(eth.o) (get_env_id)
+common/libcommon.a(command.o)
+                              common/libcommon.a(cmd_bootm.o) (find_cmd_tbl)
+common/libcommon.a(console.o)
+                              lib_arm/libarm.a(board.o) (printf)
+common/libcommon.a(dlmalloc.o)
+                              lib_arm/libarm.a(board.o) (mem_malloc_init)
+common/libcommon.a(env_common.o)
+                              common/libcommon.a(cmd_nvedit.o) (env_crc_update)
+common/libcommon.a(env_nand.o)
+                              common/libcommon.a(env_common.o) (env_get_char_spec)
+common/libcommon.a(exports.o)
+                              lib_arm/libarm.a(board.o) (jumptable_init)
+common/libcommon.a(image.o)   common/libcommon.a(cmd_bootm.o) (image_check_hcrc)
+common/libcommon.a(main.o)    common/libcommon.a(cmd_mem.o) (readline)
+common/libcommon.a(stdio.o)   common/libcommon.a(console.o) (stdio_get_list)
+common/libcommon.a(xyzModem.o)
+                              common/libcommon.a(cmd_load.o) (xyzModem_stream_open)
+board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+                              drivers/serial/libserial.a(serial_cs752x.o) (get_platform_clk)
+board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+                              board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o) (g2_wdt_set_heartbeat)
+board/futuretek/ftm-nico2/libftm-nico2.a(lowlevel_init.o)
+                              cpu/arm_cortexa9/start.o (lowlevel_init)
+board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+                              net/libnet.a(http.o) (upgrade_flash)
+board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+                              board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o) (csmi_uboot_cmds_initialize)
+board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+                              board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o) (csmi_sb_freeup)
+lib_generic/libgeneric.a(crc16.o)
+                              common/libcommon.a(xyzModem.o) (cyg_crc16)
+lib_generic/libgeneric.a(crc32.o)
+                              common/libcommon.a(cmd_mem.o) (crc32)
+lib_generic/libgeneric.a(display_options.o)
+                              lib_arm/libarm.a(board.o) (print_size)
+lib_generic/libgeneric.a(gunzip.o)
+                              common/libcommon.a(cmd_bootm.o) (gunzip)
+lib_generic/libgeneric.a(lmb.o)
+                              common/libcommon.a(cmd_bootm.o) (lmb_init)
+lib_generic/libgeneric.a(md5.o)
+                              board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o) (md5)
+lib_generic/libgeneric.a(string.o)
+                              net/libnet.a(net.o) (strcpy)
+lib_generic/libgeneric.a(vsprintf.o)
+                              lib_arm/libarm.a(board.o) (simple_strtoul)
+lib_generic/libgeneric.a(zlib.o)
+                              lib_generic/libgeneric.a(gunzip.o) (inflateInit2_)
+lib_generic/libgeneric.a(ctype.o)
+                              lib_generic/libgeneric.a(display_options.o) (_ctype)
+cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+                              net/libnet.a(http.o) (do_reset)
+cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+                              net/libnet.a(http.o) (udelay)
+lib_arm/libarm.a(bootm.o)     common/libcommon.a(cmd_bootm.o) (do_bootm_linux)
+lib_arm/libarm.a(cache.o)     common/libcommon.a(cmd_load.o) (flush_cache)
+lib_arm/libarm.a(cache-cp15.o)
+                              board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o) (icache_enable)
+drivers/mtd/nand/libnand.a(nand_util.o)
+                              common/libcommon.a(cmd_nand.o) (nand_erase_opts)
+lib_generic/libgeneric.a(div64.o)
+                              drivers/mtd/nand/libnand.a(nand_util.o) (__div64_32)
+/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+                              net/libnet.a(http.o) (__aeabi_uidiv)
+/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+                              drivers/mtd/nand/libnand.a(cs75xx_nand.o) (__aeabi_idiv)
+/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+                              drivers/mtd/nand/libnand.a(cs75xx_nand.o) (__aeabi_llsr)
+/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+                              drivers/mtd/nand/libnand.a(cs75xx_nand.o) (__aeabi_lasr)
+/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+                              drivers/mtd/nand/libnand.a(cs75xx_nand.o) (__aeabi_llsl)
+/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+                              /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x04000000                . = 0x4000000
+                0x04000000                . = ALIGN (0x4)
+
+.text           0x04000000    0x1c25c
+ cpu/arm_cortexa9/start.o(.text)
+ .text          0x04000000      0x460 cpu/arm_cortexa9/start.o
+                0x04000000                _start
+                0x04000040                _end_vect
+                0x04000044                _armboot_start
+                0x04000048                _bss_start
+                0x0400004c                _bss_end
+ *(.text)
+ .text          0x04000460      0x234 lib_arm/libarm.a(board.o)
+                0x0400050c                coloured_LED_init
+                0x0400050c                __coloured_LED_init
+                0x04000510                red_LED_on
+                0x04000510                __red_LED_on
+                0x04000514                __red_LED_off
+                0x04000514                red_LED_off
+                0x04000518                green_LED_on
+                0x04000518                __green_LED_on
+                0x0400051c                __green_LED_off
+                0x0400051c                green_LED_off
+                0x04000520                __yellow_LED_on
+                0x04000520                yellow_LED_on
+                0x04000524                __yellow_LED_off
+                0x04000524                yellow_LED_off
+                0x04000528                blue_LED_on
+                0x04000528                __blue_LED_on
+                0x0400052c                blue_LED_off
+                0x0400052c                __blue_LED_off
+                0x04000530                hang
+                0x04000544                start_armboot
+ .text          0x04000694      0x264 lib_arm/libarm.a(interrupts.o)
+                0x04000694                enable_interrupts
+                0x04000698                disable_interrupts
+                0x040006a0                bad_mode
+                0x040006bc                show_regs
+                0x040007fc                do_undefined_instruction
+                0x04000820                do_software_interrupt
+                0x04000844                do_prefetch_abort
+                0x04000868                do_data_abort
+                0x0400088c                do_not_used
+                0x040008b0                do_fiq
+                0x040008d4                do_irq
+ .text          0x040008f8      0x758 net/libnet.a(eth.o)
+                0x040008f8                eth_parse_enetaddr
+                0x0400094c                eth_getenv_enetaddr
+                0x040009a8                eth_setenv_enetaddr
+                0x040009dc                eth_getenv_enetaddr_by_index
+                0x04000a20                cpu_eth_init
+                0x04000a28                eth_get_dev
+                0x04000a38                eth_get_dev_by_name
+                0x04000a8c                eth_get_dev_by_index
+                0x04000ad8                eth_get_dev_index
+                0x04000b28                eth_register
+                0x04000bb0                eth_initialize
+                0x04000d94                eth_halt
+                0x04000dc4                eth_send
+                0x04000dfc                eth_rx
+                0x04000e28                eth_try_another
+                0x04000ed0                eth_init
+                0x04000f94                eth_set_current
+                0x04001030                eth_get_name
+ .text          0x04001050     0x1550 net/libnet.a(net.o)
+                0x040010dc                NetSetHandler
+                0x040010ec                NetSetTimeout
+                0x0400111c                NetStartAgain
+                0x04001224                NetSendPacket
+                0x04001228                NetCksum
+                0x0400125c                NetCksumOk
+                0x0400127c                NetEthHdrSize
+                0x040012b8                NetSetEther
+                0x0400135c                NetReceive
+                0x04001918                ArpRequest
+                0x04001a10                ArpTimeoutCheck
+                0x04001a80                PingSend
+                0x04001ba8                NetSendIPPacket
+                0x04001dc4                NetSetIP
+                0x04001ebc                NetSendUDPPacket
+                0x04001ff4                copy_filename
+                0x04002038                ip_to_string
+                0x04002074                string_to_ip
+                0x040020dc                VLAN_to_string
+                0x04002128                string_to_VLAN
+                0x04002174                getenv_IPaddr
+                0x04002184                getenv_VLAN
+                0x04002194                NetLoop
+ .text          0x040025a0      0x170 net/libnet.a(rarp.o)
+                0x040025e0                RarpRequest
+ .text          0x04002710      0xf20 net/libnet.a(http.o)
+                0x04002718                do_http
+                0x0400278c                http_check_image
+                0x040027c0                do_upgrade_image
+                0x040028ac                memstr
+                0x04002904                http_header
+                0x040029b0                http_send
+                0x04002b6c                http_send_error
+                0x04002c44                http_send_ok
+                0x04002d28                replace_tag
+                0x04002d7c                http_server
+ .text          0x04003630      0xd3c net/libnet.a(tcp.o)
+                0x04003638                init_tcp
+                0x04003670                cksum
+                0x040036cc                tcp_send
+                0x0400392c                tcp_retransmit
+                0x04003a78                tcp_inactivity
+                0x04003b18                tcp_rcve
+ .text          0x0400436c      0x71c net/libnet.a(tftp.o)
+                0x040047f8                TftpStart
+ .text          0x04004a88      0x604 net/libnet.a(bootp.o)
+                0x04004e54                BootpRequest
+ .text          0x0400508c     0x4d50 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+                0x0400511c                cs75xx_nand_enable_hwecc
+                0x04008c38                cs75xx_nand_erase_nand
+                0x040091d8                board_nand_init
+                0x040092f0                cs75xx_nand_scan_tail
+                0x0400967c                cs75xx_nand_scan_ident
+                0x04009b48                cs75xx_nand_scan
+                0x04009b68                cs75xx_nand_init
+ .text          0x04009ddc        0x0 drivers/mtd/nand/libnand.a(nand.o)
+ .text          0x04009ddc     0x16dc drivers/mtd/nand/libnand.a(nand_bbt.o)
+                0x0400ac64                nand_update_bbt
+                0x0400af24                nand_scan_bbt
+                0x0400b3b0                nand_default_bbt
+                0x0400b464                nand_isbad_bbt
+ .text          0x0400b4b8        0x0 drivers/mtd/nand/libnand.a(nand_ids.o)
+ .text          0x0400b4b8      0xc50 drivers/net/libnet.a(g2_ni_mfe.o)
+                0x0400b4b8                g2_ni_halt
+                0x0400b658                g2_ni_recv
+                0x0400b780                reg_read
+                0x0400b788                reg_write
+                0x0400b790                g2_ni_reset
+                0x0400b7f0                g2_phy_write
+                0x0400b894                g2_phy_read
+                0x0400b934                do_phy_test
+                0x0400ba80                do_phy_reg
+                0x0400bbc8                g2_ni_init
+                0x0400be18                g2_phy_disable
+                0x0400be60                g2_eth_initialize
+ .text          0x0400c108      0x1b8 drivers/serial/libserial.a(serial_cs752x.o)
+                0x0400c138                serial_init
+                0x0400c1b0                serial_putc
+                0x0400c1d4                serial_puts
+                0x0400c1f4                serial_getc
+                0x0400c258                serial_getc_with_timeout
+                0x0400c29c                serial_tstc
+                0x0400c2bc                serial_setbrg
+ .text          0x0400c2c0       0xec common/libcommon.a(cmd_bdinfo.o)
+                0x0400c2c0                do_bdinfo
+ .text          0x0400c3ac       0x8c common/libcommon.a(cmd_boot.o)
+                0x0400c3ac                do_go_exec
+                0x0400c3c4                do_go
+ .text          0x0400c438      0xc1c common/libcommon.a(cmd_bootm.o)
+                0x0400c6a0                do_iminfo
+                0x0400cbe0                board_lmb_reserve
+                0x0400cbe0                __board_lmb_reserve
+                0x0400cbe4                arch_lmb_reserve
+                0x0400cbe4                __arch_lmb_reserve
+                0x0400cbe8                arch_preboot_os
+                0x0400cbe8                __arch_preboot_os
+                0x0400cbec                do_bootm_subcommand
+                0x0400cdbc                do_bootm
+ .text          0x0400d054      0x970 common/libcommon.a(cmd_load.o)
+                0x0400d1a8                send_pad
+                0x0400d1d4                ktrans
+                0x0400d1f4                chk1
+                0x0400d21c                s1_sendpacket
+                0x0400d240                send_ack
+                0x0400d29c                send_nack
+                0x0400d2f8                k_data_init
+                0x0400d318                k_data_save
+                0x0400d33c                k_data_restore
+                0x0400d360                k_data_char
+                0x0400d3b0                handle_send_packet
+                0x0400d574                do_load_serial_bin
+ .text          0x0400d9c4      0x914 common/libcommon.a(cmd_mem.o)
+                0x0400d9c4                do_mem_crc
+                0x0400da74                do_mem_base
+                0x0400dab4                do_mem_mtest
+                0x0400dc54                do_mem_loop
+                0x0400dd4c                do_mem_cp
+                0x0400de24                do_mem_cmp
+                0x0400dfb0                do_mem_mw
+                0x0400e1bc                do_mem_nm
+                0x0400e1e0                do_mem_mm
+                0x0400e204                do_mem_md
+ .text          0x0400e2d8      0xe84 common/libcommon.a(cmd_nand.o)
+                0x0400e37c                do_nandboot
+                0x0400e9cc                do_nand
+ .text          0x0400f15c      0x39c common/libcommon.a(cmd_net.o)
+                0x0400f15c                do_ping
+                0x0400f4d4                do_rarpb
+                0x0400f4e0                do_tftpb
+                0x0400f4ec                do_bootp
+ .text          0x0400f4f8      0x7f4 common/libcommon.a(cmd_nvedit.o)
+                0x0400f4f8                do_saveenv
+                0x0400f524                get_env_id
+                0x0400f534                envmatch
+                0x0400f598                getenv_r
+                0x0400f640                getenv
+                0x0400f6b4                _do_setenv
+                0x0400faf4                do_setenv
+                0x0400fb20                setenv
+                0x0400fc5c                do_printenv
+ .text          0x0400fcec      0x35c common/libcommon.a(command.o)
+                0x0400fcec                do_version
+                0x0400fd0c                find_cmd_tbl
+                0x0400fda0                find_cmd
+                0x0400fdc8                cmd_usage
+                0x0400fe28                _do_help
+                0x0400ffb0                do_help
+                0x0400fff8                cmd_get_data_size
+ .text          0x04010048      0x55c common/libcommon.a(console.o)
+                0x040100ec                serial_printf
+                0x04010130                fgetc
+                0x0401015c                ftstc
+                0x04010188                fputc
+                0x040101b0                fputs
+                0x040101d8                fprintf
+                0x04010224                getc
+                0x0401023c                tstc
+                0x04010254                putc
+                0x04010270                puts
+                0x0401028c                printf
+                0x040102d0                vprintf
+                0x04010304                ctrlc
+                0x04010350                disable_ctrlc
+                0x04010368                had_ctrlc
+                0x04010378                clear_ctrlc
+                0x0401038c                dbg
+                0x04010398                search_device
+                0x040103c0                console_assign
+                0x04010400                console_init_f
+                0x04010410                stdio_print_current_devices
+                0x040104c4                console_init_r
+ .text          0x040105a4      0xfec common/libcommon.a(dlmalloc.o)
+                0x040105a4                sbrk
+                0x040105dc                mem_malloc_init
+                0x040105fc                malloc_trim
+                0x040106cc                free
+                0x040108ec                cfree
+                0x040108f0                malloc
+                0x04010e78                calloc
+                0x04010f58                memalign
+                0x04011068                pvalloc
+                0x04011080                valloc
+                0x0401108c                realloc
+                0x040114dc                malloc_usable_size
+                0x0401151c                mallopt
+ .text          0x04011590      0x13c common/libcommon.a(env_common.o)
+                0x04011590                env_crc_update
+                0x040115bc                env_get_char_memory
+                0x040115e0                env_get_char
+                0x04011610                env_get_addr
+                0x04011634                set_default_env
+                0x04011678                env_relocate
+ .text          0x040116cc      0x29c common/libcommon.a(env_nand.o)
+                0x040116e4                env_get_char_spec
+                0x040116f0                env_init
+                0x0401170c                writeenv
+                0x040117c4                saveenv
+                0x04011864                readenv
+                0x0401191c                env_relocate_spec
+ .text          0x04011968       0xe8 common/libcommon.a(exports.o)
+                0x0401196c                get_version
+                0x04011974                jumptable_init
+ .text          0x04011a50      0x728 common/libcommon.a(image.o)
+                0x04011a7c                image_check_hcrc
+                0x04011acc                image_check_dcrc
+                0x04011b0c                image_multi_count
+                0x04011b30                image_multi_getimg
+                0x04011bb4                getenv_yesno
+                0x04011bdc                getenv_bootm_low
+                0x04011c10                getenv_bootm_size
+                0x04011c44                memmove_wd
+                0x04011c48                genimg_print_size
+                0x04011c74                get_table_entry_name
+                0x04011ca0                genimg_get_os_name
+                0x04011cb8                genimg_get_arch_name
+                0x04011cd0                genimg_get_type_name
+                0x04011ce8                genimg_get_comp_name
+                0x04011d00                image_print_contents
+                0x04011e78                get_table_entry_id
+                0x04011ec4                genimg_get_os_id
+                0x04011edc                genimg_get_arch_id
+                0x04011ef4                genimg_get_type_id
+                0x04011f0c                genimg_get_comp_id
+                0x04011f24                genimg_get_format
+                0x04011f3c                genimg_get_image
+                0x04011f40                genimg_has_config
+                0x04011f48                boot_get_ramdisk
+ .text          0x04012178      0x8a4 common/libcommon.a(main.o)
+                0x04012250                __show_boot_progress
+                0x04012254                readline_into_buffer
+                0x04012420                readline
+                0x04012434                parse_line
+                0x040124c4                run_command
+                0x04012838                main_loop
+                0x040129a0                do_run
+ .text          0x04012a1c      0x174 common/libcommon.a(stdio.o)
+                0x04012a1c                stdio_get_list
+                0x04012a28                stdio_get_by_name
+                0x04012a7c                stdio_clone
+                0x04012ac4                stdio_register
+                0x04012b08                stdio_init
+ .text          0x04012b90      0x8bc common/libcommon.a(xyzModem.o)
+                0x04012b90                CYGACC_COMM_IF_GETC_TIMEOUT
+                0x04012e7c                CYGACC_COMM_IF_PUTC
+                0x04012e84                parse_num
+                0x04012fb0                xyzModem_stream_open
+                0x040130f8                xyzModem_stream_read
+                0x04013348                xyzModem_stream_close
+                0x04013398                xyzModem_stream_terminate
+                0x0401342c                xyzModem_error
+ .text          0x0401344c      0x264 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+                0x0401344c                show_boot_progress
+                0x04013450                get_platform_clk
+                0x040134b0                power_hold
+                0x040134f8                board_init
+                0x04013548                board_eth_init
+                0x04013558                misc_init_r
+                0x04013588                dram_init
+                0x04013650                interrupt_init
+                0x04013658                reset_cpu
+ .text          0x040136b0      0x104 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+                0x040136b0                g2_wdt_set_heartbeat
+                0x040136d4                g2_wdt_init
+                0x04013738                g2_wdt_keepalive
+                0x04013774                g2_wdt_start
+                0x0401378c                g2_wdt_stop
+ .text          0x040137b4        0x4 board/futuretek/ftm-nico2/libftm-nico2.a(lowlevel_init.o)
+                0x040137b4                lowlevel_init
+ .text          0x040137b8      0x600 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+                0x0401399c                csmi_init
+                0x04013a2c                do_sb_process
+                0x04013ad4                do_sb_set_flags
+                0x04013b84                do_sb_display
+                0x04013bec                boot_kernel
+                0x04013c38                upgrade_flash
+ .text          0x04013db8      0xaa8 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+                0x04013ea0                csmi_uboot_cmds_initialize
+                0x04013f04                csmi_uboot_cmds_sb_display
+                0x04013f44                csmi_uboot_cmds_sb_set_flags
+                0x04013fec                csmi_uboot_cmds_boot_index
+                0x040140c0                csmi_uboot_cmds_sb_process
+ .text          0x04014860     0x186c board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+                0x04014950                csmi_sb_create
+                0x040149c0                csmi_sb_freeup
+                0x04014a5c                csmi_sb_check_magic
+                0x04014a74                csmi_sb_valid
+                0x04014a84                csmi_sb_commit
+                0x04014a94                csmi_sb_active
+                0x04014aa4                csmi_sb_rsvd
+                0x04014ad0                csmi_sb_set_valid
+                0x04014ae8                csmi_sb_set_commit
+                0x04014b00                csmi_sb_set_active
+                0x04014b18                csmi_sb_set_rsvd
+                0x04014b54                csmi_sb_set_root
+                0x04014b74                csmi_sb_size
+                0x04014b9c                csmi_sb_root
+                0x04014ba8                csmi_sb_first_file
+                0x04014bec                csmi_sb_next_file
+                0x04014c38                csmi_sb_named_file_handle
+                0x04014c7c                csmi_sb_rootfs_file_handle
+                0x04014cc4                csmi_sb_kernel_file_handle
+                0x04014d0c                csmi_sb_first_mtdpart
+                0x04014d50                csmi_sb_next_mtdpart
+                0x04014d9c                csmi_sb_mtdparts
+                0x04014f1c                csmi_sb_rootfs
+                0x04015008                csmi_sb_kernel
+                0x040150f4                csmi_sb_named_mtdpart_handle
+                0x04015138                csmi_sb_rootfs_mtdpart_handle
+                0x04015180                csmi_sb_kernel_mtdpart_handle
+                0x040151c8                csmi_sb_file_name
+                0x040151cc                csmi_sb_file_md5
+                0x040151d8                csmi_sb_file_version
+                0x04015200                csmi_sb_file_flags
+                0x04015228                csmi_sb_file_size
+                0x04015250                csmi_sb_file_is
+                0x04015278                csmi_sb_file_type
+                0x04015284                csmi_sb_file_mountpoint
+                0x04015290                csmi_sb_file_mountopts
+                0x0401529c                csmi_sb_mtdpart_name
+                0x040152a0                csmi_sb_mtdpart_size
+                0x040152ac                csmi_sb_mtdpart_filesize
+                0x040152d4                csmi_sb_mtdpart_offset
+                0x040152e0                csmi_sb_mtdpart_is
+                0x04015308                csmi_sb_mtdpart_type
+                0x04015314                csmi_sb_mtdpart_flags
+                0x0401533c                csmi_sb_mtdpart_mountpoint
+                0x04015348                csmi_sb_mtdpart_mountopts
+                0x04015354                csmi_sb_mtdpart_md5
+                0x04015360                csmi_sb_add_file
+                0x04015630                csmi_sb_add_mtdpart
+                0x04015910                csmi_sb_md5_string
+                0x04015954                csmi_sb_check_md5_mem
+                0x040159d8                csmi_sb_read_mem
+                0x04015ad4                csmi_sb_print
+                0x04015f80                csmi_sb_file_is_str
+                0x04015f9c                csmi_sb_new_md5
+                0x04015fa0                csmi_sb_check_managed
+                0x0401602c                csmi_sb_file_set_md5
+                0x04016040                csmi_sb_file_set_size
+                0x04016068                csmi_sb_file_set_version
+                0x04016090                csmi_sb_mtdpart_set_md5
+                0x040160a4                csmi_sb_mtdpart_set_filesize
+ .text          0x040160cc       0x44 lib_generic/libgeneric.a(crc16.o)
+                0x040160cc                cyg_crc16
+ .text          0x04016110      0x204 lib_generic/libgeneric.a(crc32.o)
+                0x04016110                crc32
+                0x04016214                crc32_no_comp
+                0x04016310                crc32_wd
+ .text          0x04016314      0x238 lib_generic/libgeneric.a(display_options.o)
+                0x04016314                display_options
+                0x04016334                print_size
+                0x040163f8                print_buffer
+ .text          0x0401654c      0x1b0 lib_generic/libgeneric.a(gunzip.o)
+                0x0401654c                zfree
+                0x04016554                zalloc
+                0x04016564                zunzip
+                0x04016650                gunzip
+ .text          0x040166fc      0x548 lib_generic/libgeneric.a(lmb.o)
+                0x040168c8                lmb_dump_all
+                0x040168cc                lmb_init
+                0x040168f4                lmb_add
+                0x040168f8                lmb_free
+                0x04016a1c                lmb_reserve
+                0x04016a24                lmb_overlaps_region
+                0x04016a78                __lmb_alloc_base
+                0x04016ba8                lmb_alloc_base
+                0x04016bdc                lmb_alloc
+                0x04016be4                lmb_is_reserved
+ .text          0x04016c44      0xce0 lib_generic/libgeneric.a(md5.o)
+                0x0401783c                md5
+                0x040178b0                md5_wd
+ .text          0x04017924      0x5a8 lib_generic/libgeneric.a(string.o)
+                0x04017924                strcpy
+                0x0401793c                strncpy
+                0x04017960                strcat
+                0x0401798c                strncat
+                0x040179d4                strcmp
+                0x040179fc                strncmp
+                0x04017a38                strchr
+                0x04017a6c                strlen
+                0x04017a88                strrchr
+                0x04017ac4                strnlen
+                0x04017aec                strdup
+                0x04017b20                strspn
+                0x04017b60                strpbrk
+                0x04017b9c                strtok
+                0x04017c14                strsep
+                0x04017c48                strswab
+                0x04017c94                memset
+                0x04017cfc                bcopy
+                0x04017d20                memcpy
+                0x04017d8c                memmove
+                0x04017dd8                memcmp
+                0x04017e10                memscan
+                0x04017e38                strstr
+                0x04017e98                memchr
+ .text          0x04017ecc      0xbfc lib_generic/libgeneric.a(vsprintf.o)
+                0x04018318                simple_strtoul
+                0x040183c4                simple_strtol
+                0x040183ec                ustrtoul
+                0x04018460                vsprintf
+                0x04018a58                sprintf
+                0x04018a7c                panic
+ .text          0x04018ac8     0x2630 lib_generic/libgeneric.a(zlib.o)
+                0x04018ac8                zcfree
+                0x04018ad0                zcalloc
+                0x04018ad8                inflate_fast
+                0x04018fc8                inflate_table
+                0x04019544                inflateReset
+                0x040195e4                inflateInit2_
+                0x040196e8                inflateInit_
+                0x040196fc                inflateEnd
+                0x04019788                adler32
+                0x04019a64                inflate
+ .text          0x0401b0f8        0x0 lib_generic/libgeneric.a(ctype.o)
+ .text          0x0401b0f8       0x48 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+                0x0401b0f8                cpu_init
+                0x0401b100                cleanup_before_linux
+                0x0401b128                do_reset
+ .text          0x0401b140      0x1c8 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+                0x0401b140                set_timer
+                0x0401b150                udelay
+                0x0401b1b0                reset_timer_masked
+                0x0401b1f4                reset_timer
+                0x0401b1f8                timer_init
+                0x0401b24c                get_timer_masked
+                0x0401b2d8                get_timer
+                0x0401b2ec                udelay_masked
+                0x0401b2f0                get_ticks
+                0x0401b300                get_tbclk
+ .text          0x0401b308      0x1bc lib_arm/libarm.a(bootm.o)
+                0x0401b308                do_bootm_linux
+ .text          0x0401b4c4        0x4 lib_arm/libarm.a(cache.o)
+                0x0401b4c4                flush_cache
+ .text          0x0401b4c8       0xa4 lib_arm/libarm.a(cache-cp15.o)
+                0x0401b514                icache_enable
+                0x0401b52c                icache_disable
+                0x0401b534                icache_status
+                0x0401b540                dcache_enable
+                0x0401b558                dcache_disable
+                0x0401b560                dcache_status
+ .text          0x0401b56c      0x744 drivers/mtd/nand/libnand.a(nand_util.o)
+                0x0401b604                nand_erase_opts
+                0x0401b90c                nand_write_skip_bad
+                0x0401baf4                nand_read_skip_bad
+ .text          0x0401bcb0       0xe0 lib_generic/libgeneric.a(div64.o)
+                0x0401bcb0                __div64_32
+ .text          0x0401bd90       0x1c /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+                0x0401bd90                raise
+ .text          0x0401bdac      0x20c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+                0x0401bdac                __udivsi3
+                0x0401bdac                __aeabi_uidiv
+                0x0401bf98                __aeabi_uidivmod
+ .text          0x0401bfb8      0x240 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+                0x0401bfb8                __aeabi_idiv
+                0x0401bfb8                __divsi3
+                0x0401c1d8                __aeabi_idivmod
+ .text          0x0401c1f8       0x1c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+                0x0401c1f8                __aeabi_llsr
+                0x0401c1f8                __lshrdi3
+ .text          0x0401c214       0x1c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+                0x0401c214                __ashrdi3
+                0x0401c214                __aeabi_lasr
+ .text          0x0401c230       0x1c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+                0x0401c230                __ashldi3
+                0x0401c230                __aeabi_llsl
+ .text          0x0401c24c       0x10 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+                0x0401c24c                __aeabi_ldiv0
+                0x0401c24c                __aeabi_idiv0
+
+.glue_7         0x0401c25c        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x0401c25c        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x0401c25c        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x0401c25c        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.rodata         0x0401c25c     0x1318
+ *(.rodata)
+ .rodata        0x0401c25c       0x43 lib_arm/libarm.a(board.o)
+                0x0401c25c                version_string
+ *fill*         0x0401c29f        0x1 00
+ .rodata        0x0401c2a0       0x80 lib_arm/libarm.a(interrupts.o)
+ .rodata        0x0401c320        0x7 net/libnet.a(eth.o)
+ .rodata        0x0401c327        0x7 net/libnet.a(net.o)
+ .rodata        0x0401c32e       0x64 net/libnet.a(http.o)
+                0x0401c344                c_len
+                0x0401c365                c_boundary
+                0x0401c36f                c_fname
+                0x0401c379                c_headerend
+ .rodata        0x0401c392       0xbe drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .rodata        0x0401c450        0x8 drivers/net/libnet.a(g2_ni_mfe.o)
+ .rodata        0x0401c458       0x4c common/libcommon.a(cmd_bootm.o)
+ .rodata        0x0401c4a4       0x58 common/libcommon.a(command.o)
+ .rodata        0x0401c4fc       0x20 common/libcommon.a(xyzModem.o)
+ .rodata        0x0401c51c       0x54 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .rodata        0x0401c570       0x14 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .rodata        0x0401c584      0x200 lib_generic/libgeneric.a(crc16.o)
+ .rodata        0x0401c784      0x400 lib_generic/libgeneric.a(crc32.o)
+ .rodata        0x0401cb84       0x21 lib_generic/libgeneric.a(vsprintf.o)
+                0x0401cb84                hex_asc
+ *fill*         0x0401cba5        0x3 00
+ .rodata        0x0401cba8      0x9cc lib_generic/libgeneric.a(zlib.o)
+                0x0401d54c                z_errmsg
+
+.rodata.str1.1  0x0401d574     0x4de6
+ .rodata.str1.1
+                0x0401d574       0x6b lib_arm/libarm.a(board.o)
+                                 0x6d (size before relaxing)
+ .rodata.str1.1
+                0x0401d5df      0x264 lib_arm/libarm.a(interrupts.o)
+                                0x27b (size before relaxing)
+ .rodata.str1.1
+                0x0401d843       0xb0 net/libnet.a(eth.o)
+                                 0xc7 (size before relaxing)
+ .rodata.str1.1
+                0x0401d8f3      0x20c net/libnet.a(net.o)
+                                0x217 (size before relaxing)
+ .rodata.str1.1
+                0x0401daff       0x43 net/libnet.a(rarp.o)
+ .rodata.str1.1
+                0x0401db42      0x3bc net/libnet.a(http.o)
+                                0x3c4 (size before relaxing)
+ .rodata.str1.1
+                0x0401defe      0x388 net/libnet.a(tcp.o)
+                                0x38a (size before relaxing)
+ .rodata.str1.1
+                0x0401e286      0x1a8 net/libnet.a(tftp.o)
+                                0x1f6 (size before relaxing)
+ .rodata.str1.1
+                0x0401e42e       0x70 net/libnet.a(bootp.o)
+                                 0xa9 (size before relaxing)
+ .rodata.str1.1
+                0x0401e49e      0x567 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .rodata.str1.1
+                0x0401ea05      0x300 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .rodata.str1.1
+                0x0401ed05      0x32d drivers/mtd/nand/libnand.a(nand_ids.o)
+                                0x358 (size before relaxing)
+ .rodata.str1.1
+                0x0401f032      0x1c8 drivers/net/libnet.a(g2_ni_mfe.o)
+                                0x1e5 (size before relaxing)
+ .rodata.str1.1
+                0x0401f1fa       0xaa common/libcommon.a(cmd_bdinfo.o)
+                                 0xb3 (size before relaxing)
+ .rodata.str1.1
+                0x0401f2a4       0xef common/libcommon.a(cmd_boot.o)
+                                 0xf0 (size before relaxing)
+ .rodata.str1.1
+                0x0401f393      0x7a5 common/libcommon.a(cmd_bootm.o)
+                                0x7f4 (size before relaxing)
+ .rodata.str1.1
+                0x0401fb38      0x219 common/libcommon.a(cmd_load.o)
+                                0x22f (size before relaxing)
+ .rodata.str1.1
+                0x0401fd51      0x486 common/libcommon.a(cmd_mem.o)
+                                0x491 (size before relaxing)
+ .rodata.str1.1
+                0x040201d7      0x733 common/libcommon.a(cmd_nand.o)
+                                0x773 (size before relaxing)
+ .rodata.str1.1
+                0x0402090a      0x187 common/libcommon.a(cmd_net.o)
+                                0x1c0 (size before relaxing)
+ .rodata.str1.1
+                0x04020a91      0x2e6 common/libcommon.a(cmd_nvedit.o)
+                                0x343 (size before relaxing)
+ .rodata.str1.1
+                0x04020d77      0x1fd common/libcommon.a(command.o)
+                                0x210 (size before relaxing)
+ .rodata.str1.1
+                0x04020f74       0x70 common/libcommon.a(console.o)
+                                 0x74 (size before relaxing)
+ .rodata.str1.1
+                0x04020fe4       0x33 common/libcommon.a(env_common.o)
+ .rodata.str1.1
+                0x04021017       0x6e common/libcommon.a(env_nand.o)
+                                 0x74 (size before relaxing)
+ .rodata.str1.1
+                0x04021085      0x425 common/libcommon.a(image.o)
+                                0x4a2 (size before relaxing)
+ .rodata.str1.1
+                0x040214aa       0xaf common/libcommon.a(main.o)
+                                 0xce (size before relaxing)
+ .rodata.str1.1
+                0x04021559        0x7 common/libcommon.a(stdio.o)
+                                 0x1b (size before relaxing)
+ .rodata.str1.1
+                0x04021560       0xe3 common/libcommon.a(xyzModem.o)
+                                 0xe5 (size before relaxing)
+ .rodata.str1.1
+                0x00000000       0xe3 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+                                  0x9 (size before relaxing)
+ .rodata.str1.1
+                0x04021643      0x206 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+                                0x231 (size before relaxing)
+ .rodata.str1.1
+                0x04021849      0x2cb board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+                                0x2d8 (size before relaxing)
+ .rodata.str1.1
+                0x04021b14      0x2a9 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+                                0x2ec (size before relaxing)
+ .rodata.str1.1
+                0x04021dbd       0x11 lib_generic/libgeneric.a(display_options.o)
+                                 0x36 (size before relaxing)
+ .rodata.str1.1
+                0x04021dce       0x85 lib_generic/libgeneric.a(gunzip.o)
+ .rodata.str1.1
+                0x04021e53       0x34 lib_generic/libgeneric.a(lmb.o)
+ .rodata.str1.1
+                0x04021e87        0xe lib_generic/libgeneric.a(vsprintf.o)
+ .rodata.str1.1
+                0x04021e95      0x21c lib_generic/libgeneric.a(zlib.o)
+                                0x21d (size before relaxing)
+ .rodata.str1.1
+                0x040220b1       0x42 lib_arm/libarm.a(bootm.o)
+                                 0x4b (size before relaxing)
+ .rodata.str1.1
+                0x040220f3      0x24c drivers/mtd/nand/libnand.a(nand_util.o)
+                                0x24e (size before relaxing)
+ .rodata.str1.1
+                0x0402233f       0x1b /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+                0x0402235c                . = ALIGN (0x4)
+
+.data           0x0402235c     0x1b20
+ *(.data)
+ .data          0x0402235c        0x0 cpu/arm_cortexa9/start.o
+ .data          0x0402235c       0x28 lib_arm/libarm.a(board.o)
+                0x0402235c                init_sequence
+ .data          0x04022384        0x0 lib_arm/libarm.a(interrupts.o)
+ .data          0x04022384        0x0 net/libnet.a(eth.o)
+ .data          0x04022384        0xa net/libnet.a(net.o)
+                0x04022384                NetOurVLAN
+                0x04022386                NetOurNativeVLAN
+                0x04022388                NetBcastAddr
+ .data          0x0402238e        0x0 net/libnet.a(rarp.o)
+ .data          0x0402238e      0x7df net/libnet.a(http.o)
+                0x0402238e                web_page
+                0x040225fe                upgrade200_1
+                0x0402297b                reboot200
+ .data          0x04022b6d        0xa net/libnet.a(tcp.o)
+ *fill*         0x04022b77        0x1 00
+ .data          0x04022b78       0x18 net/libnet.a(tftp.o)
+                0x04022b88                TftpRRQTimeoutMSecs
+                0x04022b8c                TftpRRQTimeoutCountMax
+ .data          0x04022b90        0x0 net/libnet.a(bootp.o)
+ .data          0x04022b90      0x390 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .data          0x04022f20        0x4 drivers/mtd/nand/libnand.a(nand.o)
+                0x04022f20                nand_curr_device
+ .data          0x04022f24      0x128 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .data          0x0402304c      0x510 drivers/mtd/nand/libnand.a(nand_ids.o)
+                0x0402304c                nand_flash_ids
+                0x040234fc                nand_manuf_ids
+ .data          0x0402355c        0x0 drivers/net/libnet.a(g2_ni_mfe.o)
+ .data          0x0402355c        0x0 drivers/serial/libserial.a(serial_cs752x.o)
+ .data          0x0402355c        0x0 common/libcommon.a(cmd_bdinfo.o)
+ .data          0x0402355c        0x0 common/libcommon.a(cmd_boot.o)
+ .data          0x0402355c       0x94 common/libcommon.a(cmd_bootm.o)
+                0x0402355c                load_addr
+                0x04023560                cmd_bootm_sub
+ .data          0x040235f0        0x0 common/libcommon.a(cmd_load.o)
+ .data          0x040235f0        0x4 common/libcommon.a(cmd_mem.o)
+                0x040235f0                dp_last_length
+ .data          0x040235f4        0x0 common/libcommon.a(cmd_nand.o)
+ .data          0x040235f4        0x0 common/libcommon.a(cmd_net.o)
+ .data          0x040235f4        0x4 common/libcommon.a(cmd_nvedit.o)
+ .data          0x040235f8        0x0 common/libcommon.a(command.o)
+ .data          0x040235f8        0x0 common/libcommon.a(console.o)
+ .data          0x040235f8      0x414 common/libcommon.a(dlmalloc.o)
+ .data          0x04023a0c      0x14f common/libcommon.a(env_common.o)
+                0x04023a0c                default_environment
+ *fill*         0x04023b5b        0x1 00
+ .data          0x04023b5c        0x4 common/libcommon.a(env_nand.o)
+                0x04023b5c                env_name_spec
+ .data          0x04023b60        0x0 common/libcommon.a(exports.o)
+ .data          0x04023b60      0x1f8 common/libcommon.a(image.o)
+ .data          0x04023d58        0xd common/libcommon.a(main.o)
+ *fill*         0x04023d65        0x3 00
+ .data          0x04023d68        0xc common/libcommon.a(stdio.o)
+                0x04023d68                stdio_names
+ .data          0x04023d74        0x0 common/libcommon.a(xyzModem.o)
+ .data          0x04023d74        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .data          0x04023d74        0x8 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .data          0x04023d7c        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(lowlevel_init.o)
+ .data          0x04023d7c        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .data          0x04023d7c        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .data          0x04023d7c        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .data          0x04023d7c        0x0 lib_generic/libgeneric.a(crc16.o)
+ .data          0x04023d7c        0x0 lib_generic/libgeneric.a(crc32.o)
+ .data          0x04023d7c        0x0 lib_generic/libgeneric.a(display_options.o)
+ .data          0x04023d7c        0x0 lib_generic/libgeneric.a(gunzip.o)
+ .data          0x04023d7c        0x0 lib_generic/libgeneric.a(lmb.o)
+ .data          0x04023d7c        0x0 lib_generic/libgeneric.a(md5.o)
+ .data          0x04023d7c        0x0 lib_generic/libgeneric.a(string.o)
+ .data          0x04023d7c        0x0 lib_generic/libgeneric.a(vsprintf.o)
+ .data          0x04023d7c        0x0 lib_generic/libgeneric.a(zlib.o)
+ .data          0x04023d7c      0x100 lib_generic/libgeneric.a(ctype.o)
+                0x04023d7c                _ctype
+ .data          0x04023e7c        0x0 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .data          0x04023e7c        0x0 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .data          0x04023e7c        0x0 lib_arm/libarm.a(bootm.o)
+ .data          0x04023e7c        0x0 lib_arm/libarm.a(cache.o)
+ .data          0x04023e7c        0x0 lib_arm/libarm.a(cache-cp15.o)
+ .data          0x04023e7c        0x0 drivers/mtd/nand/libnand.a(nand_util.o)
+ .data          0x04023e7c        0x0 lib_generic/libgeneric.a(div64.o)
+ .data          0x04023e7c        0x0 /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+ .data          0x04023e7c        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+ .data          0x04023e7c        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+ .data          0x04023e7c        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+ .data          0x04023e7c        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+ .data          0x04023e7c        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+ .data          0x04023e7c        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+                0x04023e7c                . = ALIGN (0x4)
+
+.got
+ *(.got)
+                0x04023e7c                . = .
+                0x04023e7c                __u_boot_cmd_start = .
+
+.u_boot_cmd     0x04023e7c      0x360
+ *(.u_boot_cmd)
+ .u_boot_cmd    0x04023e7c       0x18 net/libnet.a(http.o)
+                0x04023e7c                __u_boot_cmd_http
+ .u_boot_cmd    0x04023e94       0x30 drivers/net/libnet.a(g2_ni_mfe.o)
+                0x04023e94                __u_boot_cmd_phy_reg
+                0x04023eac                __u_boot_cmd_phy_test
+ .u_boot_cmd    0x04023ec4       0x18 common/libcommon.a(cmd_bdinfo.o)
+                0x04023ec4                __u_boot_cmd_bdinfo
+ .u_boot_cmd    0x04023edc       0x30 common/libcommon.a(cmd_boot.o)
+                0x04023edc                __u_boot_cmd_go
+                0x04023ef4                __u_boot_cmd_reset
+ .u_boot_cmd    0x04023f0c       0x30 common/libcommon.a(cmd_bootm.o)
+                0x04023f0c                __u_boot_cmd_bootm
+                0x04023f24                __u_boot_cmd_iminfo
+ .u_boot_cmd    0x04023f3c       0x30 common/libcommon.a(cmd_load.o)
+                0x04023f3c                __u_boot_cmd_loadb
+                0x04023f54                __u_boot_cmd_loady
+ .u_boot_cmd    0x04023f6c       0xf0 common/libcommon.a(cmd_mem.o)
+                0x04023f6c                __u_boot_cmd_md
+                0x04023f84                __u_boot_cmd_mm
+                0x04023f9c                __u_boot_cmd_nm
+                0x04023fb4                __u_boot_cmd_mw
+                0x04023fcc                __u_boot_cmd_cp
+                0x04023fe4                __u_boot_cmd_cmp
+                0x04023ffc                __u_boot_cmd_crc32
+                0x04024014                __u_boot_cmd_base
+                0x0402402c                __u_boot_cmd_loop
+                0x04024044                __u_boot_cmd_mtest
+ .u_boot_cmd    0x0402405c       0x30 common/libcommon.a(cmd_nand.o)
+                0x0402405c                __u_boot_cmd_nand
+                0x04024074                __u_boot_cmd_nboot
+ .u_boot_cmd    0x0402408c       0x60 common/libcommon.a(cmd_net.o)
+                0x0402408c                __u_boot_cmd_bootp
+                0x040240a4                __u_boot_cmd_tftpboot
+                0x040240bc                __u_boot_cmd_rarpboot
+                0x040240d4                __u_boot_cmd_ping
+ .u_boot_cmd    0x040240ec       0x60 common/libcommon.a(cmd_nvedit.o)
+                0x040240ec                __u_boot_cmd_saveenv
+                0x04024104                __u_boot_cmd_printenv
+                0x0402411c                __u_boot_cmd_setenv
+                0x04024134                __u_boot_cmd_run
+ .u_boot_cmd    0x0402414c       0x48 common/libcommon.a(command.o)
+                0x0402414c                __u_boot_cmd_version
+                0x04024164                __u_boot_cmd_help
+                0x0402417c                __u_boot_cmd_question_mark
+ .u_boot_cmd    0x04024194       0x48 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+                0x04024194                __u_boot_cmd_sb_display
+                0x040241ac                __u_boot_cmd_sb_set_flags
+                0x040241c4                __u_boot_cmd_sb_process
+                0x040241dc                __u_boot_cmd_end = .
+                0x040241dc                . = ALIGN (0x4)
+                0x040241dc                __bss_start = .
+
+.bss            0x04028000     0xc0ac
+ *(.bss)
+ .bss           0x04028000        0x0 cpu/arm_cortexa9/start.o
+ .bss           0x04028000        0x4 lib_arm/libarm.a(board.o)
+                0x04028000                monitor_flash_len
+ .bss           0x04028004        0x0 lib_arm/libarm.a(interrupts.o)
+ .bss           0x04028004       0x14 net/libnet.a(eth.o)
+ .bss           0x04028018     0x25e4 net/libnet.a(net.o)
+                0x04028018                NetState
+                0x0402801c                NetPingIP
+                0x04028038                NetRestartWrap
+                0x04028040                NetOurEther
+                0x04028048                NetRxPacket
+                0x0402804c                NetRxPacketLen
+                0x04028050                NetOurIP
+                0x04028054                NetArpWaitPacketIP
+                0x04028058                NetArpWaitPacketMAC
+                0x0402805c                NetArpWaitReplyIP
+                0x04028060                NetArpWaitTxPacket
+                0x04028064                NetArpWaitTxPacketSize
+                0x04028068                NetServerIP
+                0x0402806c                NetServerEther
+                0x04028074                NetTxPacket
+                0x04028078                NetOurSubnetMask
+                0x0402807c                NetOurGatewayIP
+                0x04028080                NetArpWaitTimerStart
+                0x04028084                NetArpWaitTry
+                0x0402808e                NetEtherNullAddr
+                0x04028094                NetIPID
+                0x0402809a                PktBuf
+                0x04029ebc                NetRxPackets
+                0x04029ecc                NetArpWaitPacketBuf
+                0x0402a4f0                NetBootFileXferSize
+                0x0402a4f4                NetOurDNSIP
+                0x0402a4f8                NetOurNISDomain
+                0x0402a518                NetOurHostName
+                0x0402a538                NetOurRootPath
+                0x0402a578                NetBootFileSize
+                0x0402a57a                BootFile
+ .bss           0x0402a5fc        0x4 net/libnet.a(rarp.o)
+                0x0402a5fc                RarpTry
+ .bss           0x0402a600      0x670 net/libnet.a(http.o)
+                0x0402ac4c                post_info
+ .bss           0x0402ac70      0x718 net/libnet.a(tcp.o)
+                0x0402ac70                conxn
+                0x0402b384                debug
+ .bss           0x0402b388       0xb4 net/libnet.a(tftp.o)
+ .bss           0x0402b43c        0x8 net/libnet.a(bootp.o)
+                0x0402b43c                BootpID
+                0x0402b440                BootpTry
+ *fill*         0x0402b444        0x4 00
+ .bss           0x0402b448      0x560 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+                0x0402b628                flash_status
+                0x0402b62c                flash_type
+                0x0402b630                nf_cnt
+                0x0402b634                nf_cmd
+                0x0402b638                nf_addr1
+                0x0402b63c                nf_addr2
+                0x0402b640                nf_access
+                0x0402b644                flash_start
+                0x0402b648                ecc_reset
+                0x0402b654                flash_int_sts
+                0x0402b658                ecc_ctl
+                0x0402b65c                dma_txq5_ctrl
+                0x0402b660                dma_ssp_txq5_intsts
+                0x0402b664                dma_ssp_rxq5_intsts
+                0x0402b668                dma_txq5_wptr
+                0x0402b66c                tx_desc
+                0x0402b670                dma_rxq5_rptr
+                0x0402b674                rx_desc
+                0x0402b678                fifo_ctl
+                0x0402b67c                ecc_sts
+                0x0402b680                ecc_gen0
+                0x0402b684                ecc_oob
+                0x0402b688                bch_ctrl
+                0x0402b854                global_strap
+                0x0402b858                nf_data
+                0x0402b85c                ecc_gen1
+                0x0402b860                ecc_gen2
+                0x0402b864                ecc_gen3
+                0x0402b868                ecc_gen4
+                0x0402b86c                ecc_gen5
+                0x0402b870                ecc_gen6
+                0x0402b874                ecc_gen7
+                0x0402b878                ecc_gen8
+                0x0402b87c                ecc_gen9
+                0x0402b880                ecc_gen10
+                0x0402b884                ecc_gen11
+                0x0402b888                ecc_gen12
+                0x0402b88c                ecc_gen13
+                0x0402b890                ecc_gen14
+                0x0402b894                ecc_gen15
+                0x0402b898                fifo_sts
+                0x0402b89c                fifo_addr
+                0x0402b8a0                dido_data
+                0x0402b8a4                flash_int_mask
+                0x0402b8a8                bch_sts
+                0x0402b8ac                bch_err_loc01
+                0x0402b8b0                bch_err_loc23
+                0x0402b8b4                bch_err_loc45
+                0x0402b8b8                bch_err_loc67
+                0x0402b8bc                bch_oob0
+                0x0402b8c0                bch_oob1
+                0x0402b8c4                bch_oob2
+                0x0402b8c8                bch_oob3
+                0x0402b8cc                bch_oob4
+                0x0402b8d0                bch_gen00
+                0x0402b8d4                bch_gen01
+                0x0402b8d8                bch_gen02
+                0x0402b8dc                bch_gen03
+                0x0402b8e0                bch_gen04
+                0x0402b8e4                bch_gen10
+                0x0402b8e8                bch_gen11
+                0x0402b8ec                bch_gen12
+                0x0402b8f0                bch_gen13
+                0x0402b8f4                bch_gen20
+                0x0402b8f8                bch_gen21
+                0x0402b8fc                bch_gen22
+                0x0402b900                bch_gen23
+                0x0402b904                bch_gen30
+                0x0402b908                bch_gen31
+                0x0402b90c                bch_gen32
+                0x0402b910                bch_gen33
+                0x0402b914                bch_gen40
+                0x0402b918                bch_gen41
+                0x0402b91c                bch_gen42
+                0x0402b920                bch_gen43
+                0x0402b924                bch_gen50
+                0x0402b928                bch_gen51
+                0x0402b92c                bch_gen52
+                0x0402b930                bch_gen53
+                0x0402b934                bch_gen60
+                0x0402b938                bch_gen61
+                0x0402b93c                bch_gen62
+                0x0402b940                bch_gen63
+                0x0402b944                bch_gen70
+                0x0402b948                bch_gen71
+                0x0402b94c                bch_gen72
+                0x0402b950                bch_gen73
+                0x0402b954                dma_rxdma_ctrl
+                0x0402b958                dma_txdma_ctrl
+                0x0402b95c                dma_rxq5_pktcnt_read
+                0x0402b960                dma_txq5_pktcnt_read
+                0x0402b964                dma_rxq5_base_depth
+                0x0402b968                dma_rxq5_wptr
+                0x0402b96c                dma_txq5_base_depth
+                0x0402b970                dma_txq5_rptr
+                0x0402b974                dma_rxq5_threshold
+                0x0402b978                dma_rxq5_pktcnt
+                0x0402b97c                dma_rxq5_drop_pktcnt
+                0x0402b980                dma_txq5_pktcnt
+                0x0402b984                dma_ssp0_intsts
+                0x0402b988                dma_ssp0_int_enable
+                0x0402b98c                dma_ssp1_intsts
+                0x0402b990                dma_ssp1_int_enable
+                0x0402b994                dma_ssp_desc_intsts
+                0x0402b998                dma_ssp_desc_int_enable
+                0x0402b99c                dma_ssp_rxq5_int_enable
+                0x0402b9a0                dma_ssp_txq5_int_enable
+                0x0402b9a4                tmp_access
+ .bss           0x0402b9a8       0xb0 drivers/mtd/nand/libnand.a(nand.o)
+                0x0402b9a8                nand_info
+ .bss           0x0402ba58        0x0 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .bss           0x0402ba58        0x0 drivers/mtd/nand/libnand.a(nand_ids.o)
+ .bss           0x0402ba58        0x4 drivers/net/libnet.a(g2_ni_mfe.o)
+ .bss           0x0402ba5c       0x18 drivers/serial/libserial.a(serial_cs752x.o)
+                0x0402ba70                gs2_flag
+ .bss           0x0402ba74        0x0 common/libcommon.a(cmd_bdinfo.o)
+ .bss           0x0402ba74        0x0 common/libcommon.a(cmd_boot.o)
+ .bss           0x0402ba74      0x12c common/libcommon.a(cmd_bootm.o)
+ .bss           0x0402bba0       0x60 common/libcommon.a(cmd_load.o)
+                0x0402bbac                his_pad_count
+                0x0402bbb0                his_pad_char
+                0x0402bbc9                his_eol
+                0x0402bbd0                os_data_init
+                0x0402bbe0                os_data_char
+                0x0402bbe4                his_quote
+                0x0402bbe8                send_ptr
+                0x0402bbec                send_parms
+ .bss           0x0402bc00       0x14 common/libcommon.a(cmd_mem.o)
+                0x0402bc04                mm_last_addr
+                0x0402bc08                mm_last_size
+                0x0402bc0c                dp_last_addr
+                0x0402bc10                dp_last_size
+ .bss           0x0402bc14        0x0 common/libcommon.a(cmd_nand.o)
+ .bss           0x0402bc14        0x0 common/libcommon.a(cmd_net.o)
+ .bss           0x0402bc14        0x0 common/libcommon.a(cmd_nvedit.o)
+ .bss           0x0402bc14        0x0 common/libcommon.a(command.o)
+ .bss           0x0402bc14        0x8 common/libcommon.a(console.o)
+ .bss           0x0402bc1c       0x44 common/libcommon.a(dlmalloc.o)
+                0x0402bc1c                mem_malloc_brk
+                0x0402bc20                mem_malloc_start
+                0x0402bc24                mem_malloc_end
+ .bss           0x0402bc60        0x0 common/libcommon.a(env_common.o)
+ .bss           0x0402bc60        0x4 common/libcommon.a(env_nand.o)
+                0x0402bc60                env_ptr
+ .bss           0x0402bc64        0x0 common/libcommon.a(exports.o)
+ .bss           0x0402bc64        0x0 common/libcommon.a(image.o)
+ .bss           0x0402bc64      0x800 common/libcommon.a(main.o)
+                0x0402bc64                console_buffer
+ .bss           0x0402c464       0x48 common/libcommon.a(stdio.o)
+                0x0402c4a0                stdio_devices
+ .bss           0x0402c4ac      0x43c common/libcommon.a(xyzModem.o)
+ *fill*         0x0402c8e8     0x3718 00
+ .bss           0x04030000     0x4000 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .bss           0x04034000       0x10 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .bss           0x04034010        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(lowlevel_init.o)
+ .bss           0x04034010       0x14 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .bss           0x04034024       0x24 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .bss           0x04034048       0x34 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .bss           0x0403407c        0x0 lib_generic/libgeneric.a(crc16.o)
+ .bss           0x0403407c        0x0 lib_generic/libgeneric.a(crc32.o)
+ .bss           0x0403407c        0x0 lib_generic/libgeneric.a(display_options.o)
+ .bss           0x0403407c        0x0 lib_generic/libgeneric.a(gunzip.o)
+ .bss           0x0403407c        0x0 lib_generic/libgeneric.a(lmb.o)
+ .bss           0x0403407c        0x0 lib_generic/libgeneric.a(md5.o)
+ .bss           0x0403407c        0x4 lib_generic/libgeneric.a(string.o)
+                0x0403407c                ___strtok
+ .bss           0x04034080        0x0 lib_generic/libgeneric.a(vsprintf.o)
+ .bss           0x04034080        0x0 lib_generic/libgeneric.a(zlib.o)
+ .bss           0x04034080        0x0 lib_generic/libgeneric.a(ctype.o)
+ .bss           0x04034080        0x0 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .bss           0x04034080       0x28 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .bss           0x040340a8        0x4 lib_arm/libarm.a(bootm.o)
+ .bss           0x040340ac        0x0 lib_arm/libarm.a(cache.o)
+ .bss           0x040340ac        0x0 lib_arm/libarm.a(cache-cp15.o)
+ .bss           0x040340ac        0x0 drivers/mtd/nand/libnand.a(nand_util.o)
+ .bss           0x040340ac        0x0 lib_generic/libgeneric.a(div64.o)
+ .bss           0x040340ac        0x0 /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+ .bss           0x040340ac        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+ .bss           0x040340ac        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+ .bss           0x040340ac        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+ .bss           0x040340ac        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+ .bss           0x040340ac        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+ .bss           0x040340ac        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+                0x040340ac                _end = .
+Address of section .text set to 0x4000000
+LOAD cpu/arm_cortexa9/start.o
+START GROUP
+LOAD lib_generic/libgeneric.a
+LOAD lib_generic/lzma/liblzma.a
+LOAD lib_generic/lzo/liblzo.a
+LOAD lib_openssl/libopenssl.a
+LOAD cpu/arm_cortexa9/libarm_cortexa9.a
+LOAD cpu/arm_cortexa9/goldengate/libgoldengate.a
+LOAD lib_arm/libarm.a
+LOAD fs/cramfs/libcramfs.a
+LOAD fs/fat/libfat.a
+LOAD fs/fdos/libfdos.a
+LOAD fs/jffs2/libjffs2.a
+LOAD fs/reiserfs/libreiserfs.a
+LOAD fs/ext2/libext2fs.a
+LOAD fs/yaffs2/libyaffs2.a
+LOAD fs/ubifs/libubifs.a
+LOAD net/libnet.a
+LOAD disk/libdisk.a
+LOAD drivers/bios_emulator/libatibiosemu.a
+LOAD drivers/block/libblock.a
+LOAD drivers/dma/libdma.a
+LOAD drivers/fpga/libfpga.a
+LOAD drivers/gpio/libgpio.a
+LOAD drivers/hwmon/libhwmon.a
+LOAD drivers/i2c/libi2c.a
+LOAD drivers/input/libinput.a
+LOAD drivers/misc/libmisc.a
+LOAD drivers/mmc/libmmc.a
+LOAD drivers/mtd/libmtd.a
+LOAD drivers/mtd/nand/libnand.a
+LOAD drivers/mtd/onenand/libonenand.a
+LOAD drivers/mtd/ubi/libubi.a
+LOAD drivers/mtd/spi/libspi_flash.a
+LOAD drivers/net/libnet.a
+LOAD drivers/net/phy/libphy.a
+LOAD drivers/net/sk98lin/libsk98lin.a
+LOAD drivers/pci/libpci.a
+LOAD drivers/pcmcia/libpcmcia.a
+LOAD drivers/power/libpower.a
+LOAD drivers/spi/libspi.a
+LOAD drivers/rtc/librtc.a
+LOAD drivers/serial/libserial.a
+LOAD drivers/twserial/libtws.a
+LOAD drivers/usb/gadget/libusb_gadget.a
+LOAD drivers/usb/host/libusb_host.a
+LOAD drivers/usb/musb/libusb_musb.a
+LOAD drivers/video/libvideo.a
+LOAD drivers/watchdog/libwatchdog.a
+LOAD common/libcommon.a
+LOAD libfdt/libfdt.a
+LOAD api/libapi.a
+LOAD post/libpost.a
+LOAD board/futuretek/ftm-nico2/libftm-nico2.a
+END GROUP
+LOAD /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+LOAD /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a
+OUTPUT(u-boot elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x2d
+ .ARM.attributes
+                0x00000000       0x1d cpu/arm_cortexa9/start.o
+ .ARM.attributes
+                0x0000001d       0x2d lib_arm/libarm.a(board.o)
+ .ARM.attributes
+                0x0000004a       0x2d lib_arm/libarm.a(interrupts.o)
+ .ARM.attributes
+                0x00000077       0x2d net/libnet.a(eth.o)
+ .ARM.attributes
+                0x000000a4       0x2d net/libnet.a(net.o)
+ .ARM.attributes
+                0x000000d1       0x2d net/libnet.a(rarp.o)
+ .ARM.attributes
+                0x000000fe       0x2d net/libnet.a(http.o)
+ .ARM.attributes
+                0x0000012b       0x2d net/libnet.a(tcp.o)
+ .ARM.attributes
+                0x00000158       0x2d net/libnet.a(tftp.o)
+ .ARM.attributes
+                0x00000185       0x2d net/libnet.a(bootp.o)
+ .ARM.attributes
+                0x000001b2       0x2d drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .ARM.attributes
+                0x000001df       0x2d drivers/mtd/nand/libnand.a(nand.o)
+ .ARM.attributes
+                0x0000020c       0x2d drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .ARM.attributes
+                0x00000239       0x2d drivers/mtd/nand/libnand.a(nand_ids.o)
+ .ARM.attributes
+                0x00000266       0x2d drivers/net/libnet.a(g2_ni_mfe.o)
+ .ARM.attributes
+                0x00000293       0x2d drivers/serial/libserial.a(serial_cs752x.o)
+ .ARM.attributes
+                0x000002c0       0x2d common/libcommon.a(cmd_bdinfo.o)
+ .ARM.attributes
+                0x000002ed       0x2d common/libcommon.a(cmd_boot.o)
+ .ARM.attributes
+                0x0000031a       0x2d common/libcommon.a(cmd_bootm.o)
+ .ARM.attributes
+                0x00000347       0x2d common/libcommon.a(cmd_load.o)
+ .ARM.attributes
+                0x00000374       0x2d common/libcommon.a(cmd_mem.o)
+ .ARM.attributes
+                0x000003a1       0x2d common/libcommon.a(cmd_nand.o)
+ .ARM.attributes
+                0x000003ce       0x2d common/libcommon.a(cmd_net.o)
+ .ARM.attributes
+                0x000003fb       0x2d common/libcommon.a(cmd_nvedit.o)
+ .ARM.attributes
+                0x00000428       0x2d common/libcommon.a(command.o)
+ .ARM.attributes
+                0x00000455       0x2d common/libcommon.a(console.o)
+ .ARM.attributes
+                0x00000482       0x2d common/libcommon.a(dlmalloc.o)
+ .ARM.attributes
+                0x000004af       0x2d common/libcommon.a(env_common.o)
+ .ARM.attributes
+                0x000004dc       0x2d common/libcommon.a(env_nand.o)
+ .ARM.attributes
+                0x00000509       0x2d common/libcommon.a(exports.o)
+ .ARM.attributes
+                0x00000536       0x2d common/libcommon.a(image.o)
+ .ARM.attributes
+                0x00000563       0x2d common/libcommon.a(main.o)
+ .ARM.attributes
+                0x00000590       0x2d common/libcommon.a(stdio.o)
+ .ARM.attributes
+                0x000005bd       0x2d common/libcommon.a(xyzModem.o)
+ .ARM.attributes
+                0x000005ea       0x2d board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .ARM.attributes
+                0x00000617       0x2d board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .ARM.attributes
+                0x00000644       0x1d board/futuretek/ftm-nico2/libftm-nico2.a(lowlevel_init.o)
+ .ARM.attributes
+                0x00000661       0x2d board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .ARM.attributes
+                0x0000068e       0x2d board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .ARM.attributes
+                0x000006bb       0x2d board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .ARM.attributes
+                0x000006e8       0x2d lib_generic/libgeneric.a(crc16.o)
+ .ARM.attributes
+                0x00000715       0x2d lib_generic/libgeneric.a(crc32.o)
+ .ARM.attributes
+                0x00000742       0x2d lib_generic/libgeneric.a(display_options.o)
+ .ARM.attributes
+                0x0000076f       0x2d lib_generic/libgeneric.a(gunzip.o)
+ .ARM.attributes
+                0x0000079c       0x2d lib_generic/libgeneric.a(lmb.o)
+ .ARM.attributes
+                0x000007c9       0x2d lib_generic/libgeneric.a(md5.o)
+ .ARM.attributes
+                0x000007f6       0x2d lib_generic/libgeneric.a(string.o)
+ .ARM.attributes
+                0x00000823       0x2d lib_generic/libgeneric.a(vsprintf.o)
+ .ARM.attributes
+                0x00000850       0x2d lib_generic/libgeneric.a(zlib.o)
+ .ARM.attributes
+                0x0000087d       0x2d lib_generic/libgeneric.a(ctype.o)
+ .ARM.attributes
+                0x000008aa       0x2d cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .ARM.attributes
+                0x000008d7       0x2d cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .ARM.attributes
+                0x00000904       0x2d lib_arm/libarm.a(bootm.o)
+ .ARM.attributes
+                0x00000931       0x2d lib_arm/libarm.a(cache.o)
+ .ARM.attributes
+                0x0000095e       0x2d lib_arm/libarm.a(cache-cp15.o)
+ .ARM.attributes
+                0x0000098b       0x2d drivers/mtd/nand/libnand.a(nand_util.o)
+ .ARM.attributes
+                0x000009b8       0x2d lib_generic/libgeneric.a(div64.o)
+ .ARM.attributes
+                0x000009e5       0x2d /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+ .ARM.attributes
+                0x00000a12       0x23 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x00000a35       0x23 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x00000a58       0x23 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+ .ARM.attributes
+                0x00000a7b       0x23 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+ .ARM.attributes
+                0x00000a9e       0x23 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+ .ARM.attributes
+                0x00000ac1       0x23 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+
+.comment        0x00000000       0x3b
+ .comment       0x00000000       0x3b lib_arm/libarm.a(board.o)
+                                 0x3c (size before relaxing)
+ .comment       0x00000000       0x3c lib_arm/libarm.a(interrupts.o)
+ .comment       0x00000000       0x3c net/libnet.a(eth.o)
+ .comment       0x00000000       0x3c net/libnet.a(net.o)
+ .comment       0x00000000       0x3c net/libnet.a(rarp.o)
+ .comment       0x00000000       0x3c net/libnet.a(http.o)
+ .comment       0x00000000       0x3c net/libnet.a(tcp.o)
+ .comment       0x00000000       0x3c net/libnet.a(tftp.o)
+ .comment       0x00000000       0x3c net/libnet.a(bootp.o)
+ .comment       0x00000000       0x3c drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .comment       0x00000000       0x3c drivers/mtd/nand/libnand.a(nand.o)
+ .comment       0x00000000       0x3c drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .comment       0x00000000       0x3c drivers/mtd/nand/libnand.a(nand_ids.o)
+ .comment       0x00000000       0x3c drivers/net/libnet.a(g2_ni_mfe.o)
+ .comment       0x00000000       0x3c drivers/serial/libserial.a(serial_cs752x.o)
+ .comment       0x00000000       0x3c common/libcommon.a(cmd_bdinfo.o)
+ .comment       0x00000000       0x3c common/libcommon.a(cmd_boot.o)
+ .comment       0x00000000       0x3c common/libcommon.a(cmd_bootm.o)
+ .comment       0x00000000       0x3c common/libcommon.a(cmd_load.o)
+ .comment       0x00000000       0x3c common/libcommon.a(cmd_mem.o)
+ .comment       0x00000000       0x3c common/libcommon.a(cmd_nand.o)
+ .comment       0x00000000       0x3c common/libcommon.a(cmd_net.o)
+ .comment       0x00000000       0x3c common/libcommon.a(cmd_nvedit.o)
+ .comment       0x00000000       0x3c common/libcommon.a(command.o)
+ .comment       0x00000000       0x3c common/libcommon.a(console.o)
+ .comment       0x00000000       0x3c common/libcommon.a(dlmalloc.o)
+ .comment       0x00000000       0x3c common/libcommon.a(env_common.o)
+ .comment       0x00000000       0x3c common/libcommon.a(env_nand.o)
+ .comment       0x00000000       0x3c common/libcommon.a(exports.o)
+ .comment       0x00000000       0x3c common/libcommon.a(image.o)
+ .comment       0x00000000       0x3c common/libcommon.a(main.o)
+ .comment       0x00000000       0x3c common/libcommon.a(stdio.o)
+ .comment       0x00000000       0x3c common/libcommon.a(xyzModem.o)
+ .comment       0x00000000       0x3c board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .comment       0x00000000       0x3c board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .comment       0x00000000       0x3c board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .comment       0x00000000       0x3c board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .comment       0x00000000       0x3c board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(crc16.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(crc32.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(display_options.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(gunzip.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(lmb.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(md5.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(string.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(vsprintf.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(zlib.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(ctype.o)
+ .comment       0x00000000       0x3c cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .comment       0x00000000       0x3c cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .comment       0x00000000       0x3c lib_arm/libarm.a(bootm.o)
+ .comment       0x00000000       0x3c lib_arm/libarm.a(cache.o)
+ .comment       0x00000000       0x3c lib_arm/libarm.a(cache-cp15.o)
+ .comment       0x00000000       0x3c drivers/mtd/nand/libnand.a(nand_util.o)
+ .comment       0x00000000       0x3c lib_generic/libgeneric.a(div64.o)
+ .comment       0x00000000       0x3c /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+
+.note.GNU-stack
+                0x00000000        0x0
+ .note.GNU-stack
+                0x00000000        0x0 lib_arm/libarm.a(board.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_arm/libarm.a(interrupts.o)
+ .note.GNU-stack
+                0x00000000        0x0 net/libnet.a(eth.o)
+ .note.GNU-stack
+                0x00000000        0x0 net/libnet.a(net.o)
+ .note.GNU-stack
+                0x00000000        0x0 net/libnet.a(rarp.o)
+ .note.GNU-stack
+                0x00000000        0x0 net/libnet.a(http.o)
+ .note.GNU-stack
+                0x00000000        0x0 net/libnet.a(tcp.o)
+ .note.GNU-stack
+                0x00000000        0x0 net/libnet.a(tftp.o)
+ .note.GNU-stack
+                0x00000000        0x0 net/libnet.a(bootp.o)
+ .note.GNU-stack
+                0x00000000        0x0 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .note.GNU-stack
+                0x00000000        0x0 drivers/mtd/nand/libnand.a(nand.o)
+ .note.GNU-stack
+                0x00000000        0x0 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .note.GNU-stack
+                0x00000000        0x0 drivers/mtd/nand/libnand.a(nand_ids.o)
+ .note.GNU-stack
+                0x00000000        0x0 drivers/net/libnet.a(g2_ni_mfe.o)
+ .note.GNU-stack
+                0x00000000        0x0 drivers/serial/libserial.a(serial_cs752x.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(cmd_bdinfo.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(cmd_boot.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(cmd_bootm.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(cmd_load.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(cmd_mem.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(cmd_nand.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(cmd_net.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(cmd_nvedit.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(command.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(console.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(dlmalloc.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(env_common.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(env_nand.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(exports.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(image.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(main.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(stdio.o)
+ .note.GNU-stack
+                0x00000000        0x0 common/libcommon.a(xyzModem.o)
+ .note.GNU-stack
+                0x00000000        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .note.GNU-stack
+                0x00000000        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .note.GNU-stack
+                0x00000000        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .note.GNU-stack
+                0x00000000        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .note.GNU-stack
+                0x00000000        0x0 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(crc16.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(crc32.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(display_options.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(gunzip.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(lmb.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(md5.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(string.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(vsprintf.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(zlib.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(ctype.o)
+ .note.GNU-stack
+                0x00000000        0x0 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .note.GNU-stack
+                0x00000000        0x0 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_arm/libarm.a(bootm.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_arm/libarm.a(cache.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_arm/libarm.a(cache-cp15.o)
+ .note.GNU-stack
+                0x00000000        0x0 drivers/mtd/nand/libnand.a(nand_util.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib_generic/libgeneric.a(div64.o)
+ .note.GNU-stack
+                0x00000000        0x0 /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+ .note.GNU-stack
+                0x00000000        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+ .note.GNU-stack
+                0x00000000        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+ .note.GNU-stack
+                0x00000000        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+ .note.GNU-stack
+                0x00000000        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+ .note.GNU-stack
+                0x00000000        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+ .note.GNU-stack
+                0x00000000        0x0 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+
+.debug_line     0x00000000     0x9cbb
+ .debug_line    0x00000000       0xc5 cpu/arm_cortexa9/start.o
+ .debug_line    0x000000c5      0x184 lib_arm/libarm.a(board.o)
+ .debug_line    0x00000249       0xbf lib_arm/libarm.a(interrupts.o)
+ .debug_line    0x00000308      0x233 net/libnet.a(eth.o)
+ .debug_line    0x0000053b      0x6dc net/libnet.a(net.o)
+ .debug_line    0x00000c17      0x125 net/libnet.a(rarp.o)
+ .debug_line    0x00000d3c      0x3c7 net/libnet.a(http.o)
+ .debug_line    0x00001103      0x3c7 net/libnet.a(tcp.o)
+ .debug_line    0x000014ca      0x2a0 net/libnet.a(tftp.o)
+ .debug_line    0x0000176a      0x2bb net/libnet.a(bootp.o)
+ .debug_line    0x00001a25     0x14d3 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .debug_line    0x00002ef8      0x14e drivers/mtd/nand/libnand.a(nand.o)
+ .debug_line    0x00003046      0x5b1 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .debug_line    0x000035f7       0x66 drivers/mtd/nand/libnand.a(nand_ids.o)
+ .debug_line    0x0000365d      0x512 drivers/net/libnet.a(g2_ni_mfe.o)
+ .debug_line    0x00003b6f      0x12f drivers/serial/libserial.a(serial_cs752x.o)
+ .debug_line    0x00003c9e      0x105 common/libcommon.a(cmd_bdinfo.o)
+ .debug_line    0x00003da3       0xc0 common/libcommon.a(cmd_boot.o)
+ .debug_line    0x00003e63      0x3d8 common/libcommon.a(cmd_bootm.o)
+ .debug_line    0x0000423b      0x2f2 common/libcommon.a(cmd_load.o)
+ .debug_line    0x0000452d      0x2b4 common/libcommon.a(cmd_mem.o)
+ .debug_line    0x000047e1      0x433 common/libcommon.a(cmd_nand.o)
+ .debug_line    0x00004c14      0x13d common/libcommon.a(cmd_net.o)
+ .debug_line    0x00004d51      0x378 common/libcommon.a(cmd_nvedit.o)
+ .debug_line    0x000050c9      0x13b common/libcommon.a(command.o)
+ .debug_line    0x00005204      0x2cf common/libcommon.a(console.o)
+ .debug_line    0x000054d3      0x4c6 common/libcommon.a(dlmalloc.o)
+ .debug_line    0x00005999      0x141 common/libcommon.a(env_common.o)
+ .debug_line    0x00005ada      0x227 common/libcommon.a(env_nand.o)
+ .debug_line    0x00005d01      0x10b common/libcommon.a(exports.o)
+ .debug_line    0x00005e0c      0x366 common/libcommon.a(image.o)
+ .debug_line    0x00006172      0x259 common/libcommon.a(main.o)
+ .debug_line    0x000063cb      0x17d common/libcommon.a(stdio.o)
+ .debug_line    0x00006548      0x2bb common/libcommon.a(xyzModem.o)
+ .debug_line    0x00006803      0x17c board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .debug_line    0x0000697f       0x6c board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .debug_line    0x000069eb       0x3f board/futuretek/ftm-nico2/libftm-nico2.a(lowlevel_init.o)
+ .debug_line    0x00006a2a      0x2f2 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .debug_line    0x00006d1c      0x21a board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .debug_line    0x00006f36      0x533 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .debug_line    0x00007469       0xc0 lib_generic/libgeneric.a(crc16.o)
+ .debug_line    0x00007529      0x14f lib_generic/libgeneric.a(crc32.o)
+ .debug_line    0x00007678      0x130 lib_generic/libgeneric.a(display_options.o)
+ .debug_line    0x000077a8       0xd3 lib_generic/libgeneric.a(gunzip.o)
+ .debug_line    0x0000787b      0x278 lib_generic/libgeneric.a(lmb.o)
+ .debug_line    0x00007af3      0x2af lib_generic/libgeneric.a(md5.o)
+ .debug_line    0x00007da2      0x2cf lib_generic/libgeneric.a(string.o)
+ .debug_line    0x00008071      0x44a lib_generic/libgeneric.a(vsprintf.o)
+ .debug_line    0x000084bb      0x936 lib_generic/libgeneric.a(zlib.o)
+ .debug_line    0x00008df1       0x60 lib_generic/libgeneric.a(ctype.o)
+ .debug_line    0x00008e51       0xb6 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .debug_line    0x00008f07       0xc9 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .debug_line    0x00008fd0      0x175 lib_arm/libarm.a(bootm.o)
+ .debug_line    0x00009145       0x38 lib_arm/libarm.a(cache.o)
+ .debug_line    0x0000917d      0x12e lib_arm/libarm.a(cache-cp15.o)
+ .debug_line    0x000092ab      0x3c5 drivers/mtd/nand/libnand.a(nand_util.o)
+ .debug_line    0x00009670       0xc6 lib_generic/libgeneric.a(div64.o)
+ .debug_line    0x00009736       0x41 /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+ .debug_line    0x00009777       0xf2 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+ .debug_line    0x00009869       0xfe /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+ .debug_line    0x00009967       0xd5 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+ .debug_line    0x00009a3c       0xd5 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+ .debug_line    0x00009b11       0xd5 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+ .debug_line    0x00009be6       0xd5 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+
+.debug_info     0x00000000    0x28f39
+ .debug_info    0x00000000       0x60 cpu/arm_cortexa9/start.o
+ .debug_info    0x00000060      0x4b4 lib_arm/libarm.a(board.o)
+ .debug_info    0x00000514      0x260 lib_arm/libarm.a(interrupts.o)
+ .debug_info    0x00000774      0x896 net/libnet.a(eth.o)
+ .debug_info    0x0000100a     0x1ba4 net/libnet.a(net.o)
+ .debug_info    0x00002bae      0x2b2 net/libnet.a(rarp.o)
+ .debug_info    0x00002e60      0xfa7 net/libnet.a(http.o)
+ .debug_info    0x00003e07      0x941 net/libnet.a(tcp.o)
+ .debug_info    0x00004748      0x5dc net/libnet.a(tftp.o)
+ .debug_info    0x00004d24      0xa7b net/libnet.a(bootp.o)
+ .debug_info    0x0000579f     0x9086 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .debug_info    0x0000e825     0x11c7 drivers/mtd/nand/libnand.a(nand.o)
+ .debug_info    0x0000f9ec     0x208b drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .debug_info    0x00011a77      0x14f drivers/mtd/nand/libnand.a(nand_ids.o)
+ .debug_info    0x00011bc6     0x1720 drivers/net/libnet.a(g2_ni_mfe.o)
+ .debug_info    0x000132e6      0x502 drivers/serial/libserial.a(serial_cs752x.o)
+ .debug_info    0x000137e8      0x4db common/libcommon.a(cmd_bdinfo.o)
+ .debug_info    0x00013cc3      0x251 common/libcommon.a(cmd_boot.o)
+ .debug_info    0x00013f14     0x1256 common/libcommon.a(cmd_bootm.o)
+ .debug_info    0x0001516a      0xaa9 common/libcommon.a(cmd_load.o)
+ .debug_info    0x00015c13      0xafe common/libcommon.a(cmd_mem.o)
+ .debug_info    0x00016711     0x1851 common/libcommon.a(cmd_nand.o)
+ .debug_info    0x00017f62      0x5e2 common/libcommon.a(cmd_net.o)
+ .debug_info    0x00018544      0x8f7 common/libcommon.a(cmd_nvedit.o)
+ .debug_info    0x00018e3b      0x517 common/libcommon.a(command.o)
+ .debug_info    0x00019352      0xabb common/libcommon.a(console.o)
+ .debug_info    0x00019e0d      0xcb9 common/libcommon.a(dlmalloc.o)
+ .debug_info    0x0001aac6      0x3b4 common/libcommon.a(env_common.o)
+ .debug_info    0x0001ae7a      0xe18 common/libcommon.a(env_nand.o)
+ .debug_info    0x0001bc92      0x2ec common/libcommon.a(exports.o)
+ .debug_info    0x0001bf7e     0x11cd common/libcommon.a(image.o)
+ .debug_info    0x0001d14b      0x6e2 common/libcommon.a(main.o)
+ .debug_info    0x0001d82d      0x5a5 common/libcommon.a(stdio.o)
+ .debug_info    0x0001ddd2      0x933 common/libcommon.a(xyzModem.o)
+ .debug_info    0x0001e705      0x535 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .debug_info    0x0001ec3a      0x19f board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .debug_info    0x0001edd9       0x71 board/futuretek/ftm-nico2/libftm-nico2.a(lowlevel_init.o)
+ .debug_info    0x0001ee4a      0xf22 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .debug_info    0x0001fd6c      0x77a board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .debug_info    0x000204e6     0x1bba board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .debug_info    0x000220a0      0x10b lib_generic/libgeneric.a(crc16.o)
+ .debug_info    0x000221ab      0x1d0 lib_generic/libgeneric.a(crc32.o)
+ .debug_info    0x0002237b      0x283 lib_generic/libgeneric.a(display_options.o)
+ .debug_info    0x000225fe      0x3ee lib_generic/libgeneric.a(gunzip.o)
+ .debug_info    0x000229ec      0x93f lib_generic/libgeneric.a(lmb.o)
+ .debug_info    0x0002332b      0x37d lib_generic/libgeneric.a(md5.o)
+ .debug_info    0x000236a8      0x941 lib_generic/libgeneric.a(string.o)
+ .debug_info    0x00023fe9      0xb2c lib_generic/libgeneric.a(vsprintf.o)
+ .debug_info    0x00024b15      0xfcc lib_generic/libgeneric.a(zlib.o)
+ .debug_info    0x00025ae1       0x63 lib_generic/libgeneric.a(ctype.o)
+ .debug_info    0x00025b44      0x1db cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .debug_info    0x00025d1f      0x294 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .debug_info    0x00025fb3      0xb2a lib_arm/libarm.a(bootm.o)
+ .debug_info    0x00026add       0xa2 lib_arm/libarm.a(cache.o)
+ .debug_info    0x00026b7f      0x328 lib_arm/libarm.a(cache-cp15.o)
+ .debug_info    0x00026ea7     0x1632 drivers/mtd/nand/libnand.a(nand_util.o)
+ .debug_info    0x000284d9      0x13c lib_generic/libgeneric.a(div64.o)
+ .debug_info    0x00028615       0x9c /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+ .debug_info    0x000286b1      0x16c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+ .debug_info    0x0002881d      0x16c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+ .debug_info    0x00028989      0x16c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+ .debug_info    0x00028af5      0x16c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+ .debug_info    0x00028c61      0x16c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+ .debug_info    0x00028dcd      0x16c /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+
+.debug_abbrev   0x00000000     0x7b5a
+ .debug_abbrev  0x00000000       0x14 cpu/arm_cortexa9/start.o
+ .debug_abbrev  0x00000014      0x1d6 lib_arm/libarm.a(board.o)
+ .debug_abbrev  0x000001ea       0xf5 lib_arm/libarm.a(interrupts.o)
+ .debug_abbrev  0x000002df      0x2e8 net/libnet.a(eth.o)
+ .debug_abbrev  0x000005c7      0x4e5 net/libnet.a(net.o)
+ .debug_abbrev  0x00000aac      0x11b net/libnet.a(rarp.o)
+ .debug_abbrev  0x00000bc7      0x35f net/libnet.a(http.o)
+ .debug_abbrev  0x00000f26      0x2a9 net/libnet.a(tcp.o)
+ .debug_abbrev  0x000011cf      0x1ff net/libnet.a(tftp.o)
+ .debug_abbrev  0x000013ce      0x32f net/libnet.a(bootp.o)
+ .debug_abbrev  0x000016fd      0x54f drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .debug_abbrev  0x00001c4c      0x16b drivers/mtd/nand/libnand.a(nand.o)
+ .debug_abbrev  0x00001db7      0x3ad drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .debug_abbrev  0x00002164       0x83 drivers/mtd/nand/libnand.a(nand_ids.o)
+ .debug_abbrev  0x000021e7      0x40e drivers/net/libnet.a(g2_ni_mfe.o)
+ .debug_abbrev  0x000025f5      0x23b drivers/serial/libserial.a(serial_cs752x.o)
+ .debug_abbrev  0x00002830      0x1f9 common/libcommon.a(cmd_bdinfo.o)
+ .debug_abbrev  0x00002a29       0xe7 common/libcommon.a(cmd_boot.o)
+ .debug_abbrev  0x00002b10      0x3de common/libcommon.a(cmd_bootm.o)
+ .debug_abbrev  0x00002eee      0x314 common/libcommon.a(cmd_load.o)
+ .debug_abbrev  0x00003202      0x1bc common/libcommon.a(cmd_mem.o)
+ .debug_abbrev  0x000033be      0x3b8 common/libcommon.a(cmd_nand.o)
+ .debug_abbrev  0x00003776      0x1d6 common/libcommon.a(cmd_net.o)
+ .debug_abbrev  0x0000394c      0x267 common/libcommon.a(cmd_nvedit.o)
+ .debug_abbrev  0x00003bb3      0x1e6 common/libcommon.a(command.o)
+ .debug_abbrev  0x00003d99      0x37b common/libcommon.a(console.o)
+ .debug_abbrev  0x00004114      0x290 common/libcommon.a(dlmalloc.o)
+ .debug_abbrev  0x000043a4      0x18f common/libcommon.a(env_common.o)
+ .debug_abbrev  0x00004533      0x331 common/libcommon.a(env_nand.o)
+ .debug_abbrev  0x00004864      0x12b common/libcommon.a(exports.o)
+ .debug_abbrev  0x0000498f      0x422 common/libcommon.a(image.o)
+ .debug_abbrev  0x00004db1      0x272 common/libcommon.a(main.o)
+ .debug_abbrev  0x00005023      0x1e8 common/libcommon.a(stdio.o)
+ .debug_abbrev  0x0000520b      0x2a2 common/libcommon.a(xyzModem.o)
+ .debug_abbrev  0x000054ad      0x2a1 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .debug_abbrev  0x0000574e       0xe0 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .debug_abbrev  0x0000582e       0x14 board/futuretek/ftm-nico2/libftm-nico2.a(lowlevel_init.o)
+ .debug_abbrev  0x00005842      0x2b9 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .debug_abbrev  0x00005afb      0x1dd board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .debug_abbrev  0x00005cd8      0x397 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .debug_abbrev  0x0000606f       0xbd lib_generic/libgeneric.a(crc16.o)
+ .debug_abbrev  0x0000612c       0xd4 lib_generic/libgeneric.a(crc32.o)
+ .debug_abbrev  0x00006200       0xf1 lib_generic/libgeneric.a(display_options.o)
+ .debug_abbrev  0x000062f1      0x165 lib_generic/libgeneric.a(gunzip.o)
+ .debug_abbrev  0x00006456      0x310 lib_generic/libgeneric.a(lmb.o)
+ .debug_abbrev  0x00006766      0x1a2 lib_generic/libgeneric.a(md5.o)
+ .debug_abbrev  0x00006908      0x1c0 lib_generic/libgeneric.a(string.o)
+ .debug_abbrev  0x00006ac8      0x302 lib_generic/libgeneric.a(vsprintf.o)
+ .debug_abbrev  0x00006dca      0x284 lib_generic/libgeneric.a(zlib.o)
+ .debug_abbrev  0x0000704e       0x53 lib_generic/libgeneric.a(ctype.o)
+ .debug_abbrev  0x000070a1      0x104 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .debug_abbrev  0x000071a5      0x15c cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .debug_abbrev  0x00007301      0x247 lib_arm/libarm.a(bootm.o)
+ .debug_abbrev  0x00007548       0x4e lib_arm/libarm.a(cache.o)
+ .debug_abbrev  0x00007596      0x175 lib_arm/libarm.a(cache-cp15.o)
+ .debug_abbrev  0x0000770b      0x2f2 drivers/mtd/nand/libnand.a(nand_util.o)
+ .debug_abbrev  0x000079fd       0x95 lib_generic/libgeneric.a(div64.o)
+ .debug_abbrev  0x00007a92       0x50 /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+ .debug_abbrev  0x00007ae2       0x14 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x00007af6       0x14 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+ .debug_abbrev  0x00007b0a       0x14 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+ .debug_abbrev  0x00007b1e       0x14 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+ .debug_abbrev  0x00007b32       0x14 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+ .debug_abbrev  0x00007b46       0x14 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+
+.debug_aranges  0x00000000      0x7a0
+ .debug_aranges
+                0x00000000       0x20 cpu/arm_cortexa9/start.o
+ .debug_aranges
+                0x00000020       0x20 lib_arm/libarm.a(board.o)
+ .debug_aranges
+                0x00000040       0x20 lib_arm/libarm.a(interrupts.o)
+ .debug_aranges
+                0x00000060       0x20 net/libnet.a(eth.o)
+ .debug_aranges
+                0x00000080       0x20 net/libnet.a(net.o)
+ .debug_aranges
+                0x000000a0       0x20 net/libnet.a(rarp.o)
+ .debug_aranges
+                0x000000c0       0x20 net/libnet.a(http.o)
+ .debug_aranges
+                0x000000e0       0x20 net/libnet.a(tcp.o)
+ .debug_aranges
+                0x00000100       0x20 net/libnet.a(tftp.o)
+ .debug_aranges
+                0x00000120       0x20 net/libnet.a(bootp.o)
+ .debug_aranges
+                0x00000140       0x20 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .debug_aranges
+                0x00000160       0x20 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .debug_aranges
+                0x00000180       0x20 drivers/net/libnet.a(g2_ni_mfe.o)
+ .debug_aranges
+                0x000001a0       0x20 drivers/serial/libserial.a(serial_cs752x.o)
+ .debug_aranges
+                0x000001c0       0x20 common/libcommon.a(cmd_bdinfo.o)
+ .debug_aranges
+                0x000001e0       0x20 common/libcommon.a(cmd_boot.o)
+ .debug_aranges
+                0x00000200       0x20 common/libcommon.a(cmd_bootm.o)
+ .debug_aranges
+                0x00000220       0x20 common/libcommon.a(cmd_load.o)
+ .debug_aranges
+                0x00000240       0x20 common/libcommon.a(cmd_mem.o)
+ .debug_aranges
+                0x00000260       0x20 common/libcommon.a(cmd_nand.o)
+ .debug_aranges
+                0x00000280       0x20 common/libcommon.a(cmd_net.o)
+ .debug_aranges
+                0x000002a0       0x20 common/libcommon.a(cmd_nvedit.o)
+ .debug_aranges
+                0x000002c0       0x20 common/libcommon.a(command.o)
+ .debug_aranges
+                0x000002e0       0x20 common/libcommon.a(console.o)
+ .debug_aranges
+                0x00000300       0x20 common/libcommon.a(dlmalloc.o)
+ .debug_aranges
+                0x00000320       0x20 common/libcommon.a(env_common.o)
+ .debug_aranges
+                0x00000340       0x20 common/libcommon.a(env_nand.o)
+ .debug_aranges
+                0x00000360       0x20 common/libcommon.a(exports.o)
+ .debug_aranges
+                0x00000380       0x20 common/libcommon.a(image.o)
+ .debug_aranges
+                0x000003a0       0x20 common/libcommon.a(main.o)
+ .debug_aranges
+                0x000003c0       0x20 common/libcommon.a(stdio.o)
+ .debug_aranges
+                0x000003e0       0x20 common/libcommon.a(xyzModem.o)
+ .debug_aranges
+                0x00000400       0x20 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .debug_aranges
+                0x00000420       0x20 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .debug_aranges
+                0x00000440       0x20 board/futuretek/ftm-nico2/libftm-nico2.a(lowlevel_init.o)
+ .debug_aranges
+                0x00000460       0x20 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .debug_aranges
+                0x00000480       0x20 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .debug_aranges
+                0x000004a0       0x20 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .debug_aranges
+                0x000004c0       0x20 lib_generic/libgeneric.a(crc16.o)
+ .debug_aranges
+                0x000004e0       0x20 lib_generic/libgeneric.a(crc32.o)
+ .debug_aranges
+                0x00000500       0x20 lib_generic/libgeneric.a(display_options.o)
+ .debug_aranges
+                0x00000520       0x20 lib_generic/libgeneric.a(gunzip.o)
+ .debug_aranges
+                0x00000540       0x20 lib_generic/libgeneric.a(lmb.o)
+ .debug_aranges
+                0x00000560       0x20 lib_generic/libgeneric.a(md5.o)
+ .debug_aranges
+                0x00000580       0x20 lib_generic/libgeneric.a(string.o)
+ .debug_aranges
+                0x000005a0       0x20 lib_generic/libgeneric.a(vsprintf.o)
+ .debug_aranges
+                0x000005c0       0x20 lib_generic/libgeneric.a(zlib.o)
+ .debug_aranges
+                0x000005e0       0x20 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .debug_aranges
+                0x00000600       0x20 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .debug_aranges
+                0x00000620       0x20 lib_arm/libarm.a(bootm.o)
+ .debug_aranges
+                0x00000640       0x20 lib_arm/libarm.a(cache.o)
+ .debug_aranges
+                0x00000660       0x20 lib_arm/libarm.a(cache-cp15.o)
+ .debug_aranges
+                0x00000680       0x20 drivers/mtd/nand/libnand.a(nand_util.o)
+ .debug_aranges
+                0x000006a0       0x20 lib_generic/libgeneric.a(div64.o)
+ .debug_aranges
+                0x000006c0       0x20 /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+ .debug_aranges
+                0x000006e0       0x20 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+ .debug_aranges
+                0x00000700       0x20 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+ .debug_aranges
+                0x00000720       0x20 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_lshrdi3.o)
+ .debug_aranges
+                0x00000740       0x20 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashrdi3.o)
+ .debug_aranges
+                0x00000760       0x20 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_ashldi3.o)
+ .debug_aranges
+                0x00000780       0x20 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_dvmd_lnx.o)
+
+.debug_loc      0x00000000    0x1ca4e
+ .debug_loc     0x00000000      0x14c lib_arm/libarm.a(board.o)
+ .debug_loc     0x0000014c      0x21d lib_arm/libarm.a(interrupts.o)
+ .debug_loc     0x00000369      0x638 net/libnet.a(eth.o)
+ .debug_loc     0x000009a1     0x1199 net/libnet.a(net.o)
+ .debug_loc     0x00001b3a      0x12d net/libnet.a(rarp.o)
+ .debug_loc     0x00001c67      0xb8a net/libnet.a(http.o)
+ .debug_loc     0x000027f1      0x60d net/libnet.a(tcp.o)
+ .debug_loc     0x00002dfe      0x425 net/libnet.a(tftp.o)
+ .debug_loc     0x00003223      0x5e3 net/libnet.a(bootp.o)
+ .debug_loc     0x00003806     0x4b93 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .debug_loc     0x00008399     0x1cf0 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .debug_loc     0x0000a089     0x13c7 drivers/net/libnet.a(g2_ni_mfe.o)
+ .debug_loc     0x0000b450      0x1d8 drivers/serial/libserial.a(serial_cs752x.o)
+ .debug_loc     0x0000b628      0x10e common/libcommon.a(cmd_bdinfo.o)
+ .debug_loc     0x0000b736      0x185 common/libcommon.a(cmd_boot.o)
+ .debug_loc     0x0000b8bb      0x963 common/libcommon.a(cmd_bootm.o)
+ .debug_loc     0x0000c21e      0x9d0 common/libcommon.a(cmd_load.o)
+ .debug_loc     0x0000cbee      0xebd common/libcommon.a(cmd_mem.o)
+ .debug_loc     0x0000daab      0xb30 common/libcommon.a(cmd_nand.o)
+ .debug_loc     0x0000e5db      0x2ad common/libcommon.a(cmd_net.o)
+ .debug_loc     0x0000e888      0x9c1 common/libcommon.a(cmd_nvedit.o)
+ .debug_loc     0x0000f249      0x530 common/libcommon.a(command.o)
+ .debug_loc     0x0000f779      0x5f3 common/libcommon.a(console.o)
+ .debug_loc     0x0000fd6c     0x14cb common/libcommon.a(dlmalloc.o)
+ .debug_loc     0x00011237       0xcd common/libcommon.a(env_common.o)
+ .debug_loc     0x00011304      0x3b2 common/libcommon.a(env_nand.o)
+ .debug_loc     0x000116b6       0x28 common/libcommon.a(exports.o)
+ .debug_loc     0x000116de      0x976 common/libcommon.a(image.o)
+ .debug_loc     0x00012054      0x9e5 common/libcommon.a(main.o)
+ .debug_loc     0x00012a39      0x1d6 common/libcommon.a(stdio.o)
+ .debug_loc     0x00012c0f      0xa98 common/libcommon.a(xyzModem.o)
+ .debug_loc     0x000136a7      0x316 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .debug_loc     0x000139bd       0x9b board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .debug_loc     0x00013a58      0x6ac board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .debug_loc     0x00014104      0x72f board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .debug_loc     0x00014833     0x14e6 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .debug_loc     0x00015d19       0x9f lib_generic/libgeneric.a(crc16.o)
+ .debug_loc     0x00015db8      0x24d lib_generic/libgeneric.a(crc32.o)
+ .debug_loc     0x00016005      0x2e2 lib_generic/libgeneric.a(display_options.o)
+ .debug_loc     0x000162e7      0x264 lib_generic/libgeneric.a(gunzip.o)
+ .debug_loc     0x0001654b      0xc32 lib_generic/libgeneric.a(lmb.o)
+ .debug_loc     0x0001717d      0x672 lib_generic/libgeneric.a(md5.o)
+ .debug_loc     0x000177ef      0xb2b lib_generic/libgeneric.a(string.o)
+ .debug_loc     0x0001831a     0x12eb lib_generic/libgeneric.a(vsprintf.o)
+ .debug_loc     0x00019605     0x25fc lib_generic/libgeneric.a(zlib.o)
+ .debug_loc     0x0001bc01       0x8c cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .debug_loc     0x0001bc8d      0x169 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .debug_loc     0x0001bdf6      0x196 lib_arm/libarm.a(bootm.o)
+ .debug_loc     0x0001bf8c       0xef lib_arm/libarm.a(cache-cp15.o)
+ .debug_loc     0x0001c07b      0x7c8 drivers/mtd/nand/libnand.a(nand_util.o)
+ .debug_loc     0x0001c843      0x1cd lib_generic/libgeneric.a(div64.o)
+ .debug_loc     0x0001ca10       0x3e /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+
+.debug_pubnames
+                0x00000000     0x3235
+ .debug_pubnames
+                0x00000000      0x11f lib_arm/libarm.a(board.o)
+ .debug_pubnames
+                0x0000011f       0xdf lib_arm/libarm.a(interrupts.o)
+ .debug_pubnames
+                0x000001fe      0x160 net/libnet.a(eth.o)
+ .debug_pubnames
+                0x0000035e      0x415 net/libnet.a(net.o)
+ .debug_pubnames
+                0x00000773       0x2e net/libnet.a(rarp.o)
+ .debug_pubnames
+                0x000007a1      0x13b net/libnet.a(http.o)
+ .debug_pubnames
+                0x000008dc       0x7d net/libnet.a(tcp.o)
+ .debug_pubnames
+                0x00000959       0x53 net/libnet.a(tftp.o)
+ .debug_pubnames
+                0x000009ac       0x3c net/libnet.a(bootp.o)
+ .debug_pubnames
+                0x000009e8      0x777 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .debug_pubnames
+                0x0000115f       0x3c drivers/mtd/nand/libnand.a(nand.o)
+ .debug_pubnames
+                0x0000119b       0x60 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .debug_pubnames
+                0x000011fb       0x38 drivers/mtd/nand/libnand.a(nand_ids.o)
+ .debug_pubnames
+                0x00001233      0x106 drivers/net/libnet.a(g2_ni_mfe.o)
+ .debug_pubnames
+                0x00001339       0xa5 drivers/serial/libserial.a(serial_cs752x.o)
+ .debug_pubnames
+                0x000013de       0x3f common/libcommon.a(cmd_bdinfo.o)
+ .debug_pubnames
+                0x0000141d       0x56 common/libcommon.a(cmd_boot.o)
+ .debug_pubnames
+                0x00001473       0xe0 common/libcommon.a(cmd_bootm.o)
+ .debug_pubnames
+                0x00001553      0x181 common/libcommon.a(cmd_load.o)
+ .debug_pubnames
+                0x000016d4      0x1d1 common/libcommon.a(cmd_mem.o)
+ .debug_pubnames
+                0x000018a5       0x5b common/libcommon.a(cmd_nand.o)
+ .debug_pubnames
+                0x00001900       0xa6 common/libcommon.a(cmd_net.o)
+ .debug_pubnames
+                0x000019a6       0xf4 common/libcommon.a(cmd_nvedit.o)
+ .debug_pubnames
+                0x00001a9a       0xca common/libcommon.a(command.o)
+ .debug_pubnames
+                0x00001b64      0x147 common/libcommon.a(console.o)
+ .debug_pubnames
+                0x00001cab       0xfd common/libcommon.a(dlmalloc.o)
+ .debug_pubnames
+                0x00001da8       0xa3 common/libcommon.a(env_common.o)
+ .debug_pubnames
+                0x00001e4b       0x95 common/libcommon.a(env_nand.o)
+ .debug_pubnames
+                0x00001ee0       0x3c common/libcommon.a(exports.o)
+ .debug_pubnames
+                0x00001f1c      0x22c common/libcommon.a(image.o)
+ .debug_pubnames
+                0x00002148       0x9c common/libcommon.a(main.o)
+ .debug_pubnames
+                0x000021e4       0x96 common/libcommon.a(stdio.o)
+ .debug_pubnames
+                0x0000227a       0xd5 common/libcommon.a(xyzModem.o)
+ .debug_pubnames
+                0x0000234f       0xb5 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .debug_pubnames
+                0x00002404       0x71 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .debug_pubnames
+                0x00002475       0xd0 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .debug_pubnames
+                0x00002545       0xaf board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .debug_pubnames
+                0x000025f4      0x5b8 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .debug_pubnames
+                0x00002bac       0x20 lib_generic/libgeneric.a(crc16.o)
+ .debug_pubnames
+                0x00002bcc       0x3b lib_generic/libgeneric.a(crc32.o)
+ .debug_pubnames
+                0x00002c07       0x46 lib_generic/libgeneric.a(display_options.o)
+ .debug_pubnames
+                0x00002c4d       0x3d lib_generic/libgeneric.a(gunzip.o)
+ .debug_pubnames
+                0x00002c8a       0xbb lib_generic/libgeneric.a(lmb.o)
+ .debug_pubnames
+                0x00002d45       0x25 lib_generic/libgeneric.a(md5.o)
+ .debug_pubnames
+                0x00002d6a      0x130 lib_generic/libgeneric.a(string.o)
+ .debug_pubnames
+                0x00002e9a       0x73 lib_generic/libgeneric.a(vsprintf.o)
+ .debug_pubnames
+                0x00002f0d       0xb4 lib_generic/libgeneric.a(zlib.o)
+ .debug_pubnames
+                0x00002fc1       0x1d lib_generic/libgeneric.a(ctype.o)
+ .debug_pubnames
+                0x00002fde       0x45 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .debug_pubnames
+                0x00003023       0xb2 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .debug_pubnames
+                0x000030d5       0x2c lib_arm/libarm.a(bootm.o)
+ .debug_pubnames
+                0x00003101       0x22 lib_arm/libarm.a(cache.o)
+ .debug_pubnames
+                0x00003123       0x80 lib_arm/libarm.a(cache-cp15.o)
+ .debug_pubnames
+                0x000031a3       0x55 drivers/mtd/nand/libnand.a(nand_util.o)
+ .debug_pubnames
+                0x000031f8       0x21 lib_generic/libgeneric.a(div64.o)
+ .debug_pubnames
+                0x00003219       0x1c /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+
+.debug_pubtypes
+                0x00000000     0x2721
+ .debug_pubtypes
+                0x00000000       0x59 lib_arm/libarm.a(board.o)
+ .debug_pubtypes
+                0x00000059       0x1e lib_arm/libarm.a(interrupts.o)
+ .debug_pubtypes
+                0x00000077       0x61 net/libnet.a(eth.o)
+ .debug_pubtypes
+                0x000000d8      0x103 net/libnet.a(net.o)
+ .debug_pubtypes
+                0x000001db       0x52 net/libnet.a(rarp.o)
+ .debug_pubtypes
+                0x0000022d       0xbc net/libnet.a(http.o)
+ .debug_pubtypes
+                0x000002e9       0x90 net/libnet.a(tcp.o)
+ .debug_pubtypes
+                0x00000379       0x48 net/libnet.a(tftp.o)
+ .debug_pubtypes
+                0x000003c1       0x80 net/libnet.a(bootp.o)
+ .debug_pubtypes
+                0x00000441      0x2f9 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .debug_pubtypes
+                0x0000073a      0x22a drivers/mtd/nand/libnand.a(nand.o)
+ .debug_pubtypes
+                0x00000964      0x1f6 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .debug_pubtypes
+                0x00000b5a       0x3c drivers/mtd/nand/libnand.a(nand_ids.o)
+ .debug_pubtypes
+                0x00000b96       0xa4 drivers/net/libnet.a(g2_ni_mfe.o)
+ .debug_pubtypes
+                0x00000c3a       0x4a drivers/serial/libserial.a(serial_cs752x.o)
+ .debug_pubtypes
+                0x00000c84       0x66 common/libcommon.a(cmd_bdinfo.o)
+ .debug_pubtypes
+                0x00000cea       0x38 common/libcommon.a(cmd_boot.o)
+ .debug_pubtypes
+                0x00000d22      0x178 common/libcommon.a(cmd_bootm.o)
+ .debug_pubtypes
+                0x00000e9a       0x7c common/libcommon.a(cmd_load.o)
+ .debug_pubtypes
+                0x00000f16       0x61 common/libcommon.a(cmd_mem.o)
+ .debug_pubtypes
+                0x00000f77      0x285 common/libcommon.a(cmd_nand.o)
+ .debug_pubtypes
+                0x000011fc       0x51 common/libcommon.a(cmd_net.o)
+ .debug_pubtypes
+                0x0000124d       0x99 common/libcommon.a(cmd_nvedit.o)
+ .debug_pubtypes
+                0x000012e6       0x2e common/libcommon.a(command.o)
+ .debug_pubtypes
+                0x00001314       0x9c common/libcommon.a(console.o)
+ .debug_pubtypes
+                0x000013b0       0xc6 common/libcommon.a(dlmalloc.o)
+ .debug_pubtypes
+                0x00001476       0x87 common/libcommon.a(env_common.o)
+ .debug_pubtypes
+                0x000014fd      0x20b common/libcommon.a(env_nand.o)
+ .debug_pubtypes
+                0x00001708       0x4a common/libcommon.a(exports.o)
+ .debug_pubtypes
+                0x00001752      0x169 common/libcommon.a(image.o)
+ .debug_pubtypes
+                0x000018bb       0x2e common/libcommon.a(main.o)
+ .debug_pubtypes
+                0x000018e9       0x66 common/libcommon.a(stdio.o)
+ .debug_pubtypes
+                0x0000194f       0x3f common/libcommon.a(xyzModem.o)
+ .debug_pubtypes
+                0x0000198e       0x52 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .debug_pubtypes
+                0x000019e0       0x12 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .debug_pubtypes
+                0x000019f2      0x1f9 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .debug_pubtypes
+                0x00001beb      0x153 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .debug_pubtypes
+                0x00001d3e       0xe3 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .debug_pubtypes
+                0x00001e21       0x29 lib_generic/libgeneric.a(crc16.o)
+ .debug_pubtypes
+                0x00001e4a       0x45 lib_generic/libgeneric.a(crc32.o)
+ .debug_pubtypes
+                0x00001e8f       0x78 lib_generic/libgeneric.a(display_options.o)
+ .debug_pubtypes
+                0x00001f07       0x9b lib_generic/libgeneric.a(gunzip.o)
+ .debug_pubtypes
+                0x00001fa2       0x64 lib_generic/libgeneric.a(lmb.o)
+ .debug_pubtypes
+                0x00002006       0x2b lib_generic/libgeneric.a(md5.o)
+ .debug_pubtypes
+                0x00002031       0x3b lib_generic/libgeneric.a(string.o)
+ .debug_pubtypes
+                0x0000206c       0x46 lib_generic/libgeneric.a(vsprintf.o)
+ .debug_pubtypes
+                0x000020b2      0x10f lib_generic/libgeneric.a(zlib.o)
+ .debug_pubtypes
+                0x000021c1       0x38 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .debug_pubtypes
+                0x000021f9       0x1c cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .debug_pubtypes
+                0x00002215      0x20b lib_arm/libarm.a(bootm.o)
+ .debug_pubtypes
+                0x00002420       0x12 lib_arm/libarm.a(cache.o)
+ .debug_pubtypes
+                0x00002432       0x29 lib_arm/libarm.a(cache-cp15.o)
+ .debug_pubtypes
+                0x0000245b      0x25e drivers/mtd/nand/libnand.a(nand_util.o)
+ .debug_pubtypes
+                0x000026b9       0x56 lib_generic/libgeneric.a(div64.o)
+ .debug_pubtypes
+                0x0000270f       0x12 /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+
+.debug_str      0x00000000     0x6bf0
+ .debug_str     0x00000000      0x2a0 lib_arm/libarm.a(board.o)
+                                0x2fb (size before relaxing)
+ .debug_str     0x000002a0       0xcc lib_arm/libarm.a(interrupts.o)
+                                0x1bd (size before relaxing)
+ .debug_str     0x0000036c      0x25a net/libnet.a(eth.o)
+                                0x3fb (size before relaxing)
+ .debug_str     0x000005c6      0x650 net/libnet.a(net.o)
+                                0x89d (size before relaxing)
+ .debug_str     0x00000c16       0x4c net/libnet.a(rarp.o)
+                                0x1bf (size before relaxing)
+ .debug_str     0x00000c62      0x318 net/libnet.a(http.o)
+                                0x5a2 (size before relaxing)
+ .debug_str     0x00000f7a       0x99 net/libnet.a(tcp.o)
+                                0x3c0 (size before relaxing)
+ .debug_str     0x00001013      0x167 net/libnet.a(tftp.o)
+                                0x318 (size before relaxing)
+ .debug_str     0x0000117a      0x176 net/libnet.a(bootp.o)
+                                0x405 (size before relaxing)
+ .debug_str     0x000012f0     0x1e44 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+                               0x22a0 (size before relaxing)
+ .debug_str     0x00000000     0x1e44 drivers/mtd/nand/libnand.a(nand.o)
+                                0x86d (size before relaxing)
+ .debug_str     0x00003134      0x28d drivers/mtd/nand/libnand.a(nand_bbt.o)
+                                0xa52 (size before relaxing)
+ .debug_str     0x000033c1        0xb drivers/mtd/nand/libnand.a(nand_ids.o)
+                                0x163 (size before relaxing)
+ .debug_str     0x000033cc      0x3f3 drivers/net/libnet.a(g2_ni_mfe.o)
+                                0x638 (size before relaxing)
+ .debug_str     0x000037bf      0x11a drivers/serial/libserial.a(serial_cs752x.o)
+                                0x2b8 (size before relaxing)
+ .debug_str     0x000038d9       0x70 common/libcommon.a(cmd_bdinfo.o)
+                                0x239 (size before relaxing)
+ .debug_str     0x00003949       0x3f common/libcommon.a(cmd_boot.o)
+                                0x187 (size before relaxing)
+ .debug_str     0x00003988      0x44a common/libcommon.a(cmd_bootm.o)
+                                0x6f8 (size before relaxing)
+ .debug_str     0x00003dd2      0x28e common/libcommon.a(cmd_load.o)
+                                0x4e7 (size before relaxing)
+ .debug_str     0x00004060      0x1f5 common/libcommon.a(cmd_mem.o)
+                                0x39f (size before relaxing)
+ .debug_str     0x00004255       0xfd common/libcommon.a(cmd_nand.o)
+                                0x9d2 (size before relaxing)
+ .debug_str     0x00004352       0xa0 common/libcommon.a(cmd_net.o)
+                                0x2c2 (size before relaxing)
+ .debug_str     0x000043f2       0xd3 common/libcommon.a(cmd_nvedit.o)
+                                0x33b (size before relaxing)
+ .debug_str     0x000044c5       0xfa common/libcommon.a(command.o)
+                                0x258 (size before relaxing)
+ .debug_str     0x000045bf      0x2fc common/libcommon.a(console.o)
+                                0x50d (size before relaxing)
+ .debug_str     0x000048bb      0x2df common/libcommon.a(dlmalloc.o)
+                                0x50b (size before relaxing)
+ .debug_str     0x00004b9a       0x9b common/libcommon.a(env_common.o)
+                                0x258 (size before relaxing)
+ .debug_str     0x00004c35       0x83 common/libcommon.a(env_nand.o)
+                                0x65a (size before relaxing)
+ .debug_str     0x00004cb8       0x1f common/libcommon.a(exports.o)
+                                0x32c (size before relaxing)
+ .debug_str     0x00004cd7      0x2c2 common/libcommon.a(image.o)
+                                0x785 (size before relaxing)
+ .debug_str     0x00004f99      0x120 common/libcommon.a(main.o)
+                                0x28e (size before relaxing)
+ .debug_str     0x000050b9       0x8c common/libcommon.a(stdio.o)
+                                0x2a3 (size before relaxing)
+ .debug_str     0x00005145      0x1b9 common/libcommon.a(xyzModem.o)
+                                0x306 (size before relaxing)
+ .debug_str     0x000052fe       0xe6 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+                                0x2c0 (size before relaxing)
+ .debug_str     0x000053e4       0x80 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+                                0x19c (size before relaxing)
+ .debug_str     0x00005464      0x11a board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+                                0x6a4 (size before relaxing)
+ .debug_str     0x0000557e      0x277 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+                                0x41e (size before relaxing)
+ .debug_str     0x000057f5      0x65c board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+                                0x86d (size before relaxing)
+ .debug_str     0x00005e51       0x50 lib_generic/libgeneric.a(crc16.o)
+                                0x11b (size before relaxing)
+ .debug_str     0x00005ea1       0x3d lib_generic/libgeneric.a(crc32.o)
+                                0x141 (size before relaxing)
+ .debug_str     0x00005ede       0x3f lib_generic/libgeneric.a(display_options.o)
+                                0x1a7 (size before relaxing)
+ .debug_str     0x00005f1d       0xd6 lib_generic/libgeneric.a(gunzip.o)
+                                0x207 (size before relaxing)
+ .debug_str     0x00005ff3      0x161 lib_generic/libgeneric.a(lmb.o)
+                                0x2dd (size before relaxing)
+ .debug_str     0x00006154       0x61 lib_generic/libgeneric.a(md5.o)
+                                0x172 (size before relaxing)
+ .debug_str     0x000061b5       0xc9 lib_generic/libgeneric.a(string.o)
+                                0x1ff (size before relaxing)
+ .debug_str     0x0000627e      0x104 lib_generic/libgeneric.a(vsprintf.o)
+                                0x29f (size before relaxing)
+ .debug_str     0x00006382      0x2b8 lib_generic/libgeneric.a(zlib.o)
+                                0x56c (size before relaxing)
+ .debug_str     0x0000663a        0x8 lib_generic/libgeneric.a(ctype.o)
+                                 0x8b (size before relaxing)
+ .debug_str     0x00006642       0x61 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+                                0x185 (size before relaxing)
+ .debug_str     0x000066a3       0xda cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+                                0x1dd (size before relaxing)
+ .debug_str     0x0000677d      0x236 lib_arm/libarm.a(bootm.o)
+                                0x619 (size before relaxing)
+ .debug_str     0x000069b3       0x22 lib_arm/libarm.a(cache.o)
+                                0x108 (size before relaxing)
+ .debug_str     0x000069d5       0x76 lib_arm/libarm.a(cache-cp15.o)
+                                0x194 (size before relaxing)
+ .debug_str     0x00006a4b      0x171 drivers/mtd/nand/libnand.a(nand_util.o)
+                                0x9a9 (size before relaxing)
+ .debug_str     0x00006bbc       0x19 lib_generic/libgeneric.a(div64.o)
+                                0x133 (size before relaxing)
+ .debug_str     0x00006bd5       0x1b /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+                                0x101 (size before relaxing)
+
+.debug_frame    0x00000000     0x3bf0
+ .debug_frame   0x00000000      0x124 lib_arm/libarm.a(board.o)
+ .debug_frame   0x00000124      0x110 lib_arm/libarm.a(interrupts.o)
+ .debug_frame   0x00000234      0x1cc net/libnet.a(eth.o)
+ .debug_frame   0x00000400      0x320 net/libnet.a(net.o)
+ .debug_frame   0x00000720       0x60 net/libnet.a(rarp.o)
+ .debug_frame   0x00000780      0x170 net/libnet.a(http.o)
+ .debug_frame   0x000008f0       0xe8 net/libnet.a(tcp.o)
+ .debug_frame   0x000009d8       0x88 net/libnet.a(tftp.o)
+ .debug_frame   0x00000a60       0xb8 net/libnet.a(bootp.o)
+ .debug_frame   0x00000b18      0x5f0 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .debug_frame   0x00001108      0x1b8 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .debug_frame   0x000012c0      0x180 drivers/net/libnet.a(g2_ni_mfe.o)
+ .debug_frame   0x00001440       0xb8 drivers/serial/libserial.a(serial_cs752x.o)
+ .debug_frame   0x000014f8       0x30 common/libcommon.a(cmd_bdinfo.o)
+ .debug_frame   0x00001528       0x44 common/libcommon.a(cmd_boot.o)
+ .debug_frame   0x0000156c      0x194 common/libcommon.a(cmd_bootm.o)
+ .debug_frame   0x00001700      0x194 common/libcommon.a(cmd_load.o)
+ .debug_frame   0x00001894      0x17c common/libcommon.a(cmd_mem.o)
+ .debug_frame   0x00001a10       0xe8 common/libcommon.a(cmd_nand.o)
+ .debug_frame   0x00001af8       0x84 common/libcommon.a(cmd_net.o)
+ .debug_frame   0x00001b7c      0x140 common/libcommon.a(cmd_nvedit.o)
+ .debug_frame   0x00001cbc       0xd4 common/libcommon.a(command.o)
+ .debug_frame   0x00001d90      0x24c common/libcommon.a(console.o)
+ .debug_frame   0x00001fdc      0x140 common/libcommon.a(dlmalloc.o)
+ .debug_frame   0x0000211c       0x88 common/libcommon.a(env_common.o)
+ .debug_frame   0x000021a4       0xcc common/libcommon.a(env_nand.o)
+ .debug_frame   0x00002270       0x48 common/libcommon.a(exports.o)
+ .debug_frame   0x000022b8      0x258 common/libcommon.a(image.o)
+ .debug_frame   0x00002510      0x104 common/libcommon.a(main.o)
+ .debug_frame   0x00002614       0x90 common/libcommon.a(stdio.o)
+ .debug_frame   0x000026a4      0x134 common/libcommon.a(xyzModem.o)
+ .debug_frame   0x000027d8       0xdc board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .debug_frame   0x000028b4       0x70 board/futuretek/ftm-nico2/libftm-nico2.a(watchdog.o)
+ .debug_frame   0x00002924      0x144 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .debug_frame   0x00002a68       0xd4 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .debug_frame   0x00002b3c      0x52c board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .debug_frame   0x00003068       0x28 lib_generic/libgeneric.a(crc16.o)
+ .debug_frame   0x00003090       0x58 lib_generic/libgeneric.a(crc32.o)
+ .debug_frame   0x000030e8       0x74 lib_generic/libgeneric.a(display_options.o)
+ .debug_frame   0x0000315c       0x70 lib_generic/libgeneric.a(gunzip.o)
+ .debug_frame   0x000031cc      0x12c lib_generic/libgeneric.a(lmb.o)
+ .debug_frame   0x000032f8       0xc0 lib_generic/libgeneric.a(md5.o)
+ .debug_frame   0x000033b8      0x204 lib_generic/libgeneric.a(string.o)
+ .debug_frame   0x000035bc      0x164 lib_generic/libgeneric.a(vsprintf.o)
+ .debug_frame   0x00003720      0x128 lib_generic/libgeneric.a(zlib.o)
+ .debug_frame   0x00003848       0x50 cpu/arm_cortexa9/libarm_cortexa9.a(cpu.o)
+ .debug_frame   0x00003898       0xf4 cpu/arm_cortexa9/goldengate/libgoldengate.a(timer.o)
+ .debug_frame   0x0000398c       0x34 lib_arm/libarm.a(bootm.o)
+ .debug_frame   0x000039c0       0x20 lib_arm/libarm.a(cache.o)
+ .debug_frame   0x000039e0       0xb0 lib_arm/libarm.a(cache-cp15.o)
+ .debug_frame   0x00003a90       0xc0 drivers/mtd/nand/libnand.a(nand_util.o)
+ .debug_frame   0x00003b50       0x38 lib_generic/libgeneric.a(div64.o)
+ .debug_frame   0x00003b88       0x28 /home/xtra/Work/Cortina/u-boot/lib_arm/eabi_compat.o
+ .debug_frame   0x00003bb0       0x20 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_udivsi3.o)
+ .debug_frame   0x00003bd0       0x20 /opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/../lib/gcc/arm-openwrt-linux-uclibcgnueabi/4.5.2/libgcc.a(_divsi3.o)
+
+.debug_ranges   0x00000000     0x1ab8
+ .debug_ranges  0x00000000       0x30 net/libnet.a(eth.o)
+ .debug_ranges  0x00000030      0x150 net/libnet.a(net.o)
+ .debug_ranges  0x00000180       0xd8 net/libnet.a(http.o)
+ .debug_ranges  0x00000258       0x30 net/libnet.a(tcp.o)
+ .debug_ranges  0x00000288       0x30 net/libnet.a(tftp.o)
+ .debug_ranges  0x000002b8      0x130 net/libnet.a(bootp.o)
+ .debug_ranges  0x000003e8      0x830 drivers/mtd/nand/libnand.a(cs75xx_nand.o)
+ .debug_ranges  0x00000c18      0x160 drivers/mtd/nand/libnand.a(nand_bbt.o)
+ .debug_ranges  0x00000d78       0xf0 drivers/net/libnet.a(g2_ni_mfe.o)
+ .debug_ranges  0x00000e68       0x60 drivers/serial/libserial.a(serial_cs752x.o)
+ .debug_ranges  0x00000ec8       0x68 common/libcommon.a(cmd_bootm.o)
+ .debug_ranges  0x00000f30       0xd8 common/libcommon.a(cmd_load.o)
+ .debug_ranges  0x00001008       0x60 common/libcommon.a(cmd_nand.o)
+ .debug_ranges  0x00001068       0x60 common/libcommon.a(cmd_nvedit.o)
+ .debug_ranges  0x000010c8       0x30 common/libcommon.a(command.o)
+ .debug_ranges  0x000010f8       0x30 common/libcommon.a(env_common.o)
+ .debug_ranges  0x00001128       0x30 common/libcommon.a(env_nand.o)
+ .debug_ranges  0x00001158       0x90 common/libcommon.a(image.o)
+ .debug_ranges  0x000011e8       0xa8 common/libcommon.a(main.o)
+ .debug_ranges  0x00001290       0x98 common/libcommon.a(stdio.o)
+ .debug_ranges  0x00001328       0x18 common/libcommon.a(xyzModem.o)
+ .debug_ranges  0x00001340       0x40 board/futuretek/ftm-nico2/libftm-nico2.a(ftm_nico2.o)
+ .debug_ranges  0x00001380       0x50 board/futuretek/ftm-nico2/libftm-nico2.a(cmd_ftm_nico2.o)
+ .debug_ranges  0x000013d0       0x18 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_uboot_cmds.o)
+ .debug_ranges  0x000013e8      0x208 board/futuretek/ftm-nico2/libftm-nico2.a(csmi_user.o)
+ .debug_ranges  0x000015f0       0xd8 lib_generic/libgeneric.a(lmb.o)
+ .debug_ranges  0x000016c8       0x30 lib_generic/libgeneric.a(md5.o)
+ .debug_ranges  0x000016f8      0x1d0 lib_generic/libgeneric.a(vsprintf.o)
+ .debug_ranges  0x000018c8       0x18 lib_generic/libgeneric.a(zlib.o)
+ .debug_ranges  0x000018e0       0xc0 lib_arm/libarm.a(bootm.o)
+ .debug_ranges  0x000019a0      0x118 drivers/mtd/nand/libnand.a(nand_util.o)
