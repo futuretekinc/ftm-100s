@@ -5,15 +5,15 @@ config defaults
 	option forward		ACCEPT 
 
 config zone
-	option name			eth2
-	option network		'eth2'
+	option name			lan
+	option network		'lan'
 	option input		ACCEPT 
 	option output		ACCEPT 
 	option forward		ACCEPT
 
 config zone
-	option name			eth0
-	option network		'eth0'
+	option name			wan
+	option network		'wan'
 	option input		ACCEPT	
 	option output		ACCEPT 
 	option forward		ACCEPT
@@ -21,8 +21,8 @@ config zone
 	option mtu_fix		1
 
 config forwarding 
-	option src      	eth2
-	option dest     	eth0
+	option src      	lan
+	option dest     	wan
 
 # We need to accept udp packets on port 68,
 # see https://dev.openwrt.org/ticket/4108

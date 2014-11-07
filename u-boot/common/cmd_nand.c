@@ -686,4 +686,80 @@ U_BOOT_CMD(nboot, 4, 1, do_nandboot,
 	"boot from NAND device",
 	"[partition] | [[[loadAddr] dev] offset]"
 );
+
+
+int _nand_erase(ulong offset, size_t size, int clean, int quiet)
+{
+	nand_info_t *nand;
+	nand_erase_options_t opts;
+
+	/* the following commands operate on the current device */
+	if (nand_curr_device < 0 || nand_curr_device >= CONFIG_SYS_MAX_NAND_DEVICE ||
+		!nand_info[nand_curr_device].name)
+	{
+		puts("ERROR: no devices available\n");
+		return  1;
+	}
+	nand = &nand_info[nand_curr_device];
+
+	memset(&opts, 0, sizeof(opts));
+	opts.offset = offset;
+	opts.length = size;
+	opts.jffs2  = clean;
+	opts.quiet  = quiet;
+
+	return  nand_erase_opts(nand, &opts);
+}
+
+
+int _nand_read(ulong offset, size_t size, void *buff)
+{
+		nand_info_t *nand;
+
+		/* the following commands operate on the current device */
+		if (nand_curr_device < 0 || nand_curr_device >= CONFIG_SYS_MAX_NAND_DEVICE ||
+		!nand_info[nand_curr_device].name) 
+	{   
+		puts("ERROR: no devices available\n");
+		goto error; 
+	}   
+	nand = &nand_info[nand_curr_device];
+
+	if (nand_read_skip_bad(nand, offset, (size_t*)&size, buff) != 0)
+	{   
+		puts("ERROR: nand read failed\n");
+		goto error; 
+	}   
+
+	return  0;  
+
+error:
+	return  1;  
+}
+
+int _nand_write(ulong offset, size_t size, void *buff)
+{
+	nand_info_t *nand;
+
+	/* the following commands operate on the current device */
+	if (nand_curr_device < 0 || nand_curr_device >= CONFIG_SYS_MAX_NAND_DEVICE ||
+		!nand_info[nand_curr_device].name) 
+	{   
+		puts("ERROR: no devices available\n");
+		goto error; 
+	}   
+	nand = &nand_info[nand_curr_device];
+
+	if (nand_write_skip_bad(nand, offset, (size_t*)&size, buff) != 0)
+	{   
+		puts("ERROR: nand read failed\n");
+			goto error; 
+	}   
+
+	return  0;  
+
+error:
+	return  1;  
+}
+
 #endif

@@ -32,17 +32,26 @@ setenv env_len 0x100000
 setenv sysinfo_loc 0x00400000
 setenv sysinfo_len 0x00200000
 setenv kernel_base 0x02100000
+setenv kernel_loc  0x00600000
 setenv kernel_loc0 0x00600000
+setenv kernel_name0 kernel
 setenv kernel_loc1 0x04300000
+setenv kernel_name1 kernel_standby
 setenv kernel_len 0x00700000
 setenv rootfs_loc0 0x00D00000
+setenv rootfs_name0 rootfs
 setenv rootfs_loc1 0x04A00000
+setenv rootfs_name1 rootfs_standby
 setenv rootfs_len 0x03600000
 setenv overlay_loc0 0x08000000
+setenv overlay_name0 overlay
 setenv overlay_loc1 0x0C000000
+setenv overlay_name1 overlay_standby
 setenv oerlay_len 0x04000000
 setenv data_loc0 0x10000000
+setenv data_name0 data
 setenv data_loc1 0x18000000
+setenv data_name1 data_standby
 setenv data_len   0x08000000
 setenv flashfiles ftm-100s/
 setenv reflash run rf_kernel rf_rootfs rf_overlay rf_data
@@ -54,7 +63,7 @@ setenv rf_rootfs tftpboot ${downloadaddr} ${flashfiles}rootfs.img;nand erase ${r
 setenv rf_overlay nand erase ${overlay_loc0} ${overlay_len};nand erase ${overlay_loc1} ${overlay_len}
 setenv rf_data nand erase ${data_loc0} ${data_len};nand erase ${data_loc1} ${data_len}
 setenv setbootargs setenv bootargs ${basicargs} ${ramargs} ni_napi_budget=${NI_NAPI_BUDGET} qm_acp_enable=${QM_ACP_ENABLE} ni_rx_noncache=${NI_RX_NONCACHE} qm_int_buff=${QM_INT_BUFF} ethaddr0=${ethaddr} ethaddr1=${ethaddr1} ethaddr2=${ethaddr2} wifiaddr0=${wifiaddr0} wifiaddr1=${wifiaddr1} mtdparts=cs752x_nand_flash:${mtdparts}
-setenv setmtdparts setenv mtdparts 512K@${env_loc0}(env),8M@${kernel_loc0}(kernel),54M@${rootfs_loc0}(rootfs),64M@${overlay_loc0}(overlay),128M@${data_loc0}(data),512K@${env_loc1}(env1),8M@${kernel_loc1}(kernel1),54M@${rootfs_loc1}(rootfs1),64M@${overlay_loc1}(overlay1),128M@${data_loc1}(data1)
-setenv load_kernel nand read ${kernel_base} ${kernel_loc0} ${kernel_len}
+setenv setmtdparts setenv mtdparts 2M@${sysinfo_loc}(sysinfo),512K@${env_loc0}(env),8M@${kernel_loc0}(${kernel_name0}),54M@${rootfs_loc0}(${rootfs_name0}),64M@${overlay_loc0}(${overlay_name0}),128M@${data_loc0}(data),512K@${env_loc1}(env1),8M@${kernel_loc1}(${kernel_name1}),54M@${rootfs_loc1}(${rootfs_name1}),64M@${overlay_loc1}(${overlay_name1}),128M@${data_loc1}(data1)
+setenv load_kernel nand read ${kernel_base} ${kernel_loc} ${kernel_len}
 setenv b bootm ${kernel_address}
 setenv rootfs_address -
