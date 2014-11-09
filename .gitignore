@@ -95,3 +95,12 @@ x509.genkey
 
 #
 rootfs/_rootfs
+linux-2.6.36/arch/arm/boot/Image
+linux-2.6.36/arch/arm/boot/compressed/piggy.gzip
+linux-2.6.36/arch/arm/boot/compressed/vmlinux
+linux-2.6.36/arch/arm/boot/uImage
+linux-2.6.36/arch/arm/boot/zImage
+linux-2.6.36/arch/arm/kernel/vmlinux.lds
+linux-2.6.36/kernel/config_data.h
+linux-2.6.36/usr/initramfs_data.cpio
+
