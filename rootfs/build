@@ -19,14 +19,14 @@ then
 	sudo rm -rf "tmp"
 fi
 
-function chdir()
+chdir()
 {
 	cd	$ROOT/$1
 
 	echo "The current location is $PWD"
 }
 
-function cplib()
+cplib()
 {
 	for TARGET in $@
 	do
@@ -46,7 +46,7 @@ function cplib()
 	done
 }
 
-function mklink()
+mklink()
 {
 	for TARGET in $@
 	do
@@ -54,7 +54,7 @@ function mklink()
 	done
 }
 
-function mkdev()
+mkdev()
 {
 	if [ ! -d "$ROOT/dev" ]
 	then

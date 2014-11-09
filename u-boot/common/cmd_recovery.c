@@ -74,7 +74,7 @@ static nand_info_t *get_nand_info(void);
 extern int nand_curr_device;
 char	_flash_buff[FLASH_PAGE_SIZE];
 int		verbose = 1;
-int		error = 0;
+int		error = 1;
 
 int do_recovery(cmd_tbl_t * cmdtp, int flag, int argc, char *argv[])
 {
@@ -421,7 +421,7 @@ int check_rootfs(int index, int printout)
 		goto error;
 	}
 
-	rootfs_len = header->ih_size;
+	rootfs_len = ntohl(header->ih_size);
 	if (_nand_read(rootfs_loc, rootfs_len, &((u_char *)buff)[sizeof(image_header_t)]) != 0)
 	{
 		ERROR("ERROR: nand read failed\n");
