@@ -1,0 +1,188 @@
+export MAKE=make
+export ARCH=arm
+export TOOLCHAIN=gcc
+export TOOLPREFIX=$(TARGET_CROSS)
+export TOOLARCH=build_arm
+export TARGETARCH=arm9-le-arm-elf
+export KERNEL=custom
+export KERNELVER=2.6.32
+export KERNELTARGET=none
+export COMPRESSKERNEL=n
+export KERNELARCH=arm
+export BUS=PCI
+export BUSYBOX=none
+
+export WIRELESSTOOLS=wireless_tools.29
+export WIRELESSTOOLSLIB=libiw.so.29
+
+export AP_TYPE=dual
+
+#for station forwarding support
+export CONFIG_ETHERSTA=y
+
+#To build hostapd 0.8.0 version
+export BUILD_ATHR_HOSTAP=1
+
+# Hotspot 2.0 L2 Traffic Inspection and Filtering support
+export UMAC_SUPPORT_HS20_L2TIF=1
+export ATH_SUPPORT_HS20=1
+
+export ATH_HW_TXQ_STUCK_WAR=1
+
+ifndef 11AC_OFFLOAD
+export 11AC_OFFLOAD=1
+endif
+
+#
+# UMAC build option
+#
+
+export BUILD_UMAC=1
+
+# Set Phy Err Diagnostics (Radar detection) to be enabled for AP builds
+export ATH_CAP_PHYERR_DIAG=1
+
+export AR5416_G_MODE=1
+export AH_DEBUG=0
+
+#
+# Select the support required for this board
+#
+
+export AH_SUPPORT_AR5210=0
+export AH_SUPPORT_AR5212=0
+export AH_SUPPORT_5111=0
+export AH_SUPPORT_5112=0
+export AH_SUPPORT_2413=0
+export AH_SUPPORT_5111=0
+export AH_SUPPORT_5112=0
+export AH_SUPPORT_2413=0
+export AH_SUPPORT_5413=0
+export AH_SUPPORT_2316=0
+export AH_SUPPORT_2317=0
+export AH_SUPPORT_2425=0
+export AH_SUPPORT_SOWL=0
+export AH_SUPPORT_K2=0
+export AH_SUPPORT_AR5416=1
+export ATH_SUPPORT_VLAN=1
+
+export ATH_CHAINMASK_SELECT=0
+export LMAC_SUPPORT_POWERSAVE_QUEUE=0
+export ATH_RXBUF=512
+export ATH_TXBUF=512
+
+#
+# Environmental variables used to configure the HAL/ATH layers at compile time
+#
+export IEEE80211_MCAST_ENHANCEMENT=1
+export AR5416_G_MODE=1
+export AH_SUPPORT_HOWL=0
+export AH_SUPPORT_OWL=1
+export AR5416_INT_MITIGATION=1
+export ATH_SUPPORT_IQUE=1
+export ATH_SUPPORT_DFS=1
+export ATH_SUPPORT_MCAST2UCAST=1
+export ATH_SUPPORT_GREEN_AP=1
+export ATH_SUPPORT_DYN_TX_CHAINMASK=1
+export ATH_SUPPORT_PAPRD=1
+export ATH_SUPPORT_VOWEXT=0
+export ATH_VOW_EXT_STATS=0
+export ATH_SUPPORT_TxBF=1
+export ATH_TXQ_BH_LOCK=1
+export ATH_BEACON_DEFERRED_PROC=1
+
+export ATH_EXT_AP=1
+export NO_SIMPLE_CONFIG=1
+
+export REMOVE_PKT_LOG=1
+
+# Include performance_power offload support for 11ac
+#ifeq ($(11AC_OFFLOAD), 1)
+export UMAC_SUPPORT_VAP_PAUSE=1
+export ATH_VAP_PAUSE_SUPPORT=1
+export WDI_EVENT_ENABLE=1
+export ATH_SUPPORT_QUICK_KICKOUT=1
+export ATH_PERF_PWR_OFFLOAD=1
+export ATH_TGT_TYPE=AR9888
+export ATH_HIF_TYPE=pci
+export FORCE_LEGACY_PCI_INTERRUPTS=1
+export LOAD_ARRAY_FW=1
+# 0: 128B - default, 1: 256B, 2: 64B
+export ATH_OL_11AC_DMA_BURST_256=1
+export FORCE_LEGACY_PCI_INTERRUPTS=1
+#endif
+#export BIG_ENDIAN_HOST=1
+export ATH_DEFINE_ENDIAN=1
+export ENDIAN=AH_LITTLE_ENDIAN
+
+export UMAC_SUPPORT_ACFG=0
+
+# 11N, 11AC Optimization
+export ATH_DEBUG=1
+export UMAC_SUPPORT_WNM=1
+export UMAC_SUPPORT_TX_FRAG=1
+export ATH_TX_COMPACT=1
+export ATH_INT_TX_MITIGATION=1
+export QCA_OL_11AC_FAST_PATH=1
+export ATH_11AC_TXCOMPACT=1
+
+export UMAC_SUPPORT_PERIODIC_PERFSTATS=0
+export UMAC_SUPPORT_PROXY_ARP=1
+export UMAC_SUPPORT_QUIET=1
+export UMAC_SUPPORT_RRM=1
+export ATH_SUPPORT_UAPSD_RATE_CONTROL=1
+export ATH_GEN_RANDOMNESS=0
+
+export ATH_SUPPORT_WIFIPOS=0
+export ATH_SUPPORT_RX_PROC_QUOTA=0
+
+# export UMAC_SUPPORT_APONLY=1
+export ATH_WDS_SUPPORT_APONLY=1
+
+#
+# Spectral scan enable
+#
+export ATH_SUPPORT_SPECTRAL=1
+
+#Increasing Tx Buffers for VOW - So, please make sure that ATH_SUPPORT_VOWEXT is enabled before this
+ifeq ($(ATH_SUPPORT_VOWEXT), 1)
+export ATH_TXBUF=1536
+endif
+
+# S/W retry mechanism (in addition to H/W retries) +
+# TID queue pause/unpause and ps-poll handling in LMAC
+export ATH_SWRETRY=1
+# ATH_SWRETRY_MODIFY_DSTMASK enables HW optimization to filter pkts on
+# failures.
+export ATH_SWRETRY_MODIFY_DSTMASK=0
+
+export ATH_SUPPORT_WEP_MBSSID=1
+export ATH_SUPPORT_KEYPLUMB_WAR=1
+export ATH_SUPPORT_TIDSTUCK_WAR=1
+
+export INSTALL_BLACKLIST="etc/host.conf /etc/nsswitch.conf /etc/resolv.conf /etc/shadow /etc/fstab \
+/etc/inittab /etc/passwd /etc/securetty /etc/udhcpc.script /etc/group /etc/issue /etc/rc.d/rcS /etc/services /etc/udhcpd.conf"
+
+export CONFIG_CS75XX=1
+export CONFIG_CS75XX_WOT=1
+
+ifeq ($(CONFIG_CS75XX_WFO_AR988X), 1)
+export CS75XX_WFO_AR988X=1
+export CS75XX_WFO_AR988X_RX=1
+export CS75XX_WFO_AR988X_TX=1
+else
+export CS75XX_WFO_AR988X=0
+export CS75XX_WFO_AR988X_RX=0
+export CS75XX_WFO_AR988X_TX=0
+endif
+
+ifeq ($(CONFIG_CS75XX_WFO_AR9580), 1)
+export CS75XX_WFO_AR9580=1
+export CS75XX_WFO_AR9580_RX=1
+export CS75XX_WFO_AR9580_TX=1
+else
+export CS75XX_WFO_AR9580=0
+export CS75XX_WFO_AR9580_RX=0
+export CS75XX_WFO_AR9580_TX=0
+endif
+

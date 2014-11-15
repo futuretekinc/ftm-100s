@@ -1,0 +1,12 @@
+#!/bin/bash
+
+make BOARD_TYPE=cortina \
+	KERNELVER=3.8.0 KDIR=~/Work/cortina/linux-3.8 \
+	LSDK_PARTNER_PLATFORM_CORTINA_DIR=~/Work/ftm-100s/rootfs/apps/atheros-11AC-10.1.467/lsdk-partner-platform-cortina \
+	LSDK_WLAN_DIR=~/Work/ftm-100s/rootfs/apps/atheros-11AC-10.1.467/lsdk-wlan \
+	LSDK_SPECTRAL_DIR=~/Work/ftm-100s/rootfs/apps/atheros-11AC-10.1.467/lsdk-spectral \
+	LSDK_OUTPUT_DIR=~/Work/ftm-100s/rootfs/apps/atheros-11AC-10.1.467/lsdk-partner-platform-cortina/build \
+	TARGET_CROSS=arm-openwrt-linux-gnueabi- \
+	TAR=tar
+
+

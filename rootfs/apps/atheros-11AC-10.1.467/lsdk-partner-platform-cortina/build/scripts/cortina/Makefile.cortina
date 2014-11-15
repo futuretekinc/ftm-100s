@@ -1,0 +1,129 @@
+export TOOLCHAINPATH=$(TOOLPATH)
+export PATH:=$(TOOLCHAINPATH)/bin:$(TOOLCHAINPATH)/lib:${PATH}
+export KERNELPATH=$(KDIR)
+export BASEROOTFS=
+
+export HAL=$(LSDK_WLAN_DIR)/drivers/wlan_modules/hal
+export ATH_TOOL_DIR=$(LSDK_WLAN_DIR)/drivers/wlan_modules/os/linux/tools/
+export ATH_DFS=$(LSDK_WLAN_DIR)/drivers/wlan_modules/lmac/dfs
+export ATHEROSPATH=$(LSDK_WLAN_DIR)/drivers/wlan_modules
+
+export ATH_CARR_DIR=cortina
+export PLATFORM=$(LSDK_PARTNER_PLATFORM_CORTINA_DIR)/build/scripts/$(BOARD_TYPE)
+export PLATFORM_INC=$(LSDK_PARTNER_PLATFORM_CORTINA_DIR)/build/scripts/$(BOARD_TYPE)/carrier/$(ATH_CARR_DIR)/include
+
+ifneq ($(BUILD_JOBS),1)
+MAKE_BUILD_OPT = -j 8
+endif
+
+# To enable library optimization (removing unused object code from
+# shared libraries) set BUILD_LIBRARYOPT to 'y' else 'n'
+BUILD_LIBRARYOPT := n
+
+targetList:= rootfs_prep athr-hostapd cgi driver_build 
+
+ifeq ($(strip ${ATH_SUPPORT_SPECTRAL}),1)
+targetList += spectral_app_build
+endif
+
+default: ${targetList}
+
+#
+# Unique rules for the ag7240 PHY with the ar7240 (Python)  board
+#
+
+WIRELESSTOOLNAMES := athstats athstatsclear 80211stats athkey athchans athctrl\
+	athdebug 80211debug wlanconfig athcwm athampdutrc atrc \
+	pktlogconf pktlogdump radartool
+wireless_tools_main:
+	@echo making wireless_tools 
+	if test -n "$(WIRELESSTOOLS)"; then \
+	cd $(LSDK_PARTNER_PLATFORM_CORTINA_DIR)/apps/$(WIRELESSTOOLS); make clean; make $(MAKE_BUILD_OPT); \
+	cp -f $(WIRELESSTOOLSLIB) $(INSTALL_ROOT)/lib; \
+	cp -f iwpriv $(INSTALL_ROOT)/sbin; \
+	cp -f iwconfig $(INSTALL_ROOT)/sbin; \
+	cp -f iwlist $(INSTALL_ROOT)/sbin; \
+	cd $(LSDK_WLAN_DIR)/drivers/wlan_modules/os/linux/tools && make clean; \
+	make wlanconfig BUILD_STATIC=$(BUILD_STATIC); \
+	cp -f wlanconfig $(INSTALL_ROOT)/sbin; \
+	fi
+
+ath_tools: ath_tools_clean
+	@echo makeing ath tools;\
+	cd $(LSDK_WLAN_DIR)/drivers/wlan_modules/os/linux/tools;\
+	make ath_tools $(MAKE_BUILD_OPT);
+
+ath_tools_clean:
+	@echo cleaning ath tools;\
+	cd $(LSDK_WLAN_DIR)/drivers/wlan_modules/os/linux/tools;\
+	make ath_tools_clean;
+
+cgi: ath_tools_clean
+	@echo makeing cgi;\
+	cd $(LSDK_WLAN_DIR)/drivers/wlan_modules/os/linux/tools;\
+	rm -rf cgiMain;\
+	make cgiMain;
+
+main_hal_build: 
+	@echo making hal
+	rm -f ${LSDK_WLAN_DIR}/${ATH_CARR_DIR}
+	ln -s ${LSDK_PARTNER_PLATFORM_CORTINA_DIR}/build/scripts/${ATH_CARR_DIR}/carrier/${ATH_CARR_DIR} ${LSDK_WLAN_DIR}
+	if test -n "$(TARGETARCH)"; then \
+	cd $(HAL)/linux && make TARGET=$(TARGETARCH) clean &&  \
+	make TARGET=$(TARGETARCH) $(MAKE_BUILD_OPT) && make TARGET=$(TARGETARCH) release ; \
+	fi
+
+#building hostapd and supplicant 8.0 versions
+athr-hostapd:
+	@echo Making athr-hostapd  at `date`
+	if ( test -e $(LSDK_WLAN_DIR)/apps/athr-hostap/hostapd ) then \
+        cp -f scripts/$(BOARD_TYPE)/athr_hostapd.conf $(LSDK_WLAN_DIR)/apps/athr-hostap/hostapd/.config; \
+        cd $(LSDK_WLAN_DIR)/apps/athr-hostap/hostapd; make clean; make CC=$(TOOLPREFIX)gcc AR=$(TOOLPREFIX)ar LD=$(TOOLPREFIX)ld $(MAKE_BUILD_OPT); \
+        cp hostapd hostapd_cli $(INSTALL_ROOT)/sbin; \
+        fi
+	$(TAR) c -C $(LSDK_PARTNER_PLATFORM_CORTINA_DIR)/rootfs/cgiCommon/etc/ath/hostapd0.7.0_conf/ .  \
+	                --exclude=CVS | tar x -C  $(INSTALL_ROOT)/etc/ath
+	cp -Rf $(LSDK_PARTNER_PLATFORM_CORTINA_DIR)/rootfs/$(BOARD_TYPE)/* $(INSTALL_ROOT)
+	rm -rf $(INSTALL_ROOT)/etc/ath/hostapd0.7.0_conf
+	mkdir -p $(INSTALL_ROOT)/etc/wpa2
+
+athr-wpa_supplicant:
+	@echo Making athr wpa_supplicant  at `date`
+	if ( test -e $(LSDK_WLAN_DIR)/apps/athr-hostap/wpa_supplicant ) then \
+        cp -f scripts/$(BOARD_TYPE)/athr_supplicant.conf $(LSDK_WLAN_DIR)/apps/athr-hostap/wpa_supplicant/.config; \
+        cd $(LSDK_WLAN_DIR)/apps/athr-hostap/wpa_supplicant; make clean; make CC=$(TOOLPREFIX)gcc AR=$(TOOLPREFIX)ar LD=$(TOOLPREFIX)ld $(MAKE_BUILD_OPT); \
+        cp wpa_supplicant wpa_cli $(INSTALL_ROOT)/sbin; \
+        fi
+
+driver_build: main_hal_build wireless_tools_main ath_tools
+	@echo making umac
+	cd $(LSDK_WLAN_DIR)/drivers/wlan_modules/os/linux && \
+	$(MAKEARCH) TARGET=$(TARGETARCH) clean \
+	&& $(MAKEARCH) TARGET=$(TARGETARCH) $(MAKE_BUILD_OPT)&& \
+	$(MAKEARCH) DESTDIR=$(INSTALLROOT) TARGET=$(TARGETARCH) install
+#	$(MAKE) $(BUILD_TYPE)_build
+	@echo making image root $(IMAGE_ROOT)
+	rm -rf $(IMAGE_ROOT)
+	cp -a $(INSTALL_ROOT) $(IMAGE_ROOT)
+	# Remove unwanted files
+	@for file in "$(INSTALL_BLACKLIST)" ; \
+		do echo "Removing $(IMAGE_ROOT)/$$file"; rm -rf $(IMAGE_ROOT)/$$file ;done
+#	rm -rf $(IMAGE_ROOT)/bin
+	rm -rf $(IMAGE_ROOT)/dev
+	rm -rf $(IMAGE_ROOT)/include
+	rm -rf $(IMAGE_ROOT)/lib/*.a
+	rm -rf $(IMAGE_ROOT)/lib/modules/2.6.15
+	rm -rf $(IMAGE_ROOT)/lost+found
+	rm -rf $(IMAGE_ROOT)/man
+	rm -rf $(IMAGE_ROOT)/proc
+#	rm -rf $(IMAGE_ROOT)/root
+	rm -rf $(IMAGE_ROOT)/tmp
+#	rm -rf $(IMAGE_ROOT)/usr
+	rm -rf $(IMAGE_ROOT)/var
+#	sudo cp -rf $(IMAGE_ROOT)/bin  $(BASEROOTFS)
+#	sudo cp -rf $(IMAGE_ROOT)/etc  $(BASEROOTFS)
+#	sudo cp -rf $(IMAGE_ROOT)/lib  $(BASEROOTFS)
+#	sudo cp -rf $(IMAGE_ROOT)/root $(BASEROOTFS)
+#	sudo cp -rf $(IMAGE_ROOT)/sbin $(BASEROOTFS)
+#	sudo cp -rf $(IMAGE_ROOT)/usr  $(BASEROOTFS)
+
