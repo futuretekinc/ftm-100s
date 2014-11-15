@@ -50,6 +50,7 @@
 /usr/bin/pwdx
 /bin/ash
 /bin/sh
+/bin/bash
 /sbin/blockdev
 /sbin/fstrim
 /usr/bin/[
@@ -77,6 +78,7 @@
 /usr/sbin/dhcprelay
 /usr/bin/dirname
 /bin/dmesg
+/bin/dnsdomainname
 /usr/bin/du
 /usr/bin/dumpleases
 /bin/echo
@@ -93,8 +95,19 @@
 /sbin/hdparm
 /usr/bin/head
 /usr/bin/hexdump
+/bin/hostname
+/usr/sbin/httpd
 /sbin/hwclock
 /sbin/ifconfig
+/sbin/ifdown
+/sbin/ifup
+/usr/sbin/inetd
+/sbin/ip
+/sbin/ipaddr
+/sbin/iplink
+/sbin/iproute
+/sbin/iprule
+/sbin/iptunnel
 /bin/kill
 /usr/bin/killall
 /usr/sbin/killall5
@@ -142,6 +155,7 @@
 /bin/rm
 /bin/rmdir
 /sbin/route
+/bin/run-parts
 /usr/bin/seq
 /usr/bin/sha3sum
 /bin/sleep

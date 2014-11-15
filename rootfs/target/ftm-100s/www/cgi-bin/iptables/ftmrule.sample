@@ -1,0 +1,20 @@
+TABLE filter
+CHAIN INPUT ACCEPT
+CHAIN FORWARD ACCEPT
+CHAIN OUTPUT ACCEPT
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         icmp    0               echo-request    ACCEPT 
+RULE  OUTPUT  OUT     eth0    0.0.0.0         0.0.0.0         icmp    echo-reply      0               ACCEPT 
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         tcp     0               80              ACCEPT 
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         tcp     0               443             ACCEPT 
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         tcp     0               21              ACCEPT 
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         tcp     0               1024:65535      ACCEPT 
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         tcp     0               25              ACCEPT 
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         tcp     0               465             ACCEPT 
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         tcp     0               110             ACCEPT 
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         tcp     0               995             ACCEPT 
+RULE  INPUT   IN      eth0    0.0.0.0         0.0.0.0         udp     0               123             ACCEPT 
+RULE  OUTPUT  OUT     eth0    0.0.0.0         0.0.0.0         tcp     21              0               ACCEPT 
+RULE  OUTPUT  OUT     eth0    0.0.0.0         0.0.0.0         tcp     1024:65535      0               ACCEPT 
+RULE  FORWARD IN      eth0    0.0.0.0         0.0.0.0         all     0               0               ACCEPT 
+RULE  FORWARD OUT     eth0    0.0.0.0         0.0.0.0         all     0               0               ACCEPT 
+RULE  INPUT   IN      eth1    0.0.0.0         0.0.0.0         udp     68              67              ACCEPT 

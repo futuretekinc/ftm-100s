@@ -1,0 +1,19 @@
+<h2 class='entry-title' id='page_title'>Log</h2>
+<hr>
+<form name='f'>
+	<h3 id='section1_title'>System Log (Maximum 200 kbyte)</h3>
+	<div class='clearfix'>
+		<table id='syslog'>
+			<tbody>
+				<tr>
+					<td class='title center'><p class='index' id='index'>Index</p></td>
+					<td class='title center'><p class='time' id='time'>Time</p></td>
+					<td class='title center'><p class='task' id='process'>Process</p></td>
+					<td class='title center'><p class='log' id='log'>Log</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id='nav'>
+	</div>
+</form>

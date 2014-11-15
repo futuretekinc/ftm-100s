@@ -1,0 +1,9 @@
+<h2 class='entry-title' id='page_title'>Status IP Camera</h2>
+<hr>
+<form name='f'>
+	<h3 id='section1_title'>IP Camera</h3>
+	<div class='clearfix'>
+		<img width="480" height="320" src="http://10.0.1.43:88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=futuretek&pwd=futuretek&t=" name="refresh" id="refresh" onload='reload(this)' onerror='reload(this)'>
+ 	</div>
+</form>
+

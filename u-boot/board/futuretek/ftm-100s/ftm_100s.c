@@ -63,6 +63,7 @@ extern int g2_eth_initialize(bd_t *);
 extern int g2_wdt_init(void);
 extern int g2_wdt_set_heartbeat(int t);
 extern void g2_wdt_start(void);
+static void modem_init(void);
 
 #if defined(CONFIG_SHOW_BOOT_PROGRESS)
 void show_boot_progress(int progress)
@@ -157,6 +158,7 @@ int board_init (void)
 	disable_remap();
 
 	gpio_mux_init();
+	modem_init();
 
 	return 0;
 }
@@ -288,3 +290,18 @@ static void mmu_setup(void)
 	set_cr(reg | CR_M);
 }
 
+void modem_init(void)
+{
+	unsigned int reg_val;
+	reg_val = __raw_readl(GLOBAL_GPIO_MUX_2);
+	reg_val |= (1 << 15) | (1 << 16) | (1 << 18) | (1 << 19) | (1 << 27);
+	__raw_writel(reg_val, GLOBAL_GPIO_MUX_2);
+
+	reg_val = __raw_readl(PER_GPIO2_CFG);
+	reg_val |= reg_val & ~((1 << 15) | (1 << 16) | (1 << 18) | (1 << 19) | (1 << 27));
+	__raw_writel(reg_val, PER_GPIO2_CFG);
+
+	reg_val = __raw_readl(PER_GPIO2_OUT);
+	reg_val |= reg_val & ~((1 << 15) | (1 << 16) | (1 << 18) | (1 << 19) | (1 << 27));
+	__raw_writel(reg_val, PER_GPIO2_OUT);
+}

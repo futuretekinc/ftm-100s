@@ -306,8 +306,13 @@ attempt to open networking/lib.a succeeded
 (networking/lib.a)arping.o
 (networking/lib.a)ftpd.o
 (networking/lib.a)ftpgetput.o
+(networking/lib.a)hostname.o
+(networking/lib.a)httpd.o
 (networking/lib.a)ifconfig.o
+(networking/lib.a)ifupdown.o
+(networking/lib.a)inetd.o
 (networking/lib.a)interface.o
+(networking/lib.a)ip.o
 (networking/lib.a)nbd-client.o
 (networking/lib.a)nc.o
 (networking/lib.a)netstat.o
@@ -324,6 +329,19 @@ attempt to open networking/lib.a succeeded
 (networking/lib.a)wget.o
 (networking/lib.a)whois.o
 attempt to open networking/libiproute/lib.a succeeded
+(networking/libiproute/lib.a)ip_parse_common_args.o
+(networking/libiproute/lib.a)ipaddress.o
+(networking/libiproute/lib.a)iplink.o
+(networking/libiproute/lib.a)iproute.o
+(networking/libiproute/lib.a)iprule.o
+(networking/libiproute/lib.a)iptunnel.o
+(networking/libiproute/lib.a)libnetlink.o
+(networking/libiproute/lib.a)ll_addr.o
+(networking/libiproute/lib.a)ll_map.o
+(networking/libiproute/lib.a)ll_types.o
+(networking/libiproute/lib.a)rt_names.o
+(networking/libiproute/lib.a)rtm_map.o
+(networking/libiproute/lib.a)utils.o
 attempt to open networking/udhcp/lib.a succeeded
 (networking/udhcp/lib.a)dhcpc.o
 (networking/udhcp/lib.a)dhcpd.o
@@ -513,6 +531,7 @@ attempt to open util-linux/volume_id/built-in.o succeeded
 (coreutils/libcoreutils/lib.a)cp_mv_stat.o
 (coreutils/libcoreutils/lib.a)getopt_mk_fifo_nod.o
 (debianutils/lib.a)mktemp.o
+(debianutils/lib.a)run_parts.o
 (debianutils/lib.a)start_stop_daemon.o
 (debianutils/lib.a)which.o
 (editors/lib.a)awk.o
@@ -616,6 +635,7 @@ attempt to open util-linux/volume_id/built-in.o succeeded
 (libbb/lib.a)xatonum.o
 (libbb/lib.a)xconnect.o
 (libbb/lib.a)xgetcwd.o
+(libbb/lib.a)xgethostbyname.o
 (libbb/lib.a)xreadlink.o
 (libbb/lib.a)xrealloc_vector.o
 (libbb/lib.a)xregcomp.o

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Copyright (C) 2009 OpenWrt.org
+
+case "$ACTION" in
+	add)
+		echo "SUBSYSTEM : $SUBSYSTEM" >> /var/log/hotplug2.log
+		echo "DRIVER : $DRIVER" >> /var/log/hotplug2.log
+		;;
+	remove)
+		;;
+esac	
+		

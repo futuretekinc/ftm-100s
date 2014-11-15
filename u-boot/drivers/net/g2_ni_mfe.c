@@ -1108,8 +1108,29 @@ int do_phy_test(cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
 	return	0;
 }
 
+int do_phy(cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
+{
+	unsigned int 		i;
+	unsigned short		phy_reg;
+
+	for(i = 0 ; i < 32 ; i++)
+	{
+		phy_reg = g2_phy_read(GE_PORT_PHY_ADDR, i);
+		printf("%02x : %04x\n", i, phy_reg);
+	}
+
+	return	0;
+}
+
 U_BOOT_CMD(
 	phy_test,	2,	1,	do_phy_test,
 	"Check phy status",
 	"[Loop Count] \n"
 );
+
+U_BOOT_CMD(
+	phy,	1,	0,	do_phy,
+	"Show phy status",
+	"\n"
+);
+

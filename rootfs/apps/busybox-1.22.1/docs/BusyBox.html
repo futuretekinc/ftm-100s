@@ -115,20 +115,22 @@ been enabled, more detailed usage information will also be available.</p>
 <p>Currently available applets include:</p>
 <pre>
         [, [[, addgroup, adduser, arp, arping, ash, awk, base64, basename,
-        blkid, blockdev, bunzip2, bzcat, cat, chgrp, chmod, chown, chroot,
-        clear, cmp, cp, crond, crontab, cut, date, dd, delgroup, deluser,
-        depmod, df, dhcprelay, diff, dirname, dmesg, du, dumpleases, echo,
-        egrep, env, expr, false, fdisk, fgrep, find, free, fstrim, ftpd,
-        ftpget, ftpput, getty, grep, groups, gunzip, gzip, halt, hd, hdparm,
-        head, hexdump, hostid, hwclock, id, ifconfig, init, insmod, iostat,
-        kill, killall, killall5, klogd, less, ln, logger, login, logread,
-        ls, lsmod, lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs,
-        mkfifo, mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod,
-        mkswap, mktemp, modprobe, more, mount, mpstat, mv, nanddump,
-        nandwrite, nbd-client, nc, netstat, nice, nohup, nslookup, passwd,
-        pgrep, pidof, ping, ping6, pivot_root, pkill, pmap, poweroff,
-        powertop, printf, ps, pstree, pwd, pwdx, rdate, reboot, renice,
-        reset, resize, rm, rmdir, rmmod, route, sed, seq, setserial, sh,
+        bash, blkid, blockdev, bunzip2, bzcat, cat, chgrp, chmod, chown,
+        chroot, clear, cmp, cp, crond, crontab, cut, date, dd, delgroup,
+        deluser, depmod, df, dhcprelay, diff, dirname, dmesg, dnsdomainname,
+        du, dumpleases, echo, egrep, env, expr, false, fdisk, fgrep, find,
+        free, fstrim, ftpd, ftpget, ftpput, getty, grep, groups, gunzip,
+        gzip, halt, hd, hdparm, head, hexdump, hostid, hostname, httpd,
+        hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod, iostat,
+        ip, ipaddr, iplink, iproute, iprule, iptunnel, kill, killall,
+        killall5, klogd, less, ln, logger, login, logread, ls, lsmod, lsof,
+        lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
+        mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod, mkswap,
+        mktemp, modprobe, more, mount, mpstat, mv, nanddump, nandwrite,
+        nbd-client, nc, netstat, nice, nohup, nslookup, passwd, pgrep,
+        pidof, ping, ping6, pivot_root, pkill, pmap, poweroff, powertop,
+        printf, ps, pstree, pwd, pwdx, rdate, reboot, renice, reset, resize,
+        rm, rmdir, rmmod, route, run-parts, sed, seq, setserial, sh,
         sha3sum, sleep, sort, start-stop-daemon, strings, stty, svlogd,
         swapoff, swapon, switch_root, sync, sysctl, syslogd, tail, tar,
         taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time, top, touch,
@@ -231,6 +233,12 @@ been enabled, more detailed usage information will also be available.</p>
 <dd>
 <p>basename FILE [SUFFIX]</p>
 <p>Strip directory path and .SUFFIX from FILE</p>
+</dd>
+<dt><strong><a name="bash" class="item"><strong>bash</strong></a></strong></dt>
+
+<dd>
+<p>bash [-/+OPTIONS] [-/+o OPT]... [-c 'SCRIPT' [ARG0 [ARGS]] / FILE [ARGS]]</p>
+<p>Unix shell interpreter</p>
 </dd>
 <dt><strong><a name="blkid" class="item"><strong>blkid</strong></a></strong></dt>
 
@@ -875,6 +883,37 @@ With more than one FILE, precede each with a filename header.</p>
 <p>hostid</p>
 <p>Print out a unique 32-bit identifier for the machine</p>
 </dd>
+<dt><strong><a name="hostname" class="item"><strong>hostname</strong></a></strong></dt>
+
+<dd>
+<p>hostname [OPTIONS] [HOSTNAME | -F FILE]</p>
+<p>Get or set hostname or DNS domain name</p>
+<pre>
+        -s      Short
+        -i      Addresses for the hostname
+        -d      DNS domain name
+        -f      Fully qualified domain name
+        -F FILE Use FILE's content as hostname</pre>
+</dd>
+<dt><strong><a name="httpd" class="item"><strong>httpd</strong></a></strong></dt>
+
+<dd>
+<p>httpd [-ifv[v]] [-c CONFFILE] [-p [IP:]PORT] [-u USER[:GRP]] [-r REALM] [-h HOME]
+or httpd -d/-e/-m STRING</p>
+<p>Listen for incoming HTTP requests</p>
+<pre>
+        -i              Inetd mode
+        -f              Don't daemonize
+        -v[v]           Verbose
+        -p [IP:]PORT    Bind to IP:PORT (default *:80)
+        -u USER[:GRP]   Set uid/gid after binding to port
+        -r REALM        Authentication Realm for Basic Authentication
+        -h HOME         Home directory (default .)
+        -c FILE         Configuration file (default {/etc,HOME}/httpd.conf)
+        -m STRING       MD5 crypt STRING
+        -e STRING       HTML encode STRING
+        -d STRING       URL decode STRING</pre>
+</dd>
 <dt><strong><a name="hwclock" class="item"><strong>hwclock</strong></a></strong></dt>
 
 <dd>
@@ -919,6 +958,44 @@ With more than one FILE, precede each with a filename header.</p>
         [mem_start NN] [io_addr NN] [irq NN]
         [up|down] ...</pre>
 </dd>
+<dt><strong><a name="ifdown" class="item"><strong>ifdown</strong></a></strong></dt>
+
+<dd>
+<p>ifdown [-anmvf] [-i FILE] IFACE...</p>
+<pre>
+        -a      De/configure all interfaces automatically
+        -i FILE Use FILE for interface definitions
+        -n      Print out what would happen, but don't do it
+                (note: doesn't disable mappings)
+        -m      Don't run any mappings
+        -v      Print out what would happen before doing it
+        -f      Force de/configuration</pre>
+</dd>
+<dt><strong><a name="ifup" class="item"><strong>ifup</strong></a></strong></dt>
+
+<dd>
+<p>ifup [-anmvf] [-i FILE] IFACE...</p>
+<pre>
+        -a      De/configure all interfaces automatically
+        -i FILE Use FILE for interface definitions
+        -n      Print out what would happen, but don't do it
+                (note: doesn't disable mappings)
+        -m      Don't run any mappings
+        -v      Print out what would happen before doing it
+        -f      Force de/configuration</pre>
+</dd>
+<dt><strong><a name="inetd" class="item"><strong>inetd</strong></a></strong></dt>
+
+<dd>
+<p>inetd [-fe] [-q N] [-R N] [CONFFILE]</p>
+<p>Listen for network connections and launch programs</p>
+<pre>
+        -f      Run in foreground
+        -e      Log to stderr
+        -q N    Socket listen queue (default: 128)
+        -R N    Pause services after N connects/min
+                (default: 0 - disabled)</pre>
+</dd>
 <dt><strong><a name="init" class="item"><strong>init</strong></a></strong></dt>
 
 <dd>
@@ -944,6 +1021,71 @@ It (re)spawns children according to /etc/inittab.</p>
         -z      Omit devices with no activity
         -k      Use kb/s
         -m      Use Mb/s</pre>
+</dd>
+<dt><strong><a name="ip" class="item"><strong>ip</strong></a></strong></dt>
+
+<dd>
+<p>ip [OPTIONS] {address | route | link | tunnel | rule} {COMMAND}</p>
+<p>ip [OPTIONS] OBJECT {COMMAND}
+where OBJECT := {address | route | link | tunnel | rule}
+OPTIONS := { -f[amily] { inet | inet6 | link } | -o[neline] }</p>
+</dd>
+<dt><strong><a name="ipaddr" class="item"><strong>ipaddr</strong></a></strong></dt>
+
+<dd>
+<p><table cellspacing="0" cellpadding="0"><tr><td>ipaddr { {add|del} IFADDR dev STRING | {show|flush}
+<tr><td><td>[dev STRING] [to PREFIX] }</table></p>
+<p>ipaddr {add|delete} IFADDR dev STRING
+ipaddr {show|flush} [dev STRING] [scope SCOPE-ID]
+	[to PREFIX] [label PATTERN]
+	IFADDR := PREFIX | ADDR peer PREFIX
+	[broadcast ADDR] [anycast ADDR]
+	[label STRING] [scope SCOPE-ID]
+	SCOPE-ID := [host | link | global | NUMBER]</p>
+</dd>
+<dt><strong><a name="iplink" class="item"><strong>iplink</strong></a></strong></dt>
+
+<dd>
+<p>iplink { set DEVICE { up | down | arp { on | off } | show [DEVICE] }</p>
+<p>iplink set DEVICE { up | down | arp | multicast { on | off } |
+			dynamic { on | off } |
+			mtu MTU }
+iplink show [DEVICE]</p>
+</dd>
+<dt><strong><a name="iproute" class="item"><strong>iproute</strong></a></strong></dt>
+
+<dd>
+<p><table cellspacing="0" cellpadding="0"><tr><td>iproute { list | flush | add | del | change | append |
+<tr><td><td>replace | test } ROUTE</table></p>
+<p>iproute { list | flush } SELECTOR
+iproute get ADDRESS [from ADDRESS iif STRING]
+	[oif STRING] [tos TOS]
+iproute { add | del | change | append | replace | test } ROUTE
+	SELECTOR := [root PREFIX] [match PREFIX] [proto RTPROTO]
+	ROUTE := [TYPE] PREFIX [tos TOS] [proto RTPROTO] [metric METRIC]</p>
+</dd>
+<dt><strong><a name="iprule" class="item"><strong>iprule</strong></a></strong></dt>
+
+<dd>
+<p>iprule {[list | add | del] RULE}</p>
+<p><table cellspacing="0" cellpadding="0"><tr><td>iprule [list | add | del] SELECTOR ACTION
+<tr><td><td>SELECTOR := [from PREFIX] [to PREFIX] [tos TOS] [fwmark FWMARK]
+<tr><td><td>[dev STRING] [pref NUMBER]
+<tr><td><td>ACTION := [table TABLE_ID] [nat ADDRESS]
+<tr><td><td>[prohibit | reject | unreachable]
+<tr><td><td>[realms [SRCREALM/]DSTREALM]
+<tr><td><td>TABLE_ID := [local | main | default | NUMBER]</table></p>
+</dd>
+<dt><strong><a name="iptunnel" class="item"><strong>iptunnel</strong></a></strong></dt>
+
+<dd>
+<p><table cellspacing="0" cellpadding="0"><tr><td>iptunnel { add | change | del | show } [NAME]
+<tr><td><td>[mode { ipip | gre | sit }]
+<tr><td><td>[remote ADDR] [local ADDR] [ttl TTL]</table></p>
+<p><table cellspacing="0" cellpadding="0"><tr><td>iptunnel { add | change | del | show } [NAME]
+<tr><td><td>[mode { ipip | gre | sit }] [remote ADDR] [local ADDR]
+<tr><td><td>[[i|o]seq] [[i|o]key KEY] [[i|o]csum]
+<tr><td><td>[ttl TTL] [tos TOS] [[no]pmtudisc] [dev PHYS_DEV]</table></p>
 </dd>
 <dt><strong><a name="kill" class="item"><strong>kill</strong></a></strong></dt>
 
@@ -1596,6 +1738,19 @@ the new root file system</p>
         -n      Don't resolve names
         -e      Display other/more information
         -A inet{6}      Select address family</pre>
+</dd>
+<dt><strong><a name="run_parts" class="item"><strong>run-parts</strong></a></strong></dt>
+
+<dd>
+<p>run-parts [-a ARG]... [-u UMASK] [--reverse] [--test] [--exit-on-error] [--list] DIRECTORY</p>
+<p>Run a bunch of scripts in DIRECTORY</p>
+<pre>
+        -a ARG          Pass ARG as argument to scripts
+        -u UMASK        Set UMASK before running scripts
+        --reverse       Reverse execution order
+        --test          Dry run
+        --exit-on-error Exit if a script exits with non-zero
+        --list          Print names of matching files even if they are not executable</pre>
 </dd>
 <dt><strong><a name="sed" class="item"><strong>sed</strong></a></strong></dt>
 

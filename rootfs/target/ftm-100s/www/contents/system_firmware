@@ -1,0 +1,29 @@
+<h2 class='entry-title' id='page_title'>System/Firmware</h2>
+<hr>
+<form name='f'>
+	<h3 id='section1_title'>Informations</h3>
+	<div class='clearfix'>
+	 	<table id='info'>
+			<tbody>
+				<tr>
+					<td class='title center'><p class='index' id='firm_index'>Index</p></td>
+					<td class='title center'><p id='firm_type'>Type</p></td>
+					<!-- <td class='title center'><p class='time' id='firm_time'>Time</p></td> -->
+					<!-- <td class='title center'><p id='firm_size'>Size</p></td> -->
+					<td class='title right'><p id='firm_ver'>Version</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+ 	<br>
+	<h3 id='section2_title'>Update</h3>
+	<div class='clearfix' id='transfer_ctrl'>
+		<p id='msg'>Please select the firmware.</p>
+		<input type='file' name='file' id='file'>
+	</div>
+ 	<br>
+	<div>
+		<input type='button' id='apply' value='Apply' onclick='onApplyUpload();'>
+	</div>
+</form>

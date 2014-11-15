@@ -1,0 +1,82 @@
+<h2 class='entry-title' id='page_title'>DHCP Configuration</h2>
+<hr>
+<form name='f'>
+	<h3 id='section1_title'>DHCP Server</h3>
+		<div class='clearfix'>
+		<div id='enable' >
+			<input type='checkbox' name='enable'>	
+			Enable
+		</div>
+		<div>
+			<table id='dhcps'>
+				<tbody>
+					<tr>
+						<td class='title right' id='if'>Interface: </td>
+						<td><p id='eth_if'></p>
+							<!--
+							<select name="if" value="eth0" onChange="selectEvent(this);">	
+								<option value="eth0">eth0</option>
+								<option value="eth1">eth1</option>
+							</select>
+							-->
+						</td>
+					</tr>
+					<tr>
+						<td class='title right' id='start'>IP Pool Start: </td>
+						<td><input class='ipaddr' name='ip_pool_start'></td>
+					</tr>
+					<tr>
+						<td class='title right' id='end'>IP Pool End: </td>
+						<td><input class='ipaddr' name='ip_pool_end'></td>
+					</tr>
+					<tr>
+						<td class='title right' id='router'>Router: </td>
+						<td><input class='ipaddr' name='router'></td>
+					</tr>
+					<tr>
+						<td class='title right' id='dns1'>dns1: </td>
+						<td><input class='ipaddr' name='dns1'></td>
+					</tr>
+					<tr>
+						<td class='title right' id='dns2'>dns2: </td>
+						<td><input class='ipaddr' name='dns2'></td>
+					</tr>
+					<tr>
+						<td class='title right' id='time'>Lease Time: </td>
+						<td><input class='sectime' name='lease_time'> seconds</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id='static_leases' >
+	 		<input type='checkbox' name='static_leases'>	
+	 			Static Leases
+			</div>
+			<div>
+				<table id='static_lease'>
+					<tbody>
+						<tr >
+							<td class='title center'><p class='index' id='index'>Index</p></td>
+							<td class='title center'><p class='macaddr' id='macaddr'>MAC Address</p></td>
+							<td class='title center'><p class='ipaddr' id='ipaddr'>IP Address</p></td>
+							<td class='title center'>	</td>
+						</tr>
+	
+	
+	 				<tr >
+							<td class='index'>-</td>
+	 					<td ><p class='macaddr'>00:00:00:00:00:00</p</td> 
+	 					<td ><p class='ipaddr'>0.0.0.0</p></td> 
+	 					<td ><input type='button' class='ctrlbtn' id='add' value='Add' onclick='onAddStaticLease();'></td> 
+						</tr>
+	
+					</tbody>
+				</table>
+			</div>
+		</div>	
+   <br>
+
+		<div>
+		<input  type='button' value='Apply' id='apply' onclick='onApply()'>
+	 </div>
+</form>

@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "BUSYBOX 1"
-.TH BUSYBOX 1 "2014-11-03" "version 1.22.1" "busybox"
+.TH BUSYBOX 1 "2014-11-14" "version 1.22.1" "busybox"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -212,20 +212,22 @@ Currently available applets include:
 .PP
 .Vb 10
 \&        [, [[, addgroup, adduser, arp, arping, ash, awk, base64, basename,
-\&        blkid, blockdev, bunzip2, bzcat, cat, chgrp, chmod, chown, chroot,
-\&        clear, cmp, cp, crond, crontab, cut, date, dd, delgroup, deluser,
-\&        depmod, df, dhcprelay, diff, dirname, dmesg, du, dumpleases, echo,
-\&        egrep, env, expr, false, fdisk, fgrep, find, free, fstrim, ftpd,
-\&        ftpget, ftpput, getty, grep, groups, gunzip, gzip, halt, hd, hdparm,
-\&        head, hexdump, hostid, hwclock, id, ifconfig, init, insmod, iostat,
-\&        kill, killall, killall5, klogd, less, ln, logger, login, logread,
-\&        ls, lsmod, lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs,
-\&        mkfifo, mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod,
-\&        mkswap, mktemp, modprobe, more, mount, mpstat, mv, nanddump,
-\&        nandwrite, nbd\-client, nc, netstat, nice, nohup, nslookup, passwd,
-\&        pgrep, pidof, ping, ping6, pivot_root, pkill, pmap, poweroff,
-\&        powertop, printf, ps, pstree, pwd, pwdx, rdate, reboot, renice,
-\&        reset, resize, rm, rmdir, rmmod, route, sed, seq, setserial, sh,
+\&        bash, blkid, blockdev, bunzip2, bzcat, cat, chgrp, chmod, chown,
+\&        chroot, clear, cmp, cp, crond, crontab, cut, date, dd, delgroup,
+\&        deluser, depmod, df, dhcprelay, diff, dirname, dmesg, dnsdomainname,
+\&        du, dumpleases, echo, egrep, env, expr, false, fdisk, fgrep, find,
+\&        free, fstrim, ftpd, ftpget, ftpput, getty, grep, groups, gunzip,
+\&        gzip, halt, hd, hdparm, head, hexdump, hostid, hostname, httpd,
+\&        hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod, iostat,
+\&        ip, ipaddr, iplink, iproute, iprule, iptunnel, kill, killall,
+\&        killall5, klogd, less, ln, logger, login, logread, ls, lsmod, lsof,
+\&        lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
+\&        mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod, mkswap,
+\&        mktemp, modprobe, more, mount, mpstat, mv, nanddump, nandwrite,
+\&        nbd\-client, nc, netstat, nice, nohup, nslookup, passwd, pgrep,
+\&        pidof, ping, ping6, pivot_root, pkill, pmap, poweroff, powertop,
+\&        printf, ps, pstree, pwd, pwdx, rdate, reboot, renice, reset, resize,
+\&        rm, rmdir, rmmod, route, run\-parts, sed, seq, setserial, sh,
 \&        sha3sum, sleep, sort, start\-stop\-daemon, strings, stty, svlogd,
 \&        swapoff, swapon, switch_root, sync, sysctl, syslogd, tail, tar,
 \&        taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time, top, touch,
@@ -328,6 +330,11 @@ Base64 encode or decode \s-1FILE\s0 to standard output
 basename \s-1FILE\s0 [\s-1SUFFIX\s0]
 .Sp
 Strip directory path and .SUFFIX from \s-1FILE\s0
+.IP "\fBbash\fR" 4
+.IX Item "bash"
+bash [\-/+OPTIONS] [\-/+o \s-1OPT\s0]... [\-c '\s-1SCRIPT\s0' [\s-1ARG0\s0 [\s-1ARGS\s0]] / \s-1FILE\s0 [\s-1ARGS\s0]]
+.Sp
+Unix shell interpreter
 .IP "\fBblkid\fR" 4
 .IX Item "blkid"
 blkid [\s-1BLOCKDEV\s0]...
@@ -999,6 +1006,39 @@ Display FILEs (or stdin) in a user specified format
 hostid
 .Sp
 Print out a unique 32\-bit identifier for the machine
+.IP "\fBhostname\fR" 4
+.IX Item "hostname"
+hostname [\s-1OPTIONS\s0] [\s-1HOSTNAME\s0 | \-F \s-1FILE\s0]
+.Sp
+Get or set hostname or \s-1DNS\s0 domain name
+.Sp
+.Vb 5
+\&        \-s      Short
+\&        \-i      Addresses for the hostname
+\&        \-d      DNS domain name
+\&        \-f      Fully qualified domain name
+\&        \-F FILE Use FILE\*(Aqs content as hostname
+.Ve
+.IP "\fBhttpd\fR" 4
+.IX Item "httpd"
+httpd [\-ifv[v]] [\-c \s-1CONFFILE\s0] [\-p [\s-1IP:\s0]PORT] [\-u USER[:GRP]] [\-r \s-1REALM\s0] [\-h \s-1HOME\s0]
+or httpd \-d/\-e/\-m \s-1STRING\s0
+.Sp
+Listen for incoming \s-1HTTP\s0 requests
+.Sp
+.Vb 11
+\&        \-i              Inetd mode
+\&        \-f              Don\*(Aqt daemonize
+\&        \-v[v]           Verbose
+\&        \-p [IP:]PORT    Bind to IP:PORT (default *:80)
+\&        \-u USER[:GRP]   Set uid/gid after binding to port
+\&        \-r REALM        Authentication Realm for Basic Authentication
+\&        \-h HOME         Home directory (default .)
+\&        \-c FILE         Configuration file (default {/etc,HOME}/httpd.conf)
+\&        \-m STRING       MD5 crypt STRING
+\&        \-e STRING       HTML encode STRING
+\&        \-d STRING       URL decode STRING
+.Ve
 .IP "\fBhwclock\fR" 4
 .IX Item "hwclock"
 hwclock [\-r|\-\-show] [\-s|\-\-hctosys] [\-w|\-\-systohc] [\-t|\-\-systz] [\-l|\-\-localtime] [\-u|\-\-utc] [\-f|\-\-rtc \s-1FILE\s0]
@@ -1046,6 +1086,45 @@ Configure a network interface
 \&        [mem_start NN] [io_addr NN] [irq NN]
 \&        [up|down] ...
 .Ve
+.IP "\fBifdown\fR" 4
+.IX Item "ifdown"
+ifdown [\-anmvf] [\-i \s-1FILE\s0] \s-1IFACE\s0...
+.Sp
+.Vb 7
+\&        \-a      De/configure all interfaces automatically
+\&        \-i FILE Use FILE for interface definitions
+\&        \-n      Print out what would happen, but don\*(Aqt do it
+\&                (note: doesn\*(Aqt disable mappings)
+\&        \-m      Don\*(Aqt run any mappings
+\&        \-v      Print out what would happen before doing it
+\&        \-f      Force de/configuration
+.Ve
+.IP "\fBifup\fR" 4
+.IX Item "ifup"
+ifup [\-anmvf] [\-i \s-1FILE\s0] \s-1IFACE\s0...
+.Sp
+.Vb 7
+\&        \-a      De/configure all interfaces automatically
+\&        \-i FILE Use FILE for interface definitions
+\&        \-n      Print out what would happen, but don\*(Aqt do it
+\&                (note: doesn\*(Aqt disable mappings)
+\&        \-m      Don\*(Aqt run any mappings
+\&        \-v      Print out what would happen before doing it
+\&        \-f      Force de/configuration
+.Ve
+.IP "\fBinetd\fR" 4
+.IX Item "inetd"
+inetd [\-fe] [\-q N] [\-R N] [\s-1CONFFILE\s0]
+.Sp
+Listen for network connections and launch programs
+.Sp
+.Vb 5
+\&        \-f      Run in foreground
+\&        \-e      Log to stderr
+\&        \-q N    Socket listen queue (default: 128)
+\&        \-R N    Pause services after N connects/min
+\&                (default: 0 \- disabled)
+.Ve
 .IP "\fBinit\fR" 4
 .IX Item "init"
 init
@@ -1071,6 +1150,65 @@ Report \s-1CPU\s0 and I/O statistics
 \&        \-k      Use kb/s
 \&        \-m      Use Mb/s
 .Ve
+.IP "\fBip\fR" 4
+.IX Item "ip"
+ip [\s-1OPTIONS\s0] {address | route | link | tunnel | rule} {\s-1COMMAND\s0}
+.Sp
+ip [\s-1OPTIONS\s0] \s-1OBJECT\s0 {\s-1COMMAND\s0}
+where \s-1OBJECT\s0 := {address | route | link | tunnel | rule}
+\&\s-1OPTIONS\s0 := { \-f[amily] { inet | inet6 | link } | \-o[neline] }
+.IP "\fBipaddr\fR" 4
+.IX Item "ipaddr"
+ipaddr { {add|del} \s-1IFADDR\s0 dev \s-1STRING\s0 | {show|flush}
+		[dev \s-1STRING\s0] [to \s-1PREFIX\s0] }
+.Sp
+ipaddr {add|delete} \s-1IFADDR\s0 dev \s-1STRING\s0
+ipaddr {show|flush} [dev \s-1STRING\s0] [scope \s-1SCOPE\-ID\s0]
+	[to \s-1PREFIX\s0] [label \s-1PATTERN\s0]
+	\s-1IFADDR\s0 := \s-1PREFIX\s0 | \s-1ADDR\s0 peer \s-1PREFIX\s0
+	[broadcast \s-1ADDR\s0] [anycast \s-1ADDR\s0]
+	[label \s-1STRING\s0] [scope \s-1SCOPE\-ID\s0]
+	SCOPE-ID := [host | link | global | \s-1NUMBER\s0]
+.IP "\fBiplink\fR" 4
+.IX Item "iplink"
+iplink { set \s-1DEVICE\s0 { up | down | arp { on | off } | show [\s-1DEVICE\s0] }
+.Sp
+iplink set \s-1DEVICE\s0 { up | down | arp | multicast { on | off } |
+			dynamic { on | off } |
+			mtu \s-1MTU\s0 }
+iplink show [\s-1DEVICE\s0]
+.IP "\fBiproute\fR" 4
+.IX Item "iproute"
+iproute { list | flush | add | del | change | append |
+		replace | test } \s-1ROUTE\s0
+.Sp
+iproute { list | flush } \s-1SELECTOR\s0
+iproute get \s-1ADDRESS\s0 [from \s-1ADDRESS\s0 iif \s-1STRING\s0]
+	[oif \s-1STRING\s0] [tos \s-1TOS\s0]
+iproute { add | del | change | append | replace | test } \s-1ROUTE\s0
+	\s-1SELECTOR\s0 := [root \s-1PREFIX\s0] [match \s-1PREFIX\s0] [proto \s-1RTPROTO\s0]
+	\s-1ROUTE\s0 := [\s-1TYPE\s0] \s-1PREFIX\s0 [tos \s-1TOS\s0] [proto \s-1RTPROTO\s0] [metric \s-1METRIC\s0]
+.IP "\fBiprule\fR" 4
+.IX Item "iprule"
+iprule {[list | add | del] \s-1RULE\s0}
+.Sp
+iprule [list | add | del] \s-1SELECTOR\s0 \s-1ACTION\s0
+	\s-1SELECTOR\s0 := [from \s-1PREFIX\s0] [to \s-1PREFIX\s0] [tos \s-1TOS\s0] [fwmark \s-1FWMARK\s0]
+			[dev \s-1STRING\s0] [pref \s-1NUMBER\s0]
+	\s-1ACTION\s0 := [table \s-1TABLE_ID\s0] [nat \s-1ADDRESS\s0]
+			[prohibit | reject | unreachable]
+			[realms [\s-1SRCREALM/\s0]DSTREALM]
+	\s-1TABLE_ID\s0 := [local | main | default | \s-1NUMBER\s0]
+.IP "\fBiptunnel\fR" 4
+.IX Item "iptunnel"
+iptunnel { add | change | del | show } [\s-1NAME\s0]
+	[mode { ipip | gre | sit }]
+	[remote \s-1ADDR\s0] [local \s-1ADDR\s0] [ttl \s-1TTL\s0]
+.Sp
+iptunnel { add | change | del | show } [\s-1NAME\s0]
+	[mode { ipip | gre | sit }] [remote \s-1ADDR\s0] [local \s-1ADDR\s0]
+	[[i|o]seq] [[i|o]key \s-1KEY\s0] [[i|o]csum]
+	[ttl \s-1TTL\s0] [tos \s-1TOS\s0] [[no]pmtudisc] [dev \s-1PHYS_DEV\s0]
 .IP "\fBkill\fR" 4
 .IX Item "kill"
 kill [\-l] [\-SIG] \s-1PID\s0...
@@ -1752,6 +1890,20 @@ Edit kernel routing tables
 \&        \-n      Don\*(Aqt resolve names
 \&        \-e      Display other/more information
 \&        \-A inet{6}      Select address family
+.Ve
+.IP "\fBrun-parts\fR" 4
+.IX Item "run-parts"
+run-parts [\-a \s-1ARG\s0]... [\-u \s-1UMASK\s0] [\-\-reverse] [\-\-test] [\-\-exit\-on\-error] [\-\-list] \s-1DIRECTORY\s0
+.Sp
+Run a bunch of scripts in \s-1DIRECTORY\s0
+.Sp
+.Vb 6
+\&        \-a ARG          Pass ARG as argument to scripts
+\&        \-u UMASK        Set UMASK before running scripts
+\&        \-\-reverse       Reverse execution order
+\&        \-\-test          Dry run
+\&        \-\-exit\-on\-error Exit if a script exits with non\-zero
+\&        \-\-list          Print names of matching files even if they are not executable
 .Ve
 .IP "\fBsed\fR" 4
 .IX Item "sed"

@@ -32,7 +32,7 @@ modules.builtin
 *.lzo
 *.patch
 *.gcno
-
+*.map
 #
 # Top-level generic files
 #
@@ -104,4 +104,7 @@ zImage
 vmlinux.lds
 config_data.h
 initramfs_data.cpio
-
+tags
+System.map
+u-boot
+u-boot.srec

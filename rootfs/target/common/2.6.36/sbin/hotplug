@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [[ "$ACTION" = "add" ]]
+then
+	if { [[ "$DEVTYPE" = "usb_interface" ]] && [[ "$DRIVER" = "cdc_acm" ]]; }
+    then
+		stty -F /dev/ttyACM0 -echo
+		cat /dev/ttyACM0 &> /var/log/modem &
+    fi
+fi
+
+if [[ "$ACTION" = "remove" ]]
+then
+fi

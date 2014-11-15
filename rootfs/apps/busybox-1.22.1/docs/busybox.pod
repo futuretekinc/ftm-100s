@@ -82,20 +82,22 @@ been enabled, more detailed usage information will also be available.
 Currently available applets include:
 
 	[, [[, addgroup, adduser, arp, arping, ash, awk, base64, basename,
-	blkid, blockdev, bunzip2, bzcat, cat, chgrp, chmod, chown, chroot,
-	clear, cmp, cp, crond, crontab, cut, date, dd, delgroup, deluser,
-	depmod, df, dhcprelay, diff, dirname, dmesg, du, dumpleases, echo,
-	egrep, env, expr, false, fdisk, fgrep, find, free, fstrim, ftpd,
-	ftpget, ftpput, getty, grep, groups, gunzip, gzip, halt, hd, hdparm,
-	head, hexdump, hostid, hwclock, id, ifconfig, init, insmod, iostat,
-	kill, killall, killall5, klogd, less, ln, logger, login, logread,
-	ls, lsmod, lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs,
-	mkfifo, mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod,
-	mkswap, mktemp, modprobe, more, mount, mpstat, mv, nanddump,
-	nandwrite, nbd-client, nc, netstat, nice, nohup, nslookup, passwd,
-	pgrep, pidof, ping, ping6, pivot_root, pkill, pmap, poweroff,
-	powertop, printf, ps, pstree, pwd, pwdx, rdate, reboot, renice,
-	reset, resize, rm, rmdir, rmmod, route, sed, seq, setserial, sh,
+	bash, blkid, blockdev, bunzip2, bzcat, cat, chgrp, chmod, chown,
+	chroot, clear, cmp, cp, crond, crontab, cut, date, dd, delgroup,
+	deluser, depmod, df, dhcprelay, diff, dirname, dmesg, dnsdomainname,
+	du, dumpleases, echo, egrep, env, expr, false, fdisk, fgrep, find,
+	free, fstrim, ftpd, ftpget, ftpput, getty, grep, groups, gunzip,
+	gzip, halt, hd, hdparm, head, hexdump, hostid, hostname, httpd,
+	hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod, iostat,
+	ip, ipaddr, iplink, iproute, iprule, iptunnel, kill, killall,
+	killall5, klogd, less, ln, logger, login, logread, ls, lsmod, lsof,
+	lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
+	mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod, mkswap,
+	mktemp, modprobe, more, mount, mpstat, mv, nanddump, nandwrite,
+	nbd-client, nc, netstat, nice, nohup, nslookup, passwd, pgrep,
+	pidof, ping, ping6, pivot_root, pkill, pmap, poweroff, powertop,
+	printf, ps, pstree, pwd, pwdx, rdate, reboot, renice, reset, resize,
+	rm, rmdir, rmmod, route, run-parts, sed, seq, setserial, sh,
 	sha3sum, sleep, sort, start-stop-daemon, strings, stty, svlogd,
 	swapoff, swapon, switch_root, sync, sysctl, syslogd, tail, tar,
 	taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time, top, touch,
@@ -198,6 +200,12 @@ basename FILE [SUFFIX]
 
 Strip directory path and .SUFFIX from FILE
 
+
+=item B<bash>
+
+bash [-/+OPTIONS] [-/+o OPT]... [-c 'SCRIPT' [ARG0 [ARGS]] / FILE [ARGS]]
+
+Unix shell interpreter
 
 =item B<blkid>
 
@@ -845,6 +853,37 @@ hostid
 
 Print out a unique 32-bit identifier for the machine
 
+=item B<hostname>
+
+hostname [OPTIONS] [HOSTNAME | -F FILE]
+
+Get or set hostname or DNS domain name
+
+	-s	Short
+	-i	Addresses for the hostname
+	-d	DNS domain name
+	-f	Fully qualified domain name
+	-F FILE	Use FILE's content as hostname
+
+=item B<httpd>
+
+httpd [-ifv[v]] [-c CONFFILE] [-p [IP:]PORT] [-u USER[:GRP]] [-r REALM] [-h HOME]
+or httpd -d/-e/-m STRING
+
+Listen for incoming HTTP requests
+
+	-i		Inetd mode
+	-f		Don't daemonize
+	-v[v]		Verbose
+	-p [IP:]PORT	Bind to IP:PORT (default *:80)
+	-u USER[:GRP]	Set uid/gid after binding to port
+	-r REALM	Authentication Realm for Basic Authentication
+	-h HOME		Home directory (default .)
+	-c FILE		Configuration file (default {/etc,HOME}/httpd.conf)
+	-m STRING	MD5 crypt STRING
+	-e STRING	HTML encode STRING
+	-d STRING	URL decode STRING
+
 =item B<hwclock>
 
 hwclock [-r|--show] [-s|--hctosys] [-w|--systohc] [-t|--systz] [-l|--localtime] [-u|--utc] [-f|--rtc FILE]
@@ -889,6 +928,42 @@ Configure a network interface
 	[mem_start NN] [io_addr NN] [irq NN]
 	[up|down] ...
 
+=item B<ifdown>
+
+ifdown [-anmvf] [-i FILE] IFACE...
+
+	-a	De/configure all interfaces automatically
+	-i FILE	Use FILE for interface definitions
+	-n	Print out what would happen, but don't do it
+		(note: doesn't disable mappings)
+	-m	Don't run any mappings
+	-v	Print out what would happen before doing it
+	-f	Force de/configuration
+
+=item B<ifup>
+
+ifup [-anmvf] [-i FILE] IFACE...
+
+	-a	De/configure all interfaces automatically
+	-i FILE	Use FILE for interface definitions
+	-n	Print out what would happen, but don't do it
+		(note: doesn't disable mappings)
+	-m	Don't run any mappings
+	-v	Print out what would happen before doing it
+	-f	Force de/configuration
+
+=item B<inetd>
+
+inetd [-fe] [-q N] [-R N] [CONFFILE]
+
+Listen for network connections and launch programs
+
+	-f	Run in foreground
+	-e	Log to stderr
+	-q N	Socket listen queue (default: 128)
+	-R N	Pause services after N connects/min
+		(default: 0 - disabled)
+
 =item B<init>
 
 init 
@@ -914,6 +989,71 @@ Report CPU and I/O statistics
 	-z	Omit devices with no activity
 	-k	Use kb/s
 	-m	Use Mb/s
+
+=item B<ip>
+
+ip [OPTIONS] {address | route | link | tunnel | rule} {COMMAND}
+
+ip [OPTIONS] OBJECT {COMMAND}
+where OBJECT := {address | route | link | tunnel | rule}
+OPTIONS := { -f[amily] { inet | inet6 | link } | -o[neline] }
+
+=item B<ipaddr>
+
+ipaddr { {add|del} IFADDR dev STRING | {show|flush}
+		[dev STRING] [to PREFIX] }
+
+ipaddr {add|delete} IFADDR dev STRING
+ipaddr {show|flush} [dev STRING] [scope SCOPE-ID]
+	[to PREFIX] [label PATTERN]
+	IFADDR := PREFIX | ADDR peer PREFIX
+	[broadcast ADDR] [anycast ADDR]
+	[label STRING] [scope SCOPE-ID]
+	SCOPE-ID := [host | link | global | NUMBER]
+
+=item B<iplink>
+
+iplink { set DEVICE { up | down | arp { on | off } | show [DEVICE] }
+
+iplink set DEVICE { up | down | arp | multicast { on | off } |
+			dynamic { on | off } |
+			mtu MTU }
+iplink show [DEVICE]
+
+=item B<iproute>
+
+iproute { list | flush | add | del | change | append |
+		replace | test } ROUTE
+
+iproute { list | flush } SELECTOR
+iproute get ADDRESS [from ADDRESS iif STRING]
+	[oif STRING] [tos TOS]
+iproute { add | del | change | append | replace | test } ROUTE
+	SELECTOR := [root PREFIX] [match PREFIX] [proto RTPROTO]
+	ROUTE := [TYPE] PREFIX [tos TOS] [proto RTPROTO] [metric METRIC]
+
+=item B<iprule>
+
+iprule {[list | add | del] RULE}
+
+iprule [list | add | del] SELECTOR ACTION
+	SELECTOR := [from PREFIX] [to PREFIX] [tos TOS] [fwmark FWMARK]
+			[dev STRING] [pref NUMBER]
+	ACTION := [table TABLE_ID] [nat ADDRESS]
+			[prohibit | reject | unreachable]
+			[realms [SRCREALM/]DSTREALM]
+	TABLE_ID := [local | main | default | NUMBER]
+
+=item B<iptunnel>
+
+iptunnel { add | change | del | show } [NAME]
+	[mode { ipip | gre | sit }]
+	[remote ADDR] [local ADDR] [ttl TTL]
+
+iptunnel { add | change | del | show } [NAME]
+	[mode { ipip | gre | sit }] [remote ADDR] [local ADDR]
+	[[i|o]seq] [[i|o]key KEY] [[i|o]csum]
+	[ttl TTL] [tos TOS] [[no]pmtudisc] [dev PHYS_DEV]
 
 =item B<kill>
 
@@ -1567,6 +1707,19 @@ Edit kernel routing tables
 	-n	Don't resolve names
 	-e	Display other/more information
 	-A inet{6}	Select address family
+
+=item B<run-parts>
+
+run-parts [-a ARG]... [-u UMASK] [--reverse] [--test] [--exit-on-error] [--list] DIRECTORY
+
+Run a bunch of scripts in DIRECTORY
+
+	-a ARG		Pass ARG as argument to scripts
+	-u UMASK	Set UMASK before running scripts
+	--reverse	Reverse execution order
+	--test		Dry run
+	--exit-on-error	Exit if a script exits with non-zero
+	--list		Print names of matching files even if they are not executable
 
 =item B<sed>
 

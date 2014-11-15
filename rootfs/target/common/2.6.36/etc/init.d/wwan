@@ -1,0 +1,19 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2010 Jo-Philipp Wich
+
+START=50
+
+start() {
+	echo 1 > /dev/lte_pwr0
+	echo 1 > /dev/lte_on0
+	sleep 1
+	echo 0 > /dev/lte_on0
+}
+
+stop() {
+	echo 1 > /dev/lte_on0
+	sleep 2
+	echo 0 > /dev/lte_on0
+	sleep 2
+	echo 0 > /dev/lte_pwr0
+}

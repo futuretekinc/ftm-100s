@@ -52,6 +52,7 @@ start() {
 	# mkdir -p /tmp/var
 	# mount --bind /tmp/var /var
 
+	mkdir -p /var/lib/misc
 	mkdir -p /var/run
 	mkdir -p /var/log
 	mkdir -p /var/lock
@@ -64,6 +65,8 @@ start() {
 	ln -sf /tmp/resolv.conf.auto /tmp/resolv.conf
 	grep -q debugfs /proc/filesystems && mount -t debugfs debugfs /sys/kernel/debug
 	[ "$FAILSAFE" = "true" ] && touch /tmp/.failsafe
+
+	echo /sbin/hotplug > /proc/sys/kernel/hotplug
 
 	killall -q hotplug2
 	[ -x /sbin/hotplug2 ] && /sbin/hotplug2 --override --persistent \
