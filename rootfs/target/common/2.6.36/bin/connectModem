@@ -1,0 +1,4 @@
+#!/bin/sh
+
+stty -F /dev/ttyACM0 -echo
+/bin/cat /dev/ttyACM0 &> /var/log/modem &

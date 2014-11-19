@@ -168,6 +168,7 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 		ftm-100s)
 			cp -rf target/ftm-100s/* $ROOT
 			cp -rf apps/target/* $ROOT
+			cp -rf apps/atheros-11AC-10.1.389/* $ROOT
 		;;
 		ftm-100s-tp)
 			cp -rf target/ftm-100s/* $ROOT

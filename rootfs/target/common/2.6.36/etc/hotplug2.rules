@@ -8,3 +8,4 @@ DEVICENAME == watchdog {
 	exec /sbin/watchdog -t 5 /dev/watchdog
 	next-event
 }
+

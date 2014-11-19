@@ -66,8 +66,6 @@ start() {
 	grep -q debugfs /proc/filesystems && mount -t debugfs debugfs /sys/kernel/debug
 	[ "$FAILSAFE" = "true" ] && touch /tmp/.failsafe
 
-	echo /sbin/hotplug > /proc/sys/kernel/hotplug
-
 	killall -q hotplug2
 	[ -x /sbin/hotplug2 ] && /sbin/hotplug2 --override --persistent \
 			--set-worker /lib/hotplug2/worker_fork.so \

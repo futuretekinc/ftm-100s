@@ -94,8 +94,6 @@ x509.genkey
 
 
 #
-rootfs/_rootfs
-rootfs.squashfs
 Image
 piggy.gzip
 vmlinux
@@ -108,3 +106,9 @@ tags
 System.map
 u-boot
 u-boot.srec
+rootfs/_rootfs
+rootfs/root.squashfs
+rootfs/apps/fwmng/align_file
+rootfs/apps/fwmng/fwinfo
+rootfs/apps/fwmng/update_sys_info
+rootfs/apps/target/bin/hostapd

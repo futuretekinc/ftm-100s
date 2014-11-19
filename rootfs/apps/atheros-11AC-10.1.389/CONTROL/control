@@ -1,0 +1,15 @@
+Package: kmod-atheros-11AC-10.1.389
+Version: 2.6.36-1
+Depends: kernel (=2.6.36-1), sharutils/host
+Provides: 
+Source: feeds/cortina/atheros-11AC-10.1.389
+Section: kernel
+Category: Kernel modules
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 1597668
+Title: AP driver for Atheros AR5BXB wireless chipsets 
+Description:  This package contains a driver for Atheros chipsets.
