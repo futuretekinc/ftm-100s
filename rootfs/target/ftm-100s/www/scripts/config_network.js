@@ -130,7 +130,10 @@ function onLoad()
 					ipaddr  = interfaces[i].getElementsByTagName("IPADDR")[0].firstChild.nodeValue;
 					netmask = interfaces[i].getElementsByTagName("NETMASK")[0].firstChild.nodeValue;
 
-					addInterface(ifname, ipaddr, netmask);
+					if (ifname != "eth0" && ifname != "usb0")
+					{
+						addInterface(ifname, ipaddr, netmask);
+					}
 				}
 				
 				/*

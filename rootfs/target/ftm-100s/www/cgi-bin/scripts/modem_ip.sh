@@ -8,21 +8,21 @@ then
 	if [ -n "$raw" ]
 	then
 		next_raw=`expr $raw + 1`
-		sleep 0.1
-		result=`cat /var/log/modem | sed /^$/d | sed -n "$next_raw"p | awk '{ split($0,arr,":"); printf("%s", arr[1]); }'`
-#		echo "$result"
-		if [ "$result" = "*wwanip" ]
-		then
-			#cmd=`cat /var/log/modem | sed /^$/d | sed -n "$next_raw"p'`
-			cmd=`cat /var/log/modem | sed /^$/d | sed -n "$next_raw"p | awk '{ split($0,arr,":"); printf("%s", arr[2]); }'`
-			echo $cmd
-		elif [ "$result" = "+CME" ]
-		then
-			cmd=`cat /var/log/modem | sed /^$/d | sed -n "$next_raw"p'`
-			echo $cmd
-		else 
-			echo "URC MESSAGE"
-		fi
+#		sleep 0.1
+		result=`cat /var/log/modem | sed /^$/d | sed -n "$next_raw"p` # | awk '{ split($0,arr,":"); printf("%s", arr[1]); }'`
+		echo "$result"
+#		if [ "$result" = "*wwanip" ]
+#		then
+#			#cmd=`cat /var/log/modem | sed /^$/d | sed -n "$next_raw"p'`
+#			cmd=`cat /var/log/modem | sed /^$/d | sed -n "$next_raw"p | awk '{ split($0,arr,":"); printf("%s", arr[2]); }'`
+#			echo $cmd
+#		elif [ "$result" = "+CME" ]
+#		then
+#			cmd=`cat /var/log/modem | sed /^$/d | sed -n "$next_raw"p'`
+#			echo $cmd
+#		else 
+#			echo "URC MESSAGE"
+#		fi
 	else
 		echo done
 	fi
