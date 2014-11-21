@@ -1,0 +1,27 @@
+#!/bin/sh
+while [ 0 ] 
+do
+	sleep 1
+
+	file="/var/log/modem"
+	if [ -f $file ]
+	then
+		rows=`cat /var/log/modem | awk 'END { print NR }'`
+		if [ -n "$rows" ]
+		then
+#			echo $rows
+			if [ $rows -ge 1000 ]
+			then
+				`ps | grep ttyACM0 | grep -v grep | awk '{ print $1 }' | xargs kill -9`
+				`sleep 0.1`
+				`cat /dev/ttyACM0 &> /var/log/modem &`
+#			else
+#				echo "rows is under 150"
+			fi
+#		else
+#			echo "none text"
+		fi
+#	else
+#		echo "none file"
+	fi
+done

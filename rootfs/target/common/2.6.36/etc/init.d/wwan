@@ -8,6 +8,9 @@ start() {
 	echo 1 > /dev/lte_on0
 	sleep 1
 	echo 0 > /dev/lte_on0
+
+	/bin/init_modem_log &
+	/bin/sms_dmon &
 }
 
 stop() {

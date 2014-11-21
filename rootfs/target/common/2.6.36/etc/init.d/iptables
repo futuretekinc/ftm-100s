@@ -1,0 +1,40 @@
+#!/bin/sh /etc/rc.common
+# (C) 2008 openwrt.org
+
+START=50
+
+start() {
+	if [ -e /etc/service/iptables ]
+	then
+        	USED=`cat /etc/service/iptables`
+                if [ $USED = 'enabled' ]
+                then
+                	iptables-restore < /etc/iptables
+                else
+                	iptables-restore < /etc/iptables.accept
+               	fi
+	fi
+}
+
+stop() {
+	iptables-restore < /etc/iptables.accept
+}
+
+restart() {
+	"$0" start
+}
+
+status() {
+	if [ -e /etc/service/iptables ]
+        then
+        	USED=`cat /etc/service/iptables`
+                if [ $USED = 'enabled' ]
+                then
+                	echo "running"
+                else
+                        echo "stopped"
+                fi
+	else
+        	echo "stopped"
+	fi
+}

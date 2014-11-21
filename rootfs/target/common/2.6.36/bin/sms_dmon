@@ -1,0 +1,192 @@
+#!/bin/sh
+
+state_check_sms=0
+state_cnum_sms=1
+state_delete_sms=2
+state_setting_apn=3
+state_setting_qos=4
+state_wait=5
+state_get_setting_sms=6
+state_set_text_mode=7
+state_uninitialize=8
+state=state_uninitialize
+temp_state=0
+
+apn_text=""
+qos_text=""
+
+is_modem_exist()
+{
+	`echo AT > /dev/ttyACM0; sleep 0.1`
+	retval=`/www/cgi-bin/scripts/is_modem.sh`
+	if [ "$retval" = "true" ]
+	then
+		return  0
+	else
+		return  1
+	fi
+}
+
+
+get_setting_sms()
+{
+	result=`/www/cgi-bin/scripts/get_setting_sms.sh | awk '/smsapn/'`
+	if [ -z "$result" ]
+	then
+		return 1
+	else
+		return 0
+	fi
+}
+
+get_new_sms()
+{
+#	echo =====================================================
+	`echo AT+CMGR=0 > /dev/ttyACM0; sleep 0.1`
+	sleep 0.5
+	result=`/www/cgi-bin/scripts/get_new_sms.sh`
+	if [ "$result" = "none" ]
+	then
+#		echo =============== none ==========================
+		return 1
+	elif [ "$result" = "URC MESSAGE" ]
+	then
+#		echo ============== URC ===========================
+		return 1
+	else
+		result2=`echo $result | awk '/smsapn/'`
+		if [ -z "$result2" ]
+		then
+			echo AT*SMSIOD=0 > /dev/ttyACM0; sleep 0.1
+#			echo ============== CMGD =======================
+			return 1
+		else
+#			echo =============== smsapn ===========================
+			apn_text=`echo $result2 | sed -e 's/:/ /g' | awk '{ print $2 }'`
+			qos_text=`echo $result2 | sed -e 's/:/ /g' | awk '{ print $5 "," $3 "," $4 }'`
+			echo $apn_text
+			echo $qos_text
+			return 0
+		fi
+	fi
+}
+
+setting_apn()
+{
+	`echo AT+CGDCONT=1,\"IP\",\"$apn_text\" > /dev/ttyACM0; sleep 0.1`
+	return 0
+}
+
+setting_qos()
+{
+	`echo AT+CGEQREQ=1,$qos_text > /dev/ttyACM0; sleep 0.1`
+	return 0
+}
+
+send_sms_cnum()
+{
+	result=`/www/cgi-bin/scripts/get_new_sms.sh | awk '/CMGR/' | sed -e 's/ //g' -e 's/,/ /g' | awk '{ print $2 }' | sed -e 's/\"//g'`
+	return 0
+}
+
+delete_sms()
+{
+	`echo AT*SMSIOD=0 > /dev/ttyACM0; sleep 0.1`
+	return 0
+}
+
+get_ppp_connecting()
+{
+	MMD_PID=`pidof mmd`;
+	if [ -z "$MMD_PID" ]
+	then
+		return 0
+	else
+		return 1
+	fi
+}
+
+is_ready()
+{
+	`echo AT+CPIN? > /dev/ttyACM0; sleep 0.1`
+	retval=`/www/cgi-bin/scripts/usim.sh`
+	if [ "$retval" = "+CPIN: READY" ]
+	then
+		return	0
+	else
+		return	1
+	fi
+}
+
+while [ 0 ]
+do
+			case $state in
+				state_uninitialize)
+					is_modem_exist
+					if [ $? -eq 0 ]
+					then
+						state=state_set_text_mode
+					fi
+				;;
+				state_set_text_mode)
+					`echo 'at+cpms="me","me","me"' > /dev/ttyACM0; sleep 0.1`
+					`echo 'at+cmgf=1' > /dev/ttyACM0; sleep 0.1`
+					state=state_check_sms
+				;;
+				state_check_sms)
+					get_new_sms
+					if [ $? -eq 0 ]
+					then
+						state=state_setting_apn
+					else
+						state=state_wait
+					fi
+				;;
+				state_setting_apn)
+					setting_apn
+					if [ $? -eq 0 ]
+					then
+						sleep 1
+						#echo "set apn ok"
+						state=state_setting_qos
+					else
+						#echo "set apn fail"
+						state=state_wait
+					fi
+				;;
+				state_setting_qos)
+					setting_qos
+					if [ $? -eq 0 ]
+					then
+						sleep 1
+						#echo "set qos ok"
+						#`killall pppd`
+						/www/cgi-bin/scripts/modem_detach.sh
+						state=state_delete_sms
+					else
+						#echo "set qos fail"
+						state=state_wait
+					fi
+				;;
+				state_delete_sms)
+					delete_sms
+					if [ $? -eq 0 ]
+					then
+						#echo "delete"
+						state=state_wait
+					else
+						#echo "fail"
+						state=state_wait
+					fi
+					apn_text=""
+					qos_text=""
+				;;
+				state_wait)
+					sleep 5 
+					state=state_set_text_mode
+				;;
+				
+			esac
+	sleep 3
+
+done

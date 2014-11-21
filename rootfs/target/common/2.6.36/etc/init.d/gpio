@@ -42,10 +42,11 @@ create_gpio()
 }
 
 start () {
-	create_gpio 79 lte_on0 out low off
-	create_gpio 80 lte_pwr0 out high off
-	create_gpio 81 lte_on1 out low off
-	create_gpio 82 lte_pwr1 out high off
-	create_gpio 91 lte_reset out high on
+	create_gpio 37 factory_reset		in	low
+	create_gpio 79 lte_on0 		out low 	off
+	create_gpio 80 lte_pwr0 	out high 	off
+	create_gpio 81 lte_on1 		out low 	off
+	create_gpio 82 lte_pwr1 	out high 	off
+	create_gpio 91 lte_reset 	out high	on
 }
 

@@ -5,4 +5,6 @@
 /etc/init.d/mrd6 stop
 /etc/init.d/pppoe-server stop
 
+/bin/factory_reset_dmon &
+
 exit 0

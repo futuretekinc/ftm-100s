@@ -1,0 +1,29 @@
+#!/bin/sh
+
+pressed_count=0
+
+get_value()
+{
+		value=`cat /dev/factory_reset`
+		return $value
+}
+
+while [ 0 ]
+do
+	get_value
+	if [ $? -gt 0 ]	
+	then
+		pressed_count=`expr $pressed_count + 1`
+		if [ $pressed_count -eq 5 ]
+		then
+			/www/cgi-bin/init.sh	
+			break
+		fi
+#		echo $pressed_count
+	else
+		pressed_count=0
+#		echo $pressed_count
+	fi
+
+	sleep 1
+done
