@@ -9,3 +9,4 @@ echo 'at*rndisdata=1' > /dev/ttyACM0; sleep 0.1
 
 /bin/init_modem_log &
 /bin/sms_dmon &
+/bin/data_dmon &

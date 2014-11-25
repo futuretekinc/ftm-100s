@@ -1,5 +1,10 @@
 #!/bin/sh
-echo 'at*wwanip?' > /dev/ttyACM0; sleep 0.1
+
+a=`ls /dev/ttyACM0`
+if [ -n "$a" ]
+then
+	echo 'at*wwanip?' > /dev/ttyACM0; sleep 0.1
+fi
 
 file="/var/log/modem"
 if [ -f $file ]

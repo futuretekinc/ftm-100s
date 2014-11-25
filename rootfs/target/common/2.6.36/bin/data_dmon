@@ -1,0 +1,72 @@
+#!/bin/sh
+
+is_ppp_connected()
+{
+    retval=`/bin/cat /proc/net/dev |  awk 'BEGIN{ retval="false" }\
+    	{\
+        if ($1 ~ /^usb0/)\
+            {\
+                retval="true"\
+            }\
+        }END{ print retval }'`
+
+    if [ "$retval" = "true" ]
+    then
+        return  0
+    else
+        return  1
+    fi
+}
+
+getRxTx()
+{
+         result=`/sbin/ifconfig usb0 | awk 'BEGIN{ connected="false"; rxbytes=""; txbytes"" }\
+         {\
+                 if ($1 ~ /^usb0/)\
+                 {\
+                         connected="true"\
+		 }\
+                 if ((connected == "true") && ($1 ~ /^RX$/) && ($2 ~ /^bytes\:/))\
+                 {\
+                         split($2, fields, ":");\
+                         rxbytes=fields[2];\
+
+                         split($6, fields, ":");\
+                         txbytes=fields[2];\
+
+                 }\
+         } END { print rxbytes, txbytes }'`
+	echo "$result"
+}
+
+sum()
+{
+	initRx=`cat /etc/initData | awk '{ print $1 }'`
+	initTx=`cat /etc/initData | awk '{ print $2 }'`
+	currentRx=`cat /var/curData | awk '{ print $1 }'`
+	currentTx=`cat /var/curData | awk '{ print $2 }'`
+	sumRx=`expr $initRx + $currentRx`
+	sumTx=`expr $initTx + $currentTx`
+	`echo $sumRx $sumTx > /etc/initData`
+}
+
+is_sum=0
+
+while [ 0 ]
+do
+	is_ppp_connected
+	if [ $? -eq 0 ]
+	then
+		is_sum=0
+		data=`getRxTx`;
+		`echo $data > /var/curData`
+#	else
+#		if [ $is_sum -eq 0 ]
+#		then
+#			sum
+#			is_sum=1
+#		fi
+	fi
+	
+	sleep 10
+done

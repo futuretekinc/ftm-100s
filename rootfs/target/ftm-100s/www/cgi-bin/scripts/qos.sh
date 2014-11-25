@@ -1,5 +1,12 @@
 #!/bin/sh
-echo 'at+cgeqreq?' > /dev/ttyACM0; sleep 0.1
+
+a=`ls /dev/ttyACM0`
+if [ -n "$a" ]
+then
+	echo 'at+cgeqreq?' > /dev/ttyACM0; sleep 0.1
+fi
+
+
 #time=0
 #while [ 0 ]
 #do

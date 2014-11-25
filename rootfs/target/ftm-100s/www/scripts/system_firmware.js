@@ -36,10 +36,10 @@ function onInit()
 	msg = new Array();
 	msg[msgTheFileIsBeingTransferred]	= "파일 전송중 입니다.";
 	msg[msgTransferComplete]			= "파일 전송을 완료 하였습니다.";
-	msg[msgDoYouWantToContinueUpgrade]	= "파일 전송을 완료 하였습니다.\\n펌웨어 업그레이드를 진행하시겠습니까?";
-	msg[msgIncorrectFirmware]			= " 전송된 펌웨어가 올바르지 않습니다.\\n확인 후 재전송해 주시기 바랍니다.";
+	msg[msgDoYouWantToContinueUpgrade]	= "파일 전송을 완료 하였습니다.\n펌웨어 업그레이드를 진행하시겠습니까?";
+	msg[msgIncorrectFirmware]			= " 전송된 펌웨어가 올바르지 않습니다.\n확인 후 재전송해 주시기 바랍니다.";
 	msg[msgTheUpgardeCanceled] 			= "펌웨어 업그레이드가 취소되었습니다.";
-	msg[msgTheUpgradeCompleted] 		= "파일 업그레이드를 완료 하였습니다.\\n정상적인 동작을 위해서 시스템 재시작이 필요합니다.\\n재시작 하겠습니까?";
+	msg[msgTheUpgradeCompleted] 		= "파일 업그레이드를 완료 하였습니다.\n정상적인 동작을 위해서 시스템 재시작이 필요합니다.\n재시작 하겠습니까?";
 	msg[msgPleaseSelectTheFirmware]		= "업그레이드용 펌웨어를 선택해 주십시오.";
 	msg[msgTheFirmwareIsUpdating]	= "펌웨어 업데이트 중 입니다.";
 	msg[msgTheFirmwareUpdateCompleted]	= "펌웨어 업데이트가 입니다.";
@@ -279,6 +279,7 @@ function onApplyUpload()
 		{
 			if (ret[0].firstChild.nodeValue == 'OK')
 			{
+				/*
 				var	fw_info = "";
 
 				info = xmlhttp.responseXML.documentElement.getElementsByTagName("IMG_INFO")[0];
@@ -289,7 +290,8 @@ function onApplyUpload()
 						+ "\nSize: " + info.getElementsByTagName('SIZE')[0].firstChild.nodeValue 
 						+ "\nDesc: " + info.getElementsByTagName('DESC')[0].firstChild.nodeValue ;
 
-				if (confirm(msg[msgDoYouWantToContinueUpgrade] + fw_info))
+				*/
+				if (confirm(msg[msgDoYouWantToContinueUpgrade]))
 				{
 					var target = document.getElementById('body');
 					spinner.spin(target);

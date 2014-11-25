@@ -10,9 +10,11 @@ find_mtd()
 
 upgrade_kernel()
 {
+	success_msg="success"
 	case "$1" in
 		"primary") 
 			MTD=$( find_mtd kernel ) 
+			success_msg="primary success"
 			;;
 
 		"secodnary") 
@@ -42,14 +44,16 @@ upgrade_kernel()
 
 	rm /tmp/$2.tmp
 
-	echo "success"
+	echo "$success_msg"
 }
 
 upgrade_rootfs()
 {
+	success_msg="success"
 	case "$1" in
 		"primary")
 			MTD=$( find_mtd rootfs ) 
+			success_msg="primary success"
 			;;
 
 		"secondary")
@@ -93,7 +97,7 @@ upgrade_rootfs()
 	dd if=/tmp/new_head.tmp of=/dev/mtd0 bs=$PAGESIZE seek=$SEEK_BLOCK
 
 	rm /tmp/fs.head /tmp/fs.body /tmp/fs.tmp /tmp/head.loc /tmp/new_head.tmp
-	echo "success"
+	echo "$success_msg"
 
 }
 
