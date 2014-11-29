@@ -7,7 +7,7 @@ BUSYBOX_PATH=$PWD/apps/busybox-1.22.1
 IPTABLES_PATH=$PWD/apps/iptables-1.4.21
 #BASE_PATH=/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/arm-openwrt-linux-gnueabi
 #LIBS="ld-linux.so.3 libcrypt.so.1 libm.so.6 libc.so.6 libdl.so.2"
-BASE_PATH=/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi
+BASE_PATH=/opt/CORTINA/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi
 LIB_VERSION=-0.9.32-rc2-git
 LIBS="ld-uClibc.so.0 libcrypt.so libm.so libc.so.0 libdl.so"
 LIB_PATH="/lib /usr/lib"
@@ -29,7 +29,7 @@ mklink()
 {
 	for TARGET in $@
 	do
-		ln -s /bin/bosybox $TARGET
+		ln -s /bin/busybox $TARGET
 	done
 }
 
