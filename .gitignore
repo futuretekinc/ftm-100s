@@ -112,3 +112,4 @@ rootfs/apps/fwmng/align_file
 rootfs/apps/fwmng/fwinfo
 rootfs/apps/fwmng/update_sys_info
 rootfs/apps/target/bin/hostapd
+rootfs/vid

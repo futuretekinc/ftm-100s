@@ -6,8 +6,8 @@ ifndef CFLAGS
 CFLAGS = -MMD -O2 -Wall -g
 endif
 
-CFLAGS += -I../../libnl-1.1/include
-CFLAGS += -I../../openssl-1.0.1e/final/include
+CFLAGS += -I../../libnl-tiny-0.1/include
+CFLAGS += -I../../openssl-1.0.0c/final/include
 CFLAGS += -I../src
 CFLAGS += -I../src/utils
 # Uncomment following line and set the path to your kernel tree include

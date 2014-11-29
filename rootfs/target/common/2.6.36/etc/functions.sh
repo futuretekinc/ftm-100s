@@ -207,8 +207,7 @@ config_list_foreach() {
 
 load_modules() {
 	[ -d /etc/modules.d ] && {
-		cd /etc/modules.d
-		sed 's/^[^#]/insmod &/' $* | ash 2>&- || :
+		sed -e 's/^[^#]/insmod \/lib\/modules\/2.6.36\/&/' -e 's/$/.ko/' $* | ash 2>&- || :
 	}
 }
 

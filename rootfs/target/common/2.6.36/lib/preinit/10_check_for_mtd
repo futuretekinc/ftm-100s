@@ -5,7 +5,6 @@
 
 mount_no_mtd() {
     mtd unlock rootfs
-    echo "mount -o remount,rw /dev/root /"
     mount -o remount,rw /dev/root /
 }
 

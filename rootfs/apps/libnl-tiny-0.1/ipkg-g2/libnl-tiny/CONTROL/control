@@ -1,0 +1,15 @@
+Package: libnl-tiny
+Version: 0.1-2
+Depends: 
+Provides: 
+Source: package/libnl-tiny
+Section: libs
+Category: Libraries
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: g2
+Installed-Size: 13064
+Title: netlink socket library
+Description:  This package contains a stripped down version of libnl

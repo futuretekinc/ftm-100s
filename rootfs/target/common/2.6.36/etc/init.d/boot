@@ -52,7 +52,6 @@ start() {
 	# mkdir -p /tmp/var
 	# mount --bind /tmp/var /var
 
-	mkdir -p /var/lib/misc
 	mkdir -p /var/run
 	mkdir -p /var/log
 	mkdir -p /var/lock
@@ -74,6 +73,7 @@ start() {
 
 	# the coldplugging of network interfaces needs to happen later, so we do it manually here
 	for iface in $(awk -F: '/:/ {print $1}' /proc/net/dev); do
+		echo "IFACE : $iface"
 		/usr/bin/env -i ACTION=add INTERFACE="$iface" /sbin/hotplug-call net
 	done
 

@@ -10,17 +10,14 @@ do_move_devtmpfs() {
 }
 
 do_mount_devfs() {
-    echo "mount devfs /dev -t devfs"
     mount devfs /dev -t devfs
 }
 
 do_mount_hotplug() {
-    echo "mount -t tmpfs tmpfs /dev -o mode=0755,size=512K"
     mount -t tmpfs tmpfs /dev -o mode=0755,size=512K
 }
 
 do_mount_udev() {
-    echo "mount -n -t tmpfs -o mode=0755 udev /dev"
     mount -n -t tmpfs -o mode=0755 udev /dev
 }
 
