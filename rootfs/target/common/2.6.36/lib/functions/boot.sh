@@ -77,13 +77,6 @@ find_mtd_part() {
 	echo "${PART:+$PREFIX$PART}"
 }
 
-jffs2_ready () {
-    mtdpart="$(find_mtd_part overlay)"
-    [ -z "$mtdpart" ] && return 1
-    magic=$(hexdump $mtdpart -n 4 -e '4/1 "%02x"')
-    [ "$magic" != "deadc0de" ]
-}
-
 yaffs2_ready () {
     mtdpart="$(find_mtd_part overlay)"
     [ -z "$mtdpart" ] && return 1
@@ -120,15 +113,10 @@ dupe() { # <new_root> <old_root>
 
 pivot() { # <new_root> <old_root>
 	mount -o move /proc $1/proc && \
-		echo "pivot $1 $1$2"
 	pivot_root $1 $1$2 && {
-		echo "mount -o move $2/dev /dev"
 		mount -o move $2/dev /dev
-		echo "mount -o move $2/tmp /tmp"
 		mount -o move $2/tmp /tmp
-		echo "mount -o move $2/sys /sys 2>&-"
 		mount -o move $2/sys /sys 2>&-
-		echo "mount -o move $2/overlay /overlay 2>&-"
 		mount -o move $2/overlay /overlay 2>&-
 		return 0
 	}
@@ -140,7 +128,6 @@ fopivot() { # <rw_root> <ro_root> <dupe?>
 		if grep -q overlay /proc/filesystems; then
 			mount -o noatime,lowerdir=/,upperdir=$1 -t overlayfs "overlayfs:$1" /mnt && root=/mnt
 		elif grep -q mini_fo /proc/filesystems; then
-			echo "mount -t mini_fo -o base=/,sto=$1 mini_fo:$1 /mnt 2>&- && root=/mnt"
 			mount -t mini_fo -o base=/,sto=$1 "mini_fo:$1" /mnt 2>&- && root=/mnt
 		else
 			mount --bind / /mnt
@@ -149,7 +136,6 @@ fopivot() { # <rw_root> <ro_root> <dupe?>
 	} || {
 		[ "$3" = "1" ] && {
 		mount | grep "on $1 type" 2>&- 1>&- || mount -o bind $1 $1
-		echo "dupe $1 $rom"
 		dupe $1 $rom
 		}
 	}
@@ -159,7 +145,6 @@ fopivot() { # <rw_root> <ro_root> <dupe?>
 ramoverlay() {
 	mkdir -p /tmp/root
 	mount -t tmpfs -o mode=0755 root /tmp/root
-	echo "mount -t tmpfs -o mode=0755 root /tmp/root"
 	fopivot /tmp/root /rom 1
 }
 

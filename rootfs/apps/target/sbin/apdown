@@ -1,0 +1,10 @@
+#!/bin/sh
+##
+## Compatability scripts for older versions
+##
+
+killVAP all
+#Finally, unload all modules
+sleep 3
+##/etc/ath/rc.wlan down
+rm -f /tmp/.apup

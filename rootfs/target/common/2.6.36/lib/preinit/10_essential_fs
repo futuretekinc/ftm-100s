@@ -3,12 +3,10 @@
 # Copyright (C) 2010 Vertical Communications
 
 do_mount_procfs() {
-   echo "mount proc /proc -t proc"
    mount proc /proc -t proc
 }
 
 do_mount_sysfs() {
-    echo "mount sysfs /sys -t sysfs"
     mount sysfs /sys -t sysfs
 }
 
@@ -18,7 +16,6 @@ calc_tmpfs_size() {
 
 do_mount_tmpfs() {
     calc_tmpfs_size
-    echo "mount tmpfs /tmp -t tmpfs -o size=$pi_size,nosuid,nodev,mode=1777"
     mount tmpfs /tmp -t tmpfs -o size=$pi_size,nosuid,nodev,mode=1777
 }
 

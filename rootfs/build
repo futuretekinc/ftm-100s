@@ -12,7 +12,6 @@ LIB_VERSION=-0.9.32-rc2-git
 LIBS="ld-uClibc.so.0 libcrypt.so libm.so libc.so.0 libdl.so"
 LIB_PATH="/lib /usr/lib"
 CROSS_COMPILE=arm-openwrt-linux-uclibcgnueabi-
-BASE=base
 
 if [ -d "tmp" ]
 then
@@ -24,26 +23,6 @@ chdir()
 	cd	$ROOT/$1
 
 	echo "The current location is $PWD"
-}
-
-cplib()
-{
-	for TARGET in $@
-	do
-		while [ 0 ]
-		do
-			ORIGIN=`readlink $BASE_PATH/lib/$TARGET`
-			if [ -z "$ORIGIN" ]	
-			then
-				cp -af "$BASE_PATH/lib/$TARGET" "$ROOT/lib/$TARGET"
-				break
-			else
-				cp -af "$BASE_PATH/lib/$TARGET" "$ROOT/lib/$TARGET"
-
-				TARGET=$ORIGIN
-			fi
-		done
-	done
 }
 
 mklink()
@@ -83,7 +62,6 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 	mkdir -p etc etc/init.d 
 	mkdir -p usr usr/bin usr/sbin usr/lib usr/share
 	mkdir -p var
-#	cplib	$LIBS
 )
 
 
@@ -95,47 +73,6 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 # /dev configuration
 (
 	chdir	dev
-
-
-#	mkdev	ram0		b	1	0
-#	mkdev	ram1		b	1	1
-#
-#	# loop devs
-#	for i in `seq 0 7`; do
-#		mkdev	loop$i 	b 	7 	$i
-#	done
-#
-#	mkdev	mem			c	1	1
-#	mkdev	kmem		c	1	2
-#	mkdev	null		c	1	3
-#	mkdev	port		c	1	4
-#	mkdev	zero		c	1	5
-#	mkdev	core		c	1	6
-#	mkdev	full		c	1	7
-#	mkdev	random		c	1	8
-#	mkdev	urandom		c	1	9
-#	mkdev	vsys		c	1	10
-#
-#	# tty
-#	for i in `seq 0 9`; do
-#		mkdev	tty$i 	c 	4 	$i
-#	done
-#	mkdev	ttyS0 		c 	4 	64
-#	mkdev	ttyS1 		c 	4 	65
-#
-#	mkdev	tty			c 	5 	0
-#	mkdev	console		c	5	1
-#	mkdev	ptmx		c	5	2
-#
-#	mkdev	watchdog	c	10	130
-#
-#	ln -s	ram0	ramdisk
-#	ln -s	/proc/self/fd/0	stdin
-#	ln -s	/proc/self/fd/1	stdout
-#	ln -s	/proc/self/fd/2	stderr
-#	ln -s	/proc/kcore		kcore
-#
-#	mkdev	net/tun		c	10	20
 )
 
 # /lib configuration
@@ -168,7 +105,6 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 		ftm-100s)
 			cp -rf target/ftm-100s/* $ROOT
 			cp -rf apps/target/* $ROOT
-			cp -rf apps/atheros-11AC-10.1.389/* $ROOT
 		;;
 		ftm-100s-tp)
 			cp -rf target/ftm-100s/* $ROOT

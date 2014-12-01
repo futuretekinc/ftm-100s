@@ -27,7 +27,7 @@ pi_init_cmd="/sbin/init"
 
 boot_hook_init preinit_essential
 boot_hook_init preinit_main
-#boot_hook_init failsafe
+boot_hook_init failsafe
 boot_hook_init initramfs
 boot_hook_init preinit_mount_root
 

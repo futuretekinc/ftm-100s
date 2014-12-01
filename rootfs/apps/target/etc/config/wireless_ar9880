@@ -1,0 +1,34 @@
+config wifi-device ath0 
+  option type     ar9880
+  option country  1
+  option channel  11 
+  option txpower  100
+  option beacon_int 100
+  option repeater 0
+  option disabled 0 
+
+config wifi-iface
+  option device   ath0 
+  option network  lan
+  option mode     ap
+  option hwmode   11NGHT40MINUS
+  option ssid     QCA_2.4G 
+  option hidden   0
+  option wds_enable 0
+  option wps_enable 0
+  option wps_pin  00000000
+  option auth	        open 
+  option encryption     auto 
+  option wep_key_mode   hex 
+  option wep_key	1
+  option wep_key1	  1234567890
+  option wep_key2	  1234567890
+  option wep_key3	  1234567890
+  option wep_key4	  1234567890
+  option wpapsk		123456789abcdxyz
+  option auth_server   192.168.2.100
+  option auth_port     1812
+  option auth_secret   testing123
+
+config wifi-wds
+  option device	  'wlan0-wds0'
