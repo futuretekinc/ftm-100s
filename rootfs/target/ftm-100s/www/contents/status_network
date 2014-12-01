@@ -71,20 +71,7 @@
 			<table id='wcdma' border="1" style="border: 1px none #ccc; border-collapse: collapse;">
 				<tbody>
 					<tr>
-						<td class='title center' colspan="2"><p>[ WCDMA ]</p></td>
-					</tr>
-					<tr>
-						<td class='title center'><p>KEY</p></td>
-						<td class='title center'><p>VALUE</p></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class='clearfix' style="float:left;">
-			<table id='lte' border="1" style="border: 1px none #ccc; border-collapse: collapse;">
-				<tbody>
-					<tr>
-						<td class='title center' colspan="2"><p>[ LTE ]</p></td>
+						<td class='title center' colspan="2" id="modem_state">state</td>
 					</tr>
 					<tr>
 						<td class='title center'><p>KEY</p></td>

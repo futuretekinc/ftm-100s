@@ -118,7 +118,7 @@ function onMainLoad()
 	document.getElementById('config_network').innerHTML = '네트워크';
 	document.getElementById('config_firewall').innerHTML = '접근제어';
 	document.getElementById('config_apn').innerHTML = 'APN';
-	document.getElementById('config_qos').innerHTML = 'Qos';
+	//document.getElementById('config_qos').innerHTML = 'Qos';
 	document.getElementById('system_profile').innerHTML = '정보';
 	document.getElementById('system_firmware').innerHTML = '펌웨어';
 	document.getElementById('system_configmgmt').innerHTML = '설정 백업 / 복구';

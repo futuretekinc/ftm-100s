@@ -156,36 +156,62 @@ function loadNetworkState()
 
 					var trimText = trim(text);
 					var textArr = trimText.split(",");
-					for (var i=0; i<52; i++)
-					{
-						var key = textArr[i].split(":")[0];
-						var trimKey = trim(key);
-						var value;
-						if (trimKey == "[WCDMA]" || trimKey == "[LTE]")
-						{
-							value = "subject";
-						} else {
-							value = textArr[i].split(":")[1];
 
-							var rowlen;
-							var row;
-							if (i < 29)
+					var modem_state= document.getElementById("modem_state");
+					modem_state.innerHTML = textArr[0];
+
+					if (textArr[0] == "[LTE]")
+					{
+						for (var i=0; i<23; i++)
+						{
+							var key = textArr[i].split(":")[0];
+							var trimKey = trim(key);
+							var value;
+							if (trimKey == "[WCDMA]" || trimKey == "[LTE]")
 							{
+								value = "subject";
+							} else {
+								value = textArr[i].split(":")[1];
+
+								var rowlen;
+								var row;
 								rowlen = wcdma_table.rows.length;
 								row = wcdma_table.insertRow(-1);
-							} else {
-								rowlen = lte_table.rows.length;
-								row = lte_table.insertRow(-1);
+								row.insertCell(0).innerHTML = "<td class='center'><p>" + trimKey + "</p></td>";
+								row.cells[0].setAttribute('class', 'center');
+								row.insertCell(1).innerHTML = "<td class='center'><p>" + value + "</p></td>";
+								row.cells[1].setAttribute('class', 'center');
 							}
-							row.insertCell(0).innerHTML = "<td class='center'><p>" + trimKey + "</p></td>";
-							row.cells[0].setAttribute('class', 'center');
-							row.insertCell(1).innerHTML = "<td class='center'><p>" + value + "</p></td>";
-							row.cells[1].setAttribute('class', 'center');
+						}
+					} else {
+						for (var i=0; i<29; i++)
+						{
+							var key = textArr[i].split(":")[0];
+							var trimKey = trim(key);
+							var value;
+							if (trimKey == "[WCDMA]" || trimKey == "[LTE]")
+							{
+								value = "subject";
+							} else {
+								value = textArr[i].split(":")[1];
+
+								var rowlen;
+								var row;
+								rowlen = wcdma_table.rows.length;
+								row = wcdma_table.insertRow(-1);
+								row.insertCell(0).innerHTML = "<td class='center'><p>" + trimKey + "</p></td>";
+								row.cells[0].setAttribute('class', 'center');
+								row.insertCell(1).innerHTML = "<td class='center'><p>" + value + "</p></td>";
+								row.cells[1].setAttribute('class', 'center');
+							}
 						}
 					}
+
+					
 					loadpppIP();
             	} else {
             		// error
+					document.getElementById('message').innerHTML='';
             		alert(result.firstChild.nodeValue);
 					//loadCnum();
             	}
@@ -580,8 +606,9 @@ function loadpppIP()
 							row.cells[j].setAttribute('class', 'center');
 						}
 					}
+					document.getElementById('message').innerHTML='';
             	} else {
-            		
+            		document.getElementById('message').innerHTML='';
             	}
             }
             catch(e)

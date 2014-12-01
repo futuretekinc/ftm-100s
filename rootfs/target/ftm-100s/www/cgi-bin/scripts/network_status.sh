@@ -1,5 +1,7 @@
 #!/bin/sh
 
+modem_state=`/www/cgi-bin/scripts/modem_state.sh`
+
 a=`ls /dev/ttyACM0`
 if [ -n "$a" ]
 then
@@ -13,8 +15,16 @@ then
 	#echo $raw
 	if [ -n "$raw" ]
 	then
-		next_raw=`expr $raw + 1`
-		end_raw=`expr $next_raw + 51`
+		if [ "$modem_state" == "LTE" ]
+		then
+			next_raw=`expr $raw + 30`
+			end_raw=`expr $next_raw + 22`
+		else
+			next_raw=`expr $raw + 1`
+			end_raw=`expr $next_raw + 28`
+		fi
+#		next_raw=`expr $raw + 1`
+#		end_raw=`expr $next_raw + 51`
 		#echo $next_raw $end_raw
 		result=`cat /var/log/modem | sed /^$/d | sed 's/$/,/g' | sed -n "$next_raw","$end_raw"p`
 		echo $result

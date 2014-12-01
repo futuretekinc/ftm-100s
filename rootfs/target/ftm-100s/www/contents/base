@@ -58,7 +58,7 @@
 						-->
 						<li><a  id='config_firewall' onclick="onLoadPage('config_firewall');">  Firewall</a></li>
 						<li><a  id='config_apn' onclick="onLoadPage('config_apn');">  APN</a></li>
-						<li><a  id='config_qos' onclick="onLoadPage('config_qos');">  Qos</a></li>
+						<!-- <li><a  id='config_qos' onclick="onLoadPage('config_qos');">  Qos</a></li> -->
 					</ul>
 					<h3 class="menu-title" id='system'>System</h3>
 					<ul>
