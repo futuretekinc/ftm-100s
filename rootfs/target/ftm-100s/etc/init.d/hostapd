@@ -1,0 +1,12 @@
+#!/bin/sh /etc/rc.common
+# (C) 2008 openwrt.org
+
+START=50
+
+start() {
+	hostapd /etc/hostapd.conf &
+}
+
+stop() {
+	killall hostapd
+}

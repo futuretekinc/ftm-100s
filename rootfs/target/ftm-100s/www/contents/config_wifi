@@ -1,0 +1,28 @@
+<h2 class='entry-title' id='page_title'>WIFI</h2>
+<hr>
+<form name='f'>
+	<h3 id='section2_title'>WIFI</h3>
+	<h4 id='message'><h4>
+	<div class='clearfix'>
+		<table>
+			<tbody>
+				<tr>
+					<th>SSID</th>
+					<td>
+						<input id="wifi_ssid" name="wifi_ssid">
+					</td>
+				</tr>
+				<tr>
+					<th>PASSWORD</th>
+					<td>
+						<input type="password" maxlength=10 id="wifi_pw" name="wifi_pw" value="0">
+					</td>
+				</tr>
+		 	</tbody>
+	 	</table>
+ 	</div>
+ 	<br>
+ 	<div>
+		<input  type='button' id='apply' value='Apply' onclick='setWIFI();'>
+	</div>
+</form>

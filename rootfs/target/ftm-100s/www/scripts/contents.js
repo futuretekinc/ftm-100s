@@ -116,6 +116,7 @@ function onMainLoad()
 	document.getElementById('status_network').innerHTML = '네트워크';
 	document.getElementById('status_syslog').innerHTML = '로그';
 	document.getElementById('config_network').innerHTML = '네트워크';
+	document.getElementById('config_wifi').innerHTML = 'WIFI';
 	document.getElementById('config_firewall').innerHTML = '접근제어';
 	document.getElementById('config_apn').innerHTML = 'APN';
 	//document.getElementById('config_qos').innerHTML = 'Qos';

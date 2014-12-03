@@ -105,6 +105,10 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 		ftm-100s)
 			cp -rf target/ftm-100s/* $ROOT
 			cp -rf apps/target/* $ROOT
+			if [ ! -e $ROOT/overlay ]
+			then
+				mkdir $ROOT/overlay
+			fi
 		;;
 		ftm-100s-tp)
 			cp -rf target/ftm-100s/* $ROOT

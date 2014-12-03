@@ -128,7 +128,7 @@ mac80211_hostapd_setup_bss() {
 	config_get macaddr "$vif" macaddr
 	config_get maxassoc "$vif" maxassoc
 	config_get_bool hidden "$vif" hidden 0
-	config_get_bool wmm "$vif" wmm 1
+	config_get_bool wmm "$vif" wmm 0
 	cat >> /var/run/hostapd-$phy.conf <<EOF
 $hostapd_cfg
 wmm_enabled=$wmm
