@@ -33,17 +33,19 @@
 	<h3 id='section3_title'>LTE</h3>
 	<h4 id='message'><h4>
 	<div class='clearfix'>
-                <table border="1" style="border: 1px none #ccc; border-collapse: collapse;">
-                        <tbody>
-                                <tr>
-                                        <td class='title center'><p id='usim_label'>USIM Status</p></td>
-                                </tr>
-				<tr>
-                                        <td class='title center'><p id='usim_status'>searching..</p></td>
-                                </tr>
-                        </tbody>
-                </table>
-        </div>
+			<table border="1" style="border: 1px none #ccc; border-collapse: collapse;">
+					<tbody>
+							<tr>
+									<td class='title center'><p id='usim_label'>USIM Status</p></td>
+									<td class='title center'><p id='cnum_label'>Phone Number</p></td>
+							</tr>
+							<tr>
+									<td class='title center'><p id='usim_status'>searching..</p></td>
+									<td class='title center'><p id='cnum_value'></p></td>
+							</tr>
+					</tbody>
+			</table>
+	</div>
 
 	<div class='clearfix'>
                 <table id='ppp_data' border="1" style="border: 1px none #ccc; border-collapse: collapse;">

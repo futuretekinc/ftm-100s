@@ -27,7 +27,12 @@ then
 #		end_raw=`expr $next_raw + 51`
 		#echo $next_raw $end_raw
 		result=`cat /var/log/modem | sed /^$/d | sed 's/$/,/g' | sed -n "$next_raw","$end_raw"p`
-		echo $result
+#		echo $result
+
+		test_raw=`expr $raw + 3`
+		test_raw2=`expr $raw + 4`
+		result2=`cat /var/log/modem | sed /^$/d | sed 's/$/,/g' | sed -n "$test_raw"p`
+		echo $result $result2
 	else
 		echo done
 	fi

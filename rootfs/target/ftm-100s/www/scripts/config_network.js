@@ -183,7 +183,7 @@ function onApply()
 	var data = "/cgi-bin/network?cmd=set";
 	if (typeof(document.f.ipaddr[0]) == 'undefined')
 	{
-		data += "&ifname0=" + document.getElementById('ifname').innerHTML;
+		data += "&ifname0=" + document.getElementById('ifname0').innerHTML;
 		data += "&ipaddr0=" + document.f.ipaddr.value;
 		data += "&netmask0=" + document.f.netmask.value;
 	}
@@ -313,9 +313,10 @@ function saveDHCP( _element )
 	{
 		xmlhttp = (new XMLHttpRequest());
 	}
-
+	
 	var enable_checked;
 	var static_leases_checked;
+	
 	if (_element.getElementsByTagName("STATUS")[0].firstChild.nodeValue == 'running')
 	{
 		enable_checked = true;
@@ -352,7 +353,9 @@ function saveDHCP( _element )
 	}
 
 	//======================================
-	var net_addr;
+	var net_addr = document.f.ipaddr.value;
+
+	/*
 	if (if_value == "eth1")
 	{
 		net_addr = document.f.ipaddr[1].value;
@@ -361,6 +364,7 @@ function saveDHCP( _element )
 	{
 		net_addr = document.f.ipaddr[0].value;
 	}
+	*/
 	var net_addr_arr = net_addr.split(".");
 	
 	var start_addr_arr = ip_pool_start_value.split(".");
@@ -394,11 +398,11 @@ function saveDHCP( _element )
 			
 		}			
 	}
-	else
-	{
-			data += "&mac0=" + "00:00:00:00:00:00";
-			data += "&ip0=" + "0.0.0.0";
-	}
+	// else
+// 	{
+// 			data += "&mac0=" + "00:00:00:00:00:00";
+// 			data += "&ip0=" + "0.0.0.0";
+// 	}
 
 	xmlhttp.open( "POST", data, true );
 	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
