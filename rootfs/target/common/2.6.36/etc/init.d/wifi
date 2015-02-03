@@ -1,0 +1,20 @@
+#!/bin/sh /etc/rc.common
+# (C) 2008 openwrt.org
+
+START=50
+
+start() {
+	if [ -e /etc/service/wifi ]
+        then
+                USED=`cat /etc/service/wifi`
+                if [ "$USED" = 'enabled' ]
+                then
+	         	/etc/cs75xx/hw_accel/demo/cs_dp_mode_set 14
+		fi
+        fi
+}
+
+stop() {
+	ifconfig wlan0 down
+#	echo disabled > /etc/service/wifi
+}

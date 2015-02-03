@@ -42,6 +42,7 @@ insmod asf.ko
 insmod ath_hal.ko msi_enable=1
 insmod ath_rate_atheros.ko
 insmod ath_dfs.ko
+insmod ath_spectral.ko
 insmod ath_dev.ko
 sleep 2
 insmod umac.ko
@@ -50,7 +51,11 @@ wlanconfig wlan1 create wlandev $dev_n wlanmode ap
 sleep 2
 iwpriv wlan1 mode 11NGHT40PLUS
 sleep 1
-iwconfig wlan1 essid ar9380
+#iwconfig wlan1 essid ftm-100s-ap
+#iwconfig wlan1 key s:k1234
+
+/rboot/wfo_atheros_11AC/config.sh
+
 iwconfig wlan1 channel 6
 iwpriv wlan1 shortgi 1
 brctl addif br-lan wlan1

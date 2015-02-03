@@ -195,7 +195,7 @@ elif [ "$WFO_MODE_ID" == "14" ]; then
         sleep 1
         $SCRIPT_DIR/set_default_network.sh
         $SCRIPT_DIR/set_wifi_network.sh 14               # WiFi-Offload: 1
-        $SCRIPT_DIR/set_ipsec_network.sh 0      # IPSEC HW Acceleration: 1 but PE image is loaded in wifi script
+#        $SCRIPT_DIR/set_ipsec_network.sh 0      # IPSEC HW Acceleration: 1 but PE image is loaded in wifi script
 elif [ "$WFO_MODE_ID" == "16" ]; then
         echo "  WFO(Bridge Mode):       Enable"
         echo "          load 11ac wfo and 11n A9 wifi"

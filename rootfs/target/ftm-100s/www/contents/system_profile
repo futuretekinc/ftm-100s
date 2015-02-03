@@ -15,6 +15,10 @@
 					<td class='left' id='sn'>UNDEFINED</td>
 				</tr>
 				<tr>
+					<td class='title right'><p id='title_hw_version'>HW Version: </p></td>
+					<td class='left' id='hw_version'>UNDEFINED</td>
+				</tr>
+				<tr>
 					<td class='title right'><p id='title_modem_version'>Modem Version: </p></td>
 					<td class='left' id='modem_version'>UNDEFINED</td>
 				</tr>

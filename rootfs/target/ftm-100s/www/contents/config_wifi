@@ -4,6 +4,9 @@
 	<h3 id='section2_title'>WIFI</h3>
 	<h4 id='message'><h4>
 	<div class='clearfix'>
+		<div id='enable'>
+			<input type='checkbox' name='enable'>Enable
+		</div>
 		<table>
 			<tbody>
 				<tr>
@@ -15,7 +18,7 @@
 				<tr>
 					<th>PASSWORD</th>
 					<td>
-						<input type="password" maxlength=10 id="wifi_pw" name="wifi_pw" value="0">
+						<input type="password" maxlength=5 id="wifi_pw" name="wifi_pw" value="0">
 					</td>
 				</tr>
 		 	</tbody>

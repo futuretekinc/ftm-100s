@@ -6,6 +6,5 @@
 /etc/init.d/pppoe-server stop
 
 /bin/factory_reset_dmon &
-hostapd /etc/hostapd.conf &
 
 exit 0

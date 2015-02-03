@@ -11,6 +11,7 @@ function onInit()
 	document.getElementById('title_model').innerHTML = "모델 :";
 	document.getElementById('title_sn').innerHTML = "일련번호 :";
 	document.getElementById('title_modem_version').innerHTML = "모뎀버전 :";
+	document.getElementById('title_hw_version').innerHTML = "HW 버전 :";
 //	document.getElementById('title_loc').innerHTML = "위치: ";
 	document.getElementById('title_current_pw').innerHTML = "기존 비밀번호: ";
 	document.getElementById('title_new_pw').innerHTML = "새 비밀번호: ";
@@ -63,6 +64,11 @@ function onLoad()
 					if (div_sn.length != 0)
 					{
 						document.getElementById('sn').innerHTML= div_sn[0].firstChild.nodeValue;
+					}
+					div_hw= info[0].getElementsByTagName("HWVER");
+					if (div_hw.length != 0)
+					{
+						document.getElementById('hw_version').innerHTML= div_hw[0].firstChild.nodeValue;
 					}
 
 //					div_location= info[0].getElementsByTagName("LOCATION");

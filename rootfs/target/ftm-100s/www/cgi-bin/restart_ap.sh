@@ -1,4 +1,5 @@
 #!/bin/sh
-killall hostapd
+ifconfig wifi0 down
 sleep 2
-hostapd /etc/hostapd.conf &
+/etc/init.d/wifi start
+echo done
