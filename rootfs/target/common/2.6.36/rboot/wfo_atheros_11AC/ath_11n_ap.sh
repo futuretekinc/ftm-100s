@@ -54,7 +54,7 @@ sleep 1
 #iwconfig wlan1 essid ftm-100s-ap
 #iwconfig wlan1 key s:k1234
 
-/rboot/wfo_atheros_11AC/config.sh
+/etc/wifi_config.sh
 
 iwconfig wlan1 channel 6
 iwpriv wlan1 shortgi 1
