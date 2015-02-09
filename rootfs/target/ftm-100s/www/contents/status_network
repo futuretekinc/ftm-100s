@@ -40,7 +40,7 @@
 									<td class='title center'><p id='cnum_label'>Phone Number</p></td>
 							</tr>
 							<tr>
-									<td class='title center'><p id='usim_status'>searching..</p></td>
+									<td class='title center'><p id='usim_status'>No Service</p></td>
 									<td class='title center'><p id='cnum_value'></p></td>
 							</tr>
 					</tbody>

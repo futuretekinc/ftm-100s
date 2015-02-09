@@ -143,7 +143,7 @@ echo -ne '\xde\xad\xc0\xde' >> root.squashfs
 
 rm tmpfile.*
 
-mkimage -n 'RootFS-1.0.0.1-FTM-100S' -A arm -O linux -T filesystem -C gzip -d root.squashfs rootfs.img
+mkimage -n 'RootFS-1.0.0.3-FTM-100S' -A arm -O linux -T filesystem -C gzip -d root.squashfs rootfs.img
 
 mv rootfs.img "/tftpboot/ftm-100s-xtra/rootfs.img"
 

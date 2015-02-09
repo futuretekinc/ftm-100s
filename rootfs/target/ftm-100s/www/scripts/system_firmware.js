@@ -112,10 +112,10 @@ function onLoad()
 		{
 			try
 			{
-				kernel = xmlhttp.responseXML.documentElement.getElementsByTagName("kernel")[0].firstChild.nodeValue;
+				//kernel = xmlhttp.responseXML.documentElement.getElementsByTagName("kernel")[0].firstChild.nodeValue;
 				rootfs = xmlhttp.responseXML.documentElement.getElementsByTagName("rootfs")[0].firstChild.nodeValue;
 
-				addInfo("KERNEL", 0, 0, kernel);
+				//addInfo("KERNEL", 0, 0, kernel);
 				addInfo("ROOTFS", 0, 0, rootfs);
 			}
 			catch(e)
