@@ -6,6 +6,7 @@ killall sms_dmon
 stty -F /dev/ttyACM0 -echo
 cat /dev/ttyACM0 &> /var/log/modem &
 echo 'at*rndisdata=1' > /dev/ttyACM0; sleep 0.1
+echo 'at*autoconn=1' > /dev/ttyACM0; sleep 0.1
 
 /bin/init_modem_log &
 /bin/sms_dmon &

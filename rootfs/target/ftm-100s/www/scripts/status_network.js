@@ -176,6 +176,56 @@ function usim_open_status()
 						document.getElementById("usim_status").innerHTML = "미개통 USIM";
 						return;
 					}
+					is_limited();
+					//usim_sending_stop_status();
+
+            	} else {
+            		// error
+            		alert("Please Refresh..");
+            	}
+            }
+            catch(e)
+            {
+
+            }
+		}
+	}
+	xmlhttp.send();
+}
+
+function is_limited()
+{
+	if(typeof window.ActiveXObject != 'undefined')
+	{
+		xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
+	}
+	else
+	{
+		xmlhttp = (new XMLHttpRequest());
+	}
+	
+	var data = "/cgi-bin/usim?cmd=is_limited";
+
+	xmlhttp.open( "POST", data, true );
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
+	xmlhttp.onreadystatechange = function()
+	{
+		if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
+		{
+			try
+            {
+            	result = xmlhttp.responseXML.documentElement.getElementsByTagName("res")[0];
+            	if (result.firstChild.nodeValue == 'OK') {
+
+            		// 파싱
+            		var resultNode = xmlhttp.responseXML.documentElement.getElementsByTagName("text")[0];
+					var result = resultNode.firstChild.nodeValue;
+					
+					if (result == "1")
+					{
+						document.getElementById("usim_status").innerHTML = "No Service";
+						return;
+					}
 					
 					usim_sending_stop_status();
 

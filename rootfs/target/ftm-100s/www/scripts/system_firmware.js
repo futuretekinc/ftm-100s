@@ -261,6 +261,7 @@ function onUpdateProgress(evt)
 				
 function onApplyUpload()
 {
+	/*
 	if(typeof window.ActiveXObject != 'undefined')
 	{
 		xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
@@ -269,8 +270,10 @@ function onApplyUpload()
 	{
 		xmlhttp = (new XMLHttpRequest());
 	}
-	
-	xmlhttp.upload.addEventListener("progress", onUpdateProgress, false);
+	*/
+	xmlhttp = (new XMLHttpRequest());
+	//xmlhttp.upload.addEventListener("progress", onUpdateProgress, false);
+	xmlhttp.upload.onprogress = onUpdateProgress;
 	
 	xmlhttp.onload=function()
 	{
