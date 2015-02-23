@@ -193,7 +193,7 @@ elif [ "$WFO_MODE_ID" == "14" ]; then
         echo 3 > /proc/driver/cs752x/ne/accel_manager/ipsec_offload_mode
         echo 0xf1ff > /proc/driver/cs752x/ne/accel_manager/hw_accel_enable
         sleep 1
-        $SCRIPT_DIR/set_default_network.sh
+#        $SCRIPT_DIR/set_default_network.sh
         $SCRIPT_DIR/set_wifi_network.sh 14               # WiFi-Offload: 1
 #        $SCRIPT_DIR/set_ipsec_network.sh 0      # IPSEC HW Acceleration: 1 but PE image is loaded in wifi script
 elif [ "$WFO_MODE_ID" == "16" ]; then

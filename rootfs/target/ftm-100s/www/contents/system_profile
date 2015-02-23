@@ -22,6 +22,10 @@
 					<td class='title right'><p id='title_modem_version'>Modem Version: </p></td>
 					<td class='left' id='modem_version'>UNDEFINED</td>
 				</tr>
+				<tr>
+					<td class='title right'><p id='title_modem_hw_version'>Modem Hw Version: </p></td>
+					<td class='left' id='modem_hw_version'>UNDEFINED</td>
+				</tr>
 <!--
 				<tr>
 					<td class='title right'><p id='title_loc'>Location: </p></td>

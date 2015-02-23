@@ -55,10 +55,11 @@ sleep 1
 #iwconfig wlan1 key s:k1234
 
 /etc/wifi_config.sh
+/etc/wifi_br.sh
 
 iwconfig wlan1 channel 6
 iwpriv wlan1 shortgi 1
-brctl addif br-lan wlan1
+#brctl addif br-lan wlan1
 iwpriv wlan1 disablecoext 1
 iwpriv wlan1 chwidth 2
 ifconfig wlan1 up

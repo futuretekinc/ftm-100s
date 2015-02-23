@@ -80,17 +80,17 @@ ifconfig wlan0 up
 
 
 ### 11N
-wlanconfig wlan1 create wlandev $dev_n wlanmode ap
-sleep 2
-iwpriv wlan1 mode 11NGHT40PLUS
-sleep 1
-iwconfig wlan1 essid ar9380
-iwconfig wlan1 channel 6
-iwpriv wlan1 shortgi 1
-brctl addif br-lan wlan1
-iwpriv wlan1 disablecoext 1
-iwpriv wlan1 chwidth 2
-ifconfig wlan1 up
+#wlanconfig wlan1 create wlandev $dev_n wlanmode ap
+#sleep 2
+#iwpriv wlan1 mode 11NGHT40PLUS
+#sleep 1
+#iwconfig wlan1 essid ar9380
+#iwconfig wlan1 channel 6
+#iwpriv wlan1 shortgi 1
+#brctl addif br-lan wlan1
+#iwpriv wlan1 disablecoext 1
+#iwpriv wlan1 chwidth 2
+#ifconfig wlan1 up
 
 echo 1 > /proc/irq/65/smp_affinity
 echo 2 > /proc/irq/66/smp_affinity
