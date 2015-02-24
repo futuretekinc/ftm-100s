@@ -208,7 +208,8 @@ function onApply()
 				
 				if (ret == 'OK')
 				{
-					alert('DHCP 서버 설정이 정상적으로 변경되었습니다.');
+					alert('DHCP 서버 설정이 정상적으로 변경되었습니다.\n단말이 재부팅됩니다.');
+					onSystemRestart();
 				}
 				else
 				{
@@ -339,4 +340,44 @@ function loadNetwork()
 		}
 	}
 	xmlhttp.send();
+}
+
+function onSystemRestart()
+{
+		if(typeof window.ActiveXObject != 'undefined')
+		{
+				xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
+		}
+		else
+		{
+				xmlhttp = (new XMLHttpRequest());
+		}
+
+		var data = "/cgi-bin/system?cmd=reboot";
+
+		xmlhttp.open( "POST", data, true );
+		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
+		xmlhttp.onreadystatechange = function()
+		{
+				if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
+				{
+						try
+						{
+								ret  = xmlhttp.responseXML.documentElement.getElementsByTagName("RET");
+								if (ret[0].firstChild.nodeValue == 'OK')
+								{
+										alert(msg[msgResetaring]);
+								}
+								else
+								{
+										alert(msg[msgRestartFailed]);
+								}
+						}
+						catch(e)
+						{
+								window.location.href = '/';
+						}
+				}
+		}
+		xmlhttp.send();
 }
