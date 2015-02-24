@@ -16,14 +16,14 @@ function onInit()
 	document.getElementById('usage_label').innerHTML = '(실제 데이터양과 다를 수 있음.)';
 	document.getElementById('name1').innerHTML = '포트';
 	document.getElementById('ipaddr1').innerHTML = 'IP 주소';
-	document.getElementById('netmask1').innerHTML = '서브넷마스크';
+	//document.getElementById('netmask1').innerHTML = '서브넷마스크';
 	//document.getElementById('ptpaddr1').innerHTML = 'P-to-P 서버';
 	document.getElementById('name2').innerHTML = '포트';
 	document.getElementById('ipaddr2').innerHTML = 'IP 주소';
 	document.getElementById('netmask2').innerHTML = '서브넷마스크';
 	document.getElementById('macaddr2').innerHTML = 'MAC 주소';
 	document.getElementById('body').hidden = false;
-	document.getElementById('netmask1').hidden = true;
+	//document.getElementById('netmask1').hidden = true;
 }
 
 function usim_socket_status()

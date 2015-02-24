@@ -8,7 +8,7 @@
 				<tr>
 					<td class='title center'><p class='ifname' id='name1'>Name</p></td>
 					<td class='title center'><p class='ipaddr' id='ipaddr1'>IP Address</p></td>
-					<td class='title center'><p class='ipaddr' id='netmask1'>Subnet Mask</p></td>
+					<!-- <td class='title center'><p class='ipaddr' id='netmask1'>Subnet Mask</p></td> -->
 					<!-- <td class='title center'><p class='ipaddr' id='ptpaddr1'>P-t-P</p></td> -->
 				</tr>	
 			</tbody>
