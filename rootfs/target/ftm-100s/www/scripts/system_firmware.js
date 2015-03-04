@@ -136,9 +136,9 @@ function onSystemReboot()
 	{
 		xmlhttp = (new XMLHttpRequest());
 	}
-	
+
 	var data = "/cgi-bin/system?cmd=reboot";
-	
+
 	xmlhttp.open( "POST", data, true );
 	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
 	xmlhttp.onreadystatechange = function()
@@ -147,10 +147,19 @@ function onSystemReboot()
 		{
 			try
 			{
-				setTimeout('', 5000);
+				ret  = xmlhttp.responseXML.documentElement.getElementsByTagName("RET");
+				if (ret[0].firstChild.nodeValue == 'OK')
+				{
+					alert(msg[msgResetaring]);
+				}
+				else
+				{
+					alert(msg[msgRestartFailed]);
+				}
 			}
 			catch(e)
 			{
+				window.location.href = '/';
 			}
 		}
 	}

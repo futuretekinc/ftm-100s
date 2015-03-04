@@ -133,10 +133,19 @@ function active_ip( leases )
 			try
             {
             	result = xmlhttp.responseXML.documentElement.getElementsByTagName("IP");
+				
+				var arr = [];                                                                      
+				for (var k = 0; k < result.length; k++)                                            
+				{                                                                                  
+					arr.push(result[k].firstChild.nodeValue);                                  
+				}
+				
+				ips = arr.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]);
+
 				list_count=0;
-				for(j = 0 ; j < result.length ; j++)
+				for(j = 0 ; j < ips.length ; j++)
 				{
-					ip = result[j].firstChild.nodeValue;
+					ip = ips[j];
 					ip = ip.replace(/\(/g,''); //특정문자 제거
 					ip = ip.replace(/\)/g,''); //특정문자 제거
 					//alert(ip);
