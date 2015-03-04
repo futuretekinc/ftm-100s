@@ -26,7 +26,7 @@ function onInit()
 function onLoad()
 {
 	onInit();
-
+	
 	enablePageTimeout();
 	
 	if(typeof window.ActiveXObject != 'undefined')
@@ -101,39 +101,89 @@ function onLoad()
 				*/
 				
 				leases = xmlhttp.responseXML.documentElement.getElementsByTagName("LEASE");
-				if (leases.length != 0)
-				{
-					for(i = 0 ; i < leases.length ; i++)
-					{
-						macaddr = leases[i].getElementsByTagName("MAC")[0].firstChild.nodeValue;
-						ipaddr = leases[i].getElementsByTagName("IP")[0].firstChild.nodeValue;
-						hostname = leases[i].getElementsByTagName("HOSTNAME")[0].firstChild.nodeValue;
-						expiresin = leases[i].getElementsByTagName("EXPIRESIN")[0].firstChild.nodeValue;
-
-						table = document.getElementById('dhcp_active_leases');
-
-						row = table.insertRow(i+1);
-						cell= row.insertCell(0);
-						cell.innerHTML = i+1;
-						cell.setAttribute('class', 'title center');
-						cell= row.insertCell(1);
-						cell.innerHTML = macaddr;
-						cell.setAttribute('class', 'center');
-						cell= row.insertCell(2);
-						cell.innerHTML = ipaddr;
-						cell.setAttribute('class', 'center');
-						cell= row.insertCell(3);
-						cell.innerHTML = hostname;
-						cell.setAttribute('class', 'center');
-						cell= row.insertCell(4);
-						cell.innerHTML = expiresin;
-						cell.setAttribute('class', 'center');
-					}
-				}
+				active_ip(leases);
 			}
 			catch(e)
 			{
 			}
+		}
+	}
+	xmlhttp.send();
+}
+
+function active_ip( leases )
+{
+	if(typeof window.ActiveXObject != 'undefined')
+	{
+		xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
+	}
+	else
+	{
+		xmlhttp = (new XMLHttpRequest());
+	}
+	
+	var data = "/cgi-bin/dhcp?cmd=real_status";
+
+	xmlhttp.open( "POST", data, true );
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
+	xmlhttp.onreadystatechange = function()
+	{
+		if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
+		{
+			try
+            {
+            	result = xmlhttp.responseXML.documentElement.getElementsByTagName("IP");
+				list_count=0;
+				for(j = 0 ; j < result.length ; j++)
+				{
+					ip = result[j].firstChild.nodeValue;
+					ip = ip.replace(/\(/g,''); //특정문자 제거
+					ip = ip.replace(/\)/g,''); //특정문자 제거
+					//alert(ip);
+
+					if (leases.length != 0)
+					{
+						for(i = 0 ; i < leases.length ; i++)
+						{
+							macaddr = leases[i].getElementsByTagName("MAC")[0].firstChild.nodeValue;
+							ipaddr = leases[i].getElementsByTagName("IP")[0].firstChild.nodeValue;
+							hostname = leases[i].getElementsByTagName("HOSTNAME")[0].firstChild.nodeValue;
+							expiresin = leases[i].getElementsByTagName("EXPIRESIN")[0].firstChild.nodeValue;
+							//alert(i);
+							if (ip == ipaddr)
+							{
+								table = document.getElementById('dhcp_active_leases');
+
+								row = table.insertRow(list_count+1);
+								cell= row.insertCell(0);
+								cell.innerHTML = list_count+1;
+								cell.setAttribute('class', 'title center');
+								cell= row.insertCell(1);
+								cell.innerHTML = macaddr;
+								cell.setAttribute('class', 'center');
+								cell= row.insertCell(2);
+								cell.innerHTML = ipaddr;
+								cell.setAttribute('class', 'center');
+								cell= row.insertCell(3);
+								cell.innerHTML = hostname;
+								cell.setAttribute('class', 'center');
+								cell= row.insertCell(4);
+								cell.innerHTML = expiresin;
+								cell.setAttribute('class', 'center');
+
+								list_count++;
+							}
+
+							
+						}
+					}
+				}
+				
+            }
+            catch(e)
+            {
+
+            }
 		}
 	}
 	xmlhttp.send();

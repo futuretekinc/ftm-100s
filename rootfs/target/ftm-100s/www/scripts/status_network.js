@@ -221,7 +221,7 @@ function is_limited()
             		var resultNode = xmlhttp.responseXML.documentElement.getElementsByTagName("text")[0];
 					var result = resultNode.firstChild.nodeValue;
 					
-					if (result == "1")
+					if (result == "0")
 					{
 						document.getElementById("usim_status").innerHTML = "No Service";
 						return;
