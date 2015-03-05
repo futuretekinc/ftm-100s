@@ -71,43 +71,48 @@ function loadWIFI()
 	xmlhttp.send();
 }
 
-
 function setWIFI()
 {
-	if (confirm("확인 후 OK 팝업이 나타나면 WIFI에 접속하시길 바랍니다."))
+	if (document.f.wifi_pw.value.length < 5)
 	{
-		if(typeof window.ActiveXObject != 'undefined') {
-			xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
-		} else {
-			xmlhttp = (new XMLHttpRequest());
-		}
-		
-		var data = "/cgi-bin/wifi?cmd=set"
-		data += "&wifi_ssid=" + document.f.wifi_ssid.value;
-		data += "&wpa_passphrase=" + document.f.wifi_pw.value;
-		data += "&status=" + document.f.enable.checked;
-		
-		xmlhttp.open( "POST", data, true );
-		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
-		xmlhttp.onreadystatechange = function()
+		alert("패스워드를 5자 맞추어 작성해주십시오.");
+		document.f.wifi_pw.value = "";
+	} else {
+		if (confirm("확인 후 OK 팝업이 나타나면 WIFI에 접속하시길 바랍니다."))
 		{
-			if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
+			if(typeof window.ActiveXObject != 'undefined') {
+				xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
+			} else {
+				xmlhttp = (new XMLHttpRequest());
+			}
+			
+			var data = "/cgi-bin/wifi?cmd=set"
+			data += "&wifi_ssid=" + document.f.wifi_ssid.value;
+			data += "&wpa_passphrase=" + document.f.wifi_pw.value;
+			data += "&status=" + document.f.enable.checked;
+			
+			xmlhttp.open( "POST", data, true );
+			xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
+			xmlhttp.onreadystatechange = function()
 			{
-				try
+				if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
 				{
-					result = xmlhttp.responseXML.documentElement.getElementsByTagName("RET")[0];
-					if (result.firstChild.nodeValue == 'OK') {
-						alert("WIFI : OK");
-					} else {
-						alert("WIFI : ERROR");
+					try
+					{
+						result = xmlhttp.responseXML.documentElement.getElementsByTagName("RET")[0];
+						if (result.firstChild.nodeValue == 'OK') {
+							alert("WIFI : OK");
+						} else {
+							alert("WIFI : ERROR");
+						}
+					}
+					catch(e)
+					{
+
 					}
 				}
-				catch(e)
-				{
-
-				}
 			}
+			xmlhttp.send();
 		}
-		xmlhttp.send();
 	}
 }
