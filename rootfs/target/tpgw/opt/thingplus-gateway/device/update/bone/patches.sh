@@ -7,27 +7,28 @@ CUR_DIR="$PWD"
 #####################
 ## 1. Log rotate config
 #####################
-SENSORJS_LOGROTATE_CONFIG=$CUR_DIR/files/sensorjs
-SENSORJS_LOGROTATE_CONFIG_PATH=/etc/logrotate.d/sensorjs
+THINGPLUS_LOGROTATE_CONFIG=$CUR_DIR/files/thingplus
+THINGPLUS_LOGROTATE_CONFIG_PATH=/etc/logrotate.d/thingplus
 CRON_HOURLY_PATH=/etc/cron.hourly/logrotate
 CRON_DAILY_PATH=/etc/cron.daily/logrotate
 #copy logrotate config and change in cron daily -> hourly
-if [ -f ${SENSORJS_LOGROTATE_CONFIG_PATH} ] && [ ! -L ${SENSORJS_LOGROTATE_CONFIG_PATH} ]; then
-  echo "1. remove logrotate configuration file for sensorjs if it is not a symbolic link. - 1/3"
-  rm -f ${SENSORJS_LOGROTATE_CONFIG_PATH}
+if [ -f ${THINGPLUS_LOGROTATE_CONFIG_PATH} ] && [ ! -L ${THINGPLUS_LOGROTATE_CONFIG_PATH} ]; then
+  echo "1. remove logrotate configuration file for thingplus if it is not a symbolic link. - 1/3"
+  rm -f ${THINGPLUS_LOGROTATE_CONFIG_PATH}
 fi
-if [ ! -f ${SENSORJS_LOGROTATE_CONFIG_PATH} ]; then
-  echo "1. link logrotate configuration file for sensorjs. - 2/3"
-  ln -sf ${SENSORJS_LOGROTATE_CONFIG} ${SENSORJS_LOGROTATE_CONFIG_PATH}
+if [ ! -f ${THINGPLUS_LOGROTATE_CONFIG_PATH} ]; then
+  echo "1. link logrotate configuration file for thingplus. - 2/3"
+  ln -sf ${THINGPLUS_LOGROTATE_CONFIG} ${THINGPLUS_LOGROTATE_CONFIG_PATH}
+  #remove old log files
+  if [ -d /var/log/sensorjs ]; then 
+    rm -rf /var/log/sensorjs
+  fi
+  rm -f /etc/logrotate.d/thingplus #remove prevous name
 fi
 if [ ! -f ${CRON_HOURLY_PATH} ]; then
     echo "1. move logrotate from cron.daily to cron.hourly. - 3/3"
     mv -f ${CRON_DAILY_PATH} ${CRON_HOURLY_PATH}
 fi
-#remove old log files
-rm -f /var/log/sensorjs/sensorjs.log
-rm -f /var/log/sensorjs/sensorjs.log.*
-rm -f /var/log/sensorjs/forever.log
 
 ##########################
 ## 2. reboot on kernel panic 
@@ -70,10 +71,14 @@ if [ $? = 1 ]; then #uncomment watchdog device
 fi
 
 ##########################
-## 4. eth0 as allow-hotplug
+## 4. eth0 as allow-hotplug, dhcp timeout=20
 ##########################
 NETWORK_CONFIG=$CUR_DIR/files/interfaces
+WLAN_CONFIG=$CUR_DIR/files/wlan.cfg
 NETWORK_CONFIG_PATH=/etc/network/interfaces
+INTERFACES_DIR_PATH=/etc/network/interfaces.d
+DHCLIENT_CONFIG=$CUR_DIR/files/dhclient.conf
+DHCLIENT_CONFIG_PATH=/etc/dhcp/dhclient.conf
 #if [ -f ${NETWORK_CONFIG_PATH} ] && [ ! -L ${NETWORK_CONFIG_PATH} ]; then
 #  rm -f ${NETWORK_CONFIG_PATH}
 #  ln -s ${NETWORK_CONFIG} ${NETWORK_CONFIG_PATH}
@@ -82,6 +87,24 @@ grep -e "^allow-hotplug eth0" ${NETWORK_CONFIG_PATH} > /dev/null
 if [ $? = 1 ]; then #missing allow-hotplug
   echo "4. eth0 as allow-hotplug"
   cp -f ${NETWORK_CONFIG} ${NETWORK_CONFIG_PATH}
+fi
+grep -e "^timeout 20" ${DHCLIENT_CONFIG_PATH} > /dev/null
+if [ $? = 1 ]; then #missing timeout 20, default was 60
+  echo "4.1 dhclient timeout as 20"
+  cp -f ${DHCLIENT_CONFIG} ${DHCLIENT_CONFIG_PATH}
+fi
+grep -e "^source /etc/network/interfaces.d/\*.cfg" ${NETWORK_CONFIG_PATH} > /dev/null
+if [ $? = 1 ]; then #missing source include
+  echo "4.2 adding include"
+  echo >> ${NETWORK_CONFIG_PATH}
+  echo "source /etc/network/interfaces.d/*.cfg" >> ${NETWORK_CONFIG_PATH}
+  echo "iface default inet dhcp" >> ${NETWORK_CONFIG_PATH}
+
+  mkdir -p ${INTERFACES_DIR_PATH}
+fi
+if [ ! -f ${INTERFACES_DIR_PATH}/wlan.cfg ]; then 
+  echo "4.3 adding wlan.cfg"
+  cp -f ${WLAN_CONFIG} ${INTERFACES_DIR_PATH}/`basename ${WLAN_CONFIG}`
 fi
 
 ##########################
@@ -96,20 +119,31 @@ fi
 ##########################
 ## 6. update u-boot
 ##########################
+UBOOT_CONF_FILE=/boot/uboot/uEnv.txt
 /usr/bin/md5sum --status -c $CUR_DIR/files/uboot.v2013.07.md5 > /dev/null
 if [ $? = 1 ]; then 
   echo "6. update u-boot"
   tar xvfpz $CUR_DIR/files/uboot.v2013.07.tgz -C /boot/uboot > /dev/null
+fi
+grep -e "^optargs=capemgr.disable_partno=BB-BONELT-HDMI,BB-BONELT-HDMIN" $UBOOT_CONF_FILE > /dev/null
+if [ $? = 1 ]; then 
+  echo "6.1 disable HDMI, avoiding wlan interference"
+  echo >> $UBOOT_CONF_FILE
+  echo "#disable HDMI" >> $UBOOT_CONF_FILE
+  echo "optargs=capemgr.disable_partno=BB-BONELT-HDMI,BB-BONELT-HDMIN" >> $UBOOT_CONF_FILE
 fi
 
 ##########################
 
 
 ##########################
-## 7. ppp to be default router
+## 7. ppp to be default router, 
+##    add cron job reconnect ppp every 5min unless connected
 ##########################
 WVDIAL_PPP_CONFIG=$CUR_DIR/files/wvdial
 WVDIAL_PPP_CONFIG_PATH=/etc/ppp/peers/wvdial
+WVDIAL_CRONTAB=$CUR_DIR/files/wvdial.crontab
+WVDIAL_CRONTAB_PATH=/etc/cron.d/wvdial
 #if [ -f ${WVDIAL_PPP_CONFIG_PATH} ] && [ ! -L ${WVDIAL_PPP_CONFIG_PATH} ]; then
 #  rm -f ${WVDIAL_PPP_CONFIG_PATH}
 #  ln -s ${WVDIAL_PPP_CONFIG} ${WVDIAL_PPP_CONFIG_PATH}
@@ -120,6 +154,10 @@ if [ $? = 1 ]; then #missing defaultroute
   cp -f ${WVDIAL_PPP_CONFIG} ${WVDIAL_PPP_CONFIG_PATH}
 fi
 
+if [ ! -f ${WVDIAL_CRONTAB_PATH} ]; then
+  echo "7.1 cron job: reconnect ppp every 5min unless connected"
+  cp -f ${WVDIAL_CRONTAB} ${WVDIAL_CRONTAB_PATH}
+fi
 
 ##########################
 ## 8. add healthcheck into cron to check the health of system such as valid time.
@@ -182,13 +220,15 @@ if [ -f ${DTBO_FILE}.md5 -a -f ${DTBO_FILE}.tgz ]; then
   fi
 fi
 
-for pin in 66 68 69 ; do
+for pin in 66 67 68 69 ; do
   if [ ! -e "/sys/class/gpio/gpio$pin" ]; then
-    log "enable gpio$pin"
+    echo "enable gpio$pin"
     gpio-admin export "$pin"
     echo out > "/sys/class/gpio/gpio$pin/direction"
     echo "$LED_ACTIVE_LOW" > "/sys/class/gpio/gpio$pin/active_low"
   fi
 done
+
+sync;
 
 echo "[patches.sh] done"

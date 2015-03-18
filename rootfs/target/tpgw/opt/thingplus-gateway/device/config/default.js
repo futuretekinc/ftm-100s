@@ -16,7 +16,7 @@ module.exports = {
     CERT_FILE_PATH: path.normalize(__dirname + '/..' + '/ssl/cert.p12'),
     CA_FILE_PATH: path.normalize(__dirname + '/..' + '/ssl/ca-cert.pem'),
     port: 80,
-    logBaseDir: '/var/log/sensorjs/',
+    logBaseDir: '/var/log/thingplus/',
   },
   Server: {
     timeSyncCheckInterval: 60 * 1000, // 1min
@@ -34,7 +34,7 @@ module.exports = {
     },
   },
   Store: {
-    baseDir: '/var/lib/sensorjs/',
+    baseDir: '/var/lib/thingplus/',
     currentFile: 'db.dirty',
     cleanUpInterval: 60 * 60 * 1000, // 1hour
     logFlushFilesystemLimit: 10, //10%

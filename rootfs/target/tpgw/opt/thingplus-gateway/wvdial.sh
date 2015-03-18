@@ -12,12 +12,12 @@
 
 #enable serial port
 if [ ! -e /dev/ttyO1 ]; then
-  log "enable ttyO1"
+  echo "enable ttyO1"
   SLOT=`echo /sys/devices/bone_capemgr*/slots`
   if [ -e /lib/firmware/ttyO1_armhf.com-00A0.dtbo ]; then
     echo ttyO1_armhf.com > ${SLOT}
   else
-    log "fail to locate /lib/firmware/ttyO1_armhf.com-00A0.dtbo"
+    echo "fail to locate /lib/firmware/ttyO1_armhf.com-00A0.dtbo"
   fi
 fi
 

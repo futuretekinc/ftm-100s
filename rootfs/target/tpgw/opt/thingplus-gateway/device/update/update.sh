@@ -18,10 +18,4 @@ if [ $rc -ne 0  ] ; then
 fi
 
 #restart
-FOREVER_AVAILE=0
-which forever > /dev/null || FOREVER_AVAILE=$?
-if [ $FOREVER_AVAILE -eq 0 ]; then
-  forever restart device
-else
-  $CUR_DIR/restart.sh
-fi
+$CUR_DIR/restart.sh

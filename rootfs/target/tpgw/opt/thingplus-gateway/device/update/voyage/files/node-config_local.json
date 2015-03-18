@@ -1,0 +1,11 @@
+{
+  "Gateway": {
+    "port": 8088,
+    "storeBaseDirMountPoint": "/mnt/user",
+    "logBaseDirMountPoint": "/mnt/user",
+    "CERT_FILE_PATH": "/mnt/user/thingplus/etc/cert.p12"
+  },
+  "Store": {
+    "baseDir": "/mnt/user/thingplus/lib/"
+  }
+}

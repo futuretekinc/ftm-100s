@@ -1,6 +1,18 @@
 <div>
-  <h4>Step 1. Agent Type</h4>
-  <button ng-repeat="sensor in sensorInfo" ng-disabled="targetSensor && (targetSensor.driverName != sensor.driverName)" class="btn btn-block btn-success" ng-click="showNext(sensor.driverName)">{{sensor.displayName}}</button>
+  <form>
+    <h4>Step 1. Agent Type</h4>
+    <select class="form-control" 
+      ng-options="sensorDriver.driverName as sensorDriver.displayName group by sensorDriver.network for sensorDriver in sensorInfoArr | 
+      filter:{ network : '!daliworks' } |
+      filter:{ network : '!generic' } |
+      orderBy:['network', 'displayName']"
+      ng-model="selectedDriverName" 
+      ng-change="showNext(selectedDriverName)" 
+      ng-required="true"
+      ng-disabled="!!targetSensor">
+      <option value=""> -- choose sensor driver -- </option>
+    </select>
+  </form>
 </div>
 
 <div id="setting-view" style="margin-top: 20px; display: none;">
@@ -12,7 +24,7 @@
 
     <label for="select-model">Model:</label>
     <select id="select-model" class="form-control"
-            ng-model="model" ng-options="m for m in models"
+      ng-model="model" ng-options="(m + (sensorInfo[selectedAgentType].descriptions.models[m] ? ' - ' + sensorInfo[selectedAgentType].descriptions.models[m] : '')) for m in models"
             ng-change="selectModel(model)" required>
       <option value="">-- choose model --</option>
     </select>
@@ -24,7 +36,13 @@
 
     <label for="select-address" ng-show="addressable">Address:</label>
     <input id="select-address" type="text" class="form-control" ng-show="addressable" ng-model="address"
+      placeholder="{{sensorInfo[selectedAgentType].descriptions.supportedNetworks[network]}}"
       ng-change="selectAddress(address)">
+
+    <label for="select-sequence" ng-show="sequenceable">Sequence:</label>
+    <input id="select-sequence" type="text" class="form-control" ng-show="sequenceable" ng-model="sequence"
+      placeholder="{{sensorInfo[selectedAgentType].descriptions.sequence}}"
+      ng-change="selectSequence(sequence)">
 
     <label for="select-type">Type:</label>
     <select id="select-type" ng-disabled="targetSensor" class="form-control" ng-model="dataType" ng-options="t for t in dataTypes" required>

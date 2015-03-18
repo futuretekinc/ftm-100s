@@ -1,7 +1,8 @@
 ## Generic - configuration and logging
 ----------------------
 
-  * [device protocol](docs/deviceProtocol.md)
+  * [device REST protocol](docs/restProtocol.md)
+  * [device MQTT protocol](docs/mqttProtocol.md)
   * [device configuration](docs/config.md)
   * [device logging](docs/logging.md)
 
@@ -51,6 +52,66 @@
 ## Sensor setup
  * Requirement
    * Network (Wired or Wireless) connection
+
+ * VDD 5V vs. SYS 5V
+   * VDD_5V
+     * 1A 
+     * VDD_5V is the main power supply from the DC input jack. So this voltage is not present when the board is only powered via USB
+   * SYS_5V
+     * 0.25A
+
+ * Sensors
+   1. [ds18b20 (1-wire)](http://www.ermicro.com/blog/wp-content/uploads/2009/10/picaxe_11.jpg)
+     : Temperature
+     * VDD_3V3
+     * DGND
+     * GPIO 2
+     * 4.7K Pull-Up Resistor (between VDD_3V3 and DGND)
+   2. [DHT11 Sensor V2](http://www.dfrobot.com/wiki/index.php/DHT11_Temperature_and_Humidity_Sensor_V2_SKU:_DFR0067)
+     : Humidity
+     * SYS_5V or VDD_5V
+     * DGND
+     * GPIO 27
+   3. [htu21d (I2C)](https://www.sparkfun.com/products/12064)
+     : Humidity
+     * VDD_3V3
+     * DGND
+     * I2C2_SCL
+     * I2C2_SDA
+     * Address: 0x40
+   4. [photocell (I2C)](http://stackoverflow.com/questions/10611294/reading-analog-in-on-beaglebone-avoiding-segmentation-fault-error)
+     : Light
+     * VDD_ADC
+     * GDNA_ADC
+     * AIN0
+     * 10K Pull-Down Resistor (between AIN0 and DGND) / (sensor : between VDD_ADC and AIN0)
+   5. [BH1750FVI](http://www.dfrobot.com/index.php?route=product/product&product_id=531)
+     : Light (digital)
+     * VDD_3V3
+     * DGND
+     * I2C2_SCL
+     * I2C2_SDA
+     * (Optional) ADD : if ADD is HIGH then address will be changed to 0x5c from 0x23
+     * Address: 0x23 (0x5C)
+   6. [magnetic switch]
+     * DGND
+     * GPIO 46 or 61 or 115
+   7. [motion detector]
+     * SYS_5V or VDD_5V
+     * DGND
+     * GPIO 46 or 61 or 115
+   8. [noise detector]
+     * SYS_5V or VDD_5V
+     * DGND
+     * GPIO 46 or 61 or 115
+   9. [RGB]
+     * DGND
+     * GPIO 67
+  10. [power switch](http://www.dfrobot.com/index.php?route=product/product&product_id=64)
+     * SYS_5V or VDD_5V
+     * DGND
+     * GPIO 67
+   
 
  * Procedure
    * Step 1

@@ -1,1 +1,1 @@
-../git_version.sh
+../rsync_version.sh

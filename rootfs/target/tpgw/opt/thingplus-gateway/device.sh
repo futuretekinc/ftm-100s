@@ -80,11 +80,22 @@ UPDATE_DIR="${DIR}/${DESC}/update"
 [ -z "${_HOSTNAME}" ] && _HOSTNAME=localhost
 
 # prepare log
-LOG_DIR=/var/log/sensorjs
+LOG_DIR=/var/log/thingplus
 LOG_FILE_PATH="${LOG_DIR}/${DESC}_${_HOSTNAME}.log"
 [ ! -d "${LOG_DIR}" ] && mkdir -p ${LOG_DIR}
 [ ! -f "${LOG_FILE_PATH}" ] && touch ${LOG_FILE_PATH}
 
+# truncate log if too big
+#MAX_SIZE=5242880 #5MB
+#LOGROTATE="/etc/cron.hourly/logrotate"
+#if [ -x /usr/bin/stat -a -x /usr/bin/truncate ]; then 
+#  if [ $(/usr/bin/stat -c%s $LOG_FILE_PATH) -gt $MAX_SIZE ]; then
+#    [ -x $LOGROTATE ] && $LOGROTATE
+#    tail -n 100 $LOG_FILE_PATH > $LOG_DIR/last_of_big.log #keep last 100
+#    /usr/bin/truncate -s $MAX_SIZE ${LOG_FILE_PATH}
+#    echo "TRUNCATE TOO BIG LOG FILE!"
+#  fi
+#fi
 
 APP_START_OPT="-a --uid ${DESC}"
 FOREVER_SLEEP="--spinSleepTime 10000 --minUptime 10000"
@@ -115,8 +126,10 @@ export NODE_CONFIG_DIR=${DIR}/${DESC}/config
 export PATH=/usr/local/bin:${PATH:=}
 export MANPATH=/usr/local/man:${MANPATH:=}
 export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH:=}
-
-
+### add model bin path
+if [ -d ${DIR}/${DESC}/update/${MODEL}/bin ] ; then
+  export PATH=${PATH}:${DIR}/${DESC}/update/${MODEL}/bin
+fi
 
 #######################
 # common funcs

@@ -1,3 +1,4 @@
+/* globals _, $, Blob, window, Image */
 define(['controllers/controllers'],
   function(controllers) {
     'use strict';
@@ -7,7 +8,8 @@ define(['controllers/controllers'],
 
         var targetSensorId = $stateParams.sensor, // sensorId to edit
             targetSensor,
-            sensorInfo = {};
+            sensorInfo = {},
+            sensorInfoArr = []; // use arrya: workaround to sort network and label
 
         function template(str, tokens) {
           return str && str.replace(/\{(\w+)\}/g, function (x, key) {
@@ -18,10 +20,14 @@ define(['controllers/controllers'],
         $http({method: 'GET', url: '/api/sensorDrivers'}).
             success(function(data/*, status, headers, config*/) {
               console.log('response of sensor drivers api', data);
+              //TODO: consider multi supported network, sorting
               _.forEach(data, function (sensorDriver) {
+                sensorDriver.network = _.size(sensorDriver.supportedNetworks) > 0 && sensorDriver.supportedNetworks[0];
                 sensorInfo[sensorDriver.id] = sensorDriver;
+                sensorInfoArr.push(sensorDriver);
               });
               $scope.sensorInfo = sensorInfo;
+              $scope.sensorInfoArr = sensorInfoArr;
 
               $http({method: 'GET', url: '/api/gateway/info'}).
                   success(function(data/*, status, headers, config*/) {
@@ -29,6 +35,7 @@ define(['controllers/controllers'],
                     $scope.gateway = data;
                     if( targetSensorId && data.sensors && data.sensors[targetSensorId] ) {
                       $scope.targetSensor = targetSensor = data.sensors[targetSensorId];
+                      $scope.selectedDriverName = targetSensor.driverName;
                       $scope.showNext(targetSensor.driverName);
                     }
                   }).
@@ -43,6 +50,7 @@ define(['controllers/controllers'],
         $scope.showNext = function (type) {
           var d;
 
+          //add options like notification=true, recommendInteval=10000
           $scope.selectedAgentType = type;
 
           $scope.sensors = null;
@@ -51,7 +59,8 @@ define(['controllers/controllers'],
           $scope.supportedNetworks = sensorInfo[type].supportedNetworks;
           $scope.commands = sensorInfo[type].commands;
           $scope.category = sensorInfo[type].category;
-          $scope.addressable = JSON.parse(sensorInfo[type].addressable);
+          $scope.addressable = !!JSON.parse(sensorInfo[type].addressable);
+          $scope.sequenceable = !!(sensorInfo[type].sequenceable && JSON.parse(sensorInfo[type].sequenceable));
           $scope.discoverable = JSON.parse(sensorInfo[type].discoverable);
 
           if (targetSensor) {
@@ -60,6 +69,8 @@ define(['controllers/controllers'],
             $scope.model = targetSensor.model;
             $scope.network = targetSensor.network;
             $scope.address = targetSensor.address;
+            $scope.sequence = targetSensor.sequence;
+            $scope.selectModel($scope.model);
           } else {
             $scope.name = null;
             if (_.size($scope.models) === 1) {
@@ -94,8 +105,10 @@ define(['controllers/controllers'],
           } else {
             $scope.sensorId = template(sensorInfo[type].idTemplate, {
                 model: $scope.models.length === 1 ? $scope.models[0] : null,
-                macAddress: $scope.gateway.id,
-                address: sensorInfo[type].address
+                gatewayId: $scope.gateway.id, 
+                deviceAddress: sensorInfo[type].address || 0,
+                sequence: sensorInfo[type].sequence || 0,
+                type: $scope.dataType
               });
             $scope.sensors = [$scope.sensorId];
           }
@@ -110,19 +123,28 @@ define(['controllers/controllers'],
 
           $scope.sensorId = template(sensorInfo[type].idTemplate, {
               model: $scope.model,
-              macAddress: $scope.gateway.id,
-              address: address
+              gatewayId: $scope.gateway.id,
+              deviceAddress: address || 0,
+              sequence: $scope.sequence || 0,
+              type: $scope.dataType
+            });
+        };
+
+        $scope.selectSequence = function (sequence) {
+          var type = $scope.selectedAgentType;
+
+          $scope.sensorId = template(sensorInfo[type].idTemplate, {
+              model: $scope.model,
+              gatewayId: $scope.gateway.id,
+              deviceAddress: $scope.address || 0,
+              sequence: sequence || 0,
+              type: $scope.dataType
             });
         };
 
         $scope.selectModel = function (model) {
           var type = $scope.selectedAgentType;
 
-          $scope.sensorId = template(sensorInfo[type].idTemplate, {
-            model: model,
-            macAddress: $scope.gateway.id,
-            address: $scope.address
-          });
           if (model) {
             $scope.dataTypes = sensorInfo[type].dataTypes[model] ||
               sensorInfo[type].dataTypes;
@@ -134,6 +156,13 @@ define(['controllers/controllers'],
             $scope.dataType = undefined;
             $scope.sensors = undefined;
           }
+          $scope.sensorId = template(sensorInfo[type].idTemplate, {
+            model: model,
+            gatewayId: $scope.gateway.id,
+            deviceAddress: $scope.address || 0,
+            sequence: $scope.sequence || 0,
+            type: $scope.dataType
+          });
         };
 
         $scope.selectDiscoveredSensor = function (sensorId) {
@@ -154,6 +183,7 @@ define(['controllers/controllers'],
             model: $scope.model || agentType,
             network: $scope.network,
             address: $scope.address,
+            sequence: $scope.sequence,
             category: $scope.category
           };
 
@@ -174,6 +204,8 @@ define(['controllers/controllers'],
               $scope.name = null;
               $scope.model = null;
               $scope.testResult = null;
+              $scope.address = null;
+              $scope.sequence = undefined;
 
               $scope.showNext(agentType);
             }
@@ -193,7 +225,8 @@ define(['controllers/controllers'],
               driverName: sensorInfo[agentType].driverName,
               model: $scope.model,
               network: $scope.network,
-              address: $scope.address
+              address: $scope.address,
+              sequence: $scope.sequence,
             }
           }).
           success(function(data/*, status, headers, config*/) {
@@ -256,14 +289,23 @@ define(['controllers/controllers'],
         };
 
         $scope.cancel = function () {
-          $scope.sensorId = null;
-          $scope.dataType = null;
-          $scope.name = null;
-          $scope.model = null;
+          if (targetSensor && targetSensorId && 
+            $scope.gateway && $scope.gateway.sensors && 
+            $scope.gateway.sensors[targetSensorId]) { 
+              targetSensor = $scope.gateway.sensors[targetSensorId];
+              $scope.targetSensor = targetSensor;
+              $scope.selectedDriverName = targetSensor.driverName;
+              $scope.showNext(targetSensor.driverName);
+          } else {
+            $scope.sensorId = null;
+            $scope.dataType = null;
+            $scope.name = null;
+            $scope.model = null;
+            $scope.selectedDriverName = null;
 
-          $scope.testResult = null;
-
-          $('#setting-view').slideUp('slow');
+            $scope.testResult = null;
+            $('#setting-view').slideUp('slow');
+          }
         };
       }
     ]);

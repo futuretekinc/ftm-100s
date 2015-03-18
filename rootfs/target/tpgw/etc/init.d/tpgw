@@ -7,7 +7,7 @@ TASK="node"
 OPTIONS="--stack_size=1024 --max_old_space_size=20 --max_new_space_size=4096 --max_executable_size=10"
 DIR="/opt/thingplus-gateway/device"
 LOG_DIR="/mnt/log"
-RSYNC_FILE="$DIR/update/ftm-100/rsync.sh"
+RSYNC_FILE="$DIR/update/FTM-100S/rsync.sh"
 
 if [ -f $DIR/app.js ] ;  then
 	CMD="$TASK $OPTIONS app.js"
@@ -19,13 +19,13 @@ start()
 {
 	if [ ! -e $LOG_DIR ]
 	then
-		MOUNT_DEV=`cat /proc/mtd | awk '{ if ($4 ~ /log/) print $1}' | sed -e 's/://' -e 's/mtd/mtdblock/'`
+#		MOUNT_DEV=`cat /proc/mtd | awk '{ if ($4 ~ /log/) print $1}' | sed -e 's/://' -e 's/mtd/mtdblock/'`
 
-		if [ "$MOUNT_DEV" ]
-		then
+#		if [ "$MOUNT_DEV" ]
+#		then
 			mkdir -p $LOG_DIR
-			mount -t yaffs2 /dev/$MOUNT_DEV $LOG_DIR
-		fi
+#			mount -t yaffs2 /dev/$MOUNT_DEV $LOG_DIR
+#		fi
 	fi
 
     #recover rsync if needed
