@@ -156,7 +156,14 @@ function active_ip( leases )
 						{
 							macaddr = leases[i].getElementsByTagName("MAC")[0].firstChild.nodeValue;
 							ipaddr = leases[i].getElementsByTagName("IP")[0].firstChild.nodeValue;
-							hostname = leases[i].getElementsByTagName("HOSTNAME")[0].firstChild.nodeValue;
+							
+							if (hostname = leases[i].getElementsByTagName("HOSTNAME")[0].firstChild == null)
+							{
+								hostname = "";
+							} else {
+								hostname = leases[i].getElementsByTagName("HOSTNAME")[0].firstChild.nodeValue;
+							}
+							
 							expiresin = leases[i].getElementsByTagName("EXPIRESIN")[0].firstChild.nodeValue;
 							//alert(i);
 							if (ip == ipaddr)

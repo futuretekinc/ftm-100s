@@ -54,6 +54,7 @@ function configRestore()
 
 function systemInit()
 {
+	/*
 		var file_btn = document.getElementById('btn_init');
 
 		if (confirm(msg[msgReset]))
@@ -61,4 +62,81 @@ function systemInit()
 				alert(msg[msgRestoreReset]);
 				self.location.href = "/cgi-bin/init?cmd=init";
 		}
+		*/
+	if (confirm(msg[msgReset]))
+	{
+		if(typeof window.ActiveXObject != 'undefined')
+		{
+			xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
+		}
+		else
+		{
+			xmlhttp = (new XMLHttpRequest());
+		}
+		
+		var data = "/cgi-bin/init?cmd=init";
+		
+		xmlhttp.open( "POST", data, true );
+		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
+		xmlhttp.onreadystatechange = function()
+		{
+			if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
+			{
+				try
+				{
+					res = xmlhttp.responseXML.documentElement.getElementsByTagName("res")[0].firstChild.nodeValue;
+					if (res == "OK")
+					{
+						// reboot
+						alert(msg[msgRestoreReset]);
+						onSystemRestart();
+					}
+				}
+				catch(e)
+				{
+				}
+			}
+		}
+		xmlhttp.send();
+	}
+}
+
+function onSystemRestart()
+{
+		if(typeof window.ActiveXObject != 'undefined')
+		{
+				xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
+		}
+		else
+		{
+				xmlhttp = (new XMLHttpRequest());
+		}
+
+		var data = "/cgi-bin/system?cmd=reboot";
+
+		xmlhttp.open( "POST", data, true );
+		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
+		xmlhttp.onreadystatechange = function()
+		{
+				if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
+				{
+						try
+						{
+								ret  = xmlhttp.responseXML.documentElement.getElementsByTagName("RET");
+								if (ret[0].firstChild.nodeValue == 'OK')
+								{
+										alert(msg[msgResetaring]);
+								}
+								else
+								{
+										alert(msg[msgRestartFailed]);
+								}
+						}
+						catch(e)
+						{
+								window.location.href = '/';
+						}
+				}
+		}
+		xmlhttp.send();
 }

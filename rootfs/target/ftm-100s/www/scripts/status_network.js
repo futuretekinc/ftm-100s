@@ -221,13 +221,15 @@ function is_limited()
             		var resultNode = xmlhttp.responseXML.documentElement.getElementsByTagName("text")[0];
 					var result = resultNode.firstChild.nodeValue;
 					
-					if (result == "0")
+					if (result != "2")
 					{
 						document.getElementById("usim_status").innerHTML = "No Service";
 						return;
 					}
-					
-					usim_sending_stop_status();
+					else
+					{
+						usim_sending_stop_status();
+					}
 
             	} else {
             		// error
