@@ -9,7 +9,7 @@ start() {
                 USED=`cat /etc/service/wifi`
                 if [ "$USED" = 'enabled' ]
                 then
-	         	/etc/cs75xx/hw_accel/demo/cs_dp_mode_set 14
+	         	/etc/cs75xx/hw_accel/demo/cs_dp_mode_set 1
 		fi
         fi
 }
