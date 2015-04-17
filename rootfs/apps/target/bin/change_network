@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ $1 = "wan" ]
+then
+	`echo disabled > /etc/service/lte`
+	`echo 'at*rndismode=0' > /dev/ttyACM0; sleep 0.1`
+	echo "Disabled LTE"
+	reboot
+elif [ $1 = "lte" ]
+then
+	`echo enabled > /etc/service/lte`
+	`echo 'at*rndismode=1' > /dev/ttyACM0; sleep 0.1`
+	echo "Enabled LTE"
+	reboot
+else
+	echo "can't" $1
+fi
