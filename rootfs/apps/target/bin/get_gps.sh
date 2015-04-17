@@ -20,9 +20,16 @@ then
 		if [ "$result" = "@GPS" ]
 		then
 			#cmd=`cat /var/log/modem | sed /^$/d | sed -n "$next_raw"p'`
-			gps=`echo $text | awk '{ split($0,arr,","); printf("%s, %s\n", arr[1], arr[2]); }'`
-			date=`date '+%F %r'`
-			echo {$date} {$gps}
+			#gps=`echo $text | awk '{ split($0,arr,","); printf("%s, %s\n", arr[1], arr[2]); }'`
+			date=`date +%s`
+			#echo {$date} {$gps}
+			lat=`echo $text | awk '{ split($0,arr,","); printf("%s", arr[1]); }'`
+			lng=`echo $text | awk '{ split($0,arr,","); printf("%s", arr[2]); }'`
+			echo "{"
+			echo '	"time" :' $date
+			echo '	"lat" :' $lat
+			echo '	"lng" :' $lng
+			echo "}"
 		fi
 	fi
 else

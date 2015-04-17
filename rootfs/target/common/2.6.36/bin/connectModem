@@ -1,16 +1,21 @@
 #!/bin/sh
 
-killall init_modem_log
-killall sms_dmon
+is_lte=`cat /etc/service/lte`
+if [ $is_lte = "enabled" ]
+then
+	killall init_modem_log
+	killall sms_dmon
+	killall data_dmon
+	killall gps_dmon
 
-stty -F /dev/ttyACM0 -echo
-cat /dev/ttyACM0 &> /var/log/modem &
-sleep 1
-echo 'at*rndisdata=1' > /dev/ttyACM0; sleep 0.1
-echo 'at*autoconn=1' > /dev/ttyACM0; sleep 0.1
-echo 'at@gps=start' > /dev/ttyACM0; sleep 0.1
+	stty -F /dev/ttyACM0 -echo
+	cat /dev/ttyACM0 &> /var/log/modem &
+	echo 'at*rndisdata=1' > /dev/ttyACM0; sleep 0.1
+	echo 'at*autoconn=1' > /dev/ttyACM0; sleep 0.1
+	echo 'at@gps=start' > /dev/ttyACM0; sleep 0.1
 
-/bin/init_modem_log &
-/bin/sms_dmon &
-/bin/data_dmon &
-/bin/gps_dmon &
+	/bin/init_modem_log &
+	/bin/sms_dmon &
+	/bin/data_dmon &
+	/bin/gps_dmon &
+fi
