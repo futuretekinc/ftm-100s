@@ -13,6 +13,7 @@ then
 	echo 'at*rndisdata=1' > /dev/ttyACM0; sleep 0.1
 	echo 'at*autoconn=1' > /dev/ttyACM0; sleep 0.1
 	echo 'at@gps=start' > /dev/ttyACM0; sleep 0.1
+	echo 'at*dmswitch=1' > /dev/ttyACM0; sleep 0.1
 
 	/bin/init_modem_log &
 	/bin/sms_dmon &
