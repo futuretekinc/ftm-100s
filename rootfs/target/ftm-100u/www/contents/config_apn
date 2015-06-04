@@ -1,0 +1,22 @@
+<h2 class='entry-title' id='page_title'>APN</h2>
+<hr>
+<div name='f'>
+	<h3 id='section1_title'>APN</h3>
+	<h4 id='message'><h4>
+	<div class='clearfix'>
+		<table>
+			<tbody>
+				<tr>
+				    <th>Apn</th>
+				    <td>
+				      <input type="text" id="apn" value="" style="width: 250px">
+				    </td>
+				</tr>
+		 	</tbody>
+	 	</table>
+ 	</div>
+	<br>
+ 	<div>
+		<input  type='button' id='apply' value='Apply' onclick='setAPN();'>
+	</div>
+</div>

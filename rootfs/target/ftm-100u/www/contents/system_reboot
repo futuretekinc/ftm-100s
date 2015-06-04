@@ -1,0 +1,9 @@
+<h2 class='entry-title' id='page_title'>System Management</h2>
+<hr>
+<form name='system'>
+	<h3 id='section1_title'>System Restart</h3>
+	<div class='clearfix'>
+		<p id='restart_info'>If you restart the system, please press the button below.</p>
+		<input type='button' id='btn_restart' value='Restart' onclick='onSystemRestart();'>
+	</div>
+</form>
