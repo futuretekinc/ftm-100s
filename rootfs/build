@@ -1,5 +1,5 @@
 #!/bin/sh
-PRODUCT=ftm-100s
+PRODUCT=ftm-100u
 KERNEL_VERSION=2.6.36
 COMMON_PATH=$PWD/target/common/$KERNEL_VERSION
 ROOT=$PWD/_rootfs
@@ -102,16 +102,16 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 
 (
 	case "$PRODUCT" in
-		ftm-100s)
-			cp -rf target/ftm-100s/* $ROOT
+		ftm-100u)
+			cp -rf target/ftm-100u/* $ROOT
 			cp -rf apps/target/* $ROOT
 			if [ ! -e $ROOT/overlay ]
 			then
 				mkdir $ROOT/overlay
 			fi
 		;;
-		ftm-100s-tp)
-			cp -rf target/ftm-100s/* $ROOT
+		ftm-100u-tp)
+			cp -rf target/ftm-100u/* $ROOT
 			cp -rf apps/target/* $ROOT
 			cp -rf target/tpgw/* $ROOT
 			if [ ! -e $ROOT/overlay ]
@@ -120,7 +120,7 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 			fi
 
 		;;
-		ftm-100s-origin)
+		ftm-100u-origin)
 			cp -rf target/origin/2.6.36/* $ROOT
 			cp -rf apps/target/* $ROOT
 		;;
@@ -143,7 +143,7 @@ echo -ne '\xde\xad\xc0\xde' >> root.squashfs
 
 rm tmpfile.*
 
-mkimage -n 'RootFS-1.0.0.5-FTM-100S' -A arm -O linux -T filesystem -C gzip -d root.squashfs rootfs.img
+mkimage -n 'RootFS-1.0.0.0-FTM-100' -A arm -O linux -T filesystem -C gzip -d root.squashfs rootfs.img
 
-mv rootfs.img "/tftpboot/ftm-100s-xtra/rootfs.img"
+mv rootfs.img "/tftpboot/ftm-100u-iot/rootfs.img"
 
