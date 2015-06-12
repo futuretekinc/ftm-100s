@@ -8,6 +8,7 @@ sumRx=`expr $initRx + $currentRx`
 sumTx=`expr $initTx + $currentTx`
 `echo $sumRx $sumTx > /etc/initData`
 
+`echo 'at%psmactive=0' > /dev/ttyACM0; sleep 0.1`
 `echo 'at$lgtpwdn' > /dev/ttyACM0; sleep 0.1`
 sleep 5 
 sync

@@ -9,7 +9,7 @@ then
 
 	stty -F /dev/ttyACM0 -echo
 	cat /dev/ttyACM0 &> /var/log/modem &
-	echo 'at$lgtuartdm=1' > /dev/ttyACM0; sleep 0.1
+#	echo 'at$lgtuartdm=1' > /dev/ttyACM0; sleep 0.1
 
 	/bin/init_modem_log &
 	/bin/data_dmon &
