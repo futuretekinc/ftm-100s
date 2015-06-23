@@ -54,9 +54,9 @@
 						<li><a  id='config_network' onclick="onLoadPage('config_network');">  Network</a></li>
 						<li><a  id='config_wifi' onclick="onLoadPage('config_wifi');">  WIFI</a></li>
 						<li><a  id='config_dhcp' onclick="onLoadPage('config_dhcp');">  DHCP</a></li>
-						<!--
-						<li><a	id='config_sslplus' onclick="onLoadPage('config_ssl');">  SSL</a></li>
-						-->
+					
+						<li><a	id='config_ssl' onclick="onLoadPage('config_ssl');">  SSL</a></li>
+						
 						<li><a  id='config_firewall' onclick="onLoadPage('config_firewall');">  Firewall</a></li>
 						<li><a  id='config_apn' onclick="onLoadPage('config_apn');">  APN</a></li>
 						<!-- <li><a  id='config_qos' onclick="onLoadPage('config_qos');">  Qos</a></li> -->
