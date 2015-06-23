@@ -145,5 +145,3 @@ rm tmpfile.*
 
 mkimage -n 'RootFS-1.0.0.5-FTM-100S' -A arm -O linux -T filesystem -C gzip -d root.squashfs rootfs.img
 
-mv rootfs.img "/tftpboot/ftm-100s-xtra/rootfs.img"
-
