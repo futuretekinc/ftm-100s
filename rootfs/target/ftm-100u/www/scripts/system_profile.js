@@ -59,7 +59,7 @@ function onLoad()
 					div_model = info[0].getElementsByTagName("MODEL");
 					if (div_model.length != 0)
 					{
-						document.getElementById('model').innerHTML= div_model[0].firstChild.nodeValue;
+						document.getElementById('model').innerHTML= "FTM-100U";//div_model[0].firstChild.nodeValue;
 					}
 					div_sn= info[0].getElementsByTagName("SN");
 					if (div_sn.length != 0)
