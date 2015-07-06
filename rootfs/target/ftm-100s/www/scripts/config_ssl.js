@@ -66,8 +66,8 @@ function loadSSL()
 
 function setSSL()
 {
-	if (confirm("재부팅이 필요할지 모름???"))
-	{
+	//if (confirm("재부팅이 필요할지 모름???"))
+	//{
 		if(typeof window.ActiveXObject != 'undefined') {
 			xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
 		} else {
@@ -112,5 +112,5 @@ function setSSL()
 			}
 		}
 		xmlhttp.send();
-	}
+	//}
 }

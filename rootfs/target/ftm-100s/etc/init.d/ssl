@@ -9,6 +9,8 @@ start() {
 				cd /opt
 				tar xvf /usr/install/ssl/ssl.tar
 		fi
+		killall ssledge
+		killall agent
 		/opt/ssl/agent -C /etc/ssl_config/
 }
 
@@ -17,6 +19,7 @@ stop() {
 }
 
 restart() {
+		killall ssledge
 		killall agent
 		/opt/ssl/agent -C /etc/ssl_config/
 }

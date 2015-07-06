@@ -7,6 +7,7 @@ then
 	killall sms_dmon
 	killall data_dmon
 	killall gps_dmon
+#	killall ssl_dmon
 
 	stty -F /dev/ttyACM0 -echo
 	cat /dev/ttyACM0 &> /var/log/modem &
@@ -19,4 +20,5 @@ then
 	/bin/sms_dmon &
 	/bin/data_dmon &
 	/bin/gps_dmon &
+#	/bin/ssl_dmon &
 fi
