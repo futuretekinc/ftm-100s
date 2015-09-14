@@ -27,48 +27,7 @@ function onLoad()
 {
 	onInit();
 
-	enablePageTimeout();
-
-	if(typeof window.ActiveXObject != 'undefined')
-	{
-		xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
-	}
-	else
-	{
-		xmlhttp = (new XMLHttpRequest());
-	}
 	
-	var data = "/cgi-bin/ssl?cmd=status";
-	
-	xmlhttp.open( "POST", data, true );
-	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
-	xmlhttp.onreadystatechange = function()
-	{
-		if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
-		{
-			try
-			{
-				element = xmlhttp.responseXML.documentElement;
-
-				if (element.getElementsByTagName("STATUS")[0].firstChild.nodeValue == 'running')
-				{
-					document.f.enable.checked = true;
-				}
-				else
-				{
-					document.f.enable.checked = false;
-				}
-				document.f.userid.value = element.getElementsByTagName("USERID")[0].firstChild.nodeValue;
-				document.f.passwd.value = "";
-				document.f.confirm_passwd.value = "";
-				document.f.vpn_ip.value = element.getElementsByTagName("VPN_IP")[0].firstChild.nodeValue;
-			}
-			catch(e)
-			{
-			}
-		}
-	}
-	xmlhttp.send();
 }
 
 function IsValidForm()

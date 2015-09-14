@@ -1,0 +1,22 @@
+#!/bin/sh
+
+pressed_count=0
+state=1
+
+get_value()
+{
+		value=`ping 8.8.8.8 -c 1 | grep "1 packets received" | wc -l`
+		return $value
+}
+
+while [ 0 ]
+do
+	get_value
+	if [ $? -eq 1 ]
+	then
+		/etc/init.d/ssl start
+		break
+	fi
+
+	sleep 10
+done

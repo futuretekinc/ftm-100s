@@ -1,0 +1,25 @@
+#!/bin/sh /etc/rc.common
+# (C) 2008 openwrt.org
+
+START=97
+
+start() {
+		if [ ! -e /opt/ssl/agent ]
+		then
+				cd /opt
+				tar xvf /usr/install/ssl/ssl.tar
+		fi
+		killall ssledge
+		killall agent
+		/opt/ssl/agent -C /etc/ssl_config/
+}
+
+stop() {
+		killall agent
+}
+
+restart() {
+		killall ssledge
+		killall agent
+		/opt/ssl/agent -C /etc/ssl_config/
+}
