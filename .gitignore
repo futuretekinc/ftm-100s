@@ -113,3 +113,14 @@ rootfs/apps/fwmng/fwinfo
 rootfs/apps/fwmng/update_sys_info
 rootfs/apps/target/bin/hostapd
 rootfs/vid
+
+linux-2.6.36/lib/gen_crc32table
+linux-2.6.36/scripts/basic/docproc
+linux-2.6.36/scripts/basic/fixdep
+linux-2.6.36/scripts/basic/hash
+linux-2.6.36/scripts/bin2c
+linux-2.6.36/scripts/conmakehash
+linux-2.6.36/scripts/kconfig/conf
+linux-2.6.36/scripts/mod/mk_elfconfig
+linux-2.6.36/scripts/mod/modpost
+linux-2.6.36/usr/gen_init_cpio
