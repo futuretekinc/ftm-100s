@@ -1,0 +1,647 @@
+--------------------
+./configure CC=arm-openwrt-linux-uclibcgnueabi-gcc --host=arm
+Mon Sep 14 17:11:34 KST 2015
+unknown option: CC=arm-openwrt-linux-uclibcgnueabi-gcc
+./configure --help for help
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure --help
+Mon Sep 14 17:11:42 KST 2015
+usage:
+  configure [--const] [--zprefix] [--prefix=PREFIX]  [--eprefix=EXPREFIX]
+    [--static] [--64] [--libdir=LIBDIR] [--sharedlibdir=LIBDIR]
+    [--includedir=INCLUDEDIR] [--archs="-arch i386 -arch x86_64"]
+--------------------
+./configure CC=arm-openwrt-linux-uclibcgnueabi-gcc
+Mon Sep 14 17:11:58 KST 2015
+unknown option: CC=arm-openwrt-linux-uclibcgnueabi-gcc
+./configure --help for help
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure
+Mon Sep 14 17:12:30 KST 2015
+Checking for gcc...
+=== ztest8071.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+gcc -c ztest8071.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest8071.c ===
+int foo() { return 0; }
+===
+gcc -c -O3 ztest8071.c
+
+Checking for shared library support...
+=== ztest8071.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+gcc -w -c -O3 -fPIC ztest8071.c
+gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest8071.so ztest8071.o
+Building shared library libz.so.1.2.8 with gcc.
+
+=== ztest8071.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8071.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest8071.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest8071 ztest8071.c
+Checking for strerror... Yes.
+
+=== ztest8071.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8071.c
+Checking for unistd.h... Yes.
+
+=== ztest8071.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8071.c
+Checking for stdarg.h... Yes.
+
+=== ztest8071.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8071.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest8071.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest8071 ztest8071.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest8071.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8071.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest8071.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8071.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static shared all64
+AR = ar
+ARFLAGS = rc
+CC = gcc
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = gcc -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB = libz.so
+SHAREDLIBM = libz.so.1
+SHAREDLIBV = libz.so.1.2.8
+STATICLIB = libz.a
+TEST = all teststatic testshared test64
+VER = 1.2.8
+Z_U4 =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
+--------------------
+./configure CROSS_PREFIX=arm-openwrt-linux-uclibcgnueabi-
+Mon Sep 14 17:13:05 KST 2015
+unknown option: CROSS_PREFIX=arm-openwrt-linux-uclibcgnueabi-
+./configure --help for help
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure CHOST=arm-openwrt-linux-uclibcgnueabi-
+Mon Sep 14 17:13:39 KST 2015
+unknown option: CHOST=arm-openwrt-linux-uclibcgnueabi-
+./configure --help for help
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure --help
+Mon Sep 14 17:14:36 KST 2015
+usage:
+  configure [--const] [--zprefix] [--prefix=PREFIX]  [--eprefix=EXPREFIX]
+    [--static] [--64] [--libdir=LIBDIR] [--sharedlibdir=LIBDIR]
+    [--includedir=INCLUDEDIR] [--archs="-arch i386 -arch x86_64"]
+--------------------
+./configure --archs=-arch arm
+Mon Sep 14 17:14:55 KST 2015
+Checking for gcc...
+=== ztest8298.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+gcc -c ztest8298.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest8298.c ===
+int foo() { return 0; }
+===
+gcc -c -O3 -arch arm ztest8298.c
+gcc: error: arm: No such file or directory
+gcc: error: unrecognized option ‘-arch’
+(exit code 1)
+Compiler error reporting is too harsh for ./configure (perhaps remove -Werror).
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure
+Mon Sep 14 17:20:10 KST 2015
+=== ztest8528.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c ztest8528.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest8528.c ===
+int foo() { return 0; }
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 ztest8528.c
+
+Checking for shared library support...
+=== ztest8528.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -w -c -O3 -fPIC ztest8528.c
+arm-openwrt-linux-uclibcgnueabi-gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest8528.so ztest8528.o
+Building shared library libz.so.1.2.8 with arm-openwrt-linux-uclibcgnueabi-gcc.
+
+=== ztest8528.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8528.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest8528.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest8528 ztest8528.c
+Checking for strerror... Yes.
+
+=== ztest8528.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8528.c
+Checking for unistd.h... Yes.
+
+=== ztest8528.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8528.c
+Checking for stdarg.h... Yes.
+
+=== ztest8528.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8528.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest8528.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest8528 ztest8528.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest8528.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8528.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest8528.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest8528.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static shared all64
+AR = ar
+ARFLAGS = rc
+CC = arm-openwrt-linux-uclibcgnueabi-gcc
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = arm-openwrt-linux-uclibcgnueabi-gcc -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = arm-openwrt-linux-uclibcgnueabi-gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB = libz.so
+SHAREDLIBM = libz.so.1
+SHAREDLIBV = libz.so.1.2.8
+STATICLIB = libz.a
+TEST = all teststatic testshared test64
+VER = 1.2.8
+Z_U4 =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
+--------------------
+./configure --prefix=/home/xtra/work/ftm-100s/rootfs/apps/build/zlib
+Tue Sep 15 14:34:56 KST 2015
+=== ztest27114.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+arm-none-linux-gnueabi-gcc -c ztest27114.c
+./configure: line 165: arm-none-linux-gnueabi-gcc: command not found
+... using arm-none-linux-gnueabi-gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest27114.c ===
+int foo() { return 0; }
+===
+arm-none-linux-gnueabi-gcc -c -O ztest27114.c
+./configure: line 343: arm-none-linux-gnueabi-gcc: command not found
+(exit code 127)
+Compiler error reporting is too harsh for ./configure (perhaps remove -Werror).
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure --prefix=/home/xtra/work/ftm-100s/rootfs/apps/build/zlib CC=arm-openwrt-linux-uclibcgnueabi-gcc
+Tue Sep 15 14:35:09 KST 2015
+unknown option: CC=arm-openwrt-linux-uclibcgnueabi-gcc
+./configure --help for help
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure --prefix=/home/xtra/work/ftm-100s/rootfs/apps/build/zlib CC=arm-openwrt-linux-uclibcgnueabi-gcc
+Tue Sep 15 14:35:28 KST 2015
+unknown option: CC=arm-openwrt-linux-uclibcgnueabi-gcc
+./configure --help for help
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure --prefix=/home/xtra/work/ftm-100s/rootfs/apps/build/zlib
+Tue Sep 15 14:35:41 KST 2015
+=== ztest27207.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+arm-none-linux-gnueabi-gcc -c ztest27207.c
+./configure: line 165: arm-none-linux-gnueabi-gcc: command not found
+... using arm-none-linux-gnueabi-gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest27207.c ===
+int foo() { return 0; }
+===
+arm-none-linux-gnueabi-gcc -c -O ztest27207.c
+./configure: line 343: arm-none-linux-gnueabi-gcc: command not found
+(exit code 127)
+Compiler error reporting is too harsh for ./configure (perhaps remove -Werror).
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure --prefix=/home/xtra/work/ftm-100s/rootfs/apps/build/zlib
+Tue Sep 15 14:35:56 KST 2015
+=== ztest27242.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+arm-none-linux-gnueabi-gcc -c ztest27242.c
+./configure: line 165: arm-none-linux-gnueabi-gcc: command not found
+... using arm-none-linux-gnueabi-gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest27242.c ===
+int foo() { return 0; }
+===
+arm-none-linux-gnueabi-gcc -c -O ztest27242.c
+./configure: line 343: arm-none-linux-gnueabi-gcc: command not found
+(exit code 127)
+Compiler error reporting is too harsh for ./configure (perhaps remove -Werror).
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure --prefix=/home/xtra/work/ftm-100s/rootfs/apps/build/zlib
+Tue Sep 15 14:36:20 KST 2015
+=== ztest27276.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+arm-opwnwrt-linux-uclibcgnueabi-gcc -c ztest27276.c
+./configure: line 165: arm-opwnwrt-linux-uclibcgnueabi-gcc: command not found
+... using arm-opwnwrt-linux-uclibcgnueabi-gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest27276.c ===
+int foo() { return 0; }
+===
+arm-opwnwrt-linux-uclibcgnueabi-gcc -c -O ztest27276.c
+./configure: line 343: arm-opwnwrt-linux-uclibcgnueabi-gcc: command not found
+(exit code 127)
+Compiler error reporting is too harsh for ./configure (perhaps remove -Werror).
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure --prefix=/home/xtra/work/ftm-100s/rootfs/apps/build/zlib-1.2.8
+Tue Sep 15 14:39:50 KST 2015
+=== ztest27340.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c ztest27340.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest27340.c ===
+int foo() { return 0; }
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 ztest27340.c
+
+Checking for shared library support...
+=== ztest27340.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -w -c -O3 -fPIC ztest27340.c
+arm-openwrt-linux-uclibcgnueabi-gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest27340.so ztest27340.o
+Building shared library libz.so.1.2.8 with arm-openwrt-linux-uclibcgnueabi-gcc.
+
+=== ztest27340.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest27340.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest27340.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest27340 ztest27340.c
+Checking for strerror... Yes.
+
+=== ztest27340.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest27340.c
+Checking for unistd.h... Yes.
+
+=== ztest27340.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest27340.c
+Checking for stdarg.h... Yes.
+
+=== ztest27340.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest27340.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest27340.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest27340 ztest27340.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest27340.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest27340.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest27340.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+arm-openwrt-linux-uclibcgnueabi-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest27340.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static shared all64
+AR = ar
+ARFLAGS = rc
+CC = arm-openwrt-linux-uclibcgnueabi-gcc
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+CPP = arm-openwrt-linux-uclibcgnueabi-gcc -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = arm-openwrt-linux-uclibcgnueabi-gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+SHAREDLIB = libz.so
+SHAREDLIBM = libz.so.1
+SHAREDLIBV = libz.so.1.2.8
+STATICLIB = libz.a
+TEST = all teststatic testshared test64
+VER = 1.2.8
+Z_U4 =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /home/xtra/work/ftm-100s/rootfs/apps/build/zlib-1.2.8
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
