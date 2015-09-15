@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "BUSYBOX 1"
-.TH BUSYBOX 1 "2014-11-14" "version 1.22.1" "busybox"
+.TH BUSYBOX 1 "2015-09-14" "version 1.22.1" "busybox"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -220,8 +220,8 @@ Currently available applets include:
 \&        gzip, halt, hd, hdparm, head, hexdump, hostid, hostname, httpd,
 \&        hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod, iostat,
 \&        ip, ipaddr, iplink, iproute, iprule, iptunnel, kill, killall,
-\&        killall5, klogd, less, ln, logger, login, logread, ls, lsmod, lsof,
-\&        lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
+\&        killall5, klogd, less, ln, lock, logger, login, logread, ls, lsmod,
+\&        lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
 \&        mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod, mkswap,
 \&        mktemp, modprobe, more, mount, mpstat, mv, nanddump, nandwrite,
 \&        nbd\-client, nc, netstat, nice, nohup, nslookup, passwd, pgrep,
@@ -1274,6 +1274,17 @@ Create a link \s-1LINK\s0 or \s-1DIR/TARGET\s0 to the specified \s-1TARGET\s0(s)
 \&        \-S suf  Use suffix instead of ~ when making backup files
 \&        \-T      2nd arg must be a DIR
 \&        \-v      Verbose
+.Ve
+.IP "\fBlock\fR" 4
+.IX Item "lock"
+lock [\-suw] <filename>
+.Sp
+Small utility for using locks in scripts
+.Sp
+.Vb 3
+\&         \-s      Use shared locking
+\&         \-u      Unlock
+\&         \-w      Wait for the lock to become free, don\*(Aqt acquire lock
 .Ve
 .IP "\fBlogger\fR" 4
 .IX Item "logger"

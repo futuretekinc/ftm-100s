@@ -2,7 +2,7 @@
  * Automatically generated C config: don't edit
  * Busybox version: 1.22.1
  */
-#define AUTOCONF_TIMESTAMP "2014-11-14 20:25:05 PST"
+#define AUTOCONF_TIMESTAMP "2015-09-14 16:06:02 KST"
 
 #define CONFIG_HAVE_DOT_CONFIG 1
 #define ENABLE_HAVE_DOT_CONFIG 1
@@ -3740,6 +3740,14 @@
 # define IF_FEATURE_HDPARM_HDIO_GETSET_DMA(...) __VA_ARGS__
 #endif
 #define IF_NOT_FEATURE_HDPARM_HDIO_GETSET_DMA(...)
+#define CONFIG_LOCK 1
+#define ENABLE_LOCK 1
+#ifdef MAKE_SUID
+# define IF_LOCK(...) __VA_ARGS__ "CONFIG_LOCK"
+#else
+# define IF_LOCK(...) __VA_ARGS__
+#endif
+#define IF_NOT_LOCK(...)
 #undef CONFIG_MAKEDEVS
 #define ENABLE_MAKEDEVS 0
 #define IF_MAKEDEVS(...)

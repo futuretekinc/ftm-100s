@@ -114,6 +114,7 @@
 /sbin/klogd
 /usr/bin/less
 /bin/ln
+/usr/bin/lock
 /usr/bin/logger
 /bin/login
 /sbin/logread

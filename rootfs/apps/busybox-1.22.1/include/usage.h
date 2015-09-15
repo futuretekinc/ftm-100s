@@ -6087,6 +6087,15 @@
      "\n	-a	Show expiration time" \
 	) \
 
+#define lock_trivial_usage \
+		"[-suw] <filename>" \
+
+#define lock_full_usage "\n\n" \
+		"Small utility for using locks in scripts \n" \
+ 		"\n	 -s      Use shared locking" \
+  		"\n	 -u      Unlock"  \
+	 	"\n	 -w      Wait for the lock to become free, don't acquire lock" 
+
 #define busybox_notes_usage \
        "Hello world!\n"
 

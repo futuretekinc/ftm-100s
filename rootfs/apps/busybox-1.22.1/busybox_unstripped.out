@@ -287,6 +287,7 @@ attempt to open miscutils/lib.a succeeded
 (miscutils/lib.a)crontab.o
 (miscutils/lib.a)hdparm.o
 (miscutils/lib.a)less.o
+(miscutils/lib.a)lock.o
 (miscutils/lib.a)nandwrite.o
 (miscutils/lib.a)setserial.o
 (miscutils/lib.a)strings.o

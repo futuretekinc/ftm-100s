@@ -123,8 +123,8 @@ been enabled, more detailed usage information will also be available.</p>
         gzip, halt, hd, hdparm, head, hexdump, hostid, hostname, httpd,
         hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod, iostat,
         ip, ipaddr, iplink, iproute, iprule, iptunnel, kill, killall,
-        killall5, klogd, less, ln, logger, login, logread, ls, lsmod, lsof,
-        lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
+        killall5, klogd, less, ln, lock, logger, login, logread, ls, lsmod,
+        lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
         mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod, mkswap,
         mktemp, modprobe, more, mount, mpstat, mv, nanddump, nandwrite,
         nbd-client, nc, netstat, nice, nohup, nslookup, passwd, pgrep,
@@ -1146,6 +1146,16 @@ iproute { add | del | change | append | replace | test } ROUTE
         -S suf  Use suffix instead of ~ when making backup files
         -T      2nd arg must be a DIR
         -v      Verbose</pre>
+</dd>
+<dt><strong><a name="lock" class="item"><strong>lock</strong></a></strong></dt>
+
+<dd>
+<p>lock [-suw] &lt;filename&gt;</p>
+<p>Small utility for using locks in scripts</p>
+<pre>
+         -s      Use shared locking
+         -u      Unlock
+         -w      Wait for the lock to become free, don't acquire lock</pre>
 </dd>
 <dt><strong><a name="logger" class="item"><strong>logger</strong></a></strong></dt>
 
