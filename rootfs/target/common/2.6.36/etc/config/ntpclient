@@ -1,17 +1,13 @@
 config ntpserver
-	option hostname 'tock.stdtime.gov.tw'
+	option hostname '1.kr.pool.ntp.org'
 	option port     '123'
 
 config ntpserver
-	option hostname 'watch.stdtime.gov.tw'
+	option hostname '3.asia.pool.ntp.org'
 	option port     '123'
 
 config ntpserver
-	option hostname 'time.stdtime.gov.tw'
-	option port     '123'
-
-config ntpserver
-	option hostname 'clock.stdtime.gov.tw'
+	option hostname '0.asia.pool.ntp.org'
 	option port     '123'
 
 config ntpdrift
