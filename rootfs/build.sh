@@ -1,14 +1,20 @@
 #!/bin/sh
 PRODUCT=ftm-100s
+VERSION=1.0.0.5
 KERNEL_VERSION=2.6.36
 COMMON_PATH=$PWD/target/common/$KERNEL_VERSION
 ROOT=$PWD/_rootfs
-BUSYBOX_PATH=$PWD/apps/busybox-1.22.1
-IPTABLES_PATH=$PWD/apps/iptables-1.4.21
+
+BUSYBOX_PATH=$PWD/apps/build/busybox-1.22.1
+IPTABLES_PATH=$PWD/apps/build/iptables-1.4.21
+DROPBEAR_PATH=$PWD/apps/build/dropbear-2015.68
+OPENSSL_PATH=$PWD/apps/build/openssl-1.0.1e
+#OPENSSH_PATH=$PWD/apps/build/openssh-7.1p1
+
 #BASE_PATH=/opt/Cortina/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/arm-openwrt-linux-gnueabi
-#LIBS="ld-linux.so.3 libcrypt.so.1 libm.so.6 libc.so.6 libdl.so.2"
 BASE_PATH=/opt/CORTINA/toolchain/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi
 LIB_VERSION=-0.9.32-rc2-git
+#LIBS="ld-linux.so.3 libcrypt.so.1 libm.so.6 libc.so.6 libdl.so.2"
 LIBS="ld-uClibc.so.0 libcrypt.so libm.so libc.so.0 libdl.so"
 LIB_PATH="/lib /usr/lib"
 CROSS_COMPILE=arm-openwrt-linux-uclibcgnueabi-
@@ -87,17 +93,22 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 
 # install busybox
 (
-	cd $BUSYBOX_PATH
-
-#	make ARCH=arm CROSS_COMPILE=$CROSS_COMPILE
-#	make ARCH=arm CROSS_COMPILE=$CORSS_COMPILE install CONFIG_PREFIX=$ROOT
+	cp -r $BUSYBOX_PATH/* $ROOT
 )
 
 # install iptables
 (
-	cd $IPTABLES_PATH
-#	make
-#	make install DESTDIR=$ROOT
+	cp -r $IPTABLES_PATH/* $ROOT
+)
+
+# install dropbear
+(
+	cp -r $DROPBEAR_PATH/* $ROOT
+)
+
+# install openssl
+(
+	cp -r $OPENSSL_PATH/* $ROOT
 )
 
 (
@@ -129,8 +140,8 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 
 #~/Work/cortina/openwrt-2.6.36/staging_dir/host/bin/mksquashfs4 $ROOT root.squashfs \
 #	-nopad -noappend -root-owned -comp lzma -Xpreset 9 -Xe -Xlc 0 -Xlp 2 -Xpb 2 -b 256k -processors 8
-mksquashfs $ROOT root.squashfs \
-	-nopad -noappend -root-owned -b 256k -processors 8
+
+mksquashfs $ROOT root.squashfs -nopad -noappend -root-owned -b 256k -processors 8
 
 dd if=root.squashfs of=tmpfile.0 bs=4k conv=sync
 echo -ne '\xde\xad\xc0\xde' >> tmpfile.0
@@ -141,7 +152,7 @@ echo -ne '\xde\xad\xc0\xde' >> tmpfile.2
 dd if=tmpfile.2 of=root.squashfs bs=64k conv=sync
 echo -ne '\xde\xad\xc0\xde' >> root.squashfs
 
-rm tmpfile.*
 
-mkimage -n 'RootFS-1.0.0.5-FTM-100S' -A arm -O linux -T filesystem -C gzip -d root.squashfs rootfs.img
+mkimage -n "RootFS-${PROCUDT}-${VERSION}" -A arm -O linux -T filesystem -C gzip -d root.squashfs rootfs.img
 
+rm -rf _rootfs root.squashfs tmpfile.*
