@@ -90,6 +90,7 @@
 /usr/sbin/ftpd
 /usr/bin/ftpget
 /usr/bin/ftpput
+/bin/getopt
 /sbin/getty
 /usr/bin/hd
 /sbin/hdparm
@@ -150,6 +151,7 @@
 /bin/ps
 /bin/pwd
 /usr/sbin/rdate
+/usr/bin/readlink
 /usr/bin/renice
 /usr/bin/reset
 /usr/bin/resize

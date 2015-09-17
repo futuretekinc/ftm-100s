@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "BUSYBOX 1"
-.TH BUSYBOX 1 "2015-09-14" "version 1.22.1" "busybox"
+.TH BUSYBOX 1 "2015-09-17" "version 1.22.1" "busybox"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -216,22 +216,22 @@ Currently available applets include:
 \&        chroot, clear, cmp, cp, crond, crontab, cut, date, dd, delgroup,
 \&        deluser, depmod, df, dhcprelay, diff, dirname, dmesg, dnsdomainname,
 \&        du, dumpleases, echo, egrep, env, expr, false, fdisk, fgrep, find,
-\&        free, fstrim, ftpd, ftpget, ftpput, getty, grep, groups, gunzip,
-\&        gzip, halt, hd, hdparm, head, hexdump, hostid, hostname, httpd,
-\&        hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod, iostat,
-\&        ip, ipaddr, iplink, iproute, iprule, iptunnel, kill, killall,
-\&        killall5, klogd, less, ln, lock, logger, login, logread, ls, lsmod,
-\&        lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
-\&        mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod, mkswap,
-\&        mktemp, modprobe, more, mount, mpstat, mv, nanddump, nandwrite,
-\&        nbd\-client, nc, netstat, nice, nohup, nslookup, passwd, pgrep,
-\&        pidof, ping, ping6, pivot_root, pkill, pmap, poweroff, powertop,
-\&        printf, ps, pstree, pwd, pwdx, rdate, reboot, renice, reset, resize,
-\&        rm, rmdir, rmmod, route, run\-parts, sed, seq, setserial, sh,
-\&        sha3sum, sleep, sort, start\-stop\-daemon, strings, stty, svlogd,
-\&        swapoff, swapon, switch_root, sync, sysctl, syslogd, tail, tar,
-\&        taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time, top, touch,
-\&        tr, traceroute, true, tty, ubimkvol, ubirmvol, ubirsvol,
+\&        free, fstrim, ftpd, ftpget, ftpput, getopt, getty, grep, groups,
+\&        gunzip, gzip, halt, hd, hdparm, head, hexdump, hostid, hostname,
+\&        httpd, hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod,
+\&        iostat, ip, ipaddr, iplink, iproute, iprule, iptunnel, kill,
+\&        killall, killall5, klogd, less, ln, lock, logger, login, logread,
+\&        ls, lsmod, lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs,
+\&        mkfifo, mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod,
+\&        mkswap, mktemp, modprobe, more, mount, mpstat, mv, nanddump,
+\&        nandwrite, nbd\-client, nc, netstat, nice, nohup, nslookup, passwd,
+\&        pgrep, pidof, ping, ping6, pivot_root, pkill, pmap, poweroff,
+\&        powertop, printf, ps, pstree, pwd, pwdx, rdate, readlink, reboot,
+\&        renice, reset, resize, rm, rmdir, rmmod, route, run\-parts, sed, seq,
+\&        setserial, sh, sha3sum, sleep, sort, start\-stop\-daemon, strings,
+\&        stty, svlogd, swapoff, swapon, switch_root, sync, sysctl, syslogd,
+\&        tail, tar, taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time,
+\&        top, touch, tr, traceroute, true, tty, ubimkvol, ubirmvol, ubirsvol,
 \&        ubiupdatevol, udhcpc, udhcpd, umount, uname, uniq, uptime, usleep,
 \&        vconfig, vi, watchdog, wc, wget, which, whois, xargs, yes, zcat
 .Ve
@@ -827,6 +827,38 @@ Upload a file to a \s-1FTP\s0 server
 \&        \-p,\-\-password PASS      Password
 \&        \-P,\-\-port NUM           Port
 .Ve
+.IP "\fBgetopt\fR" 4
+.IX Item "getopt"
+getopt [\s-1OPTIONS\s0] [\-\-] \s-1OPTSTRING\s0 \s-1PARAMS\s0
+.Sp
+.Vb 9
+\&        \-a,\-\-alternative                Allow long options starting with single \-
+\&        \-l,\-\-longoptions=LOPT[,...]     Long options to recognize
+\&        \-n,\-\-name=PROGNAME              The name under which errors are reported
+\&        \-o,\-\-options=OPTSTRING          Short options to recognize
+\&        \-q,\-\-quiet                      No error messages on unrecognized options
+\&        \-Q,\-\-quiet\-output               No normal output
+\&        \-s,\-\-shell=SHELL                Set shell quoting conventions
+\&        \-T,\-\-test                       Version test (exits with 4)
+\&        \-u,\-\-unquoted                   Don\*(Aqt quote output
+.Ve
+.Sp
+Example:
+.Sp
+O=`getopt \-l bb: \*(-- ab:c:: \*(L"$@\*(R"` || exit 1
+eval set \*(-- \*(L"$O\*(R"
+while true; do
+	case \*(L"$1\*(R" in
+	\-a)	echo A; shift;;
+	\-b|\-\-bb) echo \*(L"B:'$2'\*(R"; shift 2;;
+	\-c)	case \*(L"$2\*(R" in
+		"\*(L")	echo C; shift 2;;
+		*)	echo \*(R"C:'$2'"; shift 2;;
+		esac;;
+	\-\-)	shift; break;;
+	*)	echo Error; exit 1;;
+	esac
+done
 .IP "\fBgetty\fR" 4
 .IX Item "getty"
 getty [\s-1OPTIONS\s0] BAUD_RATE[,BAUD_RATE]... \s-1TTY\s0 [\s-1TERMTYPE\s0]
@@ -1825,6 +1857,17 @@ Get and possibly set the system date/time from a remote \s-1HOST\s0
 .Vb 2
 \&        \-s      Set the system date/time (default)
 \&        \-p      Print the date/time
+.Ve
+.IP "\fBreadlink\fR" 4
+.IX Item "readlink"
+readlink [\-fnv] \s-1FILE\s0
+.Sp
+Display the value of a symlink
+.Sp
+.Vb 3
+\&        \-f      Canonicalize by following all symlinks
+\&        \-n      Don\*(Aqt add newline
+\&        \-v      Verbose
 .Ve
 .IP "\fBreboot\fR" 4
 .IX Item "reboot"

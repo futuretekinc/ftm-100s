@@ -393,6 +393,7 @@ attempt to open util-linux/lib.a succeeded
 (util-linux/lib.a)dmesg.o
 (util-linux/lib.a)fdisk.o
 (util-linux/lib.a)fstrim.o
+(util-linux/lib.a)getopt.o
 (util-linux/lib.a)hexdump.o
 (util-linux/lib.a)hwclock.o
 (util-linux/lib.a)lspci.o
@@ -508,6 +509,7 @@ attempt to open util-linux/volume_id/built-in.o succeeded
 (coreutils/lib.a)nohup.o
 (coreutils/lib.a)printf.o
 (coreutils/lib.a)pwd.o
+(coreutils/lib.a)readlink.o
 (coreutils/lib.a)rm.o
 (coreutils/lib.a)rmdir.o
 (coreutils/lib.a)seq.o

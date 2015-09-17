@@ -2,7 +2,7 @@
  * Automatically generated C config: don't edit
  * Busybox version: 1.22.1
  */
-#define AUTOCONF_TIMESTAMP "2015-09-14 16:06:02 KST"
+#define AUTOCONF_TIMESTAMP "2015-09-17 10:41:46 KST"
 
 #define CONFIG_HAVE_DOT_CONFIG 1
 #define ENABLE_HAVE_DOT_CONFIG 1
@@ -388,7 +388,7 @@
 #define ENABLE_INSTALL_SH_APPLET_SCRIPT_WRAPPER 0
 #define IF_INSTALL_SH_APPLET_SCRIPT_WRAPPER(...)
 #define IF_NOT_INSTALL_SH_APPLET_SCRIPT_WRAPPER(...) __VA_ARGS__
-#define CONFIG_PREFIX "../target"
+#define CONFIG_PREFIX "../build/busybox-1.22.1"
 #define ENABLE_PREFIX 1
 #ifdef MAKE_SUID
 # define IF_PREFIX(...) __VA_ARGS__ "CONFIG_PREFIX"
@@ -1340,14 +1340,22 @@
 # define IF_PWD(...) __VA_ARGS__
 #endif
 #define IF_NOT_PWD(...)
-#undef CONFIG_READLINK
-#define ENABLE_READLINK 0
-#define IF_READLINK(...)
-#define IF_NOT_READLINK(...) __VA_ARGS__
-#undef CONFIG_FEATURE_READLINK_FOLLOW
-#define ENABLE_FEATURE_READLINK_FOLLOW 0
-#define IF_FEATURE_READLINK_FOLLOW(...)
-#define IF_NOT_FEATURE_READLINK_FOLLOW(...) __VA_ARGS__
+#define CONFIG_READLINK 1
+#define ENABLE_READLINK 1
+#ifdef MAKE_SUID
+# define IF_READLINK(...) __VA_ARGS__ "CONFIG_READLINK"
+#else
+# define IF_READLINK(...) __VA_ARGS__
+#endif
+#define IF_NOT_READLINK(...)
+#define CONFIG_FEATURE_READLINK_FOLLOW 1
+#define ENABLE_FEATURE_READLINK_FOLLOW 1
+#ifdef MAKE_SUID
+# define IF_FEATURE_READLINK_FOLLOW(...) __VA_ARGS__ "CONFIG_FEATURE_READLINK_FOLLOW"
+#else
+# define IF_FEATURE_READLINK_FOLLOW(...) __VA_ARGS__
+#endif
+#define IF_NOT_FEATURE_READLINK_FOLLOW(...)
 #undef CONFIG_REALPATH
 #define ENABLE_REALPATH 0
 #define IF_REALPATH(...)
@@ -2936,14 +2944,22 @@
 # define IF_MKFS_VFAT(...) __VA_ARGS__
 #endif
 #define IF_NOT_MKFS_VFAT(...)
-#undef CONFIG_GETOPT
-#define ENABLE_GETOPT 0
-#define IF_GETOPT(...)
-#define IF_NOT_GETOPT(...) __VA_ARGS__
-#undef CONFIG_FEATURE_GETOPT_LONG
-#define ENABLE_FEATURE_GETOPT_LONG 0
-#define IF_FEATURE_GETOPT_LONG(...)
-#define IF_NOT_FEATURE_GETOPT_LONG(...) __VA_ARGS__
+#define CONFIG_GETOPT 1
+#define ENABLE_GETOPT 1
+#ifdef MAKE_SUID
+# define IF_GETOPT(...) __VA_ARGS__ "CONFIG_GETOPT"
+#else
+# define IF_GETOPT(...) __VA_ARGS__
+#endif
+#define IF_NOT_GETOPT(...)
+#define CONFIG_FEATURE_GETOPT_LONG 1
+#define ENABLE_FEATURE_GETOPT_LONG 1
+#ifdef MAKE_SUID
+# define IF_FEATURE_GETOPT_LONG(...) __VA_ARGS__ "CONFIG_FEATURE_GETOPT_LONG"
+#else
+# define IF_FEATURE_GETOPT_LONG(...) __VA_ARGS__
+#endif
+#define IF_NOT_FEATURE_GETOPT_LONG(...)
 #define CONFIG_HEXDUMP 1
 #define ENABLE_HEXDUMP 1
 #ifdef MAKE_SUID

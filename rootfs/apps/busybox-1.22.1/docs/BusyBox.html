@@ -119,22 +119,22 @@ been enabled, more detailed usage information will also be available.</p>
         chroot, clear, cmp, cp, crond, crontab, cut, date, dd, delgroup,
         deluser, depmod, df, dhcprelay, diff, dirname, dmesg, dnsdomainname,
         du, dumpleases, echo, egrep, env, expr, false, fdisk, fgrep, find,
-        free, fstrim, ftpd, ftpget, ftpput, getty, grep, groups, gunzip,
-        gzip, halt, hd, hdparm, head, hexdump, hostid, hostname, httpd,
-        hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod, iostat,
-        ip, ipaddr, iplink, iproute, iprule, iptunnel, kill, killall,
-        killall5, klogd, less, ln, lock, logger, login, logread, ls, lsmod,
-        lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
-        mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod, mkswap,
-        mktemp, modprobe, more, mount, mpstat, mv, nanddump, nandwrite,
-        nbd-client, nc, netstat, nice, nohup, nslookup, passwd, pgrep,
-        pidof, ping, ping6, pivot_root, pkill, pmap, poweroff, powertop,
-        printf, ps, pstree, pwd, pwdx, rdate, reboot, renice, reset, resize,
-        rm, rmdir, rmmod, route, run-parts, sed, seq, setserial, sh,
-        sha3sum, sleep, sort, start-stop-daemon, strings, stty, svlogd,
-        swapoff, swapon, switch_root, sync, sysctl, syslogd, tail, tar,
-        taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time, top, touch,
-        tr, traceroute, true, tty, ubimkvol, ubirmvol, ubirsvol,
+        free, fstrim, ftpd, ftpget, ftpput, getopt, getty, grep, groups,
+        gunzip, gzip, halt, hd, hdparm, head, hexdump, hostid, hostname,
+        httpd, hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod,
+        iostat, ip, ipaddr, iplink, iproute, iprule, iptunnel, kill,
+        killall, killall5, klogd, less, ln, lock, logger, login, logread,
+        ls, lsmod, lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs,
+        mkfifo, mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod,
+        mkswap, mktemp, modprobe, more, mount, mpstat, mv, nanddump,
+        nandwrite, nbd-client, nc, netstat, nice, nohup, nslookup, passwd,
+        pgrep, pidof, ping, ping6, pivot_root, pkill, pmap, poweroff,
+        powertop, printf, ps, pstree, pwd, pwdx, rdate, readlink, reboot,
+        renice, reset, resize, rm, rmdir, rmmod, route, run-parts, sed, seq,
+        setserial, sh, sha3sum, sleep, sort, start-stop-daemon, strings,
+        stty, svlogd, swapoff, swapon, switch_root, sync, sysctl, syslogd,
+        tail, tar, taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time,
+        top, touch, tr, traceroute, true, tty, ubimkvol, ubirmvol, ubirsvol,
         ubiupdatevol, udhcpc, udhcpd, umount, uname, uniq, uptime, usleep,
         vconfig, vi, watchdog, wc, wget, which, whois, xargs, yes, zcat</pre>
 <p>
@@ -709,6 +709,36 @@ It also can be ran from tcpsvd:</p>
         -u,--username USER      Username
         -p,--password PASS      Password
         -P,--port NUM           Port</pre>
+</dd>
+<dt><strong><a name="getopt" class="item"><strong>getopt</strong></a></strong></dt>
+
+<dd>
+<p>getopt [OPTIONS] [--] OPTSTRING PARAMS</p>
+<pre>
+        -a,--alternative                Allow long options starting with single -
+        -l,--longoptions=LOPT[,...]     Long options to recognize
+        -n,--name=PROGNAME              The name under which errors are reported
+        -o,--options=OPTSTRING          Short options to recognize
+        -q,--quiet                      No error messages on unrecognized options
+        -Q,--quiet-output               No normal output
+        -s,--shell=SHELL                Set shell quoting conventions
+        -T,--test                       Version test (exits with 4)
+        -u,--unquoted                   Don't quote output</pre>
+<p>Example:</p>
+<p>O=`getopt -l bb: -- ab:c:: &quot;$@&quot;` || exit 1
+eval set -- &quot;$O&quot;
+while true; do
+	case &quot;$1&quot; in
+	-a)	echo A; shift;;
+	-b|--bb) echo &quot;B:'$2'&quot;; shift 2;;
+	-c)	case &quot;$2&quot; in
+		&quot;&quot;)	echo C; shift 2;;
+		*)	echo &quot;C:'$2'&quot;; shift 2;;
+		esac;;
+	--)	shift; break;;
+	*)	echo Error; exit 1;;
+	esac
+done</p>
 </dd>
 <dt><strong><a name="getty" class="item"><strong>getty</strong></a></strong></dt>
 
@@ -1676,6 +1706,16 @@ the new root file system</p>
 <pre>
         -s      Set the system date/time (default)
         -p      Print the date/time</pre>
+</dd>
+<dt><strong><a name="readlink" class="item"><strong>readlink</strong></a></strong></dt>
+
+<dd>
+<p>readlink [-fnv] FILE</p>
+<p>Display the value of a symlink</p>
+<pre>
+        -f      Canonicalize by following all symlinks
+        -n      Don't add newline
+        -v      Verbose</pre>
 </dd>
 <dt><strong><a name="reboot" class="item"><strong>reboot</strong></a></strong></dt>
 

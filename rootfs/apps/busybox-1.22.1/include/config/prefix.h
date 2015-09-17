@@ -1,1 +1,1 @@
-#define CONFIG_PREFIX "../target"
+#define CONFIG_PREFIX "../build/busybox-1.22.1"

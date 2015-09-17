@@ -81,22 +81,22 @@ COMMANDS
             chroot, clear, cmp, cp, crond, crontab, cut, date, dd, delgroup,
             deluser, depmod, df, dhcprelay, diff, dirname, dmesg, dnsdomainname,
             du, dumpleases, echo, egrep, env, expr, false, fdisk, fgrep, find,
-            free, fstrim, ftpd, ftpget, ftpput, getty, grep, groups, gunzip,
-            gzip, halt, hd, hdparm, head, hexdump, hostid, hostname, httpd,
-            hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod, iostat,
-            ip, ipaddr, iplink, iproute, iprule, iptunnel, kill, killall,
-            killall5, klogd, less, ln, lock, logger, login, logread, ls, lsmod,
-            lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs, mkfifo,
-            mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod, mkswap,
-            mktemp, modprobe, more, mount, mpstat, mv, nanddump, nandwrite,
-            nbd-client, nc, netstat, nice, nohup, nslookup, passwd, pgrep,
-            pidof, ping, ping6, pivot_root, pkill, pmap, poweroff, powertop,
-            printf, ps, pstree, pwd, pwdx, rdate, reboot, renice, reset, resize,
-            rm, rmdir, rmmod, route, run-parts, sed, seq, setserial, sh,
-            sha3sum, sleep, sort, start-stop-daemon, strings, stty, svlogd,
-            swapoff, swapon, switch_root, sync, sysctl, syslogd, tail, tar,
-            taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time, top, touch,
-            tr, traceroute, true, tty, ubimkvol, ubirmvol, ubirsvol,
+            free, fstrim, ftpd, ftpget, ftpput, getopt, getty, grep, groups,
+            gunzip, gzip, halt, hd, hdparm, head, hexdump, hostid, hostname,
+            httpd, hwclock, id, ifconfig, ifdown, ifup, inetd, init, insmod,
+            iostat, ip, ipaddr, iplink, iproute, iprule, iptunnel, kill,
+            killall, killall5, klogd, less, ln, lock, logger, login, logread,
+            ls, lsmod, lsof, lspci, lsusb, md5sum, mesg, mkdir, mkdosfs, mke2fs,
+            mkfifo, mkfs.ext2, mkfs.minix, mkfs.reiser, mkfs.vfat, mknod,
+            mkswap, mktemp, modprobe, more, mount, mpstat, mv, nanddump,
+            nandwrite, nbd-client, nc, netstat, nice, nohup, nslookup, passwd,
+            pgrep, pidof, ping, ping6, pivot_root, pkill, pmap, poweroff,
+            powertop, printf, ps, pstree, pwd, pwdx, rdate, readlink, reboot,
+            renice, reset, resize, rm, rmdir, rmmod, route, run-parts, sed, seq,
+            setserial, sh, sha3sum, sleep, sort, start-stop-daemon, strings,
+            stty, svlogd, swapoff, swapon, switch_root, sync, sysctl, syslogd,
+            tail, tar, taskset, tcpsvd, tee, telnet, telnetd, test, tftp, time,
+            top, touch, tr, traceroute, true, tty, ubimkvol, ubirmvol, ubirsvol,
             ubiupdatevol, udhcpc, udhcpd, umount, uname, uniq, uptime, usleep,
             vconfig, vi, watchdog, wc, wget, which, whois, xargs, yes, zcat
 
@@ -609,6 +609,27 @@ COMMAND DESCRIPTIONS
                 -u,--username USER      Username
                 -p,--password PASS      Password
                 -P,--port NUM           Port
+
+    getopt
+        getopt [OPTIONS] [--] OPTSTRING PARAMS
+
+                -a,--alternative                Allow long options starting with single -
+                -l,--longoptions=LOPT[,...]     Long options to recognize
+                -n,--name=PROGNAME              The name under which errors are reported
+                -o,--options=OPTSTRING          Short options to recognize
+                -q,--quiet                      No error messages on unrecognized options
+                -Q,--quiet-output               No normal output
+                -s,--shell=SHELL                Set shell quoting conventions
+                -T,--test                       Version test (exits with 4)
+                -u,--unquoted                   Don't quote output
+
+        Example:
+
+        O=`getopt -l bb: -- ab:c:: "$@"` || exit 1 eval set -- "$O" while
+        true; do case "$1" in -a) echo A; shift;; -b|--bb) echo "B:'$2'";
+        shift 2;; -c) case "$2" in "") echo C; shift 2;; *) echo "C:'$2'";
+        shift 2;; esac;; --) shift; break;; *) echo Error; exit 1;; esac
+        done
 
     getty
         getty [OPTIONS] BAUD_RATE[,BAUD_RATE]... TTY [TERMTYPE]
@@ -1476,6 +1497,15 @@ COMMAND DESCRIPTIONS
 
                 -s      Set the system date/time (default)
                 -p      Print the date/time
+
+    readlink
+        readlink [-fnv] FILE
+
+        Display the value of a symlink
+
+                -f      Canonicalize by following all symlinks
+                -n      Don't add newline
+                -v      Verbose
 
     reboot
         reboot [-d DELAY] [-n] [-f]
