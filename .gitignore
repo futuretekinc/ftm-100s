@@ -11,6 +11,8 @@
 #
 .*
 *.o
+*.lo
+*.la
 *.o.*
 *.a
 *.s
@@ -33,6 +35,9 @@ modules.builtin
 *.patch
 *.gcno
 *.map
+
+config.log
+config.status
 #
 # Top-level generic files
 #
@@ -241,3 +246,5 @@ linux-2.6.36/scripts/kconfig/conf
 linux-2.6.36/scripts/mod/mk_elfconfig
 linux-2.6.36/scripts/mod/modpost
 linux-2.6.36/usr/gen_init_cpio
+
+rootfs/apps/strongswan-5.3.3/*/Makefile
