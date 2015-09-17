@@ -32,6 +32,8 @@
 
 #define MAX_LINKS 32
 
+typedef unsigned short __kernel_sa_family_t;
+
 struct sockaddr_nl {
 	__kernel_sa_family_t	nl_family;	/* AF_NETLINK	*/
 	unsigned short	nl_pad;		/* zero		*/
