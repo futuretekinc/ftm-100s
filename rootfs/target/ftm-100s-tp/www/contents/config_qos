@@ -1,0 +1,40 @@
+<h2 class='entry-title' id='page_title'>APN / Qos</h2>
+<hr>
+<div name='f'>
+	<h3 id='section2_title'>Qos</h3>
+	<h4 id='message'><h4>
+	<div class='clearfix'>
+		<table>
+			<tbody>
+				<tr>
+					<th>Traffic Class</th>
+					<td>
+						<select id="trafficSelect">
+						    <option value="conversational">conversational</option>
+						    <option value="streaming">streaming</option>
+						    <option value="interactive">interactive</option>
+						    <option value="background">background</option>
+						    <option value="subscribed">subscribed value</option>
+						</select>	
+					</td>
+				</tr>
+				<tr>
+					<th>UpLink</th>
+					<td>
+						<input type="text" id="uplink" value="0">
+					</td>
+				</tr>
+				<tr>
+					<th>DnLink</th>
+					<td>
+						<input type="text" id="dnlink" value="0">
+					</td>
+				</tr>
+		 	</tbody>
+	 	</table>
+ 	</div>
+ 	<br>
+ 	<div>
+		<input  type='button' id='apply' value='Apply' onclick='setQOS();'>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<h2 class='entry-title' id='page_title'>System IOT</h2>
+<hr>
+<form name='system'>
+	<h3 id='section1_title'>Test Mode</h3>
+	<div class='clearfix'>
+		<label id='ota_label' for="OK">OTA Confirm : </label>
+		<input type='button' id='btn_ota' value='OK' onclick='onOTAButtonClick();'></p>
+		<label id='pppd_label' for="OK">PPPD Clear : </label>
+		<input type='button' id='btn_pppd' value='OK' onclick='onPPPDClick();'></p>
+		<label id='modem_label' for="OK">Modem Reset : </label>
+		<input type='button' id='btn_modem' value='OK' onclick='onModemClick();'>
+	</div>
+</form>

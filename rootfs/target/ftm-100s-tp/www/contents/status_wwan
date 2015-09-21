@@ -1,0 +1,36 @@
+<h2 class='entry-title'>WWAN</h2>
+<hr>
+<div>
+	<br>
+	<h3>장치 정보</h3>
+	<div class='clearfix'>
+		<table id='dev_info'>
+			<tbody>
+				<tr>
+					<td class='title right'>모델: </td>
+					<td class='left'></td>
+				</tr>
+				<tr>
+					<td class='title right'>제조사: </td>
+					<td class='left'></td>
+				</tr>
+				<tr>
+					<td class='title right'>일련번호: </td>
+					<td class='left'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<h3>무선 단말기 정보</h3>
+	<div class='clearfix'>
+		<table id='modem'>
+			<tbody>
+				<tr>
+					<td class='title column'>모델: </td>
+					<td class='right'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

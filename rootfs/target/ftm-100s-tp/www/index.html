@@ -1,0 +1,41 @@
+﻿<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>FutureTek - M2M</title>
+	<link rel="shortcut icon" href="/images/futuretek_ico.png">
+ 	<link rel="stylesheet" href="/styles/index.css">
+  <script type="text/javascript" src="/scripts/contents.js"></script>
+  <script type="text/javascript" src="/scripts/index.js"></script>
+	<script type="text/javascript" src="/scripts/md5.js"></script>
+</head>
+<body id='body' onload="onLoad();" hidden>
+	<div id="box" class="clearfix">
+		<div class="contents">
+			<h1 class="headline" id='model'>FTM-100S</h1>
+			<br>
+			<form name="login" method="post" action="#">
+				<table>
+					<tbody>
+						<tr>
+					    <td id='title_userid' class="title right">
+					    	User ID :
+					    </td>
+					    <td><input id="userid" name="userid" type="text" value="" onkeydown="onKeyDown(this, document.login.passwd.focus);"/></td>
+						</tr>
+						<tr>
+				    	<td id='title_passwd' class="title right">
+				    		Password :
+							</td>
+				    	<td><input id="passwd" name="passwd" type="password" value="" onkeydown="onKeyDown(this, onClickLoginButton);"/></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<input class='center' type="button" value="Login" onclick="onClickLoginButton();">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

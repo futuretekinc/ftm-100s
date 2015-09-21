@@ -1,0 +1,43 @@
+<h2 class='entry-title' id='page_title'>Network Configuration</h2>
+<hr>
+<form name='f'>
+	<h3 id='section1_title'>LAN</h3>
+	<div class='clearfix'>
+		<table id='eth'>
+			<tbody>
+				<tr >
+					<td class='title center' id='index1'></td>
+					<td class='title center' id='name'>Name</td>
+					<td class='title center' id='ipaddr1'>IP Address</td>
+					<td class='title center' id='netmask'>Subnet Mask</td>
+				</tr>
+		 	</tbody>
+	 	</table>
+ 	</div>
+	<!--
+	<br>
+	<h3 id='section2_title'>Domain Name Server</h3>
+	<div class='clearfix'>
+		<table>
+			<tbody>
+				<tr>
+					<td class='title center'><p class='index' id='index2'></p></td>
+					<td class='title center'><p class='ipaddr' id='ipaddr2'>IP Address</p></td>
+				</tr>
+				<tr>
+					<td class='index'>1</td>
+					<td class='ipaddr'><input class='ipaddr' id='dns1' name='dns' value=''></td>
+				</tr>
+				<tr>
+					<td class='index'>2</td>
+					<td class='ipaddr'><input class='ipaddr' id='dns2' name='dns' value=''></td>
+				</tr>
+		 	</tbody>
+	 	</table>
+ 	</div>
+ 	-->
+ 	<div>
+		<input  type='button' id='apply' value='Apply and system reboot' onclick='onApply()'>
+	</div>
+</form>
+

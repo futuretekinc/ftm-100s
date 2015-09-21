@@ -1,5 +1,5 @@
 #!/bin/sh
-PRODUCT=ftm-100t
+PRODUCT=ftm-100s-tp
 KERNEL_VERSION=2.6.36
 COMMON_PATH=$PWD/target/common/$KERNEL_VERSION
 ROOT=$PWD/_rootfs
@@ -110,6 +110,14 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 				mkdir $ROOT/overlay
 			fi
 		;;
+		ftm-100s-tp)
+			cp -rf target/ftm-100s-tp/* $ROOT
+			cp -rf apps/target/* $ROOT
+			if [ ! -e $ROOT/overlay ]
+			then
+				mkdir $ROOT/overlay
+			fi
+		;;
 		ftm-100t)
 			cp -rf target/ftm-100t/* $ROOT
 			cp -rf apps/target/* $ROOT
@@ -118,16 +126,17 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 				mkdir $ROOT/overlay
 			fi
 		;;
-		ftm-100s-tp)
-			cp -rf target/ftm-100s/* $ROOT
-			cp -rf apps/target/* $ROOT
-			cp -rf target/tpgw/* $ROOT
-			if [ ! -e $ROOT/overlay ]
-			then
-				mkdir $ROOT/overlay
-			fi
 
-		;;
+#		ftm-100s-tp)
+#			cp -rf target/ftm-100s/* $ROOT
+#			cp -rf apps/target/* $ROOT
+#			cp -rf target/tpgw/* $ROOT
+#			if [ ! -e $ROOT/overlay ]
+#			then
+#				mkdir $ROOT/overlay
+#			fi
+#
+#		;;
 		ftm-100s-origin)
 			cp -rf target/origin/2.6.36/* $ROOT
 			cp -rf apps/target/* $ROOT
