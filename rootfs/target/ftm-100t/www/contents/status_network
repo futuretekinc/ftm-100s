@@ -1,0 +1,89 @@
+<h2 class='entry-title' id='page_title'>Network Status</h1>
+<hr>
+<div>
+	<h3 id='section1_title'>WWAN</h3>
+	<div class='clearfix'>
+		<table id='wwan'>
+			<tbody>
+				<tr>
+					<td class='title center'><p class='ifname' id='name1'>Name</p></td>
+					<td class='title center'><p class='ipaddr' id='ipaddr1'>IP Address</p></td>
+					<!-- <td class='title center'><p class='ipaddr' id='netmask1'>Subnet Mask</p></td> -->
+					<!-- <td class='title center'><p class='ipaddr' id='ptpaddr1'>P-t-P</p></td> -->
+				</tr>	
+			</tbody>
+		</table>
+	</div>
+	<br>
+
+	<h3 id='section2_title'>LAN</h3>
+	<div class='clearfix'>
+		<table id='lan'>
+			<tbody>
+				<tr>
+					<td class='title center'><p class='ifname' id='name2'>Name</p></td>
+					<td class='title center'><p class='ipaddr' id='ipaddr2'>IP Address</p></td>
+					<td class='title center'><p class='ipaddr' id='netmask2'>Subnet Mask</p></td>
+					<td class='title center'><p class='macaddr' id='macaddr2'>MAC Address</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h3 id='section3_title'>LTE</h3>
+	<h4 id='message'><h4>
+	<div class='clearfix'>
+			<table border="1" style="border: 1px none #ccc; border-collapse: collapse;">
+					<tbody>
+							<tr>
+									<td class='title center'><p id='usim_label'>USIM Status</p></td>
+									<td class='title center'><p id='cnum_label'>Phone Number</p></td>
+							</tr>
+							<tr>
+									<td class='title center'><p id='usim_status'>No Service</p></td>
+									<td class='title center'><p id='cnum_value'></p></td>
+							</tr>
+					</tbody>
+			</table>
+	</div>
+
+	<div class='clearfix'>
+                <table id='ppp_data' border="1" style="border: 1px none #ccc; border-collapse: collapse;">
+                        <tbody>
+                                <tr>
+                                        <td class='title center'><p id='rx'>rx</p></td>
+                                        <td class='title center'><p id='tx'>tx</p></td>
+                                        <td class='title center'><p id='link'>link</p></td>
+                                </tr>
+				<tr>
+                                        <td class='title center'><p class='rx' id='rx_data'>0</p></td>
+                                        <td class='title center'><p class='tx' id='tx_data'>0</p></td>
+                                        <td class='title center'>
+					<p class='link' id='link_url'>
+						<a href=https://login.olleh.com/wamui/AthWeb.do?urlcd=https://my.olleh.com:444/URL_REDIRECT.jsp%3fu=%252Fusage%252FTelTotalUseTime.action target="_blank" id='usage'>link</a>
+						<label id='usage_label'> (May be different from the actual amount of data.)</label>
+					</p></td>
+                                </tr>
+                        </tbody>
+                </table>
+        </div>
+	
+	<div style="margin: 0 auto;">
+		<div class='clearfix' style="float:left;">
+			<table id='wcdma' border="1" style="border: 1px none #ccc; border-collapse: collapse;">
+				<tbody>
+					<tr>
+						<td class='title center' colspan="2" id="modem_state">state</td>
+					</tr>
+					<tr>
+						<td class='title center'><p>KEY</p></td>
+						<td class='title center'><p>VALUE</p></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br>
+
+	
+</div>

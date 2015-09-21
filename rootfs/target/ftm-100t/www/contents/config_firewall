@@ -1,0 +1,34 @@
+<h2 class='entry-title' id='page_title'>Firewall Configuration</h2>
+<hr>
+<form name='f'>
+	<h3 id='section1_title'>Access Control Configuration</h3>
+	<div class='clearfix'>
+		<div id='enable'>
+			<input type='checkbox' name='enable'>Enable
+		</div>
+	 	<table id='control_table'>
+			<tbody>
+				<tr>
+					<td class='title center'><p class='index' id='title_index'>Index</p></td>
+					<td class='title center'><p class='addrtype' id='title_type'>Type</p></td>
+					<td class='title center'><p class='ipaddr' id='title_sip'>Source IP Address</p></td>
+					<td class='title center'><p class='protocol' id='title_protocol'>Protocol</p></td>
+					<td class='title center'><p class='port' id='title_dport'>Dest. Port</p></td>
+					<td class='title center'>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class='center'>-</td>
+					<td class='center'>-</td>
+					<td class='center'>-</td>
+					<td class='center'>-</td>
+					<td class='center'>-</td>
+					<td class='center'><input type='button' id='btn_add' value='Add' onclick='onAddHost();'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div>
+		<input type='button' id='btn_apply' value='Apply' onclick='onApply();'>
+	</div>
+</form>

@@ -1,0 +1,68 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 15971 (0x3e63)
+        Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=KR, ST=Seoul, L=Songpa-gu, O=Oullim Information Technology, OU=TRUiN Team, CN=TRUiN/emailAddress=truin@oullim.co.kr
+        Validity
+            Not Before: Jul 21 05:52:57 2014 GMT
+            Not After : Jul 18 05:52:57 2024 GMT
+        Subject: C=KR, ST=Seoul, L=Songpa-gu, O=Oullim Information Technology, OU=TRUiN Team, CN=147577ae06b00101/emailAddress=truin@oullim.co.kr
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:fd:78:a8:d1:2d:00:ff:e4:89:a9:93:91:70:e2:
+                    71:23:07:9e:25:5c:0b:ca:86:4e:41:9c:35:2f:7b:
+                    5c:a3:b1:5b:60:67:12:26:61:be:73:0c:f6:7e:22:
+                    ca:d1:14:af:fe:57:9d:57:61:b4:f9:02:18:96:ea:
+                    4f:83:ff:5c:83:7a:0a:b2:bf:ff:73:b7:78:ab:78:
+                    6f:bc:aa:17:2d:6c:7a:02:2f:b5:1b:e3:c8:e1:4a:
+                    3a:58:8e:79:dc:aa:3c:0c:a1:92:32:ea:98:24:25:
+                    68:c4:c2:78:31:16:51:3b:b5:49:6a:f5:f6:61:2b:
+                    b1:52:69:0e:22:d6:47:a3:43
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                0F:D2:9E:70:EE:98:3A:C2:39:0B:BF:36:EF:3A:23:DE:47:ED:1E:E1
+            X509v3 Authority Key Identifier: 
+                keyid:10:07:67:19:1C:F3:C5:4F:52:ED:48:E3:97:BE:93:0E:06:EF:B2:C1
+                DirName:/C=KR/ST=Seoul/L=Songpa-gu/O=Oullim Information Technology/OU=TRUiN Team/CN=TRUiN/emailAddress=truin@oullim.co.kr
+                serial:DE:27:C9:85:17:D6:F9:15
+    Signature Algorithm: sha1WithRSAEncryption
+        24:00:f6:72:52:fa:74:bf:ca:01:80:0c:d0:4f:0e:72:2d:45:
+        8d:98:90:9a:59:41:52:40:59:0a:87:7f:28:95:e9:00:e5:d3:
+        e1:9f:04:65:cc:10:7e:1c:7e:69:48:58:a8:84:0e:6a:d9:3a:
+        8d:48:c8:4a:3d:31:d5:c5:54:b3:49:2a:e5:3e:89:bb:3a:a5:
+        f1:2f:2e:1f:a4:40:8a:8d:17:09:dc:12:c5:5d:cb:94:2f:60:
+        be:23:6b:50:cd:09:d8:88:0d:09:2f:3a:43:64:61:19:7d:60:
+        da:68:2d:7c:97:0a:07:c7:eb:18:76:11:12:b1:b5:b8:f4:c7:
+        a4:77
+-----BEGIN CERTIFICATE-----
+MIID/TCCA2agAwIBAgICPmMwDQYJKoZIhvcNAQEFBQAwgaExCzAJBgNVBAYTAktS
+MQ4wDAYDVQQIEwVTZW91bDESMBAGA1UEBxMJU29uZ3BhLWd1MSYwJAYDVQQKEx1P
+dWxsaW0gSW5mb3JtYXRpb24gVGVjaG5vbG9neTETMBEGA1UECxMKVFJVaU4gVGVh
+bTEOMAwGA1UEAxMFVFJVaU4xITAfBgkqhkiG9w0BCQEWEnRydWluQG91bGxpbS5j
+by5rcjAeFw0xNDA3MjEwNTUyNTdaFw0yNDA3MTgwNTUyNTdaMIGsMQswCQYDVQQG
+EwJLUjEOMAwGA1UECBMFU2VvdWwxEjAQBgNVBAcTCVNvbmdwYS1ndTEmMCQGA1UE
+ChMdT3VsbGltIEluZm9ybWF0aW9uIFRlY2hub2xvZ3kxEzARBgNVBAsTClRSVWlO
+IFRlYW0xGTAXBgNVBAMTEDE0NzU3N2FlMDZiMDAxMDExITAfBgkqhkiG9w0BCQEW
+EnRydWluQG91bGxpbS5jby5rcjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA
+/Xio0S0A/+SJqZORcOJxIweeJVwLyoZOQZw1L3tco7FbYGcSJmG+cwz2fiLK0RSv
+/ledV2G0+QIYlupPg/9cg3oKsr//c7d4q3hvvKoXLWx6Ai+1G+PI4Uo6WI553Ko8
+DKGSMuqYJCVoxMJ4MRZRO7VJavX2YSuxUmkOItZHo0MCAwEAAaOCATUwggExMAkG
+A1UdEwQCMAAwLAYJYIZIAYb4QgENBB8WHU9wZW5TU0wgR2VuZXJhdGVkIENlcnRp
+ZmljYXRlMB0GA1UdDgQWBBQP0p5w7pg6wjkLvzbvOiPeR+0e4TCB1gYDVR0jBIHO
+MIHLgBQQB2cZHPPFT1LtSOOXvpMOBu+ywaGBp6SBpDCBoTELMAkGA1UEBhMCS1Ix
+DjAMBgNVBAgTBVNlb3VsMRIwEAYDVQQHEwlTb25ncGEtZ3UxJjAkBgNVBAoTHU91
+bGxpbSBJbmZvcm1hdGlvbiBUZWNobm9sb2d5MRMwEQYDVQQLEwpUUlVpTiBUZWFt
+MQ4wDAYDVQQDEwVUUlVpTjEhMB8GCSqGSIb3DQEJARYSdHJ1aW5Ab3VsbGltLmNv
+LmtyggkA3ifJhRfW+RUwDQYJKoZIhvcNAQEFBQADgYEAJAD2clL6dL/KAYAM0E8O
+ci1FjZiQmllBUkBZCod/KJXpAOXT4Z8EZcwQfhx+aUhYqIQOatk6jUjISj0x1cVU
+s0kq5T6Juzql8S8uH6RAio0XCdwSxV3LlC9gviNrUM0J2IgNCS86Q2RhGX1g2mgt
+fJcKB8frGHYRErG1uPTHpHc=
+-----END CERTIFICATE-----

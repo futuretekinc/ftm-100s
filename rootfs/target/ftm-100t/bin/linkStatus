@@ -1,0 +1,63 @@
+#!/bin/sh
+
+getLinkStatus()
+{
+	sw_cfg -c RTK_PORT_PHY_STATUS_GET -s
+
+	sw_cfg -c RTK_PORT_PHY_STATUS_GET -f port -v 0
+        link1=`sw_cfg -c RTK_PORT_PHY_STATUS_GET -e | awk '/linkStatus/{ print $3 }'`
+                                                                   
+        sw_cfg -c RTK_PORT_PHY_STATUS_GET -f port -v 1
+	link2=`sw_cfg -c RTK_PORT_PHY_STATUS_GET -e | awk '/linkStatus/{ print $3 }'`
+
+        sw_cfg -c RTK_PORT_PHY_STATUS_GET -f port -v 2
+        link3=`sw_cfg -c RTK_PORT_PHY_STATUS_GET -e | awk '/linkStatus/{ print $3 }'`
+                                                                   
+        sw_cfg -c RTK_PORT_PHY_STATUS_GET -f port -v 3
+        link4=`sw_cfg -c RTK_PORT_PHY_STATUS_GET -e | awk '/linkStatus/{ print $3 }'`
+        
+        result=`echo $link1 $link2 $link3 $link4`
+	#echo $result
+        if [ "$result" == "0x0 0x0 0x0 0x0" ]
+        then                  
+                return 0
+        else                 
+                return 1
+        fi       
+}       
+
+getLinkStatus
+isLink=$?
+
+if [ $isLink == 0 ]
+then
+#	echo link off
+	echo 'at*skt*gmmpmmsp=2,0,1,2' > /dev/ttyACM0
+else 
+#	echo link on
+	echo 'at*skt*gmmpmmsp=2,0,1,1' > /dev/ttyACM0
+fi
+                 
+while [ 0 ]
+do
+        getLinkStatus
+	if [ $? -eq 0 ]
+       	then
+		if [ $isLink == 1 ]
+		then
+#			echo x
+			echo 'at*skt*gmmpmmsp=2,0,1,2' > /dev/ttyACM0
+		fi
+
+		isLink=0
+	else
+		if [ $isLink == 0 ]
+		then
+#			echo o
+			echo 'at*skt*gmmpmmsp=2,0,1,1' > /dev/ttyACM0
+		fi
+		
+		isLink=1
+       	fi
+        sleep 1
+done      

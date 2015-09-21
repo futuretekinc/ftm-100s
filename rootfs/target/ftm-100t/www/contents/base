@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko;en;us">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>FutureTek | M2M</title>
+
+	<meta name="author" content="FutureTek, Inc.">
+	<meta name="description" content="FTM50: ...">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="shortcut icon" href="/images/futuretek_ico.png">
+	<link rel="stylesheet" href="/styles/ftm-50.css">
+	<!--- ###SCRIPT### --->
+  <script type="text/javascript" src="/scripts/contents.js"></script>
+  <script type="text/javascript" src="/scripts/md5.js"></script>
+  <script type="text/javascript" src="/scripts/spin.min.js"></script>
+  </head>
+
+<body id='body' onload="onMainLoad();" hidden>
+	<header>
+	<section id="global-nav">
+		<nav>
+			<div class="constrain">
+				<ul class="links">
+					<li class="dropdown"><a onclick="onLogout();" id='logout'>Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+	</header>
+	
+	<div id="container">
+		<div id="logo-events" class="constrain clearfix">
+					<h2 class="logo"><a href="/cgi-bin/page?cmd=status_network" title="FTM-50">FTM-50</a></h2>
+		</div>
+	</div>
+	<div id="content-wrapper" class="clearfix row">
+		<div class="content-right twelve columns">
+			<div id="content">
+			<!--- ###CONTENT### --->
+			</div>
+			<div id="sidebar">
+				<aside class="menu">
+					<h3 class="menu-title" id='status'>Status</h3>
+					<ul>
+						<li><a  id='status_network' onclick="onLoadPage('status_network');"> Network</a></li>
+						<li><a  id='status_dhcp' onclick="onLoadPage('status_dhcp');">  DHCP</a></li>
+						<li><a  id='status_syslog' onclick="onLoadPage('status_syslog');">  System Log</a></li>
+					</ul>
+					<h3 class="menu-title" id='config'>Configuration</h3>
+					<ul>
+						<li><a  id='config_network' onclick="onLoadPage('config_network');">  Network</a></li>
+						<li><a  id='config_wifi' onclick="onLoadPage('config_wifi');">  WIFI</a></li>
+						<li><a  id='config_dhcp' onclick="onLoadPage('config_dhcp');">  DHCP</a></li>
+					
+						<li><a	id='config_ssl' onclick="onLoadPage('config_ssl');">  SSL</a></li>
+						
+						<li><a  id='config_firewall' onclick="onLoadPage('config_firewall');">  Firewall</a></li>
+						<li><a  id='config_apn' onclick="onLoadPage('config_apn');">  APN</a></li>
+						<!-- <li><a  id='config_qos' onclick="onLoadPage('config_qos');">  Qos</a></li> -->
+						
+					</ul>
+					<h3 class="menu-title" id='system'>System</h3>
+					<ul>
+						<li><a  id='system_profile' onclick="onLoadPage('system_profile');">  Profile</a></li>
+						<li><a  id='system_firmware' onclick="onLoadPage('system_firmware');">  Firmware</a></li>
+						<li><a  id='system_configmgmt' onclick="onLoadPage('system_configmgmt');">  Config Management</a></li>
+						<li><a  id='system_reboot' onclick="onLoadPage('system_reboot');">  Reboot</a></li>
+						<!-- <li><a  id='system_ota' onclick="onLoadPage('system_ota');"> IOT</a></li> -->
+					</ul>
+				</aside>
+			</div>
+		</div>
+	</div>
+	<footer class="clearfix simple">
+		<div class="constrain">
+			<div id="legal">
+				<p class="copyright">
+						Copyright 2013 <a href="http://www.future-tek.co.kr">FutureTek, Inc</a>.<br>
+					</p>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
