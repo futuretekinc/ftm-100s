@@ -3,6 +3,7 @@ var	msgApplyFailed = 1;
 var msgConfirm = 2;
 var	msg;
 
+var spinner;
 
 function onInit()
 {
@@ -21,6 +22,7 @@ function onInit()
 
 function onLoad()
 {
+	spinner = new Spinner();
 	onInit();
 	loadApiKey();
 }
@@ -62,9 +64,11 @@ function loadApiKey()
 						apikey_tf.value = "";
 					}
 					document.getElementById('message').innerHTML="";
+					loadCloudStatus();
             	} else {
             		// error
             		alert("Please Refresh..");
+					loadCloudStatus();
             	}
             }
             catch(e)
@@ -78,6 +82,7 @@ function loadApiKey()
 
 function setApiKey()
 {	
+	spinner.spin(document.getElementById('body'));
 	if(typeof window.ActiveXObject != 'undefined') {
 		xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
 	} else {
@@ -98,9 +103,126 @@ function setApiKey()
 			{
 				result = xmlhttp.responseXML.documentElement.getElementsByTagName("res")[0];
 				if (result.firstChild.nodeValue == 'OK') {
+					spinner.stop();
 					alert("apikey : OK");
 				} else {
+					spinner.stop();
 					alert("apikey : ERROR");
+				}
+			}
+			catch(e)
+			{
+
+			}
+		}
+	}
+	xmlhttp.send();
+}
+
+function loadCloudStatus()
+{
+	
+	if(typeof window.ActiveXObject != 'undefined') {
+		xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
+	} else {
+		xmlhttp = (new XMLHttpRequest());
+	}
+	
+	var data = "/cgi-bin/apikey?cmd=status";
+	
+	xmlhttp.open( "GET", data, true );
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
+	xmlhttp.onreadystatechange = function()
+	{
+		if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
+		{
+			try
+			{
+				result = xmlhttp.responseXML.documentElement.getElementsByTagName("text")[0];
+				if (result.firstChild.nodeValue == 'running') {
+					document.getElementById("cloud_status").innerHTML = "Running";
+				} else {
+					document.getElementById("cloud_status").innerHTML = "Stop";
+				}
+			}
+			catch(e)
+			{
+
+			}
+		}
+	}
+	xmlhttp.send();
+}
+
+function cloudStart()
+{
+	if (document.getElementById("cloud_status").innerHTML == "Running")
+	{
+		alert("클아우드가 이미 실행중입니다.");
+		return;
+	}
+	spinner.spin(document.getElementById('body'));
+
+	if(typeof window.ActiveXObject != 'undefined') {
+		xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
+	} else {
+		xmlhttp = (new XMLHttpRequest());
+	}
+	
+	var data = "/cgi-bin/apikey?cmd=cloud&status=start";
+	
+	xmlhttp.open( "GET", data, true );
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
+	xmlhttp.onreadystatechange = function()
+	{
+		if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
+		{
+			try
+			{
+				result = xmlhttp.responseXML.documentElement.getElementsByTagName("res")[0];
+				if (result.firstChild.nodeValue == 'OK') {
+					spinner.stop();
+					document.getElementById("cloud_status").innerHTML = "Running";
+					alert("Cloud Start");
+				} else {
+					spinner.stop();
+					alert("Cloud Start Error");
+				}
+			}
+			catch(e)
+			{
+
+			}
+		}
+	}
+	xmlhttp.send();
+}
+
+function cloudStop()
+{
+	
+	if(typeof window.ActiveXObject != 'undefined') {
+		xmlhttp = (new ActiveXObject("Microsoft.XMLHTTP"));
+	} else {
+		xmlhttp = (new XMLHttpRequest());
+	}
+	
+	var data = "/cgi-bin/apikey?cmd=cloud&status=stop";
+	
+	xmlhttp.open( "GET", data, true );
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=euc-kr");
+	xmlhttp.onreadystatechange = function()
+	{
+		if( (xmlhttp.readyState == 4) && (xmlhttp.status == 200) )
+		{
+			try
+			{
+				result = xmlhttp.responseXML.documentElement.getElementsByTagName("res")[0];
+				if (result.firstChild.nodeValue == 'OK') {
+					document.getElementById("cloud_status").innerHTML = "Stop";
+					alert("Cloud Stop");
+				} else {
+					alert("Cloud Stop Error");
 				}
 			}
 			catch(e)
