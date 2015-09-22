@@ -119,6 +119,7 @@ function onMainLoad()
 	document.getElementById('config_wifi').innerHTML = 'WIFI';
 	document.getElementById('config_firewall').innerHTML = '접근제어';
 	document.getElementById('config_apn').innerHTML = 'APN';
+	document.getElementById('config_thingplus').innerHTML = 'ThingPlus';
 	document.getElementById('config_ssl').innerHTML = 'SSL';
 	document.getElementById('system_profile').innerHTML = '정보';
 	document.getElementById('system_firmware').innerHTML = '펌웨어';
