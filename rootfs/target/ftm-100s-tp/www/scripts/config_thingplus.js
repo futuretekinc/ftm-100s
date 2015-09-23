@@ -104,10 +104,10 @@ function setApiKey()
 				result = xmlhttp.responseXML.documentElement.getElementsByTagName("res")[0];
 				if (result.firstChild.nodeValue == 'OK') {
 					spinner.stop();
-					alert("apikey : OK");
+					alert("API KEY가 적용되었습니다.\nThingplus 사이트에서 게이트웨이를 등록 하십시오.");
 				} else {
 					spinner.stop();
-					alert("apikey : ERROR");
+					alert("API KEY : ERROR");
 				}
 			}
 			catch(e)

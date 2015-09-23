@@ -24,7 +24,7 @@
 	<div>
 		<h3>Cloud Synchronization Status</h3>
 		<h3 id="cloud_status" style="color:red;"></h3>
-		<input  type='button' id='apply' value='cloudstop' onclick='cloudStop();'>
-		<input  type='button' id='apply' value='cloudestart' onclick='cloudStart();'>
+		<input  type='button' id='apply' value='STOP' onclick='cloudStop();'>
+		<input  type='button' id='apply' value='START' onclick='cloudStart();'>
 	</div>
 </div>
