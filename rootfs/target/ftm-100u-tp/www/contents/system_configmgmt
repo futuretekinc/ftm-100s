@@ -1,0 +1,30 @@
+<h2 class='entry-title' id='page_title'>System Config Management</h2>
+<hr>
+<h3 id='section1_title'>Config Management</h3>
+<div class='clearfix'>
+	<table id='configmgmt' border="1" style="border: 1px none #ccc; border-collapse: collapse;">
+		<tbody>
+			<tr>
+				<td>
+					<input type='button' id='btn_backup' value='Config File Backup' onclick='configBackup();' style="width:180px">
+				</td>
+				<td class='left' id='config_backup'>: description</td>
+			</tr>
+			<tr>
+				<td>
+					<form id="upload_form" method="post" action="upload.cgi" enctype="multipart/form-data">
+					  <input id="btn_file" type="file" name="binary">
+					  <br><input id='btn_restore' type="button" value="UPLOAD FILE" onclick="configRestore();">
+					</form>
+				</td>
+				<td class='left' id='config_restore'>: description</td>
+			</tr>
+			<tr>
+				<td>
+					<input type='button' id='btn_init' value='Restore Initial Settings' onclick='systemInit();' style="width:180px">
+				</td>
+				<td class='left' id='config_init'>: description</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

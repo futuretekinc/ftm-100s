@@ -1,0 +1,23 @@
+#!/bin/sh /etc/rc.common
+# (C) 2008 openwrt.org
+
+START=97
+
+start() {
+	export MODEL=FTM-100S
+
+	if [ ! -e /opt/thingplus.sh ]
+	then
+		cd /opt
+		tar xvf /usr/install/thingplus/thingplus.tar
+	fi
+	/opt/thingplus.sh	start
+}
+
+stop() {
+	/opt/thingplus.sh	stop
+}
+
+restart() {
+	/opt/thingplus.sh	restart
+}
