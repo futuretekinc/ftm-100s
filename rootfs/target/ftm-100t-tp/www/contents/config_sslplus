@@ -1,0 +1,37 @@
+<h2 class='entry-title' id='page_title'>SSL Configuration</h2>
+<hr>
+<form name='f'>
+	<h3 id='section1_title'>SSL Client</h3>
+	<div class='clearfix'>
+		<div id='enable' >
+			<input type='checkbox' name='enable'>	
+			Enable
+		</div>
+		<div>
+			<table id='ssl'>
+				<tbody>
+					<tr>
+						<td class='title right' id='userid'>User ID: </td>
+						<td><input class='userid' name='userid'></td>
+					</tr>
+					<tr>
+						<td class='title right' id='passwd'>Password: </td>
+						<td><input type='password' class='passwd' name='passwd'></td>
+					</tr>
+					<tr>
+						<td class='title right' id='confirm_passwd'>Confirm Password: </td>
+						<td><input type='password' class='passwd' name='confirm_passwd'></td>
+					</tr>
+					<tr>
+						<td class='title right' id='vpnip'>VPN IP: </td>
+						<td><input class='ipaddr' name='vpn_ip'></td>
+					</tr>	
+				</tbody>
+			</table>
+		</div>
+	</div>	
+	<br>
+	<div>
+		<input  type='button' value='Apply' id='apply' onclick='onApply()'>
+	</div>
+</form>

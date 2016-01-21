@@ -1,0 +1,112 @@
+body {
+		font: 15px/22.5px "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+		text-align:center;
+}
+
+/*
+#box	
+{
+	background-image: linear-gradient(to right, #efefef, #f3f3f3);
+	-webkit-box-shadow: -3px 0 5px -3px rgba(1, 1, 1, 0.87), 3px 0 5px -3px rgba(1, 1, 1, 0.87);
+	box-shadow: -3px 0 5px -3px rgba(1, 1, 1, 0.87), 3px 0 5px -3px rgba(1, 1, 1, 0.87);
+	padding: 20px 0;
+	border-top: 1px solid #333;
+	border-radius: 10px 10px 10px 10px;
+	position: absolute;
+
+	left: 35%;
+	top: 30%;
+	margin-left: -50px;
+	margin-top: -75px;
+}
+*/
+#box
+{
+	margin: 0 auto;
+	width:450px;
+	background-color:#f3f3f3; 
+	border-top: 1px solid #333333;
+	border-left:1px solid #333333; 
+	border-right:1px solid #333333;
+	border-bottom:1px solid #333333;
+	border-radius: 10px 10px 10px 10px;
+	padding: 20px 0;
+	float:left;
+
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -250px;
+	margin-top: -250px;
+}
+
+.headline {
+	margin: auto;
+	width: 100%;
+	text-align: center;
+	/*background-image: linear-gradient(to right, #efefef, #f3f3f3);*/
+	text-shadow: 0 1px 0 #ffffff;		
+	font-weight: 700;
+	font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
+}
+
+.contents {
+	margin: auto;
+	width: 90%;
+	font-size: 100%;
+}
+
+.contents td.left {
+	text-align: left;	
+}
+
+.contents td.right {
+	text-align: right;	
+}
+
+.contents td.center {
+	text-align: center;	
+}
+
+.contents input.center {
+	text-align: center;	
+}
+
+.contents td.title {
+	font-weight: bold;	
+	min-width: 100px;
+}
+
+.contents #devid {
+	color: #000;
+	width: 50%;
+	min-width: 200px;
+	margin: 5px 0 10px 0;
+	padding: 8px 12px;
+	text-align:left;
+}
+
+.contents #userid, #passwd {
+	color: #000;
+	/*width: 50%;*/
+	min-width: 200px;
+	margin: 5px 0 10px 0;
+	padding: 8px 12px;
+	background: #FFF;
+	border: 1px solid rgba(192,192,192,0.49);
+	border-radius: 2px;
+	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.17);
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0.17);
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+.contents input[type=button] {
+	margin:auto;
+	width: 140px;
+	margin: 5px 120px 10px 120px;
+	padding: 8px 10px;
+	vertical-align: baseline;
+	-webkit-appearance: button;
+	cursor: pointer;
+}

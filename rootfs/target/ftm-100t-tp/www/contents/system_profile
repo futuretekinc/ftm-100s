@@ -1,0 +1,67 @@
+<h2 class='entry-title' id='page_title'>System Informations</h2>
+<hr>
+<form name='f'>
+	<h3 id='section1_title'>Device Informations</h3>
+	<h4 id='message'><h4>
+	<div class='clearfix'>
+	 	<table id='profile'>
+			<tbody>
+				<tr>
+					<td class='title right'><p id='title_model'>Model: </p></td>
+					<td class='left' id='model'>UNDEFINED</td>
+				</tr>
+				<tr>
+					<td class='title right'><p id='title_sn'>S/N: </p></td>
+					<td class='left' id='sn'>UNDEFINED</td>
+				</tr>
+				<tr>
+					<td class='title right'><p id='title_hw_version'>HW Version: </p></td>
+					<td class='left' id='hw_version'>UNDEFINED</td>
+				</tr>
+				<tr>
+					<td class='title right'><p id='title_modem_version'>Modem Version: </p></td>
+					<td class='left' id='modem_version'>UNDEFINED</td>
+				</tr>
+				<tr>
+					<td class='title right'><p id='title_modem_hw_version'>Modem Hw Version: </p></td>
+					<td class='left' id='modem_hw_version'>UNDEFINED</td>
+				</tr>
+<!--
+				<tr>
+					<td class='title right'><p id='title_loc'>Location: </p></td>
+					<td ><input name='location' id='location' type='text'></td>
+				</tr>
+-->
+			</tbody>
+		</table>
+<!--
+		<div>
+			<input type='button' id='btn_apply_loc' value='Apply' onclick='onApplyLocation();'>
+		</div>
+-->
+	</div>
+	
+ 	<br>
+	<h3 id='section2_title'>User Informations</h3>
+	<div class='clearfix'>
+	 	<table id='user'>
+			<tbody>
+				<tr>
+					<td class='title right'><p id='title_current_pw'>Current Password: </p></td>
+					<td ><input name='passwd' id='passwd' type='password' maxlength=32></td>
+				</tr>
+				<tr>
+					<td class='title right'><p id='title_new_pw'>New Password: </p></td>
+					<td ><input name='new_passwd' id='new_passwd' type='password' maxlength=32></td>
+				</tr>
+				<tr>
+					<td class='title right'><p id='title_confirm_pw'>Confirm Password: </p></td>
+					<td ><input name='confirm_passwd' id='confirm_passwd' type='password' maxlength=32></td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<input type='button' id='btn_apply' value='Apply' onclick='onApplyChangePasswd();'>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,71 @@
+<h2 class='etnry-title' id='page_title'>DHCP Status</h2>
+<hr>
+<form name = 'f'>
+	<h3 id='section1_title'>DHCP Server Configuration</h3>
+	<div class='clearfix'>
+		<table id='dhcp_server_config'>
+			<tbody>
+				<tr>
+					<td class='title right' id='title_dhcp_status'>Status: </td>
+					<td class='left'><p id='status'></p></td>
+				</tr>
+				<tr>
+					<td class='title right' id='title_interface'>Interface: </td>
+					<td class='left'><p id='interface'></p></td>
+				</tr>
+				<tr>
+					<td class='title right' id='title_start'>IP Pool Start: </td>
+					<td class='left'><p id='start'></p></td>
+				</tr>
+				<tr>
+					<td class='title right' id='title_end'>IP Pool End: </td>
+					<td class='left'><p id='end'></p></td>
+				</tr>
+				<tr>
+					<td class='title right' id='title_router'>Router: </td>
+					<td class='left'><p id='router'></p></td>
+				</tr>
+				<tr>
+					<td class='title right'id='title_time'>Lease Time: </td>
+					<td class='left'><p id='time'></p></td>
+				</tr>
+				<tr>
+					<td class='title right' id='title_static'>Static Leases: </td>
+					<td class='left'><p id='static'></p></td>
+				</tr>
+
+				<tr>
+					<td class='title right' id='title_dns1'>dns1: </td>
+					<td class='left'><p id='dns1'></p></td>
+				</tr>
+				<tr>
+					<td class='title right' id='title_dns2'>dns2: </td>
+					<td class='left'><p id='dns2'></p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		
+	<br>
+	<h3 id='section2_title'>Active DHCP Leases</h3>
+	<div class='clearfix'>
+		<table id='dhcp_active_leases'>
+			<tbody>
+				<tr>
+					<td class='title center' id='index2'>Index</td>
+					<td class='title center'><p class='macaddr' id='macaddr2'>MAC Address</p></td>
+					<td class='title center'><p class='ipaddr' id='ipaddr2'>IP Address</p></td>
+					<td class='title center'><p class='hostname' id='hostname'>Host Name</p></td>
+					<td class='title center'><p class='time' id='time2'>Expires In</p></td>
+				</tr>
+				<tr>
+					<td class='center'>-</td>
+					<td class='center'>-</td>
+					<td class='center'>-</td>
+					<td class='center'>-</td>
+					<td class='center'>-</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</form>

@@ -1,0 +1,30 @@
+<h2 class='entry-title' id='page_title'>ThingPlus</h2>
+<hr>
+<div name='f'>
+	<h3 id='section1_title'>API KEY Setting</h3>
+	<h4 id='message'><h4>
+	<div class='clearfix'>
+		<table>
+			<tbody>
+				<tr>
+				    <th>API KEY : </th>
+				    <td>
+				      <input type="text" id="apikey" value="" style="width: 250px">
+				    </td>
+				</tr>
+		 	</tbody>
+	 	</table>
+ 	</div>
+	<br>
+ 	<div>
+		<input  type='button' id='apply' value='Apply' onclick='setApiKey();'>
+	</div>
+	<br>
+	<br>
+	<div>
+		<h3>Cloud Synchronization Status</h3>
+		<h3 id="cloud_status" style="color:red;"></h3>
+		<input  type='button' id='apply' value='STOP' onclick='cloudStop();'>
+		<input  type='button' id='apply' value='START' onclick='cloudStart();'>
+	</div>
+</div>

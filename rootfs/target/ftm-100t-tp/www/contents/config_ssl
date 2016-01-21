@@ -1,0 +1,46 @@
+<h2 class='entry-title' id='page_title'>SSL</h2>
+<hr>
+<div name='f'>
+	<h3 id='section_title'>SSL</h3>
+	<h4 id='message'><h4>
+	<div class='clearfix'>
+		<table>
+			<tbody>
+				<tr>
+					<th>User</th>
+					<td>
+						<input type="text" id="user" value="0">
+					</td>
+				</tr>
+				<tr>
+					<th>Password</th>
+					<td>
+						<input type="text" id="password" value="0">
+					</td>
+				</tr>
+				<tr>
+					<th>Server IP</th>
+					<td>
+						<input type="text" id="server_ip" value="0">
+					</td>
+				</tr>
+				<tr>
+					<th>Server Port</th>
+					<td>
+						<input type="text" id="server_port" value="0">
+					</td>
+				</tr>
+				<tr>
+					<th>Interval</th>
+					<td>
+						<input type="text" id="interval" value="0">
+					</td>
+				</tr>
+		 	</tbody>
+	 	</table>
+ 	</div>
+ 	<br>
+ 	<div>
+		<input  type='button' id='apply' value='Apply' onclick='setSSL();'>
+	</div>
+</div>
