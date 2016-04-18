@@ -1,5 +1,5 @@
 #!/bin/sh
-PRODUCT=ftm-100t-tp
+PRODUCT=ftm-100u-tp
 KERNEL_VERSION=2.6.36
 COMMON_PATH=$PWD/target/common/$KERNEL_VERSION
 ROOT=$PWD/_rootfs
@@ -176,5 +176,5 @@ echo -ne '\xde\xad\xc0\xde' >> root.squashfs
 
 rm tmpfile.*
 
-mkimage -n 'RootFS-1.0.2-FTM-100T' -A arm -O linux -T filesystem -C gzip -d root.squashfs rootfs.img
+mkimage -n 'RootFS-1.0.2-FTM-100S' -A arm -O linux -T filesystem -C gzip -d root.squashfs rootfs.img
 

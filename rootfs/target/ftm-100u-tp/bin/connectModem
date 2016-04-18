@@ -9,6 +9,8 @@ then
 
 	stty -F /dev/ttyACM0 -echo
 	cat /dev/ttyACM0 &> /var/log/modem &
+	sleep 5
+    rdate -s 203.248.240.140 && hwclock -w
 
 	/bin/init_modem_log &
 	/bin/data_dmon &
