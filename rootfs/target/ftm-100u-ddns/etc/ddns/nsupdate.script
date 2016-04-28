@@ -1,7 +1,7 @@
 server 183.99.73.67
 debug yes
-zone xtra.com.
-update delete 450061222991259.xtra.com
-update add 450061222991259.xtra.com 60 A 10.30.95.148
+zone uplus.co.kr.
+update delete 450061222991259.uplus.co.kr
+update add 450061222991259.uplus.co.kr 60 A 10.30.95.148
 show
 send

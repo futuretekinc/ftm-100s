@@ -28,12 +28,12 @@
 						<input type="text" id="domain_name">
 					</td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td class='title left'>IP : </td>
 					<td>
 						<input type="text" id="ip"> (위의 LTE IP를 입력하세요.)
 					</td>
-				</tr>			
+				</tr> -->
 				<tr>
 					<td style="padding-top: 10px;">
 						<input type="button" value="Apply" id="apply" onclick="setDDNS();">

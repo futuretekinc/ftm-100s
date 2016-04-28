@@ -52,10 +52,10 @@ function loadState()
 				console.log(dns, domain, ip);
 				dns_tf = document.getElementById("dns_server_ip");
 				domain_tf = document.getElementById("domain_name");
-				ip_tf = document.getElementById("ip");
+				//ip_tf = document.getElementById("ip");
 				dns_tf.value = dns;
 				domain_tf.value = domain.slice(0, -1);
-				ip_tf.value = ip;
+				//ip_tf.value = ip;
 
 				loadIMSI();
             }
@@ -83,9 +83,12 @@ function setDDNS()
 	imsi = document.getElementById("imsi");
 	console.log(imsi.innerHTML);
 
+	lteip_tf = document.getElementById("lte_ip");
+	console.log(lteip_tf.innerHTML);
+
 	data += "&dns=" + dns_tf.value;
 	data += "&domain=" + domain_tf.value;
-	data += "&ip=" + ip_tf.value;
+	data += "&ip=" + lteip_tf.innerHTML;
 	data += "&imsi=" + imsi.innerHTML;
 	
 	xmlhttp.open( "POST", data, true );
