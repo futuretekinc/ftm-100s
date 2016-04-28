@@ -1,0 +1,47 @@
+<h2 class='entry-title' id='page_title'>DDNS</h2>
+<hr>
+<div name='f'>
+	<div class='clearfix'>
+		<table>
+			<tbody>
+				<tr>
+					<td class='title left'>IMSI : </td>
+					<td style="padding-top: 5px;">
+						<p id="imsi">
+					</td>
+				</tr>
+				<tr>
+					<td class='title left'>LTE IP Address : </td>
+					<td style="padding-top: 5px;">
+						<p id="lte_ip">
+					</td>
+				</tr>
+				<tr>
+					<th class='title left'>DNS Server Address : </th>
+					<td class='left'>
+						<input id="dns_server_ip">
+					</td>
+				</tr>
+				<tr>
+					<td class='title left'>Domain Name : </td>
+					<td>
+						<input type="text" id="domain_name">
+					</td>
+				</tr>
+				<tr>
+					<td class='title left'>IP : </td>
+					<td>
+						<input type="text" id="ip"> (위의 LTE IP를 입력하세요.)
+					</td>
+				</tr>			
+				<tr>
+					<td style="padding-top: 10px;">
+						<input type="button" value="Apply" id="apply" onclick="setDDNS();">
+					</td>
+					<td>
+					</td>
+				</tr>
+			</tbody>
+		</table>		
+ 	</div>
+</div>

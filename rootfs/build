@@ -121,6 +121,7 @@ cp -raf $PWD/target/$PRODUCT/* $ROOT/
 		ftm-100u-tp)
 			cp -rf target/ftm-100u-tp/* $ROOT
 			cp -rf apps/target/* $ROOT
+			cp -rf target/ftm-100u-ddns/* $ROOT
 			if [ ! -e $ROOT/overlay ]
 			then
 				mkdir $ROOT/overlay
