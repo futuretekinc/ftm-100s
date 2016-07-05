@@ -1,0 +1,8 @@
+D ftmrule.default
+D ftmrule.sample
+D ftmrule2iptables.awk
+D ftmrule_merge.awk
+D iptables.default
+D iptables2ftmrule.awk
+D iptables_all_accept.default
+D iptables_filter.sample

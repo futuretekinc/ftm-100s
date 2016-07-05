@@ -1,0 +1,1518 @@
+    FTE-E DEFINITIONS ::= BEGIN
+		IMPORTS
+		OBJECT-TYPE, MODULE-IDENTITY,
+		enterprises
+			FROM SNMPv2-SMI
+        DisplayString 
+			FROM SNMPv2-TC;
+
+        futuretek       OBJECT IDENTIFIER ::= { enterprises 42251 }
+
+        fte             OBJECT IDENTIFIER ::= { futuretek 1 }
+
+        product         OBJECT IDENTIFIER ::= { fte 1 }
+
+        network         OBJECT IDENTIFIER ::= { fte 2 }
+
+        endpoints       OBJECT IDENTIFIER ::= { fte 3 }
+
+        events          OBJECT IDENTIFIER ::= { fte 4 }
+
+        servers         OBJECT IDENTIFIER ::= { fte 5 }
+
+        logs            OBJECT IDENTIFIER ::= { fte 6 }
+
+        power           OBJECT IDENTIFIER ::= { fte 7 }
+
+        traps           OBJECT IDENTIFIER ::= { fte 100 }
+
+        admin           OBJECT IDENTIFIER ::= { fte 65535 }
+
+        epTemperature   OBJECT IDENTIFIER ::= { endpoints 256 }
+
+        epHumidity      OBJECT IDENTIFIER ::= { endpoints 512 }
+
+        epVoltage       OBJECT IDENTIFIER ::= { endpoints 768 }
+
+        epCurrent       OBJECT IDENTIFIER ::= { endpoints 1024 }
+
+        epDI            OBJECT IDENTIFIER ::= { endpoints 1280 }
+
+        epDO            OBJECT IDENTIFIER ::= { endpoints 1536 }
+
+        epRL            OBJECT IDENTIFIER ::= { endpoints 1538 }
+
+        epGAS           OBJECT IDENTIFIER ::= { endpoints 1792 }
+
+        epPower         OBJECT IDENTIFIER ::= { endpoints 2048 }
+
+        epDust          OBJECT IDENTIFIER ::= { endpoints 2562 }
+
+        epMgmt          OBJECT IDENTIFIER ::= { endpoints 65535 }
+
+        netType OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { network 1 }
+
+        netMacAddr OBJECT-TYPE
+                SYNTAX MacAddress
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { network 2 }
+
+        netIpAddr OBJECT-TYPE
+                SYNTAX IPAddress
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { network 3 }
+
+        netNetMask OBJECT-TYPE
+                SYNTAX IPAddress
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { network 4 }
+
+        netGateway OBJECT-TYPE
+                SYNTAX IPAddress
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { network 5 }
+
+        prodID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { product 1 }
+
+        prodModel OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { product 2 }
+
+        prodVendor OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { product 3 }
+
+        prodHWVer OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { product 4 }
+
+        prodSWVer OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { product 5 }
+
+        prodDesc OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { product 6 }
+
+        tempCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { epTemperature 1 }
+
+        tempTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF TempEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { epTemperature 2 }
+
+        tempEntry OBJECT-TYPE
+                SYNTAX TempEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { tempID }
+                ::= { tempTable 1 }
+
+        TempEntry ::= SEQUENCE { 
+            tempID DisplayString,
+            tempType DisplayString,
+            tempName DisplayString,
+            tempSN DisplayString,
+            tempState DisplayString,
+            tempValue DisplayString,
+            tempLastValue DisplayString,
+            tempLastTime DisplayString,
+            tempUpdateInterval INTEGER
+        }
+
+        tempID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tempEntry 1 }
+
+        tempType OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tempEntry 2 }
+
+        tempName OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tempEntry 3 }
+
+        tempSN OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tempEntry 4 }
+
+        tempState OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tempEntry 5 }
+
+        tempValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tempEntry 6 }
+
+        tempLastValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tempEntry 7 }
+
+        tempLastTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tempEntry 8 }
+
+        tempUpdateInterval OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { tempEntry 9 }
+
+        humiCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { epHumidity 1 }
+
+        humiTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF HumiEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { epHumidity 2 }
+
+        humiEntry OBJECT-TYPE
+                SYNTAX HumiEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { humiID }
+                ::= { humiTable 1 }
+
+        HumiEntry ::= SEQUENCE { 
+            humiID DisplayString,
+            humiType DisplayString,
+            humiName DisplayString,
+            humiSN DisplayString,
+            humiState DisplayString,
+            humiValue DisplayString,
+            humiLastValue DisplayString,
+            humiLastTime DisplayString,
+            humiUpdateInterval INTEGER
+        }
+
+        humiID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { humiEntry 1 }
+
+        humiType OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { humiEntry 2 }
+
+        humiName OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { humiEntry 3 }
+
+        humiSN OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { humiEntry 4 }
+
+        humiState OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { humiEntry 5 }
+
+        humiValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { humiEntry 6 }
+
+        humiLastValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { humiEntry 7 }
+
+        humiLastTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { humiEntry 8 }
+
+        humiUpdateInterval OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { humiEntry 9 }
+
+        diCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { epDI 1 }
+
+        diTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF DiEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { epDI 2 }
+
+        diEntry OBJECT-TYPE
+                SYNTAX DiEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { diID }
+                ::= { diTable 1 }
+
+        DiEntry ::= SEQUENCE { 
+            diID DisplayString,
+            diType DisplayString,
+            diName DisplayString,
+            diSN DisplayString,
+            diState DisplayString,
+            diValue DisplayString,
+            diLastValue DisplayString,
+            diLastTime DisplayString,
+            diInitValue DisplayString
+        }
+
+        diID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { diEntry 1 }
+
+        diType OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { diEntry 2 }
+
+        diName OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { diEntry 3 }
+
+        diSN OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { diEntry 4 }
+
+        diState OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { diEntry 5 }
+
+        diValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { diEntry 6 }
+
+        diLastValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { diEntry 7 }
+
+        diLastTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { diEntry 8 }
+
+        diInitValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { diEntry 9 }
+
+        doCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { epDO 1 }
+
+        doTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF DoEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { epDO 2 }
+
+        doEntry OBJECT-TYPE
+                SYNTAX DoEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { doID }
+                ::= { doTable 1 }
+
+        DoEntry ::= SEQUENCE { 
+            doID DisplayString,
+            doType DisplayString,
+            doName DisplayString,
+            doSN DisplayString,
+            doState DisplayString,
+            doValue DisplayString,
+            doLastValue DisplayString,
+            doLastTime DisplayString,
+            doInitValue DisplayString
+        }
+
+        doID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { doEntry 1 }
+
+        doType OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { doEntry 2 }
+
+        doName OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { doEntry 3 }
+
+        doSN OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { doEntry 4 }
+
+        doState OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { doEntry 5 }
+
+        doValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { doEntry 6 }
+
+        doLastValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { doEntry 7 }
+
+        doLastTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { doEntry 8 }
+
+        doInitValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { doEntry 9 }
+
+        rlCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { epRL 1 }
+
+        rlTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF RlEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { epRL 2 }
+
+        rlEntry OBJECT-TYPE
+                SYNTAX RlEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { rlID }
+                ::= { rlTable 1 }
+
+        RlEntry ::= SEQUENCE { 
+            rlID DisplayString,
+            rlType DisplayString,
+            rlName DisplayString,
+            rlSN DisplayString,
+            rlState DisplayString,
+            rlValue DisplayString,
+            rlLastValue DisplayString,
+            rlLastTime DisplayString,
+            rlInitValue DisplayString
+        }
+
+        rlID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { rlEntry 1 }
+
+        rlType OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { rlEntry 2 }
+
+        rlName OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { rlEntry 3 }
+
+        rlSN OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { rlEntry 4 }
+
+        rlState OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { rlEntry 5 }
+
+        rlValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { rlEntry 6 }
+
+        rlLastValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { rlEntry 7 }
+
+        rlLastTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { rlEntry 8 }
+
+        rlInitValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { rlEntry 9 }
+
+        pwrCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { epPower 1 }
+
+        pwrTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF PwrEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { epPower 2 }
+
+        pwrEntry OBJECT-TYPE
+                SYNTAX PwrEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { gasID }
+                ::= { pwrTable 1 }
+
+        PwrEntry ::= SEQUENCE { 
+            pwrID DisplayString,
+            pwrType DisplayString,
+            pwrName DisplayString,
+            pwrSN DisplayString,
+            pwrState DisplayString,
+            pwrValue DisplayString,
+            pwrLastValue DisplayString,
+            pwrLastTime DisplayString,
+            pwrUpdateInterval INTEGER,
+            pwrEventType INTEGER,
+            pwrUpperLimit DisplayString,
+            pwrLowerLimit DisplayString,
+            pwrThreshold DisplayString
+        }
+
+        pwrID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 1 }
+
+        pwrType OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 2 }
+
+        pwrName OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 3 }
+
+        pwrSN OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 4 }
+
+        pwrState OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 5 }
+
+        pwrValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 6 }
+
+        pwrLastValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 7 }
+
+        pwrLastTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 8 }
+
+        pwrUpdateInterval OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 9 }
+
+        pwrEventType OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 100 }
+
+        pwrUpperLimit OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 101 }
+
+        pwrLowerLimit OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 102 }
+
+        pwrThreshold OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { pwrEntry 103 }
+
+        gasCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { epGAS 1 }
+
+        gasTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF GasEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { epGAS 2 }
+
+        gasEntry OBJECT-TYPE
+                SYNTAX GasEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { gasID }
+                ::= { gasTable 1 }
+
+        GasEntry ::= SEQUENCE { 
+            gasID DisplayString,
+            gasType DisplayString,
+            gasName DisplayString,
+            gasSN DisplayString,
+            gasState DisplayString,
+            gasValue DisplayString,
+            gasLastValue DisplayString,
+            gasLastTime DisplayString,
+            gasUpdateInterval INTEGER,
+            gasEventType INTEGER,
+            gasUpperLimit DisplayString,
+            gasLowerLimit DisplayString,
+            gasThreshold DisplayString,
+            gasEventDelay INTEGER,
+            gasTotalTrial INTEGER,
+            gasTotalFailed INTEGER
+        }
+
+        gasID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 1 }
+
+        gasType OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 2 }
+
+        gasName OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 3 }
+
+        gasSN OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 4 }
+
+        gasState OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 5 }
+
+        gasValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 6 }
+
+        gasLastValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 7 }
+
+        gasLastTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 8 }
+
+        gasUpdateInterval OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 9 }
+
+        gasEventType OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 100 }
+
+        gasUpperLimit OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 101 }
+
+        gasLowerLimit OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 102 }
+
+        gasThreshold OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 103 }
+
+        gasEventDelay OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 104 }
+
+        gasTotalTrial OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 1001 }
+
+        gasTotalFailed OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { gasEntry 1002 }
+
+        dustCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { epDust 1 }
+
+        dustTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF DustEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { epDust 2 }
+
+        dustEntry OBJECT-TYPE
+                SYNTAX DustEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { dustID }
+                ::= { dustTable 1 }
+
+        DustEntry ::= SEQUENCE { 
+            dustID DisplayString,
+            dustType DisplayString,
+            dustName DisplayString,
+            dustSN DisplayString,
+            dustState DisplayString,
+            dustValue DisplayString,
+            dustLastValue DisplayString,
+            dustLastTime DisplayString,
+            dustUpdateInterval INTEGER,
+            dustEventType INTEGER,
+            dustUpperLimit DisplayString,
+            dustLowerLimit DisplayString,
+            dustThreshold DisplayString,
+            dustEventDelay INTEGER,
+            dustTotalTrial INTEGER,
+            dustTotalFailed INTEGER
+        }
+
+        dustID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 1 }
+
+        dustType OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 2 }
+
+        dustName OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 3 }
+
+        dustSN OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 4 }
+
+        dustState OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 5 }
+
+        dustValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 6 }
+
+        dustLastValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 7 }
+
+        dustLastTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 8 }
+
+        dustUpdateInterval OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 9 }
+
+        dustEventType OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 100 }
+
+        dustUpperLimit OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 101 }
+
+        dustLowerLimit OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 102 }
+
+        dustThreshold OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 103 }
+
+        dustEventDelay OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 104 }
+
+        dustTotalTrial OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 1001 }
+
+        dustTotalFailed OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { dustEntry 1002 }
+
+        smDiscovery OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { epMgmt 1 }
+
+        smDestroyDynamicObject OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { epMgmt 2 }
+
+        evnCount        OBJECT IDENTIFIER ::= { events 1 }
+
+        evnTable        OBJECT IDENTIFIER ::= { events 2 }
+
+        evnCreate       OBJECT IDENTIFIER ::= { events 3 }
+
+        evnDestroy      OBJECT IDENTIFIER ::= { events 4 }
+
+        evnEntry        OBJECT IDENTIFIER ::= { evnTable 1 }
+
+        evnIndex        OBJECT IDENTIFIER ::= { evnEntry 1 }
+
+        evnEPID         OBJECT IDENTIFIER ::= { evnEntry 2 }
+
+        evnType         OBJECT IDENTIFIER ::= { evnEntry 3 }
+
+        evnValue        OBJECT IDENTIFIER ::= { evnEntry 4 }
+
+        evnThreshold    OBJECT IDENTIFIER ::= { evnEntry 5 }
+
+
+        svrTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF SvrEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { servers 1 }
+
+        svrEntry OBJECT-TYPE
+                SYNTAX SvrEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { svrIndex }
+                ::= { svrTable 1 }
+
+        SvrEntry ::= SEQUENCE { 
+            svrIndex INTEGER,
+            svrIpAddr IPAddress
+        }
+
+        svrIndex OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { svrEntry 1 }
+
+        svrIpAddr OBJECT-TYPE
+                SYNTAX IPAddress
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { svrEntry 2 }
+
+        logCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { logs 1 }
+
+        logTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF LogEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { logs 2 }
+
+        logEntry OBJECT-TYPE
+                SYNTAX LogEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { logIndex }
+                ::= { logTable 1 }
+
+        LogEntry ::= SEQUENCE { 
+            logIndex INTEGER,
+            logTime DisplayString,
+            logID DisplayString,
+            logValue DisplayString,
+            logLevel INTEGER,
+            logString DisplayString
+        }
+
+        logIndex OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { logEntry 1 }
+
+        logTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { logEntry 2 }
+
+        logID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { logEntry 3 }
+
+        logValue OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { logEntry 4 }
+
+        logLevel OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { logEntry 5 }
+
+        logString OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { logEntry 6 }
+
+        psType OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { power 1 }
+
+        psVoltageMax OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { power 2 }
+
+        psVoltageMin OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { power 3 }
+
+        trapServer      OBJECT IDENTIFIER ::= { traps 1 }
+
+        tsCount OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { trapServer 1 }
+
+        tsTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF TsEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { trapServer 2 }
+
+        tsAdd OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { trapServer 3 }
+
+        tsDel OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { trapServer 4 }
+
+        tsEntry OBJECT-TYPE
+                SYNTAX TsEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { tsIndex }
+                ::= { tsTable 1 }
+
+        TsEntry ::= SEQUENCE { 
+            tsIndex INTEGER,
+            tsIpAddr IPAddress
+        }
+
+        tsIndex OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tsEntry 1 }
+
+        tsIpAddr OBJECT-TYPE
+                SYNTAX IPAddress
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { tsEntry 2 }
+
+        trapMsg         OBJECT IDENTIFIER ::= { traps 2 }
+
+        msgDiscovery OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { trapMsg 1 }
+
+        msgAlert OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { trapMsg 2 }
+
+        adminOID OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { admin 1 }
+
+        adminMAC OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { admin 2 }
+
+        adminFactoryReset OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { admin 3 }
+
+        adminSystemTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { admin 4 }
+
+        adminReset OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-write
+                STATUS mandatory
+                DESCRIPTION
+                        ""
+                ::= { admin 5 }
+
+        adminDebug      OBJECT IDENTIFIER ::= { admin 100 }
+
+        dbgBTTable OBJECT-TYPE
+                SYNTAX SEQUENCE OF DbgBTEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { adminDebug 1 }
+
+        dbgBTEntry OBJECT-TYPE
+                SYNTAX DbgBTEntry
+                ACCESS not-accessible
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                INDEX { dbgBTIndex }
+                ::= { dbgBTTable 1 }
+
+        DbgBTEntry ::= SEQUENCE { 
+            dbgBTIndex INTEGER,
+            dbgBTTime DisplayString
+        }
+
+        dbgBTIndex OBJECT-TYPE
+                SYNTAX INTEGER
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dbgBTEntry 1 }
+
+        dbgBTTime OBJECT-TYPE
+                SYNTAX DisplayString
+                ACCESS read-only
+                STATUS deprecated
+                DESCRIPTION
+                        ""
+                ::= { dbgBTEntry 2 }
+
+    END

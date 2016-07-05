@@ -1,0 +1,7 @@
+server 183.99.73.67
+debug yes
+zone uplus.co.kr.
+update delete 450061222991259.uplus.co.kr
+update add 450061222991259.uplus.co.kr 60 A 10.30.95.148
+show
+send

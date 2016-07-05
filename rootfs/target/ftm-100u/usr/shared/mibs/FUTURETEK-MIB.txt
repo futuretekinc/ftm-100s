@@ -1,0 +1,21 @@
+FUTURETEK-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-TYPE, MODULE-IDENTITY, Integer32, enterprises
+		FROM SNMPv2-SMI
+	DisplayString
+		FROM SNMPv2-TC;
+
+        MacAddress ::= OCTET STRING
+        IPAddress ::= OCTET STRING
+
+futuretek MODULE-IDENTITY
+	LAST-UPDATED	"200701250000Z"
+	ORGANIZATION	"futuretek.co.kr"
+	CONTACT-INFO	"futuretek.co.kr"
+	DESCRIPTION	"FTM-50S 3G Router"
+	REVISION 	"201410220000Z"
+	DESCRIPTION 	"This file defines FTM-50S."
+	::= { enterprises 42251 }
+
+    END

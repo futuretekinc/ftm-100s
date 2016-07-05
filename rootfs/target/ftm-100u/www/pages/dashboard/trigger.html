@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title></title>
+    <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="../../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="../../bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+
+    </script>
+</head>
+<body style="background-color:white">
+    <div id="wrapper">
+        <!-- 상단 네비게이션바 -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <!--<div class="container-fluid">-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../dashboard.html">FTM Manager System</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="../dashboard.html" id="menu_dashboard"></a></li>
+                <li><a href="../sensors.html" id="menu_sensors"></a></li>
+                <li><a href="../clouds.html" id="menu_clouds"></a></li>
+                <li><a href="../network.html" id="menu_network"></a></li>
+                <li><a href="../system.html" id="menu_system"></a></li>
+            </ul>
+
+            <!-- 왼쪽 사이드바 -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="../dashboard.html" id="menu_sensornodes"></a>
+                        </li>
+                        <!-- <li>
+                            <a href="favorite.html"><i class="fa fa-table fa-fw"></i> Favorite</a>
+                        </li> -->
+                        <li>
+                            <a href="trigger.html" id="menu_rule"></a>
+                        </li>
+                        <!-- <li>
+                            <a href="#" id="menu_rule"><i class="fa fa-wrench fa-fw"></i> Rule<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="dashboard/trigger.html">Trigger</a>
+                                </li>
+                                <li>
+                                    <a href="dashboard/action.html">Action</a>
+                                </li>
+                                <li>
+                                    <a href="dashboard/trigger_action.html">Rule</a>
+                                </li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+
+            <!-- 왼쪽 사이드바 -->
+            <!-- <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="../dashboard.html">SensorNodes</a>
+                        </li>
+                        <li>
+                            <a href="favorite.html">Favorite</a>
+                        </li>
+                        <li>
+                            <a href="rule.html">Rule</a>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+        <!--</div>-->
+        </nav>
+
+        <div id="page-wrapper" style="width:970px; max-width: none !important;">
+            <br>
+            <div>
+                <button type="button" class="btn btn-primary" id="btn_trigger_add"></button>
+            </div>
+            <br>
+            <!-- /.row -->
+
+        </div>
+            <!-- /.container-fluid -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- 트리거 config -->
+    <div class="modal fade" id="modal_trigger_config">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal_trigger_title">00000000000</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="trigger_name" class="col-sm-3 control-label" id="trigger_label_name">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="trigger_name">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="trigger_detect" class="col-sm-2 control-label" id="trigger_label_detect">Detect</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="trigger_detect">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="trigger_hold" class="col-sm-2 control-label" id="trigger_label_hold">Hold</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="trigger_hold">
+                            </div>
+                        </div> -->
+                        <div class="form-group">
+                            <label for="trigger_value" class="col-sm-3 control-label" id="trigger_label_value">Value</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="trigger_value">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="trigger_lower" class="col-sm-3 control-label" id="trigger_label_lower">Lower</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="trigger_lower">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="trigger_upper" class="col-sm-3 control-label" id="trigger_label_upper">Upper</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="trigger_upper">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="modal_btn_trigger_modify">Modify</button>
+                    <!-- <button type="button" class="btn btn-danger" id="modal_btn_trigger_delete">Delete</button> -->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- 트리거 추가 -->
+    <div class="modal fade" id="modal_trigger_add">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal_trigger_add_title">Add Trigger</h4>
+                </div>
+                <div class="modal-body" id="modal_trigger_add_body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="add_epid" class="col-sm-3 control-label" id="add_label_epid">Epid</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="add_epid">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_name" class="col-sm-3 control-label" id="add_label_name">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_value" class="col-sm-3 control-label" id="add_label_value">Value</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_value">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_type" class="col-sm-3 control-label" id="add_label_type">Type</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="add_type">
+                                    <option value="above">above</option>
+                                    <option value="below">below</option>
+                                    <option value="include">include</option>
+                                    <option value="except">except</option>
+                                    <option value="change">change</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_upper" class="col-sm-3 control-label" id="add_label_upper">Upper</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_upper">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_lower" class="col-sm-3 control-label" id="add_label_lower">Lower</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="add_lower">
+                            </div>
+                        </div>
+                        <!-- <div>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>name</th>
+                                        <th>id</th>
+                                        <th>type</th>
+                                        <th>epid</th>
+                                        <th>value</th>
+                                        <th>modify</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="trigger_list">
+                                    <tr>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> -->
+                        <!-- <div class="form-group">
+                            <label for="add_detect" class="col-sm-2 control-label">Detect</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="add_detect">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_hold" class="col-sm-2 control-label">Hold</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="add_hold">
+                            </div>
+                        </div> -->
+                    </form>
+                    <ul class="list-group" id="trigger_group">
+                        <!-- <li class="list-group-item list-group-item-success">Dapibus ac facilisis in
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </li>
+                        <li class="list-group-item list-group-item-success">Cras sit amet nibh libero</li>
+                        <li class="list-group-item list-group-item-success">Porta ac consectetur ac</li>
+                        <li class="list-group-item list-group-item-success">Vestibulum at eros</li> -->
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="modal_btn_trigger_add">Add Trigger</button>
+                    <button type="button" class="btn btn-success" id="modal_btn_action_add">Add Action</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <!-- ============================================================================================================== -->
+    <!-- 액션 추가 -->
+    <div class="modal fade" id="modal_action_add">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal_action_add_title">Add action</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="add_type" class="col-sm-2 control-label" id="add_action_label_type">Type</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="add_action_type">
+                                    <option value="set">set</option>
+                                    <option value="sms">sms</option>
+                                    <option value="push">push</option>
+                                    <option value="mail">mail</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_epid" class="col-sm-2 control-label" id="add_action_label_epid">Epid</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="add_action_epid">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_name" class="col-sm-2 control-label" id="add_action_label_name">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="add_action_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_value" class="col-sm-2 control-label" id="add_action_label_value">Value</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="add_action_value">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="modal_btn_make_action">Add</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- ============================================================================================================== -->
+    <!-- 액션 config -->
+    <div class="modal fade" id="modal_action_config">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal_action_title">00000000000</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="action_name" class="col-sm-2 control-label" id="modify_action_label_name">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="modify_action_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="action_value" class="col-sm-2 control-label" id="modify_action_label_value">Value</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="modify_action_value" min="0" max="1">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="modal_btn_action_modify">Modify</button>
+                    <button type="button" class="btn btn-danger" id="modal_btn_action_delete">Delete</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- ============================================================================================================== -->
+
+    <!-- 룰 config -->
+    <div class="modal fade" id="modal_rule_config">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal_rule_title">00000000000</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="rule_id" class="col-sm-2 control-label" id="rule_label_id">ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="rule_id" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="rule_name" class="col-sm-2 control-label" id="rule_label_name">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="rule_name">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="rule_value" class="col-sm-2 control-label">Value</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="rule_value">
+                            </div>
+                        </div> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="modal_btn_rule_modify">Modify</button>
+                    <button type="button" class="btn btn-danger" id="modal_btn_rule_delete">Delete</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- ============================================================================================================== -->
+
+    <!-- jQuery -->
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../js/bootstrap/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="../../bower_components/raphael/raphael-min.js"></script>
+    <script src="../../bower_components/morrisjs/morris.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../../dist/js/sb-admin-2.js"></script>
+    <script src="../../js/pages/trigger.js"></script>
+    <script src="../../jquery.li18n.min.js"></script>
+    <script src="../../lang.js"></script>
+</body>
+</html>

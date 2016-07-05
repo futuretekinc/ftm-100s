@@ -1,0 +1,4 @@
+0 2 * * * rdate -s 203.248.240.140 && hwclock -w
+*/2 * * * * /bin/nodejs_status.sh
+30 */3 * * * /bin/lte_status.sh
+*/5 * * * * /bin/ddns.sh

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title></title>
+    <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="../../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="../../bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- 상단 네비게이션바 -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <!--<div class="container-fluid">-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../dashboard.html">FTM Manager System</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="rule.html">Rule</a></li>
+                <li><a href="../sensors.html">Sensors</a></li>
+                <li><a href="../clouds.html">Clouds</a></li>
+                <li><a href="../network.html">Network</a></li>
+                <li><a href="../system.html">System</a></li>
+            </ul>
+
+            <!-- 왼쪽 사이드바 -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="../dashboard.html"><i class="fa fa-table fa-fw"></i> SensorNodes</a>
+                        </li>
+                        <!-- <li>
+                            <a href="favorite.html"><i class="fa fa-table fa-fw"></i> Favorite</a>
+                        </li> -->
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Rule<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="trigger.html">Trigger</a>
+                                </li>
+                                <li>
+                                    <a href="action.html">Action</a>
+                                </li>
+                                <li>
+                                    <a href="trigger_action.html">Rule</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+
+            <!-- 왼쪽 사이드바 -->
+            <!-- <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="../dashboard.html">SensorNodes</a>
+                        </li>
+                        <li>
+                            <a href="favorite.html">Favorite</a>
+                        </li>
+                        <li>
+                            <a href="rule.html">Rule</a>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+        <!--</div>-->
+        </nav>
+
+        <div id="page-wrapper">
+            <br>
+            <div>
+                <button type="button" class="btn btn-primary" id="btn_rule_add">Add</button>
+            </div>
+            <br>
+            <!-- /.row -->
+
+        </div>
+            <!-- /.container-fluid -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- 룰 config -->
+    <div class="modal fade" id="modal_rule_config">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal_rule_title">00000000000</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="rule_name" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="rule_name">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="rule_value" class="col-sm-2 control-label">Value</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="rule_value">
+                            </div>
+                        </div> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="modal_btn_rule_modify">Modify</button>
+                    <button type="button" class="btn btn-danger" id="modal_btn_rule_delete">Delete</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- 룰 추가 -->
+    <div class="modal fade" id="modal_rule_add">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal_rule_add_title">Add rule</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="add_trigger" class="col-sm-2 control-label">Trigger</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="add_trigger">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_action" class="col-sm-2 control-label">Action</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="add_action">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="modal_btn_rule_add">Add</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- jQuery -->
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../js/bootstrap/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="../../bower_components/raphael/raphael-min.js"></script>
+    <script src="../../bower_components/morrisjs/morris.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../../dist/js/sb-admin-2.js"></script>
+    <script src="../../js/pages/trigger_action.js"></script>
+</body>
+</html>

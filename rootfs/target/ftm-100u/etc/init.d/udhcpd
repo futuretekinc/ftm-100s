@@ -1,0 +1,20 @@
+#!/bin/sh /etc/rc.common
+# (C) 2008 openwrt.org
+
+START=50
+
+start() {
+	if [ -e /etc/service/udhcpd ]
+        then
+                USED=`cat /etc/service/udhcpd`
+                if [ "$USED" = 'enabled' ]
+                then
+	         	udhcpd /etc/udhcpd.conf
+		fi
+        fi
+}
+
+stop() {
+	pkill udhcpd
+#	echo disabled > /etc/service/udhcpd
+}

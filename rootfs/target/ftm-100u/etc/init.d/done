@@ -1,0 +1,39 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2006 OpenWrt.org
+
+START=95
+boot() {
+	[ -d /tmp/root ] && {
+		lock /tmp/.switch2jffs
+		firstboot switch2jffs
+		lock -u /tmp/.switch2jffs
+	}
+
+	# process user commands
+	[ -f /etc/rc.local ] && {
+		sh /etc/rc.local
+	}
+
+	# set leds to normal state
+	. /etc/diag.sh
+	set_state done
+
+	CMDLINE=`cat /proc/cmdline`
+	for x in $CMDLINE; do
+	        case $x in
+    	            model=*)
+        	                echo "${x#model=}" > /var/model
+            	    ;;
+
+                	devid=*)
+                    	    echo "${x#devid=}" > /var/sn
+	                ;;
+    	    esac
+	done
+
+
+	echo 1 > /sys/class/leds/sys/brightness
+	ftdm -d
+	sleep 1
+	ftom -d
+}

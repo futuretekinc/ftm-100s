@@ -1,0 +1,871 @@
+    --SME_msg: This MIB has been generated using a demo version of SimpleMibEditor.
+FTM-50S-MIB DEFINITIONS ::= BEGIN
+    IMPORTS
+    Integer32, OBJECT-TYPE, MODULE-IDENTITY,
+    enterprises
+        FROM SNMPv2-SMI
+    DisplayString
+        FROM SNMPv2-TC
+    OBJECT-GROUP
+        FROM SNMPv2-CONF;
+
+    ftm50s MODULE-IDENTITY
+        LAST-UPDATED        "201410241125Z"
+        ORGANIZATION        "FutureTek,Inc."
+        CONTACT-INFO        "xtra"
+        DESCRIPTION         "Please replace this text with your description."
+
+        REVISION            "201410241125Z"
+        DESCRIPTION         "initial version of this module"
+        ::= { futuretek 2 }
+
+
+    futuretek OBJECT IDENTIFIER ::= { enterprises 42251 }
+
+    product OBJECT IDENTIFIER ::= { ftm50s 1 }
+
+    prodID OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { product 1 }
+
+    prodModel OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { product 2 }
+
+    prodVendor OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { product 3 }
+
+    prodHWVer OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { product 4 }
+
+    prodSWVer OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { product 5 }
+
+    prodDescription OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { product 6 }
+
+    network OBJECT IDENTIFIER ::= { ftm50s 2 }
+
+    netCount OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Network interface count."
+        ::= { network 1 }
+
+    netTable OBJECT-TYPE
+        SYNTAX              SEQUENCE OF NetEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Network Interface table."
+        ::= { network 2 }
+
+    netEntry OBJECT-TYPE
+        SYNTAX              NetEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Network Interface."
+        INDEX               {
+                                netID
+                            }
+        ::= { netTable 1 }
+
+    NetEntry ::= SEQUENCE {
+        netID
+            DisplayString,
+        netType
+            Integer32,
+        netMAC
+            DisplayString,
+        netIP
+            DisplayString,
+        netMask
+            DisplayString
+    }
+
+    netID OBJECT-TYPE
+        SYNTAX              DisplayString 
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Interface Index"
+        ::= { netEntry 1 }
+
+    netType OBJECT-TYPE
+        SYNTAX              Integer32 
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Interface Type(Ethernet, Wi-Fi, WCDMA, LTE)."
+        ::= { netEntry 2 }
+
+    netMAC OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "MAC Address"
+        ::= { netEntry 3 }
+
+    netIP OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "IP Address"
+        ::= { netEntry 4 }
+
+    netMask OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Subnet Mask"
+        ::= { netEntry 5 }
+
+    netGatewayIP OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { network 3 }
+
+
+    endpoints OBJECT IDENTIFIER ::= { ftm50s 3 }
+
+    epPoint OBJECT IDENTIFIER ::= { endpoints 1 }
+
+    pointCount OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epPoint 1 }
+
+    pointTable OBJECT-TYPE
+        SYNTAX              SEQUENCE OF PointEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epPoint 2 }
+
+    pointEntry OBJECT-TYPE
+        SYNTAX              PointEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        INDEX               {
+                                pointGroupID
+                            }
+        ::= { pointTable 1 }
+
+    PointEntry ::= SEQUENCE {
+        pointGroupID
+            DisplayString,
+        pointGroupType
+            DisplayString,
+        pointGroupCount
+            DisplayString,
+        pointtGroupOID
+            DisplayString
+    }
+
+   pointGroupID OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { pointEntry 1 }
+
+   pointGroupType OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { pointEntry 2 }
+
+   pointGroupCount OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { pointEntry 3 }
+
+   pointtGroupOID OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { pointEntry 4 }
+
+	
+	
+    epTemperature OBJECT IDENTIFIER ::= { endpoints 256 }
+
+    tempCount OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epTemperature 1 }
+
+    tempTable OBJECT-TYPE
+        SYNTAX              SEQUENCE OF TempEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epTemperature 2 }
+
+    tempEntry OBJECT-TYPE
+        SYNTAX              TempEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        INDEX               {
+                                tempID
+                            }
+        ::= { tempTable 1 }
+
+    TempEntry ::= SEQUENCE {
+        tempID
+            DisplayString,
+        tempType
+            DisplayString,
+        tempName
+            DisplayString,
+        tempSN
+            DisplayString,
+        tempState
+            DisplayString,
+        tempValue
+            DisplayString,
+        tempLastValue
+            DisplayString,
+        tempLastTime
+            DisplayString,
+        tempUpdateInterval
+            Integer32
+    }
+
+    tempID OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { tempEntry 1 }
+
+    tempType OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { tempEntry 2 }
+
+    tempName OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { tempEntry 3 }
+
+    tempSN OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { tempEntry 4 }
+
+    tempState OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { tempEntry 5 }
+
+    tempValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { tempEntry 6 }
+
+    tempLastValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { tempEntry 7 }
+
+    tempLastTime OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { tempEntry 8 }
+
+    tempUpdateInterval OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { tempEntry 9 }
+
+    epHumidity OBJECT IDENTIFIER ::= { endpoints 512 }
+
+    humiCount OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epHumidity 1 }
+
+    humiTable OBJECT-TYPE
+        SYNTAX              SEQUENCE OF HumiEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epHumidity 2 }
+
+    humiEntry OBJECT-TYPE
+        SYNTAX              HumiEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        INDEX               {
+                                humiID
+                            }
+        ::= { humiTable 1 }
+
+    HumiEntry ::= SEQUENCE {
+        humiID
+            DisplayString,
+        humiType
+            DisplayString,
+        humiName
+            DisplayString,
+        humiSN
+            DisplayString,
+        humiState
+            DisplayString,
+        humiValue
+            DisplayString,
+        humiLastValue
+            DisplayString,
+        humiLastTime
+            DisplayString,
+        humiUpdateInterval
+            Integer32
+    }
+
+    humiID OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { humiEntry 1 }
+
+    humiType OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { humiEntry 2 }
+
+    humiName OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { humiEntry 3 }
+
+    humiSN OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { humiEntry 4 }
+
+    humiState OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { humiEntry 5 }
+
+    humiValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { humiEntry 6 }
+
+    humiLastValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { humiEntry 7 }
+
+    humiLastTime OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { humiEntry 8 }
+
+    humiUpdateInterval OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { humiEntry 9 }
+
+    epVoltage OBJECT IDENTIFIER ::= { endpoints 768 }
+
+    epCurrent OBJECT IDENTIFIER ::= { endpoints 1024 }
+
+    epDI OBJECT IDENTIFIER ::= { endpoints 1281 }
+
+    diCount OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epDI 1 }
+
+    diTable OBJECT-TYPE
+        SYNTAX              SEQUENCE OF DiEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epDI 2 }
+
+    diEntry OBJECT-TYPE
+        SYNTAX              DiEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        INDEX               {
+                                diID
+                            }
+        ::= { diTable 1 }
+
+    DiEntry ::= SEQUENCE {
+        diID
+            DisplayString,
+        diType
+            DisplayString,
+        diName
+            DisplayString,
+        diSN
+            DisplayString,
+        diState
+            DisplayString,
+        diValue
+            DisplayString,
+        diLastValue
+            DisplayString,
+        diLastTime
+            DisplayString,
+        diUpdateInterval
+            Integer32
+    }
+
+    diID OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { diEntry 1 }
+
+    diType OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { diEntry 2 }
+
+    diName OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { diEntry 3 }
+
+    diSN OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { diEntry 4 }
+
+    diState OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { diEntry 5 }
+
+    diValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { diEntry 6 }
+
+    diLastValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { diEntry 7 }
+
+    diLastTime OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { diEntry 8 }
+
+    diUpdateInterval OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { diEntry 9 }
+
+    epDO OBJECT IDENTIFIER ::= { endpoints 1537 }
+
+    doCount OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epDO 1 }
+
+    doTable OBJECT-TYPE
+        SYNTAX              SEQUENCE OF DoEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epDO 2 }
+
+    doEntry OBJECT-TYPE
+        SYNTAX              DoEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        INDEX               {
+                                doID
+                            }
+        ::= { doTable 1 }
+
+    DoEntry ::= SEQUENCE {
+        doID
+            DisplayString,
+        doType
+            DisplayString,
+        doName
+            DisplayString,
+        doSN
+            DisplayString,
+        doState
+            DisplayString,
+        doValue
+            DisplayString,
+        doLastValue
+            DisplayString,
+        doLastTime
+            DisplayString,
+        doUpdateInterval
+            Integer32
+    }
+
+    doID OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { doEntry 1 }
+
+    doType OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { doEntry 2 }
+
+    doName OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { doEntry 3 }
+
+    doSN OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { doEntry 4 }
+
+    doState OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { doEntry 5 }
+
+    doValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { doEntry 6 }
+
+    doLastValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { doEntry 7 }
+
+    doLastTime OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { doEntry 8 }
+
+    doUpdateInterval OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { doEntry 9 }
+
+    epRL OBJECT IDENTIFIER ::= { endpoints 1538 }
+
+    rlCount OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epRL 1 }
+
+    rlTable OBJECT-TYPE
+        SYNTAX              SEQUENCE OF RlEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { epRL 2 }
+
+    rlEntry OBJECT-TYPE
+        SYNTAX              RlEntry
+        MAX-ACCESS          not-accessible
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        INDEX               {
+                                rlID
+                            }
+        ::= { rlTable 1 }
+
+    RlEntry ::= SEQUENCE {
+        rlID
+            DisplayString,
+        rlType
+            DisplayString,
+        rlName
+            DisplayString,
+        rlSN
+            DisplayString,
+        rlState
+            DisplayString,
+        rlValue
+            DisplayString,
+        rlLastValue
+            DisplayString,
+        rlLastTime
+            DisplayString,
+        rlUpdateInterval
+            Integer32
+    }
+
+    rlID OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { rlEntry 1 }
+
+    rlType OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { rlEntry 2 }
+
+    rlName OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { rlEntry 3 }
+
+    rlSN OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { rlEntry 4 }
+
+    rlState OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { rlEntry 5 }
+
+    rlValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { rlEntry 6 }
+
+    rlLastValue OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { rlEntry 7 }
+
+    rlLastTime OBJECT-TYPE
+        SYNTAX              DisplayString
+        MAX-ACCESS          read-only
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { rlEntry 8 }
+
+    rlUpdateInterval OBJECT-TYPE
+        SYNTAX              Integer32
+        MAX-ACCESS          read-write
+        STATUS              current
+        DESCRIPTION         "Please replace this text with your description."
+        ::= { rlEntry 9 }
+
+    epGAS OBJECT IDENTIFIER ::= { endpoints 1792 }
+
+    epDust OBJECT IDENTIFIER ::= { endpoints 2562 }
+
+    epMgmt OBJECT IDENTIFIER ::= { endpoints 65535 }
+
+    events OBJECT IDENTIFIER ::= { ftm50s 4 }
+
+    servers OBJECT IDENTIFIER ::= { ftm50s 5 }
+
+    logs OBJECT IDENTIFIER ::= { ftm50s 6 }
+
+    power OBJECT IDENTIFIER ::= { ftm50s 7 }
+
+    test OBJECT IDENTIFIER ::= { ftm50s 11 }
+
+    traps OBJECT IDENTIFIER ::= { ftm50s 100 }
+
+    admin OBJECT IDENTIFIER ::= { ftm50s 65535 }
+
+    ftm50sConformance OBJECT IDENTIFIER ::= { ftm50s 65536 }
+
+    ftm50sGroups OBJECT IDENTIFIER ::= { ftm50sConformance 1 }
+
+    ftm50sAllObjects OBJECT-GROUP
+        OBJECTS {           
+                        prodID,
+                        prodModel,
+                        prodVendor,
+                        prodHWVer,
+                        prodSWVer,
+                        prodDescription,
+                        netType,
+                        netMAC,
+                        netIP,
+                        netMask,
+                        netGatewayIP,
+                        tempCount,
+                        humiCount,
+                        diCount,
+                        doCount,
+                        rlCount,
+                        tempID,
+                        tempType,
+                        tempName,
+                        tempSN,
+                        tempState,
+                        tempValue,
+                        tempLastValue,
+                        tempLastTime,
+                        tempUpdateInterval,
+                        humiID,
+                        humiType,
+                        humiName,
+                        humiSN,
+                        humiState,
+                        humiValue,
+                        humiLastValue,
+                        humiLastTime,
+                        humiUpdateInterval,
+                        diID,
+                        diType,
+                        diName,
+                        diSN,
+                        diState,
+                        diValue,
+                        diLastValue,
+                        diLastTime,
+                        diUpdateInterval,
+                        doID,
+                        doType,
+                        doName,
+                        doSN,
+                        doState,
+                        doValue,
+                        doLastValue,
+                        doLastTime,
+                        doUpdateInterval,
+                        rlID,
+                        rlType,
+                        rlName,
+                        rlSN,
+                        rlState,
+                        rlValue,
+                        rlLastValue,
+                        rlLastTime,
+                        rlUpdateInterval
+                }
+        STATUS              current
+        DESCRIPTION         "This automatically created object group contains
+                            all those objects that do not belong to any other
+                            OBJECT-GROUP"
+        ::= { ftm50sGroups 1 }
+
+
+END
+
+--SME_msg: Possibly incomplete MIB, generated using demo version of SimpleMibEditor.

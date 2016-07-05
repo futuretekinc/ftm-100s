@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title></title>
+    <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="../../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <!-- 상단 네비게이션바 -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <!--<div class="container-fluid">-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../dashboard.html">FTM Manager System</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="../dashboard.html" id="menu_dashboard"></a></li>
+                <li><a href="../sensors.html" id="menu_sensors"></a></li>
+                <li><a href="../clouds.html" id="menu_clouds"></a></li>
+                <li><a href="../network.html" id="menu_network"></a></li>
+                <li class="active"><a href="system_backup.html" id="menu_system"></a></li>
+            </ul>
+
+            <!-- 왼쪽 사이드바 -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="../system.html">Information</a>
+                        </li>
+                        <li>
+                            <a href="system_log.html">Log</a>
+                        </li>
+                        <!-- <li>
+                            <a href="system/system_backup.html">Backup</a>
+                        </li> -->
+                        <li>
+                            <a href="system_restart.html">Restart</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!--</div>-->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="container col-xs-offset-0">
+                    <h3 class="page-header">설정 백업 / 복구</h3>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default" id="backup" style="width: 120px" onclick="configBackup();">설정 파일 백업</button>
+                        <label for="backup"> : 모든 설정을 설정파일로 저장하여 PC로 다운로드합니다. PC에 저장된 설정파일은 설정 복구시 사용됩니다.</label>
+                    </div>
+					<form method="post" action="upload.cgi" enctype="multipart/form-data">
+						<div class="form-group">
+							<input type="file" id="fileselect" name = "binary">
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-default" id="restore" onclick="configRestore();" style="width: 120px">설정 파일 복구</button>
+							<label for="restore"> : PC에 저장해둔 설정파일을 이용해 설정을 복구합니다.</label>
+						</div>
+					</form>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default" id="restart" onclick="systemInit();" style="width: 120px">초기 설정 복원</button>
+                        <label for="restart"> : 시스템의 모든 설정이 초기화된 후 다시 시작 됩니다.</label>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../js/bootstrap/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../../dist/js/sb-admin-2.js"></script>
+	<script src="../../scripts/system_configmgmt.js"></script>
+	<script src="../../jquery.li18n.min.js"></script>
+    <script src="../../lang.js"></script>
+</body>
+</html>

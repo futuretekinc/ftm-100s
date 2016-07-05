@@ -1,0 +1,37 @@
+#!/bin/sh
+
+is_lte=`cat /etc/service/lte`
+if [ $is_lte = "enabled" ]
+then
+
+	while [ 0 ]
+	do
+		#ip=`ifconfig usb0 | awk '/Bcast/{ print $2 }' | awk -F : '{ print $2 }'`
+		tty=`ls /dev/ttyACM0`
+		if [ $tty = "/dev/ttyACM0" ]
+		then
+			echo "============================================="
+			echo "MODEM GET IP"                                 
+			echo "============================================="
+			#killall init_modem_log                             
+			#killall data_dmon                                  
+			#killall cat                                        
+
+			stty -F /dev/ttyACM0 -echo                          
+			cat /dev/ttyACM0 &> /var/log/modem &                
+			#sleep 5                                            
+
+			rdate -s 203.248.240.140 && hwclock -w              
+
+			#=======================================            
+			/bin/ddns.sh                                        
+			#=======================================            
+
+			/bin/init_modem_log &                   
+			/bin/data_dmon &
+		break
+		fi
+
+		sleep 1
+	done
+fi
