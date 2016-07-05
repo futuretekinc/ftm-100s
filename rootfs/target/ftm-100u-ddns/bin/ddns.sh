@@ -15,6 +15,8 @@ echo "update add $IMSI.uplus.co.kr 60 A $WANIP" >> /etc/ddns/nsupdate.script
 echo "show" >> /etc/ddns/nsupdate.script
 echo "send" >> /etc/ddns/nsupdate.script
 
+sleep 5
+
 nsupdate -k /etc/ddns/Kuplus.co.kr.+157+18044.key -v /etc/ddns/nsupdate.script
 
 `echo 'at$lgtdmzset' > /dev/ttyACM0`
